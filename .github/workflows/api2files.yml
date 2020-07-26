@@ -1,0 +1,41 @@
+# 将所需API数据同步下载为GitHub文件供jsDelivr等镜像服务加速读取
+
+name: "推送后自动更新数据文件"
+
+on:
+  push:
+    branches:
+      - "master"
+
+jobs:
+
+  download-api:
+    name: "下载API数据至文件"
+    runs-on: "ubuntu-latest"
+
+    steps:
+      - name: "检出当前仓库"
+        uses: actions/checkout@v2
+
+      - name: "读取API数据"
+        id: get_api_data
+        uses: octokit/request-action@v2.x
+        with:
+          route: GET /repos/:repository/releases/latest
+          repository: ${{ github.repository }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: "输出生成文件"
+        run: |
+          echo "${{ steps.get_api_data.outputs.data }}" > test.json
+
+      - name: "提交文件更新"
+        uses: EndBug/add-and-commit@v4
+        with:
+          author_name: 羽中
+          author_email: zyz59@126.com
+          message: "更新API数据"
+          add: "*.json"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
