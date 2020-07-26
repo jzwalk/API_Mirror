@@ -21,16 +21,16 @@ jobs:
         id: get_api_data
         uses: octokit/request-action@v2.x
         with:
-          route: GET /repos/:repository/contents
-          repository: ${{ github.repository }}
+          route: GET /repos/:repository/contents/ZIP_CDN
+          repository: typecho-fans/plugins
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: "输出生成文件"
         run: |
-          echo "${{ steps.get_api_data.outputs.data }}" > test.json
+          echo ${{ steps.get_api_data.outputs.data }} > test.json
 
-      - name: "提交文件更新"
+      - name: "提交数据更新"
         uses: EndBug/add-and-commit@v4
         with:
           author_name: 羽中
