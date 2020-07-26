@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: "读取TeStore加速目录内容"
-        id: get_api_data
+        id: get_cdn_data
         uses: octokit/request-action@v2.x
         with:
           route: GET /repos/:repository/contents/ZIP_CDN
@@ -27,10 +27,10 @@ jobs:
 
       - name: "输出TeStore加速数据内容"
         run: |
-          echo "${{ steps.get_api_data.outputs.data }}" > zip_cdn.json
+          echo "${{ steps.get_cdn_data.outputs.data }}" > zip_cdn.json
 
       - name: "读取TeStore最后提交记录"
-        id: get_api_data
+        id: get_commit_data
         uses: octokit/request-action@v2.x
         with:
           route: GET /repos/:repository/commits?per_page=1
@@ -40,7 +40,7 @@ jobs:
 
       - name: "输出TeStore最后提交记录"
         run: |
-          echo "${{ steps.get_api_data.outputs.data }}" > last_commit.json
+          echo "${{ steps.get_commit_data.outputs.data }}" > last_commit.json
 
       - name: "提交所有数据文件更新"
         uses: EndBug/add-and-commit@v4
