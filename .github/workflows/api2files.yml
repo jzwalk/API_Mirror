@@ -20,18 +20,9 @@ jobs:
         run: |
           curl -s https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN > zip_cdn.json
 
-      - name: "读取TeStore最后提交记录"
-        id: get_commit_data
-        uses: octokit/request-action@v2.x
-        with:
-          route: GET /repos/:repository/commits?per_page=1
-          repository: typecho-fans/plugins
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: "输出TeStore最后提交记录"
+      - name: "输出TeStore最后提交数据"
         run: |
-          echo "${{ steps.get_commit_data.outputs.data }}" > last_commit.json
+          curl -s https://api.github.com/repos/typecho-fans/plugins/commits?per_page=1 > last_commit.json
 
       - name: "提交所有数据文件更新"
         uses: EndBug/add-and-commit@v4
