@@ -1186,16 +1186,16 @@
   {
     "name": "CatClaw.zip",
     "path": "ZIP_CDN/CatClaw.zip",
-    "sha": "03eb7362c2ddf4e59dcff64496cdc20258c5e7b7",
-    "size": 8172,
+    "sha": "67465faf53a5adce5864c3c790b5c9e3c023e476",
+    "size": 8263,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/CatClaw.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/CatClaw.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/03eb7362c2ddf4e59dcff64496cdc20258c5e7b7",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/67465faf53a5adce5864c3c790b5c9e3c023e476",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/CatClaw.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/CatClaw.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/03eb7362c2ddf4e59dcff64496cdc20258c5e7b7",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/67465faf53a5adce5864c3c790b5c9e3c023e476",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/CatClaw.zip"
     }
   },
