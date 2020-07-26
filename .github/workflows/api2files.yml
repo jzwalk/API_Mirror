@@ -21,7 +21,7 @@ jobs:
         id: get_api_data
         uses: octokit/request-action@v2.x
         with:
-          route: GET /repos/:repository/releases/latest
+          route: GET /repos/:repository/contents
           repository: ${{ github.repository }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
