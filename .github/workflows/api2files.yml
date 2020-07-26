@@ -28,7 +28,7 @@ jobs:
 
       - name: "输出生成文件"
         run: |
-          echo ${{ steps.get_api_data.outputs.data }} > test.json
+          echo "${{ steps.get_api_data.outputs.data }} > test.json"
 
       - name: "提交数据更新"
         uses: EndBug/add-and-commit@v4
