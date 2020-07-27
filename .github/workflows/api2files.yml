@@ -1,6 +1,6 @@
-# 将API数据下载为GitHub文件供jsDelivr等镜像服务加速
+# 将API数据下载为文件供Gitee/jsDelivr等镜像地址加速
 
-name: "接收信号触发文件更新"
+name: "接收触发信号更新文件"
 
 on:
   repository_dispatch:
@@ -15,19 +15,19 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: "输出TeStore加速目录数据"
+      - name: "输出ZIP_CDN加速目录数据"
         run: |
           curl -s https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN > zip_cdn.json
 
-      - name: "输出TeStore最后提交数据"
+      - name: "输出收录计数和推送时间戳"
         run: |
-          curl -s https://api.github.com/repos/typecho-fans/plugins/commits?per_page=1 > last_commit.json
+          echo '{"total": "${{ github.event.client_payload.total }}", "update": "${{ github.event.client_payload.update }}"}' > info.json
 
       - name: "提交数据文件更新"
         uses: EndBug/add-and-commit@v4
         with:
-          author_name: 羽中
-          author_email: zyz59@126.com
+          author_name: Typecho Fans
+          author_email: typechoer@126.com
           message: "更新各项API数据"
           add: "*.json"
         env:

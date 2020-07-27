@@ -1,2 +1,1 @@
-# API_Mirror
-Testing...
+将API数据下载为文件供Gitee/jsDelivr等镜像地址加速
