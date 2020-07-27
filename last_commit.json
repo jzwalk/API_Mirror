@@ -1,24 +1,24 @@
 [
   {
-    "sha": "5fceb46cdc123717d4d80c38dd554005ab51c959",
-    "node_id": "MDY6Q29tbWl0MTQxMDE5NTM6NWZjZWI0NmNkYzEyMzcxN2Q0ZDgwYzM4ZGQ1NTQwMDVhYjUxYzk1OQ==",
+    "sha": "4a4283eff776d37b3396db61aac06938a8a52cfb",
+    "node_id": "MDY6Q29tbWl0MTQxMDE5NTM6NGE0MjgzZWZmNzc2ZDM3YjMzOTZkYjYxYWFjMDY5MzhhOGE1MmNmYg==",
     "commit": {
       "author": {
         "name": "羽中",
         "email": "zyz59@126.com",
-        "date": "2020-07-26T15:15:57Z"
+        "date": "2020-07-27T03:38:28Z"
       },
       "committer": {
         "name": "羽中",
         "email": "zyz59@126.com",
-        "date": "2020-07-26T15:15:57Z"
+        "date": "2020-07-27T03:38:28Z"
       },
-      "message": "测试Action补充repo参数",
+      "message": "社区版新增Version插件信息和加速用zip包",
       "tree": {
-        "sha": "de935b53e074cb464b44a94d594a225188ff1740",
-        "url": "https://api.github.com/repos/typecho-fans/plugins/git/trees/de935b53e074cb464b44a94d594a225188ff1740"
+        "sha": "42b1f22568177799b9b03f4ae3a43719eadbb463",
+        "url": "https://api.github.com/repos/typecho-fans/plugins/git/trees/42b1f22568177799b9b03f4ae3a43719eadbb463"
       },
-      "url": "https://api.github.com/repos/typecho-fans/plugins/git/commits/5fceb46cdc123717d4d80c38dd554005ab51c959",
+      "url": "https://api.github.com/repos/typecho-fans/plugins/git/commits/4a4283eff776d37b3396db61aac06938a8a52cfb",
       "comment_count": 0,
       "verification": {
         "verified": false,
@@ -27,9 +27,9 @@
         "payload": null
       }
     },
-    "url": "https://api.github.com/repos/typecho-fans/plugins/commits/5fceb46cdc123717d4d80c38dd554005ab51c959",
-    "html_url": "https://github.com/typecho-fans/plugins/commit/5fceb46cdc123717d4d80c38dd554005ab51c959",
-    "comments_url": "https://api.github.com/repos/typecho-fans/plugins/commits/5fceb46cdc123717d4d80c38dd554005ab51c959/comments",
+    "url": "https://api.github.com/repos/typecho-fans/plugins/commits/4a4283eff776d37b3396db61aac06938a8a52cfb",
+    "html_url": "https://github.com/typecho-fans/plugins/commit/4a4283eff776d37b3396db61aac06938a8a52cfb",
+    "comments_url": "https://api.github.com/repos/typecho-fans/plugins/commits/4a4283eff776d37b3396db61aac06938a8a52cfb/comments",
     "author": {
       "login": "jzwalk",
       "id": 252331,
@@ -72,9 +72,9 @@
     },
     "parents": [
       {
-        "sha": "9009aa8202a41d4a9c4fbcccadf3dd2a637768ab",
-        "url": "https://api.github.com/repos/typecho-fans/plugins/commits/9009aa8202a41d4a9c4fbcccadf3dd2a637768ab",
-        "html_url": "https://github.com/typecho-fans/plugins/commit/9009aa8202a41d4a9c4fbcccadf3dd2a637768ab"
+        "sha": "88d5615d18679b22a35a69cee6287984654443e6",
+        "url": "https://api.github.com/repos/typecho-fans/plugins/commits/88d5615d18679b22a35a69cee6287984654443e6",
+        "html_url": "https://github.com/typecho-fans/plugins/commit/88d5615d18679b22a35a69cee6287984654443e6"
       }
     ]
   }

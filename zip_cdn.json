@@ -7616,6 +7616,22 @@
     }
   },
   {
+    "name": "Version.zip",
+    "path": "ZIP_CDN/Version.zip",
+    "sha": "c92a59337ce6e5561164745138941c9426049129",
+    "size": 24966,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Version.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Version.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/c92a59337ce6e5561164745138941c9426049129",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/Version.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Version.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/c92a59337ce6e5561164745138941c9426049129",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Version.zip"
+    }
+  },
+  {
     "name": "Viewers.zip",
     "path": "ZIP_CDN/Viewers.zip",
     "sha": "59fbe8e7478a72669d42d9f3b47e89ca83ea9b2d",
