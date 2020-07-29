@@ -7618,16 +7618,16 @@
   {
     "name": "Version.zip",
     "path": "ZIP_CDN/Version.zip",
-    "sha": "c92a59337ce6e5561164745138941c9426049129",
-    "size": 24966,
+    "sha": "5bfc6ec45e8ee36c525626eefcf2eba4d740947d",
+    "size": 25922,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Version.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Version.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/c92a59337ce6e5561164745138941c9426049129",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/5bfc6ec45e8ee36c525626eefcf2eba4d740947d",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/Version.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Version.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/c92a59337ce6e5561164745138941c9426049129",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/5bfc6ec45e8ee36c525626eefcf2eba4d740947d",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Version.zip"
     }
   },
