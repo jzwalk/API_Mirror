@@ -39,11 +39,3 @@ jobs:
           dst_token: ${{ secrets.GITEE_TOKEN }}
           static_list: "API_Mirror"
           force_update: true
-
-      - name: "自动部署Gitee Page"
-        uses: yanglbme/gitee-pages-action@master
-        with:
-          gitee-username: jzwalk
-          gitee-password: ${{ secrets.GITEE_PW }}
-          gitee-repo: jzwalk/API_Mirror
-          https: true
