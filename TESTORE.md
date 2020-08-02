@@ -44,3 +44,4 @@
 [Accessories](https://xiamp.net/archives/accessories-pro.html) | 多功能附件下载增强插件(免费版) | 1.0.3 | [Ryan](https://github.com/benzBrake) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/Accessories.zip)
 [ActivatePowerMode](https://gitee.com/hoexhe/ActivatePowerMode) | (娱乐向)疯狂打字机输入特效插件 | 1.0.0 | [Hoe](https://gitee.com/hoexhe) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/ActivatePowerMode.zip)
 
+
