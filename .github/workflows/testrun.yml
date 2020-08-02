@@ -1,0 +1,27 @@
+# 检测外部登记GitHub插件版本信息并下载加速用zip包
+
+name: "手动测试触发更新脚本"
+
+on:
+  workflow_dispatch
+
+jobs:
+
+  auto-update:
+    name: "自动更新GitHub插件"
+    runs-on: "ubuntu-latest"
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: "执行PHP脚本"
+        run: |
+          php auto-update.php
+
+#      - name: "获取执行记录"
+#        run: |
+#          echo "to do..."
+
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "提交外部GitHub插件自动更新(测试)"

@@ -1,0 +1,130 @@
+[
+  {
+    "name": "AMP.zip",
+    "path": "ZIP_CDN/AMP.zip",
+    "sha": "ff91671544c9d38aaffde4237466c0a43857bc8c",
+    "size": 30185,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/AMP.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/AMP.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/ff91671544c9d38aaffde4237466c0a43857bc8c",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/AMP.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/AMP.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/ff91671544c9d38aaffde4237466c0a43857bc8c",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/AMP.zip"
+    }
+  },
+  {
+    "name": "APlayer.zip",
+    "path": "ZIP_CDN/APlayer.zip",
+    "sha": "aadac42e2a57e080c45467bc7ab3d3b95e06ccd4",
+    "size": 150869,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/APlayer.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/APlayer.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/aadac42e2a57e080c45467bc7ab3d3b95e06ccd4",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/APlayer.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/APlayer.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/aadac42e2a57e080c45467bc7ab3d3b95e06ccd4",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/APlayer.zip"
+    }
+  },
+  {
+    "name": "APlayerAtBottom.zip",
+    "path": "ZIP_CDN/APlayerAtBottom.zip",
+    "sha": "e9335071f5642b81ede2214a5cfb7215ddc1af4a",
+    "size": 307840,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/APlayerAtBottom.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/APlayerAtBottom.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/e9335071f5642b81ede2214a5cfb7215ddc1af4a",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/APlayerAtBottom.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/APlayerAtBottom.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/e9335071f5642b81ede2214a5cfb7215ddc1af4a",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/APlayerAtBottom.zip"
+    }
+  },
+  {
+    "name": "Acc.zip",
+    "path": "ZIP_CDN/Acc.zip",
+    "sha": "e7abfa551718e572babbc71b0b4ca9b679834376",
+    "size": 4007,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Acc.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Acc.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/e7abfa551718e572babbc71b0b4ca9b679834376",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/Acc.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Acc.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/e7abfa551718e572babbc71b0b4ca9b679834376",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Acc.zip"
+    }
+  },
+  {
+    "name": "Access.zip",
+    "path": "ZIP_CDN/Access.zip",
+    "sha": "b6c976216131cb96bdac3cfe964c9c457f715b35",
+    "size": 1370439,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Access.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Access.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/b6c976216131cb96bdac3cfe964c9c457f715b35",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/Access.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Access.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/b6c976216131cb96bdac3cfe964c9c457f715b35",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Access.zip"
+    }
+  },
+  {
+    "name": "AccessBmob.zip",
+    "path": "ZIP_CDN/AccessBmob.zip",
+    "sha": "0ff282baa760c7f898a048ee7ee2dee1813efeab",
+    "size": 25446,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/AccessBmob.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/AccessBmob.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/0ff282baa760c7f898a048ee7ee2dee1813efeab",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/AccessBmob.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/AccessBmob.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/0ff282baa760c7f898a048ee7ee2dee1813efeab",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/AccessBmob.zip"
+    }
+  },
+  {
+    "name": "Accessories.zip",
+    "path": "ZIP_CDN/Accessories.zip",
+    "sha": "061504020f0a1f2c5e9037495ec9ea590b19f875",
+    "size": 6715,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Accessories.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Accessories.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/061504020f0a1f2c5e9037495ec9ea590b19f875",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/Accessories.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Accessories.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/061504020f0a1f2c5e9037495ec9ea590b19f875",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Accessories.zip"
+    }
+  },
+  {
+    "name": "ActivatePowerMode.zip",
+    "path": "ZIP_CDN/ActivatePowerMode.zip",
+    "sha": "bff7eef2bfe1a4ef0454b7dec33ffef2968ad4d6",
+    "size": 302276,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/ActivatePowerMode.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/ActivatePowerMode.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/bff7eef2bfe1a4ef0454b7dec33ffef2968ad4d6",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/ActivatePowerMode.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/ActivatePowerMode.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/bff7eef2bfe1a4ef0454b7dec33ffef2968ad4d6",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/ActivatePowerMode.zip"
+    }
+  }
+]
