@@ -2,9 +2,6 @@
 //https://raw.githubusercontent.com/typecho-fans/plugins/master/TESTORE.md
 	$source = file_get_contents('TESTORE.md');
 	$lines = preg_split('/(\r|\n|\r\n)/',$source);
-//https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN
-	$api = file_get_contents('test_zc.json');
-	$datas = json_decode($api,true);
 
 	$desciptions = array();
 	$links = array();
@@ -13,6 +10,8 @@
 	$version = '';
 	$download = '';
 	$name = '';
+	$datas = array();
+	$path = '';
 	$status = 'failed';
 	$logs = '';
 	$tables = array();
@@ -23,12 +22,22 @@
 			preg_match_all('/(?<=\()[^\)]+/',$column,$links);
 			preg_match_all('/(?<=)[^\|]+/',$column,$metas);
 			if ($column && strpos($links['0']['0'],'github.com')) {
-				$infos = call_user_func('parseInfo',$links['0']['0'].'/raw/master/Plugin.php');
+				$api = file_get_contents(str_replace('github.com','api.github.com/repos',$links['0']['0']).'/git/trees/master?recursive=1');
+				$datas = json_decode($api ,true);
+				preg_match('/(?<=\[)[^\]]+/',$metas['0']['0'],$name);
+				foreach ($datas['tree'] as $tree) {
+					if (false!==stripos($tree['path'],$name.'/Plugin.php')) {
+						$path = $tree['path'];
+					}
+				}
+				$path = $path ? $links['0']['0'].'/raw/master/'.$path : $links['0']['0'].'/raw/master/'.$name.'.php';
+				$infos = call_user_func('parseInfo',$path);
 				$version = stripos($metas['0']['2'],'v')===0 ? trim(substr($metas['0']['2'],1)) : trim($metas['0']['2']);
 				if ($infos && $infos['version']>$version) {
 					$column = str_replace($version,$infos['version'],$column);
 					$download = file_get_contents(end($links['0']));
-					preg_match('/(?<=\[)[^\]]+/',$metas['0']['0'],$name);
+//https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN
+					$datas = json_decode(file_get_contents('test_zc.json'),true);
 					foreach ($datas as $data) {
 						if ($data['name']==$name.'_'.$infos['author'].'.zip') { //带作者名优先
 							$file = 'ZIP_CDN/'.$name.'_'.$infos['author'].'.zip';
