@@ -31,7 +31,7 @@
 						$path = $tree['path'];
 					}
 				}
-				$path = $path ? $links['0']['0'].'/raw/master/'.$path : $links['0']['0'].'/raw/master/'.$name.'.php';
+				$path = $path ? $links['0']['0'].'/raw/master/'.$path : $links['0']['0'].'/raw/master/'.$name['0'].'.php';
 				$infos = call_user_func('parseInfo',$path);
 				$version = stripos($metas['0']['2'],'v')===0 ? trim(substr($metas['0']['2'],1)) : trim($metas['0']['2']);
 				if ($infos && $infos['version']>$version) {
@@ -40,17 +40,17 @@
 //https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN
 					$datas = json_decode(file_get_contents('test_zc.json'),true);
 					foreach ($datas as $data) {
-						if ($data['name']==$name.'_'.$infos['author'].'.zip') { //带作者名优先
-							$file = 'ZIP_CDN/'.$name.'_'.$infos['author'].'.zip';
-						} elseif ($data['name']==$name.'.zip') {
-							$file = 'ZIP_CDN/'.$name.'.zip';
+						if ($data['name']==$name['0'].'_'.$infos['author'].'.zip') { //带作者名优先
+							$file = 'ZIP_CDN/'.$name['0'].'_'.$infos['author'].'.zip';
+						} elseif ($data['name']==$name['0'].'.zip') {
+							$file = 'ZIP_CDN/'.$name['0'].'.zip';
 						}
 					}
 					if ($download) {
 						file_put_contents($file,$download);
 						$status = 'successful';
 					}
-					$logs .= $name.' '.date('Y-m-d H:i',time()).' '.$status.PHP_EOL;
+					$logs .= $name['0'].' '.date('Y-m-d H:i',time()).' '.$status.PHP_EOL;
 				}
 			}
 			$tables[] = $column;
