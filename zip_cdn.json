@@ -1698,16 +1698,16 @@
   {
     "name": "CommentPush.zip",
     "path": "ZIP_CDN/CommentPush.zip",
-    "sha": "4d8bcbd97cdf60d726f55a10e76cf5eb72c15471",
-    "size": 71774,
+    "sha": "638fd15e94656df4763a1e691d9fc1f38e5ca7d0",
+    "size": 73894,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/CommentPush.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/CommentPush.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/4d8bcbd97cdf60d726f55a10e76cf5eb72c15471",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/638fd15e94656df4763a1e691d9fc1f38e5ca7d0",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/CommentPush.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/CommentPush.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/4d8bcbd97cdf60d726f55a10e76cf5eb72c15471",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/638fd15e94656df4763a1e691d9fc1f38e5ca7d0",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/CommentPush.zip"
     }
   },
