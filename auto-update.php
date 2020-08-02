@@ -47,15 +47,7 @@
 		}
 	}
 
-	$content1 = '';
-	$content2 = '';
-	foreach ($desciptions as $desciption) {
-		$content1 .= $desciption.PHP_EOL;
-	}
-	foreach ($tables as $table) {
-		$content2 .= $table.PHP_EOL;
-	}
-	file_put_contents('TESTORE.md',$content1.$content2);
+	file_put_contents('TESTORE.md',implode(PHP_EOL,$desciptions).implode(PHP_EOL,$tables));
 	echo $logs;
 
 	/**
