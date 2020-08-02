@@ -10,6 +10,7 @@
 	$links = array();
 	$metas = array();
 	$infos = array();
+	$version = '';
 	$download = '';
 	$name = '';
 	$status = 'failed';
@@ -23,8 +24,9 @@
 			preg_match_all('/(?<=)[^\|]+/',$column,$metas);
 			if ($column && strpos($links['0']['0'],'github.com')) {
 				$infos = call_user_func('parseInfo',$links['0']['0'].'/raw/master/Plugin.php');
-				if ($infos && $infos['version']>$metas['0']['2']) {
-					$column = str_replace($metas['0']['2'],$infos['version'],$column);
+				$version = stripos($metas['0']['2'],'v')===0 ? trim(substr($metas['0']['2'],1)) : trim($metas['0']['2']);
+				if ($infos && $infos['version']>$version) {
+					$column = str_replace($version,$infos['version'],$column);
 					$download = file_get_contents(end($links['0']));
 					preg_match('/(?<=\[)[^\]]+/',$metas['0']['0'],$name);
 					foreach ($datas as $data) {
