@@ -22,11 +22,12 @@
 			preg_match_all('/(?<=\()[^\)]+/',$column,$links);
 			preg_match_all('/(?<=)[^\|]+/',$column,$metas);
 			if ($column && strpos($links['0']['0'],'github.com')) {
-				$api = file_get_contents(str_replace('github.com','api.github.com/repos',$links['0']['0']).'/git/trees/master?recursive=1');
+				$api = file_get_contents(str_replace('github.com','api.github.com/repos',$links['0']['0']).'/git/trees/master?recursive=1',0,
+					stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP')))));
 				$datas = json_decode($api ,true);
 				preg_match('/(?<=\[)[^\]]+/',$metas['0']['0'],$name);
 				foreach ($datas['tree'] as $tree) {
-					if (false!==stripos($tree['path'],$name.'/Plugin.php')) {
+					if (false!==stripos($tree['path'],'Plugin.php')) {
 						$path = $tree['path'];
 					}
 				}
@@ -56,7 +57,7 @@
 		}
 	}
 
-	file_put_contents('TESTORE.md',implode(PHP_EOL,$desciptions).implode(PHP_EOL,$tables));
+	file_put_contents('TESTORE.md',implode(PHP_EOL,$desciptions).PHP_EOL.implode(PHP_EOL,$tables));
 	echo $logs;
 
 	/**
