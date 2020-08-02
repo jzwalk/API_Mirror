@@ -25,7 +25,7 @@
 				$infos = call_user_func('parseInfo',$links['0']['0'].'/raw/master/Plugin.php');
 				if ($infos && $infos['version']>$metas['0']['2']) {
 					$column = str_replace($metas['0']['2'],$infos['version'],$column);
-					$download = file_get_contents(end($links));
+					$download = file_get_contents(end($links['0']));
 					preg_match('/(?<=\[)[^\]]+/',$metas['0']['0'],$name);
 					foreach ($datas as $data) {
 						if ($data['name']==$name.'_'.$infos['author'].'.zip') { //带作者名优先
