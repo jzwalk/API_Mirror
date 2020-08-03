@@ -7,17 +7,18 @@
 	$desciptions = array();
 	$links = array();
 	$metas = array();
+	$api = '';
+	$logs = '--------------'.PHP_EOL.date('Y-m-d',time()).PHP_EOL;
+	$datas = array();
+	$name = array();
+	$path = '';
 	$infos = array();
 	$version = '';
 	$all = 0;
 	$download = '';
 	$done = 0;
-	$api = '';
-	$datas = array();
-	$name = array();
-	$path = '';
+	$cdn = '';
 	$status = 'failed';
-	$logs = '--------------'.PHP_EOL.date('Y-m-d',time()).PHP_EOL;
 	$tables = array();
 	foreach ($lines as $line=>$column) {
 		if ($line<38) {
@@ -28,6 +29,10 @@
 			if ($column && strpos($links['0']['0'],'github.com')) {
 				$api = file_get_contents(str_replace('github.com','api.github.com/repos',$links['0']['0']).'/git/trees/master?recursive=1',0,
 					stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP')))));
+				if (!$api) {
+					$logs = 'Error: '.$links['0']['0'].' not found!'.PHP_EOL;
+					return;
+				}
 				$datas = json_decode($api ,true);
 				preg_match('/(?<=\[)[^\]]+/',$metas['0']['0'],$name);
 				foreach ($datas['tree'] as $tree) {
@@ -42,17 +47,21 @@
 					++$all;
 					$column = str_replace($version,$infos['version'],$column);
 					$download = file_get_contents(end($links['0']));
+					if (!$download) {
+						$logs = 'Error: '.$links['0']['0'].' not found!'.PHP_EOL;
+						return;
+					}
 //https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN
 					$datas = json_decode(file_get_contents('test_zc.json'),true);
 					foreach ($datas as $data) {
 						if ($data['name']==$name['0'].'_'.$infos['author'].'.zip') { //带作者名优先
-							$file = 'ZIP_CDN/'.$name['0'].'_'.$infos['author'].'.zip';
+							$cdn = 'ZIP_CDN/'.$name['0'].'_'.$infos['author'].'.zip';
 						} elseif ($data['name']==$name['0'].'.zip') {
-							$file = 'ZIP_CDN/'.$name['0'].'.zip';
+							$cdn = 'ZIP_CDN/'.$name['0'].'.zip';
 						}
 					}
-					if ($download) {
-						file_put_contents($file,$download);
+					if ($cdn && $download) {
+						file_put_contents($cdn,$download);
 						$status = 'succeeded';
 						++$done;
 					}
