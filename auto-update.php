@@ -9,7 +9,8 @@
 	$infos = array();
 	$version = '';
 	$download = '';
-	$name = '';
+	$api = '';
+	$name = array();
 	$datas = array();
 	$path = '';
 	$status = 'failed';
