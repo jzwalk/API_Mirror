@@ -48,8 +48,8 @@
     }
   },
   {
-    "name": "Geetest_¾Á¾Ákyuu.zip",
-    "path": "ZIP_CDN/Geetest_¾Á¾Ákyuu.zip",
+    "name": "Geetest_ç–ç–kyuu.zip",
+    "path": "ZIP_CDN/Geetest_ç–ç–kyuu.zip",
     "sha": "b6e1ba422ebe5dc1b5871805614d95c5f97f9b49",
     "size": 6888,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Geetest_%E7%8E%96%E7%8E%96kyuu.zip?ref=master",
@@ -64,8 +64,8 @@
     }
   },
   {
-    "name": "Geetest_²¤²Ë.zip",
-    "path": "ZIP_CDN/Geetest_²¤²Ë.zip",
+    "name": "Geetest_è èœ.zip",
+    "path": "ZIP_CDN/Geetest_è èœ.zip",
     "sha": "35ee821970cfe0f479f076702f7c14ce3b4bf907",
     "size": 8864,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Geetest_%E8%8F%A0%E8%8F%9C.zip?ref=master",
@@ -96,8 +96,8 @@
     }
   },
   {
-    "name": "TeConnect_´óÎÀ¿Æ¼¼Blog.zip",
-    "path": "ZIP_CDN/TeConnect_´óÎÀ¿Æ¼¼Blog.zip",
+    "name": "TeConnect_å¤§å«ç§‘æŠ€Blog.zip",
+    "path": "ZIP_CDN/TeConnect_å¤§å«ç§‘æŠ€Blog.zip",
     "sha": "2a0a9b740616b4499984ce02dda7f8839bd2eeb9",
     "size": 42021,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/TeConnect_%E5%A4%A7%E5%8D%AB%E7%A7%91%E6%8A%80Blog.zip?ref=master",
