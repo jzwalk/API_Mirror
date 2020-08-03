@@ -7,6 +7,9 @@
 	$desciptions = array();
 	$links = array();
 	$metas = array();
+	$url = '';
+	$sub = false;
+	$paths = array();
 	$api = '';
 	$logs = '--------------'.PHP_EOL.date('Y-m-d',time()).PHP_EOL;
 	$datas = array();
@@ -26,28 +29,40 @@
 		} else {
 			preg_match_all('/(?<=\()[^\)]+/',$column,$links);
 			preg_match_all('/(?<=)[^\|]+/',$column,$metas);
-			if ($column && strpos($links['0']['0'],'github.com')) {
-				$api = file_get_contents(str_replace('github.com','api.github.com/repos',$links['0']['0']).'/git/trees/master?recursive=1',0,
-					stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP')))));
-				if (!$api) {
-					$logs = 'Error: '.$links['0']['0'].' not found!'.PHP_EOL;
+			$url = $links['0']['0'];
+			if ($column && strpos($url,'github.com')) {
+				$sub = strpos($url,'/tree/master/');
+				if ($sub) {
+					$paths = explode('/tree/master/',$url);
+					$url = $paths['0'];
 				}
-				$datas = json_decode($api ,true);
+				try {
+					$api = file_get_contents(str_replace('github.com','api.github.com/repos',$url).'/git/trees/master?recursive=1',0,
+						stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP')))));
+				} catch (Exception $e) {
+					$logs = 'Error: '.$e->getMessage().PHP_EOL;
+				}
+				$datas = json_decode($api,true);
 				preg_match('/(?<=\[)[^\]]+/',$metas['0']['0'],$name);
 				foreach ($datas['tree'] as $tree) {
-					if (false!==stripos($tree['path'],'Plugin.php')) {
+					if (false!==stripos($tree['path'],(sub ? $name['0'].'/Plugin.php' : 'Plugin.php'))) {
 						$path = $tree['path'];
 					}
 				}
-				$path = $path ? $links['0']['0'].'/raw/master/'.$path : $links['0']['0'].'/raw/master/'.$name['0'].'.php';
+				$path = $path ? $url.'/raw/master/'.$path : $url.'/raw/master/'.(sub ? $paths['1'] : '').$name['0'].'.php';
 				$infos = call_user_func('parseInfo',$path);
 				$version = stripos($metas['0']['2'],'v')===0 ? trim(substr($metas['0']['2'],1)) : trim($metas['0']['2']);
 				if ($infos && $infos['version']>$version) {
 					++$all;
 					$column = str_replace($version,$infos['version'],$column);
-					$download = file_get_contents(end($links['0']));
-					if (!$download) {
-						$logs = 'Error: '.$links['0']['0'].' not found!'.PHP_EOL;
+					if (strpos(end($links['0']),'typecho-fans/plugins/releases/download')) {
+						$logs = $name['0'].' need manul update!'.PHP_EOL;
+						return;
+					}
+					try {
+						$download = file_get_contents(end($links['0']));
+					} catch (Exception $e) {
+						$logs = 'Error: '.$e->getMessage().PHP_EOL;
 					}
 //https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN
 					$datas = json_decode(file_get_contents('test_zc.json'),true);
