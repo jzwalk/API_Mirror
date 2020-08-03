@@ -36,11 +36,10 @@
 					$paths = explode('/tree/master/',$url);
 					$url = $paths['0'];
 				}
-				try {
-					$api = file_get_contents(str_replace('github.com','api.github.com/repos',$url).'/git/trees/master?recursive=1',0,
-						stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP')))));
-				} catch (Exception $e) {
-					$logs .= 'Error: '.$e->getMessage().PHP_EOL;
+				$api = @file_get_contents(str_replace('github.com','api.github.com/repos',$url).'/git/trees/master?recursive=1',0,
+					stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP')))));
+				if (!$api) {
+					$logs .= 'Error: '.$url.' not found!'.PHP_EOL;
 				}
 				$datas = json_decode($api,true);
 				preg_match('/(?<=\[)[^\]]+/',$metas['0']['0'],$name);
@@ -55,14 +54,14 @@
 				if ($infos && $infos['version']>$version) {
 					++$all;
 					$column = str_replace($version,$infos['version'],$column);
-					if (strpos(end($links['0']),'typecho-fans/plugins/releases/download')) {
+					$zip = end($links['0'];
+					if (strpos($zip,'typecho-fans/plugins/releases/download')) {
 						$logs .= $name['0'].' need manul update!'.PHP_EOL;
 						return;
 					}
-					try {
-						$download = file_get_contents(end($links['0']));
-					} catch (Exception $e) {
-						$logs .= 'Error: '.$e->getMessage().PHP_EOL;
+					$download = @file_get_contents($zip);
+					if (!$download) {
+						$logs .= 'Error: '.$zip.' not found!'.PHP_EOL;
 					}
 //https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN
 					$datas = json_decode(file_get_contents('test_zc.json'),true);
