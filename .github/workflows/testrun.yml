@@ -19,6 +19,4 @@ jobs:
           php auto-update.php > updates.log
 
       - name: "提交更新文件"
-      - uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: "Auto update all GitHub plugins"
+        uses: stefanzweifel/git-auto-commit-action@v4
