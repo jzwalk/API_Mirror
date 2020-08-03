@@ -73,7 +73,7 @@
 	}
 
 	file_put_contents('TESTORE.md',implode(PHP_EOL,$desciptions).PHP_EOL.implode(PHP_EOL,$tables));
-	file_put_contents('updates.log',$logs.PHP_EOL.'ALL: '.$all.'DONE: '.$done.PHP_EOL,FILE_APPEND);
+	file_put_contents('updates.txt',$logs.PHP_EOL.'ALL: '.$all.'DONE: '.$done.PHP_EOL,FILE_APPEND);
 
 	/**
 	 * 获取插件文件的头信息
