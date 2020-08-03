@@ -16,12 +16,7 @@ jobs:
 
       - name: "执行PHP脚本"
         run: |
-          php auto-update.php
+          php auto-update.php > updates.log
 
-#      - name: "获取执行记录"
-#        run: |
-#          echo "to do..."
-
+      - name: "提交更新文件"
       - uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: "提交外部GitHub插件自动更新(测试)"

@@ -1,4 +1,5 @@
 <?php
+	date_default_timezone_set('Asia/Shanghai');
 //https://raw.githubusercontent.com/typecho-fans/plugins/master/TESTORE.md
 	$source = file_get_contents('TESTORE.md');
 	$lines = preg_split('/(\r|\n|\r\n)/',$source);
@@ -16,7 +17,7 @@
 	$name = array();
 	$path = '';
 	$status = 'failed';
-	$logs = '';
+	$logs = '--------------'.PHP_EOL.date('Y-m-d',time()).PHP_EOL;
 	$tables = array();
 	foreach ($lines as $line=>$column) {
 		if ($line<38) {
@@ -55,7 +56,7 @@
 						$status = 'succeeded';
 						++$done;
 					}
-					$logs .= $name['0'].' '.date('Y-m-d H:i',time()).' '.$status.PHP_EOL;
+					$logs .= $name['0'].' - '.date('Y-m-d H:i',time()).' - '.$status.PHP_EOL;
 				}
 			}
 			$tables[] = $column;
@@ -63,7 +64,7 @@
 	}
 
 	file_put_contents('TESTORE.md',implode(PHP_EOL,$desciptions).PHP_EOL.implode(PHP_EOL,$tables));
-	echo $logs.PHP_EOL.'ALL: '.$all.'DONE: '.$done;
+	echo $logs.PHP_EOL.'ALL: '.$all.'DONE: '.$done.PHP_EOL;
 
 	/**
 	 * 获取插件文件的头信息
