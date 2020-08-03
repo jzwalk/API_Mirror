@@ -36,8 +36,8 @@
 
 名称 | 简介 | 版本 | 作者 | zip包
 ---- | ----: | :---: | ----: | :----:
-[Geetest](https://github.com/zhb127/z-typecho-plugin-geetest) | 极验证登录验证码插件(Session版) | 0.9 | [菠菜](https://github.com/zhb127) | [下载](https://github.com/zhb127/z-typecho-plugin-geetest/archive/master.zip)
-[Geetest](https://github.com/99kyuu/GeetestV3_for_Typecho) | 极验证V3版登录注册用验证码插件 | 0.8 | [玖玖kyuu](https://github.com/99kyuu) | [特殊](https://github.com/99kyuu/GeetestV3_for_Typecho/archive/master.zip)
-[Geetest](https://github.com/jinfeijie/Geetest) | 极验证V3版评论用图形验证码插件 | 1.0.1 | [mrjin](https://github.com/jinfeijie) | [下载](https://github.com/jinfeijie/Geetest/archive/1.0.3.zip)
-[TeConnect](https://github.com/ledccn/TeConnect) | 增强版15款平台账号注册登录插件 | 1.5 | [大卫科技Blog](https://github.com/ledccn) | [下载](https://github.com/ledccn/TeConnect/archive/master.zip)
-[TeConnect](https://github.com/jiangmuzi/TeConnect) | 经典版QQ/微博账号注册登录插件 | 0.1 | [绛木子](https://github.com/jiangmuzi) | [特殊](https://github.com/jiangmuzi/TeConnect/archive/master.zip)
+[Geetest](https://github.com/zhb127/z-typecho-plugin-geetest) | 极验证登录验证码插件(Session版) | 1.0.0 | [菠菜](https://github.com/zhb127) | [下载](https://github.com/zhb127/z-typecho-plugin-geetest/archive/master.zip)
+[Geetest](https://github.com/99kyuu/GeetestV3_for_Typecho) | 极验证V3版登录注册用验证码插件 | 1.0.0 | [玖玖kyuu](https://github.com/99kyuu) | [特殊](https://github.com/99kyuu/GeetestV3_for_Typecho/archive/master.zip)
+[Geetest](https://github.com/jinfeijie/Geetest) | 极验证V3版评论用图形验证码插件 | 1.0.3 | [mrjin](https://github.com/jinfeijie) | [下载](https://github.com/jinfeijie/Geetest/archive/1.0.3.zip)
+[TeConnect](https://github.com/ledccn/TeConnect) | 增强版15款平台账号注册登录插件 | 2.0 | [大卫科技Blog](https://github.com/ledccn) | [下载](https://github.com/ledccn/TeConnect/archive/master.zip)
+[TeConnect](https://github.com/jiangmuzi/TeConnect) | 经典版QQ/微博账号注册登录插件 | 1.0 | [绛木子](https://github.com/jiangmuzi) | [特殊](https://github.com/jiangmuzi/TeConnect/archive/master.zip)
