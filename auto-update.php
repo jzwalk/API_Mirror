@@ -27,7 +27,7 @@
 			preg_match_all('/(?<=\()[^\)]+/',$column,$links);
 			preg_match_all('/(?<=)[^\|]+/',$column,$metas);
 			if ($column && strpos($links['0']['0'],'github.com')) {
-				$api = @file_get_contents(str_replace('github.com','api.github.com/repos',$links['0']['0']).'/git/trees/master?recursive=1',0,
+				$api = file_get_contents(str_replace('github.com','api.github.com/repos',$links['0']['0']).'/git/trees/master?recursive=1',0,
 					stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP')))));
 				if (!$api) {
 					$logs = 'Error: '.$links['0']['0'].' not found!'.PHP_EOL;
@@ -46,7 +46,7 @@
 				if ($infos && $infos['version']>$version) {
 					++$all;
 					$column = str_replace($version,$infos['version'],$column);
-					$download = @file_get_contents(end($links['0']));
+					$download = file_get_contents(end($links['0']));
 					if (!$download) {
 						$logs = 'Error: '.$links['0']['0'].' not found!'.PHP_EOL;
 						return;
