@@ -8,10 +8,12 @@
 	$metas = array();
 	$infos = array();
 	$version = '';
+	$all = 0;
 	$download = '';
+	$done = 0;
 	$api = '';
-	$name = array();
 	$datas = array();
+	$name = array();
 	$path = '';
 	$status = 'failed';
 	$logs = '';
@@ -36,6 +38,7 @@
 				$infos = call_user_func('parseInfo',$path);
 				$version = stripos($metas['0']['2'],'v')===0 ? trim(substr($metas['0']['2'],1)) : trim($metas['0']['2']);
 				if ($infos && $infos['version']>$version) {
+					++$all;
 					$column = str_replace($version,$infos['version'],$column);
 					$download = file_get_contents(end($links['0']));
 //https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN
@@ -49,7 +52,8 @@
 					}
 					if ($download) {
 						file_put_contents($file,$download);
-						$status = 'successful';
+						$status = 'succeeded';
+						++$done;
 					}
 					$logs .= $name['0'].' '.date('Y-m-d H:i',time()).' '.$status.PHP_EOL;
 				}
@@ -59,7 +63,7 @@
 	}
 
 	file_put_contents('TESTORE.md',implode(PHP_EOL,$desciptions).PHP_EOL.implode(PHP_EOL,$tables));
-	echo $logs;
+	echo $logs.PHP_EOL.'ALL: '.$all.'DONE: '.$done;
 
 	/**
 	 * 获取插件文件的头信息
