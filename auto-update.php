@@ -40,7 +40,7 @@
 					$api = file_get_contents(str_replace('github.com','api.github.com/repos',$url).'/git/trees/master?recursive=1',0,
 						stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP')))));
 				} catch (Exception $e) {
-					$logs = 'Error: '.$e->getMessage().PHP_EOL;
+					$logs .= 'Error: '.$e->getMessage().PHP_EOL;
 				}
 				$datas = json_decode($api,true);
 				preg_match('/(?<=\[)[^\]]+/',$metas['0']['0'],$name);
@@ -56,13 +56,13 @@
 					++$all;
 					$column = str_replace($version,$infos['version'],$column);
 					if (strpos(end($links['0']),'typecho-fans/plugins/releases/download')) {
-						$logs = $name['0'].' need manul update!'.PHP_EOL;
+						$logs .= $name['0'].' need manul update!'.PHP_EOL;
 						return;
 					}
 					try {
 						$download = file_get_contents(end($links['0']));
 					} catch (Exception $e) {
-						$logs = 'Error: '.$e->getMessage().PHP_EOL;
+						$logs .= 'Error: '.$e->getMessage().PHP_EOL;
 					}
 //https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN
 					$datas = json_decode(file_get_contents('test_zc.json'),true);
