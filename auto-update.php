@@ -45,11 +45,11 @@
 				$datas = json_decode($api,true);
 				preg_match('/(?<=\[)[^\]]+/',$metas['0']['0'],$name);
 				foreach ($datas['tree'] as $tree) {
-					if (false!==stripos($tree['path'],(sub ? $name['0'].'/Plugin.php' : 'Plugin.php'))) {
+					if (false!==stripos($tree['path'],($sub ? $name['0'].'/Plugin.php' : 'Plugin.php'))) {
 						$path = $tree['path'];
 					}
 				}
-				$path = $path ? $url.'/raw/master/'.$path : $url.'/raw/master/'.(sub ? $paths['1'] : '').$name['0'].'.php';
+				$path = $path ? $url.'/raw/master/'.$path : $url.'/raw/master/'.($sub ? $paths['1'] : '').$name['0'].'.php';
 				$infos = call_user_func('parseInfo',$path);
 				$version = stripos($metas['0']['2'],'v')===0 ? trim(substr($metas['0']['2'],1)) : trim($metas['0']['2']);
 				if ($infos && $infos['version']>$version) {
