@@ -7,3 +7,6 @@ TeConnect - 2020-08-03 14:54 - succeeded
 TeConnect - 2020-08-03 14:54 - succeeded
 ALL: 5
 DONE: 5
+Error: https://github.com/lei2rock/Typecho-Assets/tree/master/plugins/BanbanStyle not found!
+ALL: 0
+DONE: 0
