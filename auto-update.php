@@ -31,7 +31,6 @@
 					stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP')))));
 				if (!$api) {
 					$logs = 'Error: '.$links['0']['0'].' not found!'.PHP_EOL;
-					return;
 				}
 				$datas = json_decode($api ,true);
 				preg_match('/(?<=\[)[^\]]+/',$metas['0']['0'],$name);
@@ -49,7 +48,6 @@
 					$download = file_get_contents(end($links['0']));
 					if (!$download) {
 						$logs = 'Error: '.$links['0']['0'].' not found!'.PHP_EOL;
-						return;
 					}
 //https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN
 					$datas = json_decode(file_get_contents('test_zc.json'),true);
@@ -73,8 +71,7 @@
 	}
 
 	file_put_contents('TESTORE.md',implode(PHP_EOL,$desciptions).PHP_EOL.implode(PHP_EOL,$tables));
-	file_put_contents('updates.txt',$logs.
-		PHP_EOL.'ALL: '.$all.PHP_EOL.
+	file_put_contents('updates.txt',$logs.'ALL: '.$all.PHP_EOL.
 		'DONE: '.$done.PHP_EOL,FILE_APPEND);
 
 	/**

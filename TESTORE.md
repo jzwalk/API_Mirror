@@ -36,8 +36,8 @@
 
 名称 | 简介 | 版本 | 作者 | zip包
 ---- | ----: | :---: | ----: | :----:
-[Geetest](https://github.com/zhb127/z-typecho-plugin-geetest) | 极验证登录验证码插件(Session版) | 1.0.0 | [菠菜](https://github.com/zhb127) | [下载](https://github.com/zhb127/z-typecho-plugin-geetest/archive/master.zip)
-[Geetest](https://github.com/99kyuu/GeetestV3_for_Typecho) | 极验证V3版登录注册用验证码插件 | 1.0.0 | [玖玖kyuu](https://github.com/99kyuu) | [特殊](https://github.com/99kyuu/GeetestV3_for_Typecho/archive/master.zip)
-[Geetest](https://github.com/jinfeijie/Geetest) | 极验证V3版评论用图形验证码插件 | 1.0.3 | [mrjin](https://github.com/jinfeijie) | [下载](https://github.com/jinfeijie/Geetest/archive/1.0.3.zip)
+[AdminLogin](https://github.com/v03413/Typecho_Plugins/tree/master/AdminLogin) | 微信/QQ号后台扫码登录注册插件 | 0.0.1 | [&#95;莫名&#95;](https://github.com/v03413) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/AdminLogin.zip)
+[Akismet](https://github.com/typecho/plugins/tree/master/Akismet) | 经典反垃圾评论服务Akismet插件 | 1.1.4 | [qining](https://github.com/joyqi) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/Akismet.zip)
+[Avartar](https://github.com/typecho/plugins/blob/master/Avartar.php) | 自定义替换Gravatar头像代理插件 | 1.0.0 Beta | [loftor](https://github.com/loftor-git) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/Avartar.zip)
 [TeConnect](https://github.com/ledccn/TeOath) | 增强版15款平台账号注册登录插件 | 2.0 | [大卫科技Blog](https://github.com/ledccn) | [下载](https://github.com/ledccn/TeConnect/archive/master.zip)
-[TeConnect](https://github.com/jiangmuzi/TeConnect) | 经典版QQ/微博账号注册登录插件 | 1.0 | [绛木子](https://github.com/jiangmuzi) | [特殊](https://github.com/jiangmuzi/TeConnect/archive/master.zip)
+[BanbanStyle](https://github.com/lei2rock/Typecho-Assets/tree/master/plugins/BanbanStyle) | [Handsome](https://www.ihewro.com/archives/489)主题常用功能集成插件 | 0.3.1 | [lei2rock](https://github.com/lei2rock) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/BanbanStyle.zip)
