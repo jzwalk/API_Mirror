@@ -38,46 +38,48 @@
 				}
 				$api = @file_get_contents(str_replace('github.com','api.github.com/repos',$url).'/git/trees/master?recursive=1',0,
 					stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP')))));
-				if (!$api) {
-					$logs .= 'Error: '.$url.' not found!'.PHP_EOL;
-				}
-				$datas = json_decode($api,true);
-				preg_match('/(?<=\[)[^\]]+/',$metas['0']['0'],$name);
-				foreach ($datas['tree'] as $tree) {
-					if (false!==stripos($tree['path'],($sub ? $name['0'].'/Plugin.php' : 'Plugin.php'))) {
-						$path = $tree['path'];
-					}
-				}
-				$path = $path ? $url.'/raw/master/'.$path : $url.'/raw/master/'.($sub ? $paths['1'] : '').$name['0'].'.php';
-				$infos = call_user_func('parseInfo',$path);
-				$version = stripos($metas['0']['2'],'v')===0 ? trim(substr($metas['0']['2'],1)) : trim($metas['0']['2']);
-				if ($infos && $infos['version']>$version) {
-					++$all;
-					$column = str_replace($version,$infos['version'],$column);
-					$zip = end($links['0'];
-					if (strpos($zip,'typecho-fans/plugins/releases/download')) {
-						$logs .= $name['0'].' need manul update!'.PHP_EOL;
-						return;
-					}
-					$download = @file_get_contents($zip);
-					if (!$download) {
-						$logs .= 'Error: '.$zip.' not found!'.PHP_EOL;
-					}
-//https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN
-					$datas = json_decode(file_get_contents('test_zc.json'),true);
-					foreach ($datas as $data) {
-						if ($data['name']==$name['0'].'_'.$infos['author'].'.zip') { //带作者名优先
-							$cdn = 'ZIP_CDN/'.$name['0'].'_'.$infos['author'].'.zip';
-						} elseif ($data['name']==$name['0'].'.zip') {
-							$cdn = 'ZIP_CDN/'.$name['0'].'.zip';
+				if ($api) {
+					$datas = json_decode($api,true);
+					preg_match('/(?<=\[)[^\]]+/',$metas['0']['0'],$name);
+					foreach ($datas['tree'] as $tree) {
+						if (false!==stripos($tree['path'],($sub ? $name['0'].'/Plugin.php' : 'Plugin.php'))) {
+							$path = $tree['path'];
 						}
 					}
-					if ($cdn && $download) {
-						file_put_contents($cdn,$download);
-						$status = 'succeeded';
-						++$done;
+					$path = $path ? $url.'/raw/master/'.$path : $url.'/raw/master/'.($sub ? $paths['1'] : '').$name['0'].'.php';
+					$infos = call_user_func('parseInfo',$path);
+					$version = stripos($metas['0']['2'],'v')===0 ? trim(substr($metas['0']['2'],1)) : trim($metas['0']['2']);
+					if ($infos && $infos['version']>$version) {
+						++$all;
+						$column = str_replace($version,$infos['version'],$column);
+						$zip = end($links['0']);
+						if (strpos($zip,'typecho-fans/plugins/releases/download')) {
+							$logs .= $name['0'].' need manul update!'.PHP_EOL;
+						} else {
+							$download = @file_get_contents($zip);
+							if ($download) {
+//https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN
+								$datas = json_decode(file_get_contents('test_zc.json'),true);
+								foreach ($datas as $data) {
+									if ($data['name']==$name['0'].'_'.$infos['author'].'.zip') { //带作者名优先
+										$cdn = 'ZIP_CDN/'.$name['0'].'_'.$infos['author'].'.zip';
+									} elseif ($data['name']==$name['0'].'.zip') {
+										$cdn = 'ZIP_CDN/'.$name['0'].'.zip';
+									}
+								}
+								if ($cdn && $download) {
+									file_put_contents($cdn,$download);
+									$status = 'succeeded';
+									++$done;
+								}
+								$logs .= $name['0'].' - '.date('Y-m-d H:i',time()).' - '.$status.PHP_EOL;
+							} else {
+								$logs .= 'Error: '.$zip.' not found!'.PHP_EOL;
+							}
+						}
 					}
-					$logs .= $name['0'].' - '.date('Y-m-d H:i',time()).' - '.$status.PHP_EOL;
+				} else {
+					$logs .= 'Error: '.$url.' not found!'.PHP_EOL;
 				}
 			}
 			$tables[] = $column;
