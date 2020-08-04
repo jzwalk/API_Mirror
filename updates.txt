@@ -10,3 +10,10 @@ DONE: 5
 Error: https://github.com/lei2rock/Typecho-Assets/tree/master/plugins/BanbanStyle not found!
 ALL: 0
 DONE: 0
+--------------
+2020-08-04
+AdminLogin need manul update!
+Error: https://github.com/typecho/plugins/blob/master/Avartar.php not found!
+Error: https://github.com/ledccn/TeOath not found!
+ALL: 1
+DONE: 0
