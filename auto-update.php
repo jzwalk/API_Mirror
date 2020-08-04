@@ -18,6 +18,7 @@
 	$infos = array();
 	$version = '';
 	$all = 0;
+	$zip = '';
 	$download = '';
 	$done = 0;
 	$cdn = '';
@@ -55,19 +56,41 @@
 							$column = str_replace($version,$infos['version'],$column);
 							$zip = end($links['0']);
 							if (strpos($zip,'typecho-fans/plugins/releases/download')) {
-								$logs .= $name['0'].' need manul update!'.PHP_EOL;
+								$download = @file_get_contents($url.'/archive/master.zip');
+								if ($download) {
+									$tmpDir = '../TMP/';
+									$tmpZip = $tmpDir.$name['0'].'_master.zip';
+									file_put_contents($tmpZip,$download);
+									$phpZip = new ZipArchive();
+									$phpZip->open($tmpZip);
+									$phpZip->extractTo($tmpDir);
+									preg_match('/(?<=\[)[^\]]+/',$metas['0']['3'],$author);
+									if ($author!==trim(strip_tags($infos['author']))) {
+										$logs .= $name['0'].' needs manual update!'.PHP_EOL;
+									}
+									$rootPath = realpath($tmpDir.basename($url).'-master'.($sub ? '/'.$paths['1'] : ''));
+									$cdn = call_user_func('cdnZip',$name['0']);
+									$phpZip->open($cdn, ZipArchive::CREATE | ZipArchive::OVERWRITE);
+									$files = new RecursiveIteratorIterator(
+										new RecursiveDirectoryIterator($rootPath),
+										RecursiveIteratorIterator::LEAVES_ONLY
+									);
+									foreach ($files as $file) {
+										if (!$file->isDir()) {
+											$filePath = $file->getRealPath();
+											$relativePath = substr($filePath,strlen($rootPath)+1);
+											$phpZip->addFile($filePath,$relativePath);
+										}
+									}
+									$phpZip->close();
+									$logs .= $name['0'].' - '.date('Y-m-d H:i',time()).' - RE-ZIP '.$status.PHP_EOL;
+								} else {
+									$logs .= 'Error: "'.$url.'" not found!'.PHP_EOL;
+								}
 							} else {
 								$download = @file_get_contents($zip);
 								if ($download) {
-//https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN
-									$datas = json_decode(file_get_contents('test_zc.json'),true);
-									foreach ($datas as $data) {
-										if ($data['name']==$name['0'].'_'.$infos['author'].'.zip') { //带作者名优先
-											$cdn = 'ZIP_CDN/'.$name['0'].'_'.$infos['author'].'.zip';
-										} elseif ($data['name']==$name['0'].'.zip') {
-											$cdn = 'ZIP_CDN/'.$name['0'].'.zip';
-										}
-									}
+									$cdn = call_user_func('cdnZip',$name['0']);
 									if ($cdn && $download) {
 										file_put_contents($cdn,$download);
 										$status = 'succeeded';
@@ -75,12 +98,12 @@
 									}
 									$logs .= $name['0'].' - '.date('Y-m-d H:i',time()).' - '.$status.PHP_EOL;
 								} else {
-									$logs .= 'Error: '.$zip.' not found!'.PHP_EOL;
+									$logs .= 'Error: "'.$zip.'" not found!'.PHP_EOL;
 								}
 							}
 						}
 					} else {
-						$logs .= 'Error: '.$url.' not found!'.PHP_EOL;
+						$logs .= 'Error: "'.$url.'" not found!'.PHP_EOL;
 					}
 				}
 			}
@@ -89,8 +112,28 @@
 	}
 
 	file_put_contents('TESTORE.md',implode(PHP_EOL,$desciptions).PHP_EOL.implode(PHP_EOL,$tables));
-	file_put_contents('updates.txt',$logs.'ALL: '.$all.PHP_EOL.
+	file_put_contents('updates.log',$logs.'ALL: '.$all.PHP_EOL.
 		'DONE: '.$done.PHP_EOL,FILE_APPEND);
+
+	/**
+	 * 获取ZIP_CDN文件名称
+	 *
+	 * @param string $pluginName 插件名
+	 * @return string
+	 */
+	function cdnZip($pluginName)
+	{
+//https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN
+		$datas = json_decode(file_get_contents('test_zc.json'),true);
+		foreach ($datas as $data) {
+			if ($data['name']==$pluginName.'_'.$infos['author'].'.zip') { //带作者名优先
+				$cdn = 'ZIP_CDN/'.$pluginName.'_'.$infos['author'].'.zip';
+			} elseif ($data['name']==$pluginName.'.zip') {
+				$cdn = 'ZIP_CDN/'.$pluginName.'.zip';
+			}
+		}
+		return $cdn;
+	}
 
 	/**
 	 * 获取插件文件的头信息
