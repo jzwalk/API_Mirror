@@ -58,18 +58,21 @@
 							if (strpos($zip,'typecho-fans/plugins/releases/download')) {
 								$download = @file_get_contents($url.'/archive/master.zip');
 								if ($download) {
-									$tmpDir = '../TMP/';
-									$tmpZip = $tmpDir.$name['0'].'_master.zip';
+									$tmpDir = realpath('../').'/TMP';
+									mkdir($tmpDir);
+									$tmpZip = $tmpDir.'/'.$all.'_'$name['0'].'_master.zip';
 									file_put_contents($tmpZip,$download);
 									$phpZip = new ZipArchive();
 									$phpZip->open($tmpZip);
-									$phpZip->extractTo($tmpDir);
+									$tmpSub = $tmpDir.'/'.$all.'_'$name['0'];
+									mkdir($tmpSub);
+									$phpZip->extractTo($tmpSub);
 									preg_match('/(?<=\[)[^\]]+/',$metas['0']['3'],$author);
 									if ($author['0']!==trim(strip_tags($infos['author']))) {
 										$logs .= $name['0'].' needs manual update!'.PHP_EOL;
 										continue;
 									}
-									$rootPath = realpath($tmpDir.basename($url).'-master'.($sub ? '/'.$paths['1'] : ''));
+									$rootPath = $tmpSub.'/'.basename($url).'-master'.($sub ? '/'.$paths['1'] : '');
 									$cdn = call_user_func('cdnZip',$name['0'],$infos['author']);
 									$phpZip->open($cdn,ZipArchive::CREATE | ZipArchive::OVERWRITE);
 									$files = new RecursiveIteratorIterator(
@@ -84,7 +87,7 @@
 										}
 									}
 									$phpZip->close();
-									$logs .= $name['0'].' - '.date('Y-m-d H:i',time()).' - RE-ZIP '.$status.PHP_EOL;
+									$logs .= $name['0'].' - '.date('Y-m-d H:i',time()).' - RE-ZIP succeeded'.PHP_EOL;
 								} else {
 									$logs .= 'Error: "'.$url.'" not found!'.PHP_EOL;
 								}
