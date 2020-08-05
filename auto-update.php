@@ -64,7 +64,7 @@
 									file_put_contents($tmpZip,$download);
 									$phpZip = new ZipArchive();
 									$phpZip->open($tmpZip);
-									$tmpSub = $tmpDir.'/'.$all.'_'$name['0'];
+									$tmpSub = $tmpDir.'/'.$all.'_'.$name['0'];
 									mkdir($tmpSub);
 									$phpZip->extractTo($tmpSub);
 									preg_match('/(?<=\[)[^\]]+/',$metas['0']['3'],$author);
