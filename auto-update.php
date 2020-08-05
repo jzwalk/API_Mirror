@@ -60,7 +60,7 @@
 								if ($download) {
 									$tmpDir = realpath('../').'/TMP';
 									mkdir($tmpDir);
-									$tmpZip = $tmpDir.'/'.$all.'_'$name['0'].'_master.zip';
+									$tmpZip = $tmpDir.'/'.$all.'_'.$name['0'].'_master.zip';
 									file_put_contents($tmpZip,$download);
 									$phpZip = new ZipArchive();
 									$phpZip->open($tmpZip);
