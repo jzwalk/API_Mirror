@@ -33,7 +33,7 @@
 			if ($column) {
 				$url = $links['0']['0'];
 				if (strpos($url,'github.com')) {
-					$doc = strpos($url,'/blob/master/');
+					$doc = strpos($url,'/blob/master/') && strpos($url,'.php');
 					if (!$doc) {
 						$sub = strpos($url,'/tree/master/');
 						if ($sub) {
@@ -55,7 +55,8 @@
 							$logs .= 'Error: "'.$url.'" not found!'.PHP_EOL;
 						}
 					} else {
-						$paths = explode('/raw/master/',str_replace('blob','raw',$url));
+						$path = str_replace('blob','raw',$url);
+						$paths = explode('/raw/master/',$path);
 						$url = $paths['0'];
 					}
 					$infos = call_user_func('parseInfo',$path);
@@ -81,22 +82,26 @@
 								mkdir($tmpSub);
 								$phpZip->extractTo($tmpSub);
 								preg_match('/(?<=\[)[^\]]+/',$metas['0']['3'],$author);
-								if (htmlspecialchars_decode($author['0'])!==trim(strip_tags($infos['author']))) {
+								if (html_entity_decode($author['0'])!==trim(strip_tags($infos['author']))) {
 									$logs .= $name['0'].' needs manual update!'.PHP_EOL;
 								}
-								$rootPath = $tmpSub.'/'.basename($url).'-master'.($sub ? '/'.$paths['1'] : '');
 								$cdn = call_user_func('cdnZip',$name['0'],$infos['author']);
 								$phpZip->open($cdn,ZipArchive::CREATE | ZipArchive::OVERWRITE);
-								$files = new RecursiveIteratorIterator(
-									new RecursiveDirectoryIterator($rootPath),
-									RecursiveIteratorIterator::LEAVES_ONLY
-								);
-								foreach ($files as $file) {
-									if (!$file->isDir()) {
-										$filePath = $file->getRealPath();
-										$relativePath = ($doc ? '' : $name['0'].'/').substr($filePath,strlen($rootPath)+1);
-										$phpZip->addFile($filePath,$relativePath);
+								if (!$doc) {
+									$rootPath = $tmpSub.'/'.basename($url).'-master'.($sub ? '/'.$paths['1'] : '');
+									$files = new RecursiveIteratorIterator(
+										new RecursiveDirectoryIterator($rootPath),
+										RecursiveIteratorIterator::LEAVES_ONLY
+									);
+									foreach ($files as $file) {
+										if (!$file->isDir()) {
+											$filePath = $file->getRealPath();
+											$relativePath = ($doc ? '' : $name['0'].'/').substr($filePath,strlen($rootPath)+1);
+											$phpZip->addFile($filePath,$relativePath);
+										}
 									}
+								} else {
+									$phpZip->addFile($tmpSub.'/'.basename($url).'-master/'.$paths['1'],$paths['1']);
 								}
 								if ($phpZip->close()) {
 									$status = 'succeeded';
