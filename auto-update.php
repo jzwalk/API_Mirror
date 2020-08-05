@@ -104,11 +104,9 @@
 									$separator = ' & ';
 									break;
 								}
-								foreach ($authors as $key=>$author) {
-									$authorNames .= ($key==0 ? '' : $separator).html_entity_decode($author);
-								}
+								$authorNames = html_entity_decode(implode($separator,$authors));
 								if ($authorNames!==trim(strip_tags($infos['author']))) {
-									$logs .= $authorNames.' not equal to '.trim(strip_tags($infos['author']));
+									$logs .= $authorNames.' not equal to '.trim(strip_tags($infos['author'])).PHP_EOL;
 								}
 								$cdn = call_user_func('cdnZip',$name['0'],$infos['author']);
 								$phpZip->open($cdn,ZipArchive::CREATE | ZipArchive::OVERWRITE);
