@@ -108,7 +108,7 @@
 									$authorNames .= ($key==0 ? '' : $separator).html_entity_decode($author);
 								}
 								if ($authorNames!==trim(strip_tags($infos['author']))) {
-									$logs .= $name['0'].' needs manual update!'.PHP_EOL;
+									$logs .= $authorNames.' not equal to '.trim(strip_tags($infos['author']));
 								}
 								$cdn = call_user_func('cdnZip',$name['0'],$infos['author']);
 								$phpZip->open($cdn,ZipArchive::CREATE | ZipArchive::OVERWRITE);
