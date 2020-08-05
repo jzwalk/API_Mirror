@@ -57,21 +57,24 @@
 						}
 					} else {
 						$path = str_replace('blob','raw',$url);
+						$paths = explode('/raw/master/',$url);
+						$url = $paths['0'];
 					}
 					$infos = call_user_func('parseInfo',$path);
 					$version = stripos($metas['0']['2'],'v')===0 ? trim(substr($metas['0']['2'],1)) : trim($metas['0']['2']);
 					if ($name['0']=='AdminLogin') {
-						print_r($infos['version'],true);
+						$logs .= 'AdminLogin version info: '.print_r($infos['version'],true);
 					}
 					if ($infos && $infos['version']>$version) {
 						++$all;
-						$column = str_replace($version,$infos['version'],$column);
 						$zip = end($links['0']);
 						if (strpos($zip,'typecho-fans/plugins/releases/download')) {
 							$download = @file_get_contents($url.'/archive/master.zip');
 							if ($download) {
 								$tmpDir = realpath('../').'/TMP';
-								mkdir($tmpDir);
+								if (!is_dir($tmpDir)) {
+									mkdir($tmpDir);
+								}
 								$tmpZip = $tmpDir.'/'.$all.'_'.$name['0'].'_master.zip';
 								file_put_contents($tmpZip,$download);
 								$phpZip = new ZipArchive();
@@ -104,7 +107,8 @@
 								}
 								$logs .= $name['0'].' - '.date('Y-m-d H:i',time()).' - RE-ZIP '.$status.PHP_EOL;
 							} else {
-									$logs .= 'Error: "'.$url.'" not found!'.PHP_EOL;
+								$logs .= 'Error: "'.$url.'" not found!'.PHP_EOL;
+								continue;
 							}
 						} else {
 							$download = @file_get_contents($zip);
@@ -118,8 +122,10 @@
 								$logs .= $name['0'].' - '.date('Y-m-d H:i',time()).' - '.$status.PHP_EOL;
 							} else {
 								$logs .= 'Error: "'.$zip.'" not found!'.PHP_EOL;
+								continue;
 							}
 						}
+						$column = str_replace($version,$infos['version'],$column);
 					}
 				}
 			}
