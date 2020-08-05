@@ -3,28 +3,37 @@
 //https://raw.githubusercontent.com/typecho-fans/plugins/master/TESTORE.md
 	$source = file_get_contents('TESTORE.md');
 	$lines = explode(PHP_EOL,$source);
-$s = print_r($lines,true);
-file_put_contents('log.txt',$s);
 
 	$desciptions = array();
 	$links = array();
 	$metas = array();
 	$url = '';
+	$name = array();
+	$doc = false;
 	$sub = false;
 	$paths = array();
 	$api = '';
-	$logs = '--------------'.PHP_EOL.date('Y-m-d',time()).PHP_EOL;
 	$datas = array();
-	$name = array();
 	$path = '';
+	$logs = '--------------'.PHP_EOL.date('Y-m-d',time()).PHP_EOL;
 	$infos = array();
 	$version = '';
 	$all = 0;
 	$zip = '';
 	$download = '';
-	$done = 0;
+	$tmpDir = '';
+	$tmpZip = '';
+	$tmpSub = '';
+	$phpZip = (object)array();
+	$authors = array();
+	$separator = '';
+	$authorNames = '';
 	$cdn = '';
+	$rootPath = '';
+	$files = (object)array();
+	$filePath = (object)array();
 	$status = 'failed';
+	$done = 0;
 	$tables = array();
 	foreach ($lines as $line=>$column) {
 		if ($line<38) {
@@ -95,7 +104,6 @@ file_put_contents('log.txt',$s);
 									$separator = ' & ';
 									break;
 								}
-								$authorNames = '';
 								foreach ($authors as $key=>$author) {
 									$authorNames .= ($key==0 ? '' : $separator).html_entity_decode($author);
 								}
@@ -113,8 +121,7 @@ file_put_contents('log.txt',$s);
 									foreach ($files as $file) {
 										if (!$file->isDir()) {
 											$filePath = $file->getRealPath();
-											$relativePath = ($doc ? '' : $name['0'].'/').substr($filePath,strlen($rootPath)+1);
-											$phpZip->addFile($filePath,$relativePath);
+											$phpZip->addFile($filePath,($doc ? '' : $name['0'].'/').substr($filePath,strlen($rootPath)+1));
 										}
 									}
 								} else {
