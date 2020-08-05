@@ -7,9 +7,4 @@ TeConnect - 2020-08-03 14:54 - succeeded
 TeConnect - 2020-08-03 14:54 - succeeded
 ALL: 5
 DONE: 5
---------------
-2020-08-04
-Error: "https://github.com/typecho/plugins/blob/master/Avartar.php" not found!
-Error: "https://github.com/ledccn/TeOath" not found!
-ALL: 0
-DONE: 0
+

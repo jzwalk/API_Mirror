@@ -48,7 +48,7 @@
 								$path = $tree['path'];
 							}
 						}
-						$path = $path ? $url.'/raw/master/'.$path : $url.'/raw/master/'.($sub ? $paths['1'] : '').$name['0'].'.php';
+						$path = $path ? $url.'/raw/master/'.$path : $url.'/raw/master/'.($sub ? $paths['1'].'/' : '').$name['0'].'.php';
 						$infos = call_user_func('parseInfo',$path);
 						$version = stripos($metas['0']['2'],'v')===0 ? trim(substr($metas['0']['2'],1)) : trim($metas['0']['2']);
 						if ($infos && $infos['version']>$version) {
@@ -65,12 +65,13 @@
 									$phpZip->open($tmpZip);
 									$phpZip->extractTo($tmpDir);
 									preg_match('/(?<=\[)[^\]]+/',$metas['0']['3'],$author);
-									if ($author!==trim(strip_tags($infos['author']))) {
+									if ($author['0']!==trim(strip_tags($infos['author']))) {
 										$logs .= $name['0'].' needs manual update!'.PHP_EOL;
+										continue;
 									}
 									$rootPath = realpath($tmpDir.basename($url).'-master'.($sub ? '/'.$paths['1'] : ''));
-									$cdn = call_user_func('cdnZip',$name['0']);
-									$phpZip->open($cdn, ZipArchive::CREATE | ZipArchive::OVERWRITE);
+									$cdn = call_user_func('cdnZip',$name['0'],$infos['author']);
+									$phpZip->open($cdn,ZipArchive::CREATE | ZipArchive::OVERWRITE);
 									$files = new RecursiveIteratorIterator(
 										new RecursiveDirectoryIterator($rootPath),
 										RecursiveIteratorIterator::LEAVES_ONLY
@@ -90,8 +91,8 @@
 							} else {
 								$download = @file_get_contents($zip);
 								if ($download) {
-									$cdn = call_user_func('cdnZip',$name['0']);
-									if ($cdn && $download) {
+									$cdn = call_user_func('cdnZip',$name['0'],$infos['author']);
+									if ($cdn) {
 										file_put_contents($cdn,$download);
 										$status = 'succeeded';
 										++$done;
@@ -119,15 +120,17 @@
 	 * 获取ZIP_CDN文件名称
 	 *
 	 * @param string $pluginName 插件名
+	 * @param string $pluginAuthor 作者名
 	 * @return string
 	 */
-	function cdnZip($pluginName)
+	function cdnZip($pluginName,$pluginAuthor)
 	{
 //https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN
 		$datas = json_decode(file_get_contents('test_zc.json'),true);
+		$cdn = '';
 		foreach ($datas as $data) {
-			if ($data['name']==$pluginName.'_'.$infos['author'].'.zip') { //带作者名优先
-				$cdn = 'ZIP_CDN/'.$pluginName.'_'.$infos['author'].'.zip';
+			if ($data['name']==$pluginName.'_'.$pluginAuthor.'.zip') { //带作者名优先
+				$cdn = 'ZIP_CDN/'.$pluginName.'_'.$pluginAuthor.'.zip';
 			} elseif ($data['name']==$pluginName.'.zip') {
 				$cdn = 'ZIP_CDN/'.$pluginName.'.zip';
 			}
