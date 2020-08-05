@@ -33,6 +33,7 @@
 			if ($column) {
 				$url = $links['0']['0'];
 				if (strpos($url,'github.com')) {
+					preg_match('/(?<=\[)[^\]]+/',$metas['0']['0'],$name);
 					$doc = strpos($url,'/blob/master/') && strpos($url,'.php');
 					if (!$doc) {
 						$sub = strpos($url,'/tree/master/');
@@ -44,7 +45,6 @@
 							stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP')))));
 						if ($api) {
 							$datas = json_decode($api,true);
-							preg_match('/(?<=\[)[^\]]+/',$metas['0']['0'],$name);
 							foreach ($datas['tree'] as $tree) {
 								if (false!==stripos($tree['path'],($sub ? $name['0'].'/Plugin.php' : 'Plugin.php'))) {
 									$path = $tree['path'];
