@@ -53,11 +53,9 @@
 							$path = $path ? $url.'/raw/master/'.$path : $url.'/raw/master/'.($sub ? $paths['1'].'/' : '').$name['0'].'.php';
 						} else {
 							$logs .= 'Error: "'.$url.'" not found!'.PHP_EOL;
-							continue;
 						}
 					} else {
-						$path = str_replace('blob','raw',$url);
-						$paths = explode('/raw/master/',$url);
+						$paths = explode('/raw/master/',str_replace('blob','raw',$url));
 						$url = $paths['0'];
 					}
 					$infos = call_user_func('parseInfo',$path);
@@ -83,9 +81,8 @@
 								mkdir($tmpSub);
 								$phpZip->extractTo($tmpSub);
 								preg_match('/(?<=\[)[^\]]+/',$metas['0']['3'],$author);
-								if ($author['0']!==trim(strip_tags($infos['author']))) {
+								if (htmlspecialchars_decode($author['0'])!==trim(strip_tags($infos['author']))) {
 									$logs .= $name['0'].' needs manual update!'.PHP_EOL;
-									continue;
 								}
 								$rootPath = $tmpSub.'/'.basename($url).'-master'.($sub ? '/'.$paths['1'] : '');
 								$cdn = call_user_func('cdnZip',$name['0'],$infos['author']);
@@ -108,7 +105,6 @@
 								$logs .= $name['0'].' - '.date('Y-m-d H:i',time()).' - RE-ZIP '.$status.PHP_EOL;
 							} else {
 								$logs .= 'Error: "'.$url.'" not found!'.PHP_EOL;
-								continue;
 							}
 						} else {
 							$download = @file_get_contents($zip);
@@ -122,7 +118,6 @@
 								$logs .= $name['0'].' - '.date('Y-m-d H:i',time()).' - '.$status.PHP_EOL;
 							} else {
 								$logs .= 'Error: "'.$zip.'" not found!'.PHP_EOL;
-								continue;
 							}
 						}
 						$column = str_replace($version,$infos['version'],$column);
