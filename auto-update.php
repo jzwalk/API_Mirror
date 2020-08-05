@@ -3,6 +3,8 @@
 //https://raw.githubusercontent.com/typecho-fans/plugins/master/TESTORE.md
 	$source = file_get_contents('TESTORE.md');
 	$lines = explode(PHP_EOL,$source);
+$s = print_r($lines,true);
+file_put_contents('log.txt',$s);
 
 	$desciptions = array();
 	$links = array();
@@ -25,7 +27,7 @@
 	$status = 'failed';
 	$tables = array();
 	foreach ($lines as $line=>$column) {
-		if ($line<39) {
+		if ($line<38) {
 			$desciptions[] = $column;
 		} else {
 			preg_match_all('/(?<=\()[^\)]+/',$column,$links);
@@ -61,9 +63,6 @@
 					}
 					$infos = call_user_func('parseInfo',$path);
 					$version = stripos($metas['0']['2'],'v')===0 ? trim(substr($metas['0']['2'],1)) : trim($metas['0']['2']);
-					if ($name['0']=='AdminLogin') {
-						$logs .= 'AdminLogin version info: '.print_r($infos['version'],true);
-					}
 					if ($infos && $infos['version']>$version) {
 						++$all;
 						$zip = end($links['0']);
@@ -81,8 +80,26 @@
 								$tmpSub = $tmpDir.'/'.$all.'_'.$name['0'];
 								mkdir($tmpSub);
 								$phpZip->extractTo($tmpSub);
-								preg_match('/(?<=\[)[^\]]+/',$metas['0']['3'],$author);
-								if (html_entity_decode($author['0'])!==trim(strip_tags($infos['author']))) {
+								preg_match('/(?<=\[)[^\]]+/',$metas['0']['3'],$authors);
+								switch (true) {
+									case strpos($metas['0']['3'],',') :
+									$separator = ',';
+									break;
+									case strpos($metas['0']['3'],', ') :
+									$separator = ', ';
+									break;
+									case strpos($metas['0']['3'],'&') :
+									$separator = '&';
+									break;
+									case strpos($metas['0']['3'],' & ') :
+									$separator = ' & ';
+									break;
+								}
+								$authorNames = '';
+								foreach ($authors as $key=>$author) {
+									$authorNames .= ($key==0 ? '' : $separator).html_entity_decode($author);
+								}
+								if ($authorNames!==trim(strip_tags($infos['author']))) {
 									$logs .= $name['0'].' needs manual update!'.PHP_EOL;
 								}
 								$cdn = call_user_func('cdnZip',$name['0'],$infos['author']);
