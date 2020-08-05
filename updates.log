@@ -8,3 +8,10 @@ TeConnect - 2020-08-03 14:54 - succeeded
 ALL: 5
 DONE: 5
 
+--------------
+2020-08-05
+Error: "https://github.com/typecho/plugins/blob/master/Avartar.php" not found!
+Error: "https://github.com/ledccn/TeOath" not found!
+BanbanStyle - 2020-08-05 12:07 - RE-ZIP succeeded
+ALL: 1
+DONE: 0
