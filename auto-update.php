@@ -119,7 +119,7 @@
 								$cdn = call_user_func('cdnZip',$name['0'],$infos['author']);
 								$phpZip->open($cdn,ZipArchive::CREATE | ZipArchive::OVERWRITE);
 								if (!$doc) {
-									$rootPath = $master.($sub ? .$paths['1'] : '');
+									$rootPath = $master.($sub ? $paths['1'] : '');
 									$files = new RecursiveIteratorIterator(
 										new RecursiveDirectoryIterator($rootPath),
 										RecursiveIteratorIterator::LEAVES_ONLY
