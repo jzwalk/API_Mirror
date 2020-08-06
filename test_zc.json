@@ -48,19 +48,19 @@
     }
   },
   {
-    "name": "TeConnect.zip",
-    "path": "ZIP_CDN/TeConnect.zip",
-    "sha": "1432627ae222e2e7c133f64aa0adc3a94ac3b7c4",
-    "size": 12748,
-    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/TeConnect.zip?ref=master",
-    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/TeConnect.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/1432627ae222e2e7c133f64aa0adc3a94ac3b7c4",
-    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/TeConnect.zip",
+    "name": "MarkdownIFrame.zip",
+    "path": "ZIP_CDN/MarkdownIFrame.zip",
+    "sha": "4c184f6922470b6a85578710e6b61c450b8e731d",
+    "size": 1916316,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/MarkdownIFrame.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/MarkdownIFrame.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/4c184f6922470b6a85578710e6b61c450b8e731d",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/MarkdownIFrame.zip",
     "type": "file",
     "_links": {
-      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/TeConnect.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/1432627ae222e2e7c133f64aa0adc3a94ac3b7c4",
-      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/TeConnect.zip"
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/MarkdownIFrame.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/4c184f6922470b6a85578710e6b61c450b8e731d",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/MarkdownIFrame.zip"
     }
   },
   {

@@ -28,6 +28,9 @@
 	$authors = array();
 	$separator = '';
 	$authorNames = '';
+	$plugin = '';
+	$codes = '';
+	$renamed = '';
 	$cdn = '';
 	$rootPath = '';
 	$files = (object)array();
@@ -89,6 +92,7 @@
 								$tmpSub = $tmpDir.'/'.$all.'_'.$name['0'];
 								mkdir($tmpSub);
 								$phpZip->extractTo($tmpSub);
+								$master = $tmpSub.'/'.basename($url).'-master/';
 								preg_match('/(?<=\[)[^\]]+/',$metas['0']['3'],$authors);
 								switch (true) {
 									case strpos($metas['0']['3'],',') :
@@ -106,12 +110,15 @@
 								}
 								$authorNames = html_entity_decode(implode($separator,$authors));
 								if ($authorNames!==trim(strip_tags($infos['author']))) {
-									$logs .= $authorNames.' not equal to '.trim(strip_tags($infos['author'])).PHP_EOL;
+									$plugin = $master.(doc ? $paths['1'] : ($sub ? $paths['1'] : '').'/Plugin.php');
+									$codes = file_get_contents($plugin);
+									file_put_contents($plugin,str_replace($infos['author'],$authorNames,$codes));
+									$renamed = '/ Rename Author ';
 								}
 								$cdn = call_user_func('cdnZip',$name['0'],$infos['author']);
 								$phpZip->open($cdn,ZipArchive::CREATE | ZipArchive::OVERWRITE);
 								if (!$doc) {
-									$rootPath = $tmpSub.'/'.basename($url).'-master'.($sub ? '/'.$paths['1'] : '');
+									$rootPath = $master.($sub ? '/'.$paths['1'] : '');
 									$files = new RecursiveIteratorIterator(
 										new RecursiveDirectoryIterator($rootPath),
 										RecursiveIteratorIterator::LEAVES_ONLY
@@ -123,13 +130,13 @@
 										}
 									}
 								} else {
-									$phpZip->addFile($tmpSub.'/'.basename($url).'-master/'.$paths['1'],$paths['1']);
+									$phpZip->addFile($master.$paths['1'],$paths['1']);
 								}
 								if ($phpZip->close()) {
 									$status = 'succeeded';
 									++$done;
 								}
-								$logs .= $name['0'].' - '.date('Y-m-d H:i',time()).' - RE-ZIP '.$status.PHP_EOL;
+								$logs .= $name['0'].' - '.date('Y-m-d H:i',time()).' - RE-ZIP '.$renamed.$status.PHP_EOL;
 							} else {
 								$logs .= 'Error: "'.$url.'" not found!'.PHP_EOL;
 							}
