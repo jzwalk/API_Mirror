@@ -9,6 +9,7 @@
 	$metas = array();
 	$url = '';
 	$name = array();
+	$authors = array();
 	$doc = false;
 	$sub = false;
 	$paths = array();
@@ -26,7 +27,6 @@
 	$tmpSub = '';
 	$phpZip = (object)array();
 	$master = '';
-	$authors = array();
 	$separator = '';
 	$authorNames = '';
 	$plugin = '';
@@ -49,6 +49,7 @@
 				$url = $links['0']['0'];
 				if (strpos($url,'github.com')) {
 					preg_match('/(?<=\[)[^\]]+/',$metas['0']['0'],$name);
+					preg_match('/(?<=\[)[^\]]+/',$metas['0']['3'],$authors);
 					$doc = strpos($url,'/blob/master/') && strpos($url,'.php');
 					if (!$doc) {
 						$sub = strpos($url,'/tree/master/');
@@ -94,7 +95,6 @@
 								mkdir($tmpSub);
 								$phpZip->extractTo($tmpSub);
 								$master = $tmpSub.'/'.basename($url).'-master/';
-								preg_match('/(?<=\[)[^\]]+/',$metas['0']['3'],$authors);
 								switch (true) {
 									case strpos($metas['0']['3'],',') :
 									$separator = ',';
