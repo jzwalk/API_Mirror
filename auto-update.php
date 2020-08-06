@@ -111,10 +111,10 @@
 								}
 								$authorNames = html_entity_decode(implode($separator,$authors));
 								if ($authorNames!==trim(strip_tags($infos['author']))) {
-									$plugin = $master.($doc ? $paths['1'] : ($sub ? $paths['1'] : '').'/Plugin.php');
+									$plugin = $master.($doc ? $paths['1'] : ($sub ? $paths['1'].'/' : '').'Plugin.php');
 									$codes = file_get_contents($plugin);
 									file_put_contents($plugin,str_replace($infos['author'],$authorNames,$codes));
-									$renamed = '/ Rename Author ';
+									$renamed = $authorNames.' vs '.trim(strip_tags($infos['author'])).'/ Rename Author ';
 								}
 								$cdn = call_user_func('cdnZip',$name['0'],$infos['author']);
 								$phpZip->open($cdn,ZipArchive::CREATE | ZipArchive::OVERWRITE);
