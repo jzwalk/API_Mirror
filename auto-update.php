@@ -25,6 +25,7 @@
 	$tmpZip = '';
 	$tmpSub = '';
 	$phpZip = (object)array();
+	$master = '';
 	$authors = array();
 	$separator = '';
 	$authorNames = '';
@@ -118,7 +119,7 @@
 								$cdn = call_user_func('cdnZip',$name['0'],$infos['author']);
 								$phpZip->open($cdn,ZipArchive::CREATE | ZipArchive::OVERWRITE);
 								if (!$doc) {
-									$rootPath = $master.($sub ? '/'.$paths['1'] : '');
+									$rootPath = $master.($sub ? .$paths['1'] : '');
 									$files = new RecursiveIteratorIterator(
 										new RecursiveDirectoryIterator($rootPath),
 										RecursiveIteratorIterator::LEAVES_ONLY
@@ -126,7 +127,7 @@
 									foreach ($files as $file) {
 										if (!$file->isDir()) {
 											$filePath = $file->getRealPath();
-											$phpZip->addFile($filePath,($doc ? '' : $name['0'].'/').substr($filePath,strlen($rootPath)+1));
+											$phpZip->addFile($filePath,$name['0'].'/'.substr($filePath,strlen($rootPath)+1));
 										}
 									}
 								} else {
