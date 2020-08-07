@@ -127,13 +127,13 @@
 								$phpZip->extractTo($tmpSub);
 								$master = $tmpSub.'/'.basename($url).'-master/';
 								if ($authorTitles!==trim(strip_tags($infos['author']))) {
-$s = print_r($line,true);
-file_put_contents('log.txt',$s);
 									$plugin = $master.($doc ? $paths['1'] : $path);
 									$codes = file_get_contents($plugin);
 									file_put_contents($plugin,str_replace($infos['author'],$authorTitles,$codes));
 									$renamed = $authorTitles.' vs '.trim(strip_tags($infos['author'])).'/ Rename Author ';
 								}
+$s = print_r($line.' & '.$renamed,true);
+file_put_contents('log.txt',$s);
 								$cdn = call_user_func('cdnZip',$name['0'],$infos['author']);
 								$phpZip->open($cdn,ZipArchive::CREATE | ZipArchive::OVERWRITE);
 								if (!$doc) {
