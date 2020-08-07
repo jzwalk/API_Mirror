@@ -72,7 +72,7 @@
 						$authorTitles = '';
 						foreach ($authors as $key=>$author) {
 							preg_match('/(?<=\[)[^\]]+/',$author,$authorName);
-							$authorNames[] = $authorName['0'];
+							$authorNames[] = empty($authorName['0']) ? $author : $authorName['0'];
 						}
 						$authorTitles = implode($separator,$authorNames);
 					} else {
@@ -108,8 +108,6 @@
 					$infos = call_user_func('parseInfo',$pluginFile);
 					$version = stripos($metas['0']['2'],'v')===0 ? trim(substr($metas['0']['2'],1)) : trim($metas['0']['2']);
 					if ($infos && $infos['version']>$version) {
-$s = print_r($authorTitles,true);
-file_put_contents('log.txt',$s);
 						++$all;
 						$zip = end($links['0']);
 						if (strpos($zip,'typecho-fans/plugins/releases/download')) {
@@ -128,6 +126,8 @@ file_put_contents('log.txt',$s);
 								$phpZip->extractTo($tmpSub);
 								$master = $tmpSub.'/'.basename($url).'-master/';
 								if ($authorTitles!==trim(strip_tags($infos['author']))) {
+$s = print_r($authorTitles,true);
+file_put_contents('log.txt',$s);
 									$plugin = $master.($doc ? $paths['1'] : $path);
 									$codes = file_get_contents($plugin);
 									file_put_contents($plugin,str_replace($infos['author'],$authorTitles,$codes));
