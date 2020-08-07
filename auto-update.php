@@ -131,10 +131,8 @@
 									$plugin = $master.($doc ? $paths['1'] : $path);
 									$codes = file_get_contents($plugin);
 									file_put_contents($plugin,str_replace($infos['author'],$authorTitles,$codes));
-									$renamed = $authorTitles.' vs '.trim(strip_tags($infos['author'])).'/ Rename Author ';
+									$renamed = '/ Rename Author ';
 								}
-$s = print_r($line.' & '.$renamed.' & '.($authorTitles==trim(strip_tags($infos['author']))),true);
-file_put_contents('log.txt',$s);
 								$cdn = call_user_func('cdnZip',$name['0'],$infos['author']);
 								$phpZip->open($cdn,ZipArchive::CREATE | ZipArchive::OVERWRITE);
 								if (!$doc) {
