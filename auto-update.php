@@ -9,6 +9,11 @@
 	$metas = array();
 	$url = '';
 	$authorCode = '';
+	$separator = '';
+	$authors = array();
+	$authorNames = array();
+	$authorTitle = '';
+	$authorTitles = '';
 	$name = array();
 	$authors = array();
 	$doc = false;
@@ -28,10 +33,6 @@
 	$tmpSub = '';
 	$phpZip = (object)array();
 	$master = '';
-	$separator = '';
-	$authors = array();
-	$authorNames = array();
-	$author = '';
 	$plugin = '';
 	$codes = '';
 	$renamed = '';
@@ -50,7 +51,6 @@
 			if ($column) {
 				$url = $links['0']['0'];
 				if (strpos($url,'github.com')) {
-					/*
 					$authorCode = html_entity_decode(trim($metas['0']['3']));
 					switch (true) {
 						case (strpos($authorCode,',')) :
@@ -80,7 +80,6 @@
 						preg_match('/(?<=\[)[^\]]+/',$authorCode,$authorName);
 						$authorTitles = $authorName['0'];
 					}
-					*/
 					preg_match('/(?<=\[)[^\]]+/',$metas['0']['0'],$name);
 					$doc = strpos($url,'/blob/master/') && strpos($url,'.php');
 					if (!$doc) {
@@ -142,7 +141,7 @@
 									foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($rootPath)) as $file) {
 										if (!$file->isDir()) {
 											$filePath = $file->getRealPath();
-											$phpZip->addFile($filePath,$name['0'].'/'.substr($filePath,strlen($rootPath)+2));
+											$phpZip->addFile($filePath,$name['0'].'/'.substr($filePath,strlen($rootPath)));
 										}
 									}
 								} else {
@@ -152,7 +151,7 @@
 									$status = 'succeeded';
 									++$done;
 								}
-								$logs .= $name['0'].' - '.date('Y-m-d H:i',time()).' - RE-ZIP '.$renamed.$status.PHP_EOL;
+								$logs .= $name['0'].' - '.date('Y-m-d H:i',time()).' - RE-ZIP '.$authorTitles.$status.PHP_EOL;
 							} else {
 								$logs .= 'Error: "'.$url.'" not found!'.PHP_EOL;
 							}
