@@ -147,7 +147,7 @@
 									foreach ($files as $file) {
 										if (!$file->isDir()) {
 											$filePath = $file->getRealPath();
-											$phpZip->addFile($filePath,$name['0'].'/'.substr($filePath,strlen($rootPath)+2));
+											$phpZip->addFile($filePath,$name['0'].'/'.substr($filePath,strlen($rootPath)));
 										}
 									}
 								} else {
