@@ -126,6 +126,8 @@
 								mkdir($tmpSub);
 								$phpZip->extractTo($tmpSub);
 								$master = $tmpSub.'/'.basename($url).'-master/';
+$s = print_r($authorTitles,true);
+file_put_contents('log.txt',$s);
 								if ($authorTitles!==trim(strip_tags($infos['author']))) {
 									$plugin = $master.($doc ? $paths['1'] : $path);
 									$codes = file_get_contents($plugin);
