@@ -22,6 +22,7 @@
 	$api = '';
 	$datas = array();
 	$path = '';
+	$pluginFile = '';
 	$logs = '--------------'.PHP_EOL.date('Y-m-d',time()).PHP_EOL;
 	$infos = array();
 	$version = '';
@@ -95,16 +96,16 @@
 									$path = $tree['path'];
 								}
 							}
-							$path = $path ? $url.'/raw/master/'.$path : $url.'/raw/master/'.($sub ? $paths['1'].'/' : '').$name['0'].'.php';
+							$pluginFile = $path ? $url.'/raw/master/'.$path : $url.'/raw/master/'.($sub ? $paths['1'].'/' : '').$name['0'].'.php';
 						} else {
 							$logs .= 'Error: "'.$url.'" not found!'.PHP_EOL;
 						}
 					} else {
-						$path = str_replace('blob','raw',$url);
-						$paths = explode('/raw/master/',$path);
+						$pluginFile = str_replace('blob','raw',$url);
+						$paths = explode('/raw/master/',$pluginFile);
 						$url = $paths['0'];
 					}
-					$infos = call_user_func('parseInfo',$path);
+					$infos = call_user_func('parseInfo',$pluginFile);
 					$version = stripos($metas['0']['2'],'v')===0 ? trim(substr($metas['0']['2'],1)) : trim($metas['0']['2']);
 					if ($infos && $infos['version']>$version) {
 						++$all;
@@ -125,10 +126,10 @@
 								$phpZip->extractTo($tmpSub);
 								$master = $tmpSub.'/'.basename($url).'-master/';
 								if ($authorTitles!==trim(strip_tags($infos['author']))) {
-									$plugin = $master.($doc ? $paths['1'] : ($sub ? $paths['1'].'/' : '').'Plugin.php');
+									$plugin = $master.($doc ? $paths['1'] : $path);
 									$codes = file_get_contents($plugin);
 									file_put_contents($plugin,str_replace($infos['author'],$authorTitles,$codes));
-									$renamed = $authorTitles.' vs '.trim(strip_tags($infos['author'])).'/ Rename Author ';
+									$renamed = '/ Rename Author ';
 								}
 								$cdn = call_user_func('cdnZip',$name['0'],$infos['author']);
 								$phpZip->open($cdn,ZipArchive::CREATE | ZipArchive::OVERWRITE);
