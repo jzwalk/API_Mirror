@@ -129,7 +129,7 @@
 									$plugin = $master.($doc ? $paths['1'] : $path);
 									$codes = file_get_contents($plugin);
 									file_put_contents($plugin,str_replace($infos['author'],$authorTitles,$codes));
-									$renamed = '/ Rename Author ';
+									$renamed = $authorTitles.'vs'.trim(strip_tags($infos['author'])).'/ Rename Author ';
 								}
 								$cdn = call_user_func('cdnZip',$name['0'],$infos['author']);
 								$phpZip->open($cdn,ZipArchive::CREATE | ZipArchive::OVERWRITE);
@@ -148,7 +148,7 @@
 									$status = 'succeeded';
 									++$done;
 								}
-								$logs .= $name['0'].' - '.date('Y-m-d H:i',time()).' - RE-ZIP '.$authorTitles.$status.PHP_EOL;
+								$logs .= $name['0'].' - '.date('Y-m-d H:i',time()).' - RE-ZIP '.$renamed.$status.PHP_EOL;
 							} else {
 								$logs .= 'Error: "'.$url.'" not found!'.PHP_EOL;
 							}
