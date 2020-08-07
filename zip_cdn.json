@@ -8546,16 +8546,16 @@
   {
     "name": "stop.zip",
     "path": "ZIP_CDN/stop.zip",
-    "sha": "861135119520a6bd4147c5cc34251bc8909a2d50",
-    "size": 1030,
+    "sha": "c529eb323963cf390077de1df8a551a8612fa8b6",
+    "size": 1503,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/stop.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/stop.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/861135119520a6bd4147c5cc34251bc8909a2d50",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/c529eb323963cf390077de1df8a551a8612fa8b6",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/stop.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/stop.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/861135119520a6bd4147c5cc34251bc8909a2d50",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/c529eb323963cf390077de1df8a551a8612fa8b6",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/stop.zip"
     }
   },
