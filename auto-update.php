@@ -108,6 +108,8 @@
 					$infos = call_user_func('parseInfo',$pluginFile);
 					$version = stripos($metas['0']['2'],'v')===0 ? trim(substr($metas['0']['2'],1)) : trim($metas['0']['2']);
 					if ($infos && $infos['version']>$version) {
+$s = print_r($authorTitles,true);
+file_put_contents('log.txt',$s);
 						++$all;
 						$zip = end($links['0']);
 						if (strpos($zip,'typecho-fans/plugins/releases/download')) {
@@ -129,7 +131,7 @@
 									$plugin = $master.($doc ? $paths['1'] : $path);
 									$codes = file_get_contents($plugin);
 									file_put_contents($plugin,str_replace($infos['author'],$authorTitles,$codes));
-									$renamed = $authorTitles.'vs'.trim(strip_tags($infos['author'])).'/ Rename Author ';
+									$renamed = $authorTitles.' vs '.trim(strip_tags($infos['author'])).'/ Rename Author ';
 								}
 								$cdn = call_user_func('cdnZip',$name['0'],$infos['author']);
 								$phpZip->open($cdn,ZipArchive::CREATE | ZipArchive::OVERWRITE);
