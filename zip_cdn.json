@@ -192,6 +192,22 @@
     }
   },
   {
+    "name": "Aidnabo.zip",
+    "path": "ZIP_CDN/Aidnabo.zip",
+    "sha": "2f3199616260ce4f63957fd26605add51243fbe3",
+    "size": 12146,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Aidnabo.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Aidnabo.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/2f3199616260ce4f63957fd26605add51243fbe3",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/Aidnabo.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Aidnabo.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/2f3199616260ce4f63957fd26605add51243fbe3",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Aidnabo.zip"
+    }
+  },
+  {
     "name": "AjaxComment.zip",
     "path": "ZIP_CDN/AjaxComment.zip",
     "sha": "7b51b4d29281ac1ec279003cbc1abce00a64ad06",
@@ -2845,22 +2861,6 @@
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/GoLinks.zip?ref=master",
       "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/60efa8a34c168fc1fdec0fd4149bcee7d000207a",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/GoLinks.zip"
-    }
-  },
-  {
-    "name": "GoTop_Zero.zip",
-    "path": "ZIP_CDN/GoTop_Zero.zip",
-    "sha": "a247b9488398d062aef8bc215d0bb7b93a6b6638",
-    "size": 8390,
-    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/GoTop_Zero.zip?ref=master",
-    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/GoTop_Zero.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/a247b9488398d062aef8bc215d0bb7b93a6b6638",
-    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/GoTop_Zero.zip",
-    "type": "file",
-    "_links": {
-      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/GoTop_Zero.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/a247b9488398d062aef8bc215d0bb7b93a6b6638",
-      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/GoTop_Zero.zip"
     }
   },
   {
