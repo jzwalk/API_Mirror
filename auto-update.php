@@ -76,6 +76,7 @@
 						}
 						$authorTitles = implode($separator,$authorNames);
 					} else {
+						$authorTitles = '';
 						preg_match('/(?<=\[)[^\]]+/',$authorCode,$authorName);
 						$authorTitles = $authorName['0'];
 					}
@@ -126,8 +127,6 @@
 								$phpZip->extractTo($tmpSub);
 								$master = $tmpSub.'/'.basename($url).'-master/';
 								if ($authorTitles!==trim(strip_tags($infos['author']))) {
-$s = print_r($authorTitles,true);
-file_put_contents('log.txt',$s);
 									$plugin = $master.($doc ? $paths['1'] : $path);
 									$codes = file_get_contents($plugin);
 									file_put_contents($plugin,str_replace($infos['author'],$authorTitles,$codes));
