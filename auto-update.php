@@ -37,8 +37,7 @@
 	$renamed = '';
 	$cdn = '';
 	$rootPath = '';
-	$files = (object)array();
-	$filePath = (object)array();
+	$filePath = '';
 	$status = 'failed';
 	$done = 0;
 	$tables = array();
@@ -139,15 +138,11 @@
 								$cdn = call_user_func('cdnZip',$name['0'],$infos['author']);
 								$phpZip->open($cdn,ZipArchive::CREATE | ZipArchive::OVERWRITE);
 								if (!$doc) {
-									$rootPath = $master.($sub ? $paths['1'] : '');
-									$files = new RecursiveIteratorIterator(
-										new RecursiveDirectoryIterator($rootPath),
-										RecursiveIteratorIterator::LEAVES_ONLY
-									);
-									foreach ($files as $file) {
+									$rootPath = $master.($sub ? $paths['1'].'/' : '');
+									foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($rootPath)) as $file) {
 										if (!$file->isDir()) {
 											$filePath = $file->getRealPath();
-											$phpZip->addFile($filePath,$name['0'].'/'.substr($filePath,strlen($rootPath)));
+											$phpZip->addFile($filePath,$name['0'].'/'.substr($filePath,strlen($rootPath)+1));
 										}
 									}
 								} else {
