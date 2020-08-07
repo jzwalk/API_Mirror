@@ -51,6 +51,7 @@
 			if ($column) {
 				$url = $links['0']['0'];
 				if (strpos($url,'github.com')) {
+					/*
 					$authorCode = html_entity_decode(trim($metas['0']['3']));
 					switch (true) {
 						case (strpos($authorCode,',')) :
@@ -66,7 +67,6 @@
 						$separator = ' & ';
 						break;
 					}
-					preg_match('/(?<=\[)[^\]]+/',$metas['0']['0'],$name);
 					if ($separator) {
 						$authors = explode($separator,$authorCode);
 						foreach ($authors as $key=>$author) {
@@ -81,6 +81,8 @@
 						preg_match('/(?<=\[)[^\]]+/',$authorCode,$authorName);
 						$authorTitles = $authorName['0'];
 					}
+					*/
+					preg_match('/(?<=\[)[^\]]+/',$metas['0']['0'],$name);
 					$doc = strpos($url,'/blob/master/') && strpos($url,'.php');
 					if (!$doc) {
 						$sub = strpos($url,'/tree/master/');
@@ -126,12 +128,14 @@
 								mkdir($tmpSub);
 								$phpZip->extractTo($tmpSub);
 								$master = $tmpSub.'/'.basename($url).'-master/';
+								/*
 								if ($authorTitles!==trim(strip_tags($infos['author']))) {
 									$plugin = $master.($doc ? $paths['1'] : ($sub ? $paths['1'].'/' : '').'Plugin.php');
 									$codes = file_get_contents($plugin);
 									file_put_contents($plugin,str_replace($infos['author'],$authorTitles,$codes));
 									$renamed = $authorTitles.' vs '.trim(strip_tags($infos['author'])).'/ Rename Author ';
 								}
+								*/
 								$cdn = call_user_func('cdnZip',$name['0'],$infos['author']);
 								$phpZip->open($cdn,ZipArchive::CREATE | ZipArchive::OVERWRITE);
 								if (!$doc) {
