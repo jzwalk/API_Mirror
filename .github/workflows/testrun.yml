@@ -23,10 +23,13 @@ jobs:
         with:
           commit_message: "Auto update GitHub plugins in TESTORE.md"
 
+      - run: |
+          ls /home/runner/work/API_Mirror/TMP/NEW
+
       - name: "上传操作记录"
         uses: actions/upload-artifact@v2
         with:
-          name: "本次更新结果日志"
+          name: "update-log"
           path: /home/runner/work/API_Mirror/TMP/updates.log
 
       - name: "发布压缩包A-C"
