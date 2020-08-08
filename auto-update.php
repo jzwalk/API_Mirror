@@ -8,6 +8,7 @@
 	$links = array();
 	$metas = array();
 	$url = '';
+	$all = 0;
 	$authorCode = '';
 	$separator = '';
 	$authors = array();
@@ -26,10 +27,11 @@
 	$logs = '--------------'.PHP_EOL.date('Y-m-d',time()).PHP_EOL;
 	$infos = array();
 	$version = '';
-	$all = 0;
+	$update = 0;
 	$zip = '';
 	$download = '';
 	$tmpDir = '';
+	$tmpName = '';
 	$tmpZip = '';
 	$tmpSub = '';
 	$phpZip = (object)array();
@@ -38,6 +40,7 @@
 	$codes = '';
 	$renamed = '';
 	$cdn = '';
+	$tmpNew = '';
 	$rootPath = '';
 	$filePath = '';
 	$status = 'failed';
@@ -52,6 +55,7 @@
 			if ($column) {
 				$url = $links['0']['0'];
 				if (strpos($url,'github.com')) {
+					++$all;
 					$authorCode = html_entity_decode(trim($metas['0']['3']));
 					switch (true) {
 						case (strpos($authorCode,',')) :
@@ -109,7 +113,7 @@
 					$infos = call_user_func('parseInfo',$pluginFile);
 					$version = stripos($metas['0']['2'],'v')===0 ? trim(substr($metas['0']['2'],1)) : trim($metas['0']['2']);
 					if ($infos && $infos['version']>$version) {
-						++$all;
+						++$update;
 						$zip = end($links['0']);
 						if (strpos($zip,'typecho-fans/plugins/releases/download')) {
 							$download = @file_get_contents($url.'/archive/master.zip');
@@ -118,11 +122,12 @@
 								if (!is_dir($tmpDir)) {
 									mkdir($tmpDir);
 								}
-								$tmpZip = $tmpDir.'/'.$all.'_'.$name['0'].'_master.zip';
+								$tmpName = '/'.$all.'_'.$name['0'];
+								$tmpZip = $tmpDir.$tmpName.'_master.zip';
 								file_put_contents($tmpZip,$download);
 								$phpZip = new ZipArchive();
 								$phpZip->open($tmpZip);
-								$tmpSub = $tmpDir.'/'.$all.'_'.$name['0'];
+								$tmpSub = $tmpDir.$tmpName;
 								mkdir($tmpSub);
 								$phpZip->extractTo($tmpSub);
 								$master = $tmpSub.'/'.basename($url).'-master/';
@@ -134,7 +139,11 @@
 									$renamed = '/ Rename Author ';
 								}
 								$cdn = call_user_func('cdnZip',$name['0'],$infos['author']);
-								$phpZip->open($cdn,ZipArchive::CREATE | ZipArchive::OVERWRITE);
+								$tmpNew = $tmpDir.'/NEW';
+								if (!is_dir($tmpNew)) {
+									mkdir($tmpNew);
+								}
+								$phpZip->open($tmpNew.$tmpName.'.zip',ZipArchive::CREATE | ZipArchive::OVERWRITE);
 								if (!$doc) {
 									$rootPath = $master.($sub ? $paths['1'].'/' : '');
 									foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($rootPath)) as $file) {
@@ -146,7 +155,7 @@
 								} else {
 									$phpZip->addFile($master.$paths['1'],$paths['1']);
 								}
-								if ($phpZip->close()) {
+								if ($phpZip->close() && @copy($tmpNew.$tmpName.'.zip',$cdn)) {
 									$status = 'succeeded';
 									++$done;
 								}
@@ -178,6 +187,7 @@
 
 	file_put_contents('TESTORE.md',implode(PHP_EOL,$desciptions).PHP_EOL.implode(PHP_EOL,$tables));
 	file_put_contents('updates.log',$logs.'ALL: '.$all.PHP_EOL.
+		'NEED UPDATE: '.$update.PHP_EOL.
 		'DONE: '.$done.PHP_EOL,FILE_APPEND);
 
 	/**
