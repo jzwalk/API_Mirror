@@ -26,4 +26,4 @@ jobs:
       - name: "上传日志记录"
         uses: actions/upload-artifact@v2
         with:
-          path: ../TMP/updates.log
+          path: /home/runner/work/API_Mirror/TMP/updates.log
