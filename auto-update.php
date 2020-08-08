@@ -142,7 +142,8 @@
 								if (!is_dir($tmpNew)) {
 									mkdir($tmpNew);
 								}
-								$phpZip->open($tmpNew.$tmpName.'.zip',ZipArchive::CREATE | ZipArchive::OVERWRITE);
+								$newZip = $tmpNew.str_replace('ZIP_CDN','',$cdn);
+								$phpZip->open($newZip,ZipArchive::CREATE | ZipArchive::OVERWRITE);
 								if (!$doc) {
 									$rootPath = $master.($sub ? $paths['1'].'/' : '');
 									foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($rootPath)) as $file) {
@@ -154,7 +155,7 @@
 								} else {
 									$phpZip->addFile($master.$paths['1'],$paths['1']);
 								}
-								if ($phpZip->close() && @copy($tmpNew.$tmpName.'.zip',$cdn)) {
+								if ($phpZip->close() && @copy($newZip,$cdn)) {
 									$status = 'succeeded';
 									++$done;
 								}
