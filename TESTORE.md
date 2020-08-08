@@ -36,8 +36,8 @@
 
 名称 | 简介 | 版本 | 作者 | zip包
 ---- | ----: | :---: | ----: | :----:
-[Akismet](https://github.com/typecho/plugins/tree/master/Akismet) | 经典反垃圾评论服务Akismet插件 | 1.1.4 | [qining](https://github.com/joyqi) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/Akismet.zip)
-[Avartar](https://github.com/typecho/plugins/blob/master/Avartar.php) | 自定义替换Gravatar头像代理插件 | 1.0.0 Beta | [loftor](https://github.com/loftor-git) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/Avartar.zip)
+[Akismet](https://github.com/typecho/plugins/tree/master/Akismet) | 经典反垃圾评论服务Akismet插件 | 1.0.4 | [qining](https://github.com/joyqi) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/Akismet.zip)
+[Avartar](https://github.com/typecho/plugins/blob/master/Avartar.php) | 自定义替换Gravatar头像代理插件 | 0.3.0 Beta | [loftor](https://github.com/loftor-git) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/Avartar.zip)
 [BanbanStyle](https://github.com/lei2rock/Typecho-Assets/tree/master/plugins/BanbanStyle) | [Handsome](https://www.ihewro.com/archives/489)主题常用功能集成插件 | 0.3.1 | [lei2rock](https://github.com/lei2rock) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/BanbanStyle.zip)
 [MarkdownIFrame](https://github.com/youngzhaojia/typecho-plugins) | 系统[MD](https://baike.baidu.com/item/markdown/3245829)编辑器添加Iframe按钮插件 | 1.0.0 | [youngzhaojia](https://github.com/youngzhaojia) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-M_to_R/MarkdownIFrame.zip)
 [TeConnect](https://github.com/ledccn/TeConnect) | 增强版15款平台账号注册登录插件 | 2.0 | [大卫科技Blog](https://github.com/ledccn) | [下载](https://github.com/ledccn/TeConnect/archive/master.zip)
