@@ -29,11 +29,29 @@ jobs:
           name: "本次更新结果日志"
           path: /home/runner/work/API_Mirror/TMP/updates.log
 
-      - name: "发布压缩包"
+      - name: "发布压缩包A-C"
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: /home/runner/work/API_Mirror/TMP/NEW/[a-cA-C]*
           tag: "plugins-A_to_C"
+          overwrite: true
+          file_glob: true
+
+      - name: "发布压缩包M-R"
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: /home/runner/work/API_Mirror/TMP/NEW/[m-rM-R]*
+          tag: "plugins-M_to_R"
+          overwrite: true
+          file_glob: true
+
+      - name: "发布压缩包S-Z"
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: /home/runner/work/API_Mirror/TMP/NEW/[s-zS-Z]*
+          tag: "plugins-S_to_Z"
           overwrite: true
           file_glob: true
