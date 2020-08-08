@@ -30,7 +30,7 @@
 	$update = 0;
 	$zip = '';
 	$download = '';
-	$tmpDir = '';
+	$tmpDir = realpath('../').'/TMP';
 	$tmpName = '';
 	$tmpZip = '';
 	$tmpSub = '';
@@ -118,7 +118,6 @@
 						if (strpos($zip,'typecho-fans/plugins/releases/download')) {
 							$download = @file_get_contents($url.'/archive/master.zip');
 							if ($download) {
-								$tmpDir = realpath('../').'/TMP';
 								if (!is_dir($tmpDir)) {
 									mkdir($tmpDir);
 								}
@@ -186,7 +185,7 @@
 	}
 
 	file_put_contents('TESTORE.md',implode(PHP_EOL,$desciptions).PHP_EOL.implode(PHP_EOL,$tables));
-	file_put_contents('updates.log',$logs.'ALL: '.$all.PHP_EOL.
+	file_put_contents($tmpDir.'/updates.log',$logs.'ALL: '.$all.PHP_EOL.
 		'NEED UPDATE: '.$update.PHP_EOL.
 		'DONE: '.$done.PHP_EOL,FILE_APPEND);
 

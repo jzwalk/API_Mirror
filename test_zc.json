@@ -1,21 +1,5 @@
 [
   {
-    "name": "AdminLogin.zip",
-    "path": "ZIP_CDN/AdminLogin.zip",
-    "sha": "d1e362adcece44911d5f152f10efd3c30deee2ae",
-    "size": 12771,
-    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/AdminLogin.zip?ref=master",
-    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/AdminLogin.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/d1e362adcece44911d5f152f10efd3c30deee2ae",
-    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/AdminLogin.zip",
-    "type": "file",
-    "_links": {
-      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/AdminLogin.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/d1e362adcece44911d5f152f10efd3c30deee2ae",
-      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/AdminLogin.zip"
-    }
-  },
-  {
     "name": "Akismet.zip",
     "path": "ZIP_CDN/Akismet.zip",
     "sha": "6a0ec385e28bae4c14208b303596900d8d81eba7",
@@ -77,6 +61,22 @@
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/BanbanStyle.zip?ref=master",
       "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/e90b6f5a333c04145344890c364a34ffd202dff5",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/BanbanStyle.zip"
+    }
+  },
+  {
+    "name": "TeConnect_大卫科技Blog.zip",
+    "path": "ZIP_CDN/TeConnect_大卫科技Blog.zip",
+    "sha": "2a0a9b740616b4499984ce02dda7f8839bd2eeb9",
+    "size": 42021,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/TeConnect_%E5%A4%A7%E5%8D%AB%E7%A7%91%E6%8A%80Blog.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/TeConnect_%E5%A4%A7%E5%8D%AB%E7%A7%91%E6%8A%80Blog.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/2a0a9b740616b4499984ce02dda7f8839bd2eeb9",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/TeConnect_%E5%A4%A7%E5%8D%AB%E7%A7%91%E6%8A%80Blog.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/TeConnect_%E5%A4%A7%E5%8D%AB%E7%A7%91%E6%8A%80Blog.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/2a0a9b740616b4499984ce02dda7f8839bd2eeb9",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/TeConnect_%E5%A4%A7%E5%8D%AB%E7%A7%91%E6%8A%80Blog.zip"
     }
   }
 ]
