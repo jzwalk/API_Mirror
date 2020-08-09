@@ -30,7 +30,7 @@ jobs:
           path: /home/runner/work/API_Mirror/TMP/updates.log
 
       - id: match-a2c
-        run:
+        run: |
           find /home/runner/work/API_Mirror/TMP/NEW -type f -name "[a-cA-C]*"
           echo "::set-output name=A2C::$?"
       - name: "发布压缩包A-C"
@@ -44,7 +44,7 @@ jobs:
           file_glob: true
 
       - id: match-m2r
-        run:
+        run: |
           find /home/runner/work/API_Mirror/TMP/NEW -type f -name "[m-rM-R]*"
           echo "::set-output name=M2R::$?"
       - name: "发布压缩包M-R"
@@ -58,7 +58,7 @@ jobs:
           file_glob: true
 
       - id: match-s2z
-        run:
+        run: |
           find /home/runner/work/API_Mirror/TMP/NEW -type f -name "[s-zS-Z]*"
           echo "::set-output name=S2Z::$?"
       - name: "发布压缩包S-Z"
