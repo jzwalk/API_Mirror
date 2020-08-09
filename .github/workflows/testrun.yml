@@ -41,7 +41,7 @@ jobs:
 
       - name: "发布压缩包A-C"
         uses: svenstaro/upload-release-action@v2
-        if: steps.find.outputs.A2C !== '0'
+        if: ${{ steps.find.outputs.A2C !== '0' }}
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: /home/runner/work/API_Mirror/TMP/NEW/[a-cA-C]*
@@ -51,7 +51,7 @@ jobs:
 
       - name: "发布压缩包M-R"
         uses: svenstaro/upload-release-action@v2
-        if: steps.find.outputs.M2R !== '0'
+        if: ${{ steps.find.outputs.M2R !== '0' }}
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: /home/runner/work/API_Mirror/TMP/NEW/[m-rM-R]*
@@ -61,7 +61,7 @@ jobs:
 
       - name: "发布压缩包S-Z"
         uses: svenstaro/upload-release-action@v2
-        if: steps.find.outputs.S2Z !== '0'
+        if: ${{ steps.find.outputs.S2Z !== '0' }}
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: /home/runner/work/API_Mirror/TMP/NEW/[s-zS-Z]*
