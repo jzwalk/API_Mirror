@@ -141,7 +141,7 @@
 									$renamed = '/ Rename Author ';
 								}
 								$cdn = call_user_func('cdnZip',$name['0'],$infos['author']);
-								$newZip = $tmpNew.(strpos($cdn,'_') ? $name['0'].'_.zip' : $name['0'].'.zip'); //修正中文问题
+								$newZip = $tmpNew.'/'.(strpos($cdn,'_') ? $name['0'].'_.zip' : $name['0'].'.zip'); //修正中文问题
 								$phpZip->open($newZip,ZipArchive::CREATE | ZipArchive::OVERWRITE);
 								if (!$doc) {
 									$rootPath = $master.($sub ? $paths['1'].'/' : '');

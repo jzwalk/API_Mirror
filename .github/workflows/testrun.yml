@@ -29,6 +29,9 @@ jobs:
           name: "updates-log"
           path: /home/runner/work/API_Mirror/TMP/updates.log
 
+      - run: |
+          ls /home/runner/work/API_Mirror/TMP/NEW
+
       - name: "匹配压缩文件"
         id: match-zips
         run: |
