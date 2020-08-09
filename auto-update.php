@@ -30,7 +30,6 @@
 	$update = 0;
 	$zip = '';
 	$download = '';
-	$tmpDir = realpath('../').'/TMP';
 	$tmpName = '';
 	$tmpZip = '';
 	$tmpSub = '';
@@ -40,12 +39,19 @@
 	$codes = '';
 	$renamed = '';
 	$cdn = '';
-	$tmpNew = '';
 	$rootPath = '';
 	$filePath = '';
 	$status = 'failed';
 	$done = 0;
 	$tables = array();
+	$tmpDir = realpath('../').'/TMP';
+	$tmpNew = $tmpDir.'/NEW';
+	if (!is_dir($tmpDir)) {
+		mkdir($tmpDir);
+	}
+	if (!is_dir($tmpNew)) {
+		mkdir($tmpNew);
+	}
 	foreach ($lines as $line=>$column) {
 		if ($line<38) {
 			$desciptions[] = $column;
@@ -118,9 +124,6 @@
 						if (strpos($zip,'typecho-fans/plugins/releases/download')) {
 							$download = @file_get_contents($url.'/archive/master.zip');
 							if ($download) {
-								if (!is_dir($tmpDir)) {
-									mkdir($tmpDir);
-								}
 								$tmpName = '/'.$all.'_'.$name['0'];
 								$tmpZip = $tmpDir.$tmpName.'_master.zip';
 								file_put_contents($tmpZip,$download);
@@ -138,10 +141,6 @@
 									$renamed = '/ Rename Author ';
 								}
 								$cdn = call_user_func('cdnZip',$name['0'],$infos['author']);
-								$tmpNew = $tmpDir.'/NEW';
-								if (!is_dir($tmpNew)) {
-									mkdir($tmpNew);
-								}
 								$newZip = $tmpNew.str_replace('ZIP_CDN','',$cdn);
 								$phpZip->open($newZip,ZipArchive::CREATE | ZipArchive::OVERWRITE);
 								if (!$doc) {
