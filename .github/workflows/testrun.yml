@@ -1,9 +1,10 @@
-# 检测外部登记GitHub插件版本并同步更新发布zip包
+# 自动检测外部GitHub插件同步版本并发布zip
 
-name: "手动测试触发更新脚本"
+name: "定时更新GitHub源插件"
 
 on:
-  workflow_dispatch
+  schedule:
+    - cron: "0 0 * * *"
 
 jobs:
 
@@ -29,7 +30,7 @@ jobs:
           name: "updates-log"
           path: /home/runner/work/API_Mirror/TMP/updates.log
 
-      - name: "匹配压缩文件"
+      - name: "检测压缩文件"
         id: match-zips
         run: |
           a2c=`find /home/runner/work/API_Mirror/TMP/NEW -type f -name "[a-cA-C]*"`

@@ -1,9 +1,7 @@
 <?php
 	date_default_timezone_set('Asia/Shanghai');
-//https://raw.githubusercontent.com/typecho-fans/plugins/master/TESTORE.md
-	$source = file_get_contents('TESTORE.md');
-	$lines = explode(PHP_EOL,$source);
 
+	//预设循环内变量
 	$desciptions = array();
 	$links = array();
 	$metas = array();
@@ -12,11 +10,9 @@
 	$authorCode = '';
 	$separator = '';
 	$authors = array();
+	$authorName = '';
 	$authorNames = array();
-	$authorTitle = '';
-	$authorTitles = '';
 	$name = array();
-	$authors = array();
 	$doc = false;
 	$sub = false;
 	$paths = array();
@@ -44,24 +40,35 @@
 	$status = 'failed';
 	$done = 0;
 	$tables = array();
+
+	//创建临时文件夹
 	$tmpDir = realpath('../').'/TMP';
 	$tmpNew = $tmpDir.'/NEW';
 	if (!is_dir($tmpDir)) {
 		mkdir($tmpDir);
 	}
 	if (!is_dir($tmpNew)) {
-		mkdir($tmpNew);
+		mkdir($tmpNew); //(用于Action检测其中所有重新打包文件发布至标签)
 	}
+
+//https://raw.githubusercontent.com/typecho-fans/plugins/master/TESTORE.md
+	//分割文档遍历单行
+	$source = file_get_contents('TESTORE.md');
+	$lines = explode(PHP_EOL,$source);
 	foreach ($lines as $line=>$column) {
 		if ($line<38) {
 			$desciptions[] = $column;
 		} else {
 			preg_match_all('/(?<=\()[^\)]+/',$column,$links);
 			preg_match_all('/(?<=)[^\|]+/',$column,$metas);
+
 			if ($column) {
 				$url = $links['0']['0'];
+				//仅处理GitHub仓库
 				if (strpos($url,'github.com')) {
 					++$all;
+
+					//提取作者名用于替换
 					$authorCode = html_entity_decode(trim($metas['0']['3']));
 					switch (true) {
 						case (strpos($authorCode,',')) :
@@ -79,17 +86,19 @@
 					}
 					if ($separator) {
 						$authors = explode($separator,$authorCode);
-						$authorTitles = '';
+						$authorName = '';
 						foreach ($authors as $key=>$author) {
 							preg_match('/(?<=\[)[^\]]+/',$author,$authorName);
 							$authorNames[] = empty($authorName['0']) ? $author : $authorName['0'];
 						}
-						$authorTitles = implode($separator,$authorNames);
+						$authorName = implode($separator,$authorNames);
 					} else {
-						$authorTitles = '';
+						$authorName = '';
 						preg_match('/(?<=\[)[^\]]+/',$authorCode,$authorName);
-						$authorTitles = $authorName['0'];
+						$authorName = $authorName['0'];
 					}
+
+					//获取插件主文件地址
 					preg_match('/(?<=\[)[^\]]+/',$metas['0']['0'],$name);
 					$doc = strpos($url,'/blob/master/') && strpos($url,'.php');
 					if (!$doc) {
@@ -116,30 +125,40 @@
 						$paths = explode('/raw/master/',$pluginFile);
 						$url = $paths['0'];
 					}
+
+					//对比文件版本号更新
 					$infos = call_user_func('parseInfo',$pluginFile);
 					$version = stripos($metas['0']['2'],'v')===0 ? trim(substr($metas['0']['2'],1)) : trim($metas['0']['2']);
 					if ($infos && $infos['version']>$version) {
 						++$update;
 						$zip = end($links['0']);
+
+						//标签下载的要重新打包
 						if (strpos($zip,'typecho-fans/plugins/releases/download')) {
 							$download = @file_get_contents($url.'/archive/master.zip');
 							if ($download) {
 								$tmpName = '/'.$all.'_'.$name['0'];
 								$tmpZip = $tmpDir.$tmpName.'_master.zip';
 								file_put_contents($tmpZip,$download);
+
+								//解压缩master包
 								$phpZip = new ZipArchive();
 								$phpZip->open($tmpZip);
 								$tmpSub = $tmpDir.$tmpName;
 								mkdir($tmpSub);
 								$phpZip->extractTo($tmpSub);
 								$master = $tmpSub.'/'.basename($url).'-master/';
+
+								//强制替换作者名
 								$renamed = '';
-								if ($authorTitles!==trim(strip_tags($infos['author']))) {
+								if ($authorName!==trim(strip_tags($infos['author']))) {
 									$plugin = $master.($doc ? $paths['1'] : $path);
 									$codes = file_get_contents($plugin);
-									file_put_contents($plugin,str_replace($infos['author'],$authorTitles,$codes));
+									file_put_contents($plugin,str_replace($infos['author'],$authorName,$codes));
 									$renamed = '/ Rename Author ';
 								}
+
+								//重新打包所有文件
 								$cdn = call_user_func('cdnZip',$name['0'],$infos['author']);
 								$newZip = $tmpNew.'/'.(strpos($cdn,'_') ? $name['0'].'_.zip' : $name['0'].'.zip'); //修正中文问题
 								$phpZip->open($newZip,ZipArchive::CREATE | ZipArchive::OVERWRITE);
@@ -154,6 +173,8 @@
 								} else {
 									$phpZip->addFile($master.$paths['1'],$paths['1']);
 								}
+
+								//复制一份到加速目录
 								if ($phpZip->close() && @copy($newZip,$cdn)) {
 									$status = 'succeeded';
 									++$done;
@@ -162,6 +183,8 @@
 							} else {
 								$logs .= 'Error: "'.$url.'" not found!'.PHP_EOL;
 							}
+
+						//其他仅下载至加速目录
 						} else {
 							$download = @file_get_contents($zip);
 							if ($download) {
@@ -176,7 +199,11 @@
 								$logs .= 'Error: "'.$zip.'" not found!'.PHP_EOL;
 							}
 						}
-						$column = str_replace($version,$infos['version'],$column);
+
+						//更新文档信息版本号
+						if ($status=='succeeded') {
+							$column = str_replace($version,$infos['version'],$column);
+						}
 					}
 				}
 			}
@@ -184,6 +211,7 @@
 		}
 	}
 
+	//重组文档并生成日志
 	file_put_contents('TESTORE.md',implode(PHP_EOL,$desciptions).PHP_EOL.implode(PHP_EOL,$tables));
 	file_put_contents($tmpDir.'/updates.log',$logs.
 		'SCANED: '.$all.PHP_EOL.
@@ -191,7 +219,7 @@
 		'DONE: '.$done.PHP_EOL);
 
 	/**
-	 * 获取ZIP_CDN文件名称
+	 * 获取ZIP_CDN文件名称 (TeStore)
 	 *
 	 * @param string $pluginName 插件名
 	 * @param string $pluginAuthor 作者名
@@ -213,7 +241,7 @@
 	}
 
 	/**
-	 * 获取插件文件的头信息
+	 * 获取插件文件的头信息 (Typecho)
 	 *
 	 * @param string $pluginFile 插件文件路径
 	 * @return array
