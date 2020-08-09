@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: "执行PHP脚本"
-        run: |
+        run:
           php auto-update.php
 
       - name: "提交更新文件"
@@ -29,19 +29,13 @@ jobs:
           name: "updates-log"
           path: /home/runner/work/API_Mirror/TMP/updates.log
 
-      - name: "匹配压缩包名"
-        id: match-con
-        run: |
+      - id: match-a2c
+        run:
           find /home/runner/work/API_Mirror/TMP/NEW -type f -name "[a-cA-C]*"
-          echo "::set-output name=A2C::$(echo $?)"
-          find /home/runner/work/API_Mirror/TMP/NEW -type f -name "[m-rM-R]*"
-          echo "::set-output name=M2R::$(echo $?)"
-          find /home/runner/work/API_Mirror/TMP/NEW -type f -name "[s-zS-Z]*"
-          echo "::set-output name=S2Z::$(echo $?)"
-
+          echo "::set-output name=A2C::$?"
       - name: "发布压缩包A-C"
         uses: svenstaro/upload-release-action@v2
-        if: steps.match-con.outputs.A2C != '0'
+        if: steps.match-a2c.outputs.A2C != '0'
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: /home/runner/work/API_Mirror/TMP/NEW/[a-cA-C]*
@@ -49,9 +43,13 @@ jobs:
           overwrite: true
           file_glob: true
 
+      - id: match-m2r
+        run:
+          find /home/runner/work/API_Mirror/TMP/NEW -type f -name "[m-rM-R]*"
+          echo "::set-output name=M2R::$?"
       - name: "发布压缩包M-R"
         uses: svenstaro/upload-release-action@v2
-        if: steps.match-con.outputs.M2R != '0'
+        if: steps.match-m2r.outputs.M2R != '0'
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: /home/runner/work/API_Mirror/TMP/NEW/[m-rM-R]*
@@ -59,9 +57,13 @@ jobs:
           overwrite: true
           file_glob: true
 
+      - id: match-s2z
+        run:
+          find /home/runner/work/API_Mirror/TMP/NEW -type f -name "[s-zS-Z]*"
+          echo "::set-output name=S2Z::$?"
       - name: "发布压缩包S-Z"
         uses: svenstaro/upload-release-action@v2
-        if: steps.match-con.outputs.S2Z != '0'
+        if: steps.match-s2z.outputs.S2Z != '0'
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: /home/runner/work/API_Mirror/TMP/NEW/[s-zS-Z]*
