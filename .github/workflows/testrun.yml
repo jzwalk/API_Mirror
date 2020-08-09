@@ -32,12 +32,12 @@ jobs:
       - name: "匹配压缩包名"
         id: match-con
         run: |
-          a2c=`find /home/runner/work/API_Mirror/TMP/NEW -type f -name "[a-cA-C]*" | echo $?`
-          echo "::set-output name=A2C::$a2c"
-          m2r=`find /home/runner/work/API_Mirror/TMP/NEW -type f -name "[m-rM-R]*" | echo $?`
-          echo "::set-output name=M2R::$m2r"
-          s2z=`find /home/runner/work/API_Mirror/TMP/NEW -type f -name "[s-zS-Z]*" | echo $?`
-          echo "::set-output name=S2Z::$s2z"
+          find /home/runner/work/API_Mirror/TMP/NEW -type f -name "[a-cA-C]*"
+          echo "::set-output name=A2C::$(echo $?)"
+          find /home/runner/work/API_Mirror/TMP/NEW -type f -name "[m-rM-R]*"
+          echo "::set-output name=M2R::$(echo $?)"
+          find /home/runner/work/API_Mirror/TMP/NEW -type f -name "[s-zS-Z]*"
+          echo "::set-output name=S2Z::$(echo $?)"
 
       - name: "发布压缩包A-C"
         uses: svenstaro/upload-release-action@v2
