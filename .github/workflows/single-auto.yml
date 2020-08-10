@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       repo-url:
-        description: 'GitHub插件目录地址(结尾勿带'/'号)'
+        description: "GitHub插件目录地址(结尾勿带'/'号)"
         required: true
         default: 'https://github.com/user/repo'
 
