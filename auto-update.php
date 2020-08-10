@@ -65,38 +65,10 @@
 			if ($column) {
 				$url = $links['0']['0'];
 				//仅处理GitHub仓库
-				if (strpos($url,'github.com')) {
+				$condition = strpos($url,'github.com');
+				$condition = empty($argv['1']) ? $condition : ($condition && $url==$argv['1']); //兼容手动更新触发
+				if ($condition) {
 					++$all;
-
-					//提取作者名用于替换
-					$authorCode = html_entity_decode(trim($metas['0']['3']));
-					switch (true) {
-						case (strpos($authorCode,',')) :
-						$separator = ',';
-						break;
-						case (strpos($authorCode,', ')) :
-						$separator = ', ';
-						break;
-						case (strpos($authorCode,'&')) :
-						$separator = '&';
-						break;
-						case (strpos($authorCode,' & ')) :
-						$separator = ' & ';
-						break;
-					}
-					if ($separator) {
-						$authors = explode($separator,$authorCode);
-						$authorName = '';
-						foreach ($authors as $key=>$author) {
-							preg_match('/(?<=\[)[^\]]+/',$author,$authorName);
-							$authorNames[] = empty($authorName['0']) ? $author : $authorName['0'];
-						}
-						$authorName = implode($separator,$authorNames);
-					} else {
-						$authorName = '';
-						preg_match('/(?<=\[)[^\]]+/',$authorCode,$authorName);
-						$authorName = $authorName['0'];
-					}
 
 					//获取插件主文件地址
 					preg_match('/(?<=\[)[^\]]+/',$metas['0']['0'],$name);
@@ -149,6 +121,35 @@
 								$phpZip->extractTo($tmpSub);
 								$master = $tmpSub.'/'.basename($url).'-master/';
 
+								//提取多作者名
+								$authorCode = html_entity_decode(trim($metas['0']['3']));
+								switch (true) {
+									case (strpos($authorCode,',')) :
+									$separator = ',';
+									break;
+									case (strpos($authorCode,', ')) :
+									$separator = ', ';
+									break;
+									case (strpos($authorCode,'&')) :
+									$separator = '&';
+									break;
+									case (strpos($authorCode,' & ')) :
+									$separator = ' & ';
+									break;
+								}
+								if ($separator) {
+									$authors = explode($separator,$authorCode);
+									$authorName = '';
+									foreach ($authors as $key=>$author) {
+										preg_match('/(?<=\[)[^\]]+/',$author,$authorName);
+										$authorNames[] = empty($authorName['0']) ? $author : $authorName['0'];
+									}
+									$authorName = implode($separator,$authorNames);
+								} else {
+									$authorName = '';
+									preg_match('/(?<=\[)[^\]]+/',$authorCode,$authorName);
+									$authorName = $authorName['0'];
+								}
 								//强制替换作者名
 								$renamed = '';
 								if ($authorName!==trim(strip_tags($infos['author']))) {
