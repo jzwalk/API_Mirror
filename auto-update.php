@@ -65,7 +65,7 @@
 			if ($column) {
 				$url = $links['0']['0'];
 				//仅处理GitHub仓库
-				if (empty($argv['1']) ? strpos($url,'github.com') : ($url==$argv['1'] && strpos($argv['1'],'github.com'))) { //兼容手动参数
+				if (empty($argv['1']) ? strpos($url,'github.com') : (strpos($argv['1'],'github.com') && $argv['1']==$url)) { //兼容手动参数
 					++$all;
 
 					//获取插件主文件地址
