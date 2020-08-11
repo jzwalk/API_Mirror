@@ -3,9 +3,7 @@
 name: "定时更新全GitHub插件"
 
 on:
-  schedule:
-    - cron: "0 13 * * 1"
-#服务器时间：下午1点，每周一
+  workflow_dispatch
 
 jobs:
 
@@ -52,6 +50,16 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: /home/runner/work/API_Mirror/TMP/NEW/[a-cA-C]*
           tag: "plugins-A_to_C"
+          overwrite: true
+          file_glob: true
+
+      - name: "发布压缩包D-G"
+        uses: svenstaro/upload-release-action@v2
+        if: steps.match-zips.outputs.D2G
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: /home/runner/work/API_Mirror/TMP/NEW/[d-gD-G]*
+          tag: "plugins-D_to_G"
           overwrite: true
           file_glob: true
 

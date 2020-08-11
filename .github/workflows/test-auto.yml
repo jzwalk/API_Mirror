@@ -59,6 +59,16 @@ jobs:
           overwrite: true
           file_glob: true
 
+      - name: "发布压缩包D-G"
+        uses: svenstaro/upload-release-action@v2
+        if: steps.match-zips.outputs.D2G
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: /home/runner/work/API_Mirror/TMP/NEW/[d-gD-G]*
+          tag: "plugins-D_to_G"
+          overwrite: true
+          file_glob: true
+
       - name: "发布压缩包M-R"
         uses: svenstaro/upload-release-action@v2
         if: steps.match-zips.outputs.M2R
