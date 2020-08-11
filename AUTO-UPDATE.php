@@ -90,12 +90,10 @@
 							foreach ($datas['tree'] as $tree) {
 								if (false!==stripos($tree['path'],($sub ? $name['0'].'/Plugin.php' : 'Plugin.php'))) {
 									$path = $tree['path'];
-								} else {
-									$path = '';
+									break;
 								}
-								$test[] = $tree['path'];
 							}
-$s = print_r($test,true);
+$s = print_r($path,true);
 file_put_contents('log.txt',$s);
 							$pluginFile = $path ? $url.'/raw/master/'.$path : $url.'/raw/master/'.($sub ? $paths['1'].'/' : '').$name['0'].'.php';
 						} else {
