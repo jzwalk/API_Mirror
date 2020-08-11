@@ -194,8 +194,9 @@
 											$phpZip->addFile($master.$paths['1'],$paths['1']);
 										}
 
-									//复制一份到加速目录
+										//复制一份到加速目录
 										if ($phpZip->close() && @copy($newZip,$cdn)) {
+											$column = str_replace($zip,dirname($zip).'/'.$newZip,$column);
 											$status = 'succeeded';
 											++$done;
 										}

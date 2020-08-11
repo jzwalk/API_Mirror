@@ -36,4 +36,4 @@
 
 名称 | 简介 | 版本 | 作者 | zip包
 ---- | ----: | :---: | ----: | :----:
-[AutoIndent](https://github.com/chen2bing/AutoIndent) | 使用jQuery自动缩进段落首行插件 | 1.0 | [cbb](https://github.com/chen2bing) | [下载](https://github.com/chen2bing/AutoIndent/archive/master.zip)
+[AutoIndent](https://github.com/chen2bing/AutoIndent) | 使用jQuery自动缩进段落首行插件 | 1.0 | [cbb](https://github.com/chen2bing) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/AutoIndent.zip)
