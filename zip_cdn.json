@@ -1202,16 +1202,16 @@
   {
     "name": "CatClaw.zip",
     "path": "ZIP_CDN/CatClaw.zip",
-    "sha": "67465faf53a5adce5864c3c790b5c9e3c023e476",
-    "size": 8263,
+    "sha": "322dcafe944834e29bdd29caefbd0d1497eed5d8",
+    "size": 8508,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/CatClaw.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/CatClaw.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/67465faf53a5adce5864c3c790b5c9e3c023e476",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/322dcafe944834e29bdd29caefbd0d1497eed5d8",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/CatClaw.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/CatClaw.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/67465faf53a5adce5864c3c790b5c9e3c023e476",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/322dcafe944834e29bdd29caefbd0d1497eed5d8",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/CatClaw.zip"
     }
   },
@@ -1778,16 +1778,16 @@
   {
     "name": "CommentToMail_Uniartisan.zip",
     "path": "ZIP_CDN/CommentToMail_Uniartisan.zip",
-    "sha": "187afbb238d0799c76fb0dc7b4da54a352c67879",
-    "size": 68091,
+    "sha": "a90ff27906bc61398b73fb6edbbbd2b397ace6bc",
+    "size": 70186,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/CommentToMail_Uniartisan.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/CommentToMail_Uniartisan.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/187afbb238d0799c76fb0dc7b4da54a352c67879",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/a90ff27906bc61398b73fb6edbbbd2b397ace6bc",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/CommentToMail_Uniartisan.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/CommentToMail_Uniartisan.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/187afbb238d0799c76fb0dc7b4da54a352c67879",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/a90ff27906bc61398b73fb6edbbbd2b397ace6bc",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/CommentToMail_Uniartisan.zip"
     }
   },
