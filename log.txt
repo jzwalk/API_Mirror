@@ -1,0 +1,68 @@
+Array
+(
+    [sha] => 424e0b73915214c277f8519953530f282bd0b876
+    [url] => https://api.github.com/repos/chen2bing/AutoIndent/git/trees/424e0b73915214c277f8519953530f282bd0b876
+    [tree] => Array
+        (
+            [0] => Array
+                (
+                    [path] => AutoIndent
+                    [mode] => 040000
+                    [type] => tree
+                    [sha] => 81d556c5888d117a6b04f8be1e910bd1ab3eb57c
+                    [url] => https://api.github.com/repos/chen2bing/AutoIndent/git/trees/81d556c5888d117a6b04f8be1e910bd1ab3eb57c
+                )
+
+            [1] => Array
+                (
+                    [path] => AutoIndent/Plugin.php
+                    [mode] => 100644
+                    [type] => blob
+                    [sha] => 4398d87acd7302d516e015190a5e87897f138a7e
+                    [size] => 1093
+                    [url] => https://api.github.com/repos/chen2bing/AutoIndent/git/blobs/4398d87acd7302d516e015190a5e87897f138a7e
+                )
+
+            [2] => Array
+                (
+                    [path] => AutoIndent/res
+                    [mode] => 040000
+                    [type] => tree
+                    [sha] => 0373f366b870d46ee90961504123d5c3528cd7dc
+                    [url] => https://api.github.com/repos/chen2bing/AutoIndent/git/trees/0373f366b870d46ee90961504123d5c3528cd7dc
+                )
+
+            [3] => Array
+                (
+                    [path] => AutoIndent/res/Indent.js
+                    [mode] => 100644
+                    [type] => blob
+                    [sha] => dc1b7b93037cfe9b93ebebce5cb37061ef92dae7
+                    [size] => 590
+                    [url] => https://api.github.com/repos/chen2bing/AutoIndent/git/blobs/dc1b7b93037cfe9b93ebebce5cb37061ef92dae7
+                )
+
+            [4] => Array
+                (
+                    [path] => AutoIndent/res/jquery-3.4.1.min.js
+                    [mode] => 100644
+                    [type] => blob
+                    [sha] => a1c07fd803b5fc9c54f44e31123ae4fa11e134b0
+                    [size] => 88145
+                    [url] => https://api.github.com/repos/chen2bing/AutoIndent/git/blobs/a1c07fd803b5fc9c54f44e31123ae4fa11e134b0
+                )
+
+            [5] => Array
+                (
+                    [path] => README.md
+                    [mode] => 100644
+                    [type] => blob
+                    [sha] => c1133980e1f72e4652adf5bc8cdbec130d7d6fd6
+                    [size] => 379
+                    [url] => https://api.github.com/repos/chen2bing/AutoIndent/git/blobs/c1133980e1f72e4652adf5bc8cdbec130d7d6fd6
+                )
+
+        )
+
+    [truncated] => 
+)
