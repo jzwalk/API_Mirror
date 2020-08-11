@@ -36,4 +36,7 @@
 
 名称 | 简介 | 版本 | 作者 | zip包
 ---- | ----: | :---: | ----: | :----:
-[AutoIndent](https://github.com/chen2bing/AutoIndent) | 使用jQuery自动缩进段落首行插件 | 1.0 | [cbb](https://github.com/chen2bing) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/AutoIndent.zip)
+[GEETEST](https://gitee.com/loiou/GEETEST) | 极验证多功能定制评论验证码插件 | 1.0.0 | [LOIOU](https://gitee.com/loiou) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-D_to_G/GEETEST_LOIOU.zip)
+[Geetest](https://github.com/zhb127/z-typecho-plugin-geetest) | 极验证登录验证码插件(Session版) | 1.0.0 | [菠菜](https://github.com/zhb127) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-D_to_G/Geetest.zip)
+[Geetest](https://github.com/99kyuu/GeetestV3_for_Typecho) | 极验证V3版登录注册用验证码插件 | 1.0.0 | [玖玖kyuu](https://github.com/99kyuu) | [特殊](https://github.com/typecho-fans/plugins/releases/download/plugins-D_to_G/Geetest2.zip)
+[Geetest](https://github.com/jinfeijie/Geetest) | 极验证V3版评论用图形验证码插件 | 1.0.3 | [mrjin](https://github.com/jinfeijie) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-D_to_G/Geetest3.zip)
