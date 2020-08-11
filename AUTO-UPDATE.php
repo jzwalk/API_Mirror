@@ -61,6 +61,7 @@
 	//分割文档遍历单行
 	$source = file_get_contents('TESTORE.md');
 	$lines = explode(PHP_EOL,$source);
+	$count = count($lines);
 	foreach ($lines as $line=>$column) {
 		if ($line<38) {
 			$desciptions[] = $column;
@@ -93,8 +94,6 @@
 									break;
 								}
 							}
-$s = print_r($path,true);
-file_put_contents('log.txt',$s);
 							$pluginFile = $path ? $url.'/raw/master/'.$path : $url.'/raw/master/'.($sub ? $paths['1'].'/' : '').$name['0'].'.php';
 						} else {
 							$logs .= 'Error: "'.$url.'" not found!'.PHP_EOL;
@@ -113,9 +112,11 @@ file_put_contents('log.txt',$s);
 							if ($infos['version']>$version || !empty($argv['1'])) { //或手动强制更新
 								++$update;
 								$zip = end($links['0']);
+								$cdn = 'ZIP_CDN/'.$name['0'].'_'.$infos['author'].'.zip'; //强制加作者名(避免与README.md中社区版同名冲突)
 
 								//标签下载的要重新打包
 								if (strpos($zip,'typecho-fans/plugins/releases/download')) {
+									
 									$download = @file_get_contents($url.'/archive/master.zip');
 									if ($download) {
 										$tmpName = '/'.$all.'_'.$name['0'];
@@ -168,9 +169,18 @@ file_put_contents('log.txt',$s);
 											$renamed = '/ Rename Author ';
 										}
 
-										//重新打包所有文件
-										$cdn = call_user_func('cdnZip',$name['0'],$infos['author']);
-										$newZip = $tmpNew.'/'.(strpos($cdn,'_') ? $name['0'].'_.zip' : $name['0'].'.zip'); //修正中文问题
+										//压缩包命名处理 (标签发布不支持中文)
+										$newZip = $tmpNew.'/'.$name['0'].'_'; //强制下划线(避免与README.md中社区版同名冲突)
+										for ($j=$line+1;$j<$count;++$j) {
+											preg_match_all('/(?<=)[^\|]+/',$lines[$j],$reMetas);
+											preg_match('/(?<=\[)[^\]]+/',$reMetas['0']['0'],$reName);
+											//重名继续增加下划线
+											if ($name['0']==$reName['0']) {
+												$newZip .= '_';
+											}
+										}
+										$newZip = $newZip.'.zip';
+										//打包至临时目录
 										$phpZip->open($newZip,ZipArchive::CREATE | ZipArchive::OVERWRITE);
 										if (!$doc) {
 											$rootPath = $master.($sub ? $paths['1'].'/' : '');
@@ -198,8 +208,7 @@ file_put_contents('log.txt',$s);
 								} else {
 									$download = @file_get_contents($zip);
 									if ($download) {
-										$cdn = call_user_func('cdnZip',$name['0'],$infos['author']);
-										if ($cdn && @file_put_contents($cdn,$download)) {
+										if (@file_put_contents($cdn,$download)) {
 											$status = 'succeeded';
 											++$done;
 										}
@@ -230,27 +239,6 @@ file_put_contents('log.txt',$s);
 		'SCANED: '.$all.PHP_EOL.
 		'NEED UPDATE: '.$update.PHP_EOL.
 		'DONE: '.$done.PHP_EOL);
-
-	/**
-	 * 获取ZIP_CDN文件名称
-	 *
-	 * @param string $pluginName 插件名
-	 * @param string $pluginAuthor 作者名
-	 * @return string
-	 */
-	function cdnZip($pluginName,$pluginAuthor)
-	{
-		$names = array_diff(scandir('ZIP_CDN'),array('..','.'));
-		$cdn = '';
-		foreach ($names as $name) {
-			if ($name==$pluginName.'_'.$pluginAuthor.'.zip') { //带作者名优先
-				$cdn = 'ZIP_CDN/'.$pluginName.'_'.$pluginAuthor.'.zip';
-			} elseif ($name==$pluginName.'.zip') {
-				$cdn = 'ZIP_CDN/'.$pluginName.'.zip';
-			}
-		}
-		return $cdn;
-	}
 
 	/**
 	 * 获取插件文件的头信息 (Typecho)
