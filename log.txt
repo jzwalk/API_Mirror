@@ -1,9 +1,1 @@
-Array
-(
-    [0] => AutoIndent
-    [1] => AutoIndent/Plugin.php
-    [2] => AutoIndent/res
-    [3] => AutoIndent/res/Indent.js
-    [4] => AutoIndent/res/jquery-3.4.1.min.js
-    [5] => README.md
-)
+AutoIndent/Plugin.php
