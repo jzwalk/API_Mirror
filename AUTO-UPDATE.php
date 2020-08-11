@@ -114,7 +114,7 @@ file_put_contents('log.txt',$s);
 						}
 						$version = stripos($metas['0']['2'],'v')===0 ? trim(substr($metas['0']['2'],1)) : trim($metas['0']['2']);
 					}
-					if ($infos && $infos['version']>$version || !empty($argv['1'])) { //或手动强制更新
+					if ($infos && ($infos['version']>$version || !empty($argv['1']))) { //或手动强制更新
 						++$update;
 						$zip = end($links['0']);
 
