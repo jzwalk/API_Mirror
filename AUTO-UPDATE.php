@@ -87,8 +87,6 @@
 							stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP')))));
 						if ($api) {
 							$datas = json_decode($api,true);
-$s = print_r($datas,true);
-file_put_contents('log.txt',$s);
 							foreach ($datas['tree'] as $tree) {
 								if (false!==stripos($tree['path'],($sub ? $name['0'].'/Plugin.php' : 'Plugin.php'))) {
 									$path = $tree['path'];
@@ -114,6 +112,8 @@ file_put_contents('log.txt',$s);
 						}
 						$version = stripos($metas['0']['2'],'v')===0 ? trim(substr($metas['0']['2'],1)) : trim($metas['0']['2']);
 					}
+$s = print_r($infos,true);
+file_put_contents('log.txt',$s);
 					if ($infos && ($infos['version']>$version || !empty($argv['1']))) { //或手动强制更新
 						++$update;
 						$zip = end($links['0']);
