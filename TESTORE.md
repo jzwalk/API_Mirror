@@ -37,5 +37,5 @@
 名称 | 简介 | 版本 | 作者 | zip包
 ---- | ----: | :---: | ----: | :----:
 [Geetest](https://github.com/zhb127/z-typecho-plugin-geetest) | 极验证登录验证码插件(Session版) | 1.0.0 | [菠菜](https://github.com/zhb127) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-D_to_G/Geetest___.zip)
-[Geetest](https://github.com/99kyuu/GeetestV3_for_Typecho) | 极验证V3版登录注册用验证码插件 | 1.0.0 | [玖玖kyuu](https://github.com/99kyuu) | [特殊](https://github.com/typecho-fans/plugins/releases/download/plugins-D_to_G/Geetest2.zip)
+[Geetest](https://github.com/99kyuu/GeetestV3_for_Typecho) | 极验证V3版登录注册用验证码插件 | 1.0.0 | [玖玖kyuu](https://github.com/99kyuu) | [特殊](https://github.com/typecho-fans/plugins/releases/download/plugins-D_to_G/Geetest__.zip)
 [Geetest](https://github.com/jinfeijie/Geetest) | 极验证V3版评论用图形验证码插件 | 1.0.3 | [mrjin](https://github.com/jinfeijie) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-D_to_G/Geetest3.zip)
