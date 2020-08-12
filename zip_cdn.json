@@ -8354,16 +8354,16 @@
   {
     "name": "iThumb_Ryan.zip",
     "path": "ZIP_CDN/iThumb_Ryan.zip",
-    "sha": "255097522713bab22fb6235674e74ab140b500bb",
-    "size": 505643,
+    "sha": "c8932ca3ad733d1127f16e461a7f22733874c7d5",
+    "size": 505701,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/iThumb_Ryan.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/iThumb_Ryan.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/255097522713bab22fb6235674e74ab140b500bb",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/c8932ca3ad733d1127f16e461a7f22733874c7d5",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/iThumb_Ryan.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/iThumb_Ryan.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/255097522713bab22fb6235674e74ab140b500bb",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/c8932ca3ad733d1127f16e461a7f22733874c7d5",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/iThumb_Ryan.zip"
     }
   },
