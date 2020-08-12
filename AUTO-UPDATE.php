@@ -112,7 +112,7 @@
 							if ($infos['version']>$version || !empty($argv['1'])) { //或手动强制更新
 								++$update;
 								$zip = end($links['0']);
-								$cdn = 'ZIP_CDN/'.$name['0'].'_'.$infos['author'].'.zip'; //强制加作者名(避免与README.md中社区版同名冲突)
+								$cdn = 'ZIP_CDN/'.$name['0'].'_'.$infos['author'].'.zip';
 
 								//标签下载的要重新打包
 								if (strpos($zip,'typecho-fans/plugins/releases/download')) {
@@ -170,13 +170,15 @@
 										}
 
 										//压缩包命名处理 (标签发布不支持中文)
-										$newZip = $tmpNew.'/'.$name['0'].'_'; //强制下划线(避免与README.md中社区版同名冲突)
+										$newZip = $tmpNew.'/'.$name['0'].'_';
 										for ($j=$line+1;$j<$count;++$j) {
-											preg_match_all('/(?<=)[^\|]+/',$lines[$j],$reMetas);
-											preg_match('/(?<=\[)[^\]]+/',$reMetas['0']['0'],$reName);
-											//重名继续增加下划线
-											if (!strcasecmp($reName['0'],$name['0'])) {
-												$newZip .= '_';
+											if ($lines[$j]) {
+												preg_match_all('/(?<=)[^\|]+/',$lines[$j],$reMetas);
+												preg_match('/(?<=\[)[^\]]+/',$reMetas['0']['0'],$reName);
+												//重名继续增加下划线
+												if (!strcasecmp($reName['0'],$name['0'])) {
+													$newZip .= '_';
+												}
 											}
 										}
 										$newZip = $newZip.'.zip';
@@ -223,9 +225,9 @@
 								if ($status=='succeeded') {
 									$column = str_replace($version,$infos['version'],$column);
 								}
-							} else {
-								$logs .= 'Error: "'.$url.'" has no valid plugin file!'.PHP_EOL;
 							}
+						} else {
+							$logs .= 'Error: "'.$url.'" has no valid plugin file!'.PHP_EOL;
 						}
 					}
 				}
