@@ -1,6 +1,6 @@
 # 将API数据下载为文件供Gitee/jsDelivr等镜像地址加速
 
-name: "接收触发信号更新文件"
+name: "接收请求触发文件更新"
 
 on:
   repository_dispatch:
@@ -23,14 +23,12 @@ jobs:
         run: |
           echo '{"total": "${{ github.event.client_payload.total }}", "update": "${{ github.event.client_payload.update }}"}' > info.json
 
-      - name: "提交数据文件更新"
-        uses: EndBug/add-and-commit@v4
+      - name: "提交文件更新"
+        uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          add: "*.json"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          commit_message: "Commit from GitHub Actions"
 
-      - name: "同步Gitee镜像目录"
+      - name: "同步Gitee镜像"
         uses: Yikun/hub-mirror-action@master
         with:
           src: github/jzwalk
