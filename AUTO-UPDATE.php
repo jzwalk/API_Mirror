@@ -74,8 +74,6 @@
 				//仅处理GitHub仓库
 				if (empty($argv['1']) ? strpos($url,'github.com') : (strpos($argv['1'],'github.com') && $argv['1']==$url)) { //兼容手动参数
 					++$all;
-$s = print_r($argv['1'],true);
-file_put_contents('log.txt',$s);
 
 					//获取插件主文件地址
 					preg_match('/(?<=\[)[^\]]+/',$metas['0']['0'],$name);
@@ -198,7 +196,7 @@ file_put_contents('log.txt',$s);
 
 										//复制一份到加速目录
 										if ($phpZip->close() && @copy($newZip,$cdn)) {
-											$column = str_replace($zip,dirname($zip).'/'.$newZip,$column);
+											$column = str_replace($zip,dirname($zip).'/'.basename($newZip),$column);
 											$status = 'succeeded';
 											++$done;
 										}
