@@ -35,10 +35,12 @@ jobs:
           name: "updates-log"
           path: /home/runner/work/API_Mirror/TMP/updates.log
 
+      - run: |
+          ls /home/runner/work/API_Mirror/TMP/NEW
+
       - name: "检测压缩文件"
         id: match-zips
         run: |
-          ls /home/runner/work/API_Mirror/TMP/NEW
           a2c=`find /home/runner/work/API_Mirror/TMP/NEW -type f -name "[a-cA-C]*"`
           echo "::set-output name=A2C::$a2c"
           a2c=`find /home/runner/work/API_Mirror/TMP/NEW -type f -name "[d-gD-G]*"`
