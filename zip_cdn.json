@@ -8368,6 +8368,22 @@
     }
   },
   {
+    "name": "iThumb_Ryan<github-benzbrake@woai.ru>.zip",
+    "path": "ZIP_CDN/iThumb_Ryan<github-benzbrake@woai.ru>.zip",
+    "sha": "c8932ca3ad733d1127f16e461a7f22733874c7d5",
+    "size": 505701,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/iThumb_Ryan%3Cgithub-benzbrake@woai.ru%3E.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/iThumb_Ryan%3Cgithub-benzbrake@woai.ru%3E.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/c8932ca3ad733d1127f16e461a7f22733874c7d5",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/iThumb_Ryan%3Cgithub-benzbrake%40woai.ru%3E.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/iThumb_Ryan%3Cgithub-benzbrake@woai.ru%3E.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/c8932ca3ad733d1127f16e461a7f22733874c7d5",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/iThumb_Ryan%3Cgithub-benzbrake@woai.ru%3E.zip"
+    }
+  },
+  {
     "name": "kiana_jrotty.zip",
     "path": "ZIP_CDN/kiana_jrotty.zip",
     "sha": "5c3baa61a3d9a028e7001bd3543df73db4885da3",
