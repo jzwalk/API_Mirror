@@ -7360,22 +7360,6 @@
     }
   },
   {
-    "name": "UEditor.zip",
-    "path": "ZIP_CDN/UEditor.zip",
-    "sha": "6bf2532cc07b3ddfddd7cc1526bbbb32709b3742",
-    "size": 1494053,
-    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/UEditor.zip?ref=master",
-    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/UEditor.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/6bf2532cc07b3ddfddd7cc1526bbbb32709b3742",
-    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/UEditor.zip",
-    "type": "file",
-    "_links": {
-      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/UEditor.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/6bf2532cc07b3ddfddd7cc1526bbbb32709b3742",
-      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/UEditor.zip"
-    }
-  },
-  {
     "name": "UEditor_系统笔记.zip",
     "path": "ZIP_CDN/UEditor_系统笔记.zip",
     "sha": "c19c442d23bbb2872d76286abeb92827f9ed9090",
@@ -7901,22 +7885,6 @@
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/WechatFans_%E4%BA%8C%E5%91%86.zip?ref=master",
       "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/91546164c4c8cda62a69f4ea5592f8e724e13b54",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/WechatFans_%E4%BA%8C%E5%91%86.zip"
-    }
-  },
-  {
-    "name": "WechatShare.zip",
-    "path": "ZIP_CDN/WechatShare.zip",
-    "sha": "61560151b24b2e70f7ea7bf05a5da72e13bbabad",
-    "size": 153942,
-    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/WechatShare.zip?ref=master",
-    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/WechatShare.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/61560151b24b2e70f7ea7bf05a5da72e13bbabad",
-    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/WechatShare.zip",
-    "type": "file",
-    "_links": {
-      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/WechatShare.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/61560151b24b2e70f7ea7bf05a5da72e13bbabad",
-      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/WechatShare.zip"
     }
   },
   {
