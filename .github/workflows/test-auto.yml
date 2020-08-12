@@ -36,7 +36,7 @@ jobs:
           path: /home/runner/work/API_Mirror/TMP/updates.log
 
       - run: |
-          ls /home/runner/work/API_Mirror/TMP/NEW
+          find /home/runner/work/API_Mirror/TMP/NEW -type f -name "[d-gD-G]*"
 
       - name: "检测压缩文件"
         id: match-zips
