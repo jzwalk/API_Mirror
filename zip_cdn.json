@@ -640,6 +640,22 @@
     }
   },
   {
+    "name": "AutoIndent_cbb.zip",
+    "path": "ZIP_CDN/AutoIndent_cbb.zip",
+    "sha": "1bcedfd2dbfcd135626b86e53dcf374c21110e72",
+    "size": 33105,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/AutoIndent_cbb.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/AutoIndent_cbb.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/1bcedfd2dbfcd135626b86e53dcf374c21110e72",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/AutoIndent_cbb.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/AutoIndent_cbb.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/1bcedfd2dbfcd135626b86e53dcf374c21110e72",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/AutoIndent_cbb.zip"
+    }
+  },
+  {
     "name": "AutoKaTeX.zip",
     "path": "ZIP_CDN/AutoKaTeX.zip",
     "sha": "fb82f1cf21f8cd300d86af1c323674891868fe26",
