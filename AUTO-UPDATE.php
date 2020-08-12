@@ -55,7 +55,7 @@
 		mkdir($tmpDir);
 	}
 	if (!is_dir($tmpNew)) {
-		mkdir($tmpNew); //(用于Action检测其中所有重新打包文件发布至标签)
+		mkdir($tmpNew); //(用于Action检测其中重新打包文件发布至标签)
 	}
 
 	//分割文档遍历单行
@@ -175,7 +175,7 @@
 											preg_match_all('/(?<=)[^\|]+/',$lines[$j],$reMetas);
 											preg_match('/(?<=\[)[^\]]+/',$reMetas['0']['0'],$reName);
 											//重名继续增加下划线
-											if ($name['0']==$reName['0']) {
+											if (!strcasecmp($reName['0'],$name['0'])) {
 												$newZip .= '_';
 											}
 										}
