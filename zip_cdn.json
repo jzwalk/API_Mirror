@@ -320,22 +320,6 @@
     }
   },
   {
-    "name": "AliOssForTypecho_droomo..zip",
-    "path": "ZIP_CDN/AliOssForTypecho_droomo..zip",
-    "sha": "fe955f1345446688f6afaff3952461fa37ee509f",
-    "size": 188492,
-    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/AliOssForTypecho_droomo..zip?ref=master",
-    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/AliOssForTypecho_droomo..zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/fe955f1345446688f6afaff3952461fa37ee509f",
-    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/AliOssForTypecho_droomo..zip",
-    "type": "file",
-    "_links": {
-      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/AliOssForTypecho_droomo..zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/fe955f1345446688f6afaff3952461fa37ee509f",
-      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/AliOssForTypecho_droomo..zip"
-    }
-  },
-  {
     "name": "AliUpload_loftor.zip",
     "path": "ZIP_CDN/AliUpload_loftor.zip",
     "sha": "3256c8c975d5925f232acc28719abdf5fdac0058",
