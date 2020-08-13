@@ -1,6 +1,3 @@
-# 手动检测某个已登记GitHub插件版本并同步更新zip
-# 运行方法：点击顶部"Actions" - 左侧选本脚本名 - 右上可见"Run workflow"
-
 name: "手动更新单GitHub插件"
 
 on: 
