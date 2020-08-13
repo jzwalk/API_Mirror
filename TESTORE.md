@@ -36,5 +36,5 @@
 
 名称 | 简介 | 版本 | 作者 | zip包
 ---- | ----: | :---: | ----: | :----:
-[AliOssForTypecho](https://github.com/droomo/AliOssForTypecho) | 新OSS云储存插件(本地备份+样式) | 1.1.1 | [droomo.](https://github.com/droomo) | [下载](https://github.com/droomo/AliOssForTypecho/archive/master.zip)
+[AliOssForTypecho](https://github.com/droomo/AliOssForTypecho) | 新OSS云储存插件(本地备份+样式) | 1.1.8 | [droomo.](https://github.com/droomo) | [下载](https://github.com/droomo/AliOssForTypecho/archive/master.zip)
 [UserAgent](https://github.com/hakula139/UserAgent-for-Typecho) | 图标[UserAgent](https://github.com/ennnnny/typecho/tree/master/UserAgent)后续增强更新插件 | 0.2.3 | [Hakula](https://github.com/hakula139) | [下载](https://github.com/hakula139/UserAgent-for-Typecho/archive/master.zip)
