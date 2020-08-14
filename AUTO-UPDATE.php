@@ -111,10 +111,14 @@
 					}
 
 					//对比文件版本号更新
-					$infos = call_user_func('parseInfo',($detect ? $pluginFile.'Plugin.php' : $pluginFile));
+					$pluginFile = $detect ? $pluginFile.'Plugin.php' : $pluginFile;
+					$infos = call_user_func('parseInfo',$pluginFile);
 					if (!$infos['version']) {
-						$infos = call_user_func('parseInfo',($detect ? $pluginFile.$name['0'].'.php' : $pluginFile));
+						$pluginFile = $detect ? $pluginFile.$name['0'].'.php' : $pluginFile;
+						$infos = call_user_func('parseInfo',$pluginFile);
 					}
+$s = print_r($pluginFile,true);
+file_put_contents('log.txt',$s);
 					if ($infos['version']) {
 						$infos['version'] = trim(strip_tags($infos['version']));
 						$version = stripos($metas['0']['2'],'v')===0 ? trim(substr($metas['0']['2'],1)) : trim($metas['0']['2']);
