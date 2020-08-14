@@ -194,16 +194,16 @@
   {
     "name": "Aidnabo_权那他.zip",
     "path": "ZIP_CDN/Aidnabo_权那他.zip",
-    "sha": "2f3199616260ce4f63957fd26605add51243fbe3",
-    "size": 12146,
+    "sha": "07f8320c68e9a5cddcc1dc72adf843e96dba90df",
+    "size": 13575,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Aidnabo_%E6%9D%83%E9%82%A3%E4%BB%96.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Aidnabo_%E6%9D%83%E9%82%A3%E4%BB%96.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/2f3199616260ce4f63957fd26605add51243fbe3",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/07f8320c68e9a5cddcc1dc72adf843e96dba90df",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/Aidnabo_%E6%9D%83%E9%82%A3%E4%BB%96.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Aidnabo_%E6%9D%83%E9%82%A3%E4%BB%96.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/2f3199616260ce4f63957fd26605add51243fbe3",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/07f8320c68e9a5cddcc1dc72adf843e96dba90df",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Aidnabo_%E6%9D%83%E9%82%A3%E4%BB%96.zip"
     }
   },
@@ -304,19 +304,19 @@
     }
   },
   {
-    "name": "AliOssForTypecho.zip",
-    "path": "ZIP_CDN/AliOssForTypecho.zip",
-    "sha": "8647ba7421a6b729046c7b245a3c1f6f23b89d23",
-    "size": 187037,
-    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/AliOssForTypecho.zip?ref=master",
-    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/AliOssForTypecho.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/8647ba7421a6b729046c7b245a3c1f6f23b89d23",
-    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/AliOssForTypecho.zip",
+    "name": "AliOssForTypecho_droomo..zip",
+    "path": "ZIP_CDN/AliOssForTypecho_droomo..zip",
+    "sha": "fe955f1345446688f6afaff3952461fa37ee509f",
+    "size": 188492,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/AliOssForTypecho_droomo..zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/AliOssForTypecho_droomo..zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/fe955f1345446688f6afaff3952461fa37ee509f",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/AliOssForTypecho_droomo..zip",
     "type": "file",
     "_links": {
-      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/AliOssForTypecho.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/8647ba7421a6b729046c7b245a3c1f6f23b89d23",
-      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/AliOssForTypecho.zip"
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/AliOssForTypecho_droomo..zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/fe955f1345446688f6afaff3952461fa37ee509f",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/AliOssForTypecho_droomo..zip"
     }
   },
   {
