@@ -95,8 +95,6 @@
 									break;
 								}
 							}
-$s = print_r($path,true);
-file_put_contents('log.txt',$s);
 							$pluginFile = $path ? $url.'/raw/master/'.$path : $url.'/raw/master/'.($sub ? $paths['1'].'/' : '').$name['0'].'.php';
 						} else {
 							$logs .= 'Error: "'.$url.'" not found!'.PHP_EOL;
