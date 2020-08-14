@@ -106,11 +106,11 @@
 						$url = $paths['0'];
 					}
 
-$s = print_r($pluginFile,true);
-file_put_contents('log.txt',$s);
 					//对比文件版本号更新
 					if ($pluginFile) {
 						$infos = call_user_func('parseInfo',$pluginFile);
+$s = print_r($infos['version'],true);
+file_put_contents('log.txt',$s);
 						if ($infos['version']) {
 							$infos['version'] = trim(strip_tags($infos['version']));
 							$version = stripos($metas['0']['2'],'v')===0 ? trim(substr($metas['0']['2'],1)) : trim($metas['0']['2']);
