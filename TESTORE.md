@@ -37,9 +37,9 @@
 名称 | 简介 | 版本 | 作者 | zip包
 ---- | ----: | :---: | ----: | :----:
 [Link2own](https://github.com/SnowWarri0r/Typecho-ShortLinks-Plugin) | [Handsome](https://www.ihewro.com/archives/489)用内链跳转至外链插件 | 0.1 | [SnowWarri0r ihesro](https://github.com/SnowWarri0r) | [下载](https://github.com/SnowWarri0r/Typecho-ShortLinks-Plugin/archive/Main.zip)
-[QPlayer2](https://github.com/moeshin/QPlayer2-Typecho) | 新网易云QPlayer音乐播放器插件 | 2.0.6 | [MoeShin](https://github.com/moeshin) | [下载](https://github.com/moeshin/QPlayer2-Typecho/archive/master.zip)
+[QPlayer2](https://github.com/moeshin/QPlayer2-Typecho) | 新网易云QPlayer音乐播放器插件 | 2.0.7 | [MoeShin](https://github.com/moeshin) | [下载](https://github.com/moeshin/QPlayer2-Typecho/archive/master.zip)
 [QPlayer](https://github.com/Jrohy/QPlayer-Typecho-Plugin) | 网易云解析悬浮式音乐播放器插件 | 1.3.4.2 | [Jrohy](https://github.com/Jrohy) | [不可用](https://github.com/Jrohy/QPlayer-Typecho-Plugin/archive/master.zip)
-[QRCode](https://github.com/aneasystone/typecho-qrcode) | 文章末尾自动生成网址二维码插件 | 1.0.0 | [aneasystone](https://github.com/aneasystone) | [下载](https://github.com/aneasystone/typecho-qrcode/archive/master.zip)
+[QRCode](https://github.com/aneasystone/typecho-qrcode) | 文章末尾自动生成网址二维码插件 | 1.1 | [aneasystone](https://github.com/aneasystone) | [下载](https://github.com/aneasystone/typecho-qrcode/archive/master.zip)
 [QiniuPostUploader](https://github.com/trickyEdecay/qiniuupload-for-typecho) | 上传文件到七牛云插件(独立功能) | 0.1 | [trickyedecay](https://github.com/trickyEdecay) | [下载](https://github.com/trickyEdecay/qiniuupload-for-typecho/archive/master.zip)
 [QiniuRCS](https://github.com/bsed/QiniuRCS) | Typecho附件使用七牛云存储插件 | 0.1 | [AtaLuZiK](https://github.com/bsed) | [下载](https://github.com/bsed/QiniuRCS/archive/master.zip)
 [RandomDescription](https://github.com/phpgao/RandomDescription) | Typecho定时随机改站点描述插件 | 1.0 | [老高@PHPer](https://github.com/phpgao) | [下载](https://github.com/phpgao/RandomDescription/archive/master.zip)
