@@ -106,6 +106,8 @@
 						$url = $paths['0'];
 					}
 
+$s = print_r($pluginFile,true);
+file_put_contents('log.txt',$s);
 					//对比文件版本号更新
 					if ($pluginFile) {
 						$infos = call_user_func('parseInfo',$pluginFile);
