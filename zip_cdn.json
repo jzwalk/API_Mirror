@@ -2210,16 +2210,16 @@
   {
     "name": "Dynamics_权那他.zip",
     "path": "ZIP_CDN/Dynamics_权那他.zip",
-    "sha": "6eee04c3eb9a708cf1a82c755ad0e3cbd2498527",
-    "size": 24892,
+    "sha": "2f986c1ef8c74947037a446a0c191944e1390303",
+    "size": 45239,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Dynamics_%E6%9D%83%E9%82%A3%E4%BB%96.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Dynamics_%E6%9D%83%E9%82%A3%E4%BB%96.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/6eee04c3eb9a708cf1a82c755ad0e3cbd2498527",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/2f986c1ef8c74947037a446a0c191944e1390303",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/Dynamics_%E6%9D%83%E9%82%A3%E4%BB%96.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Dynamics_%E6%9D%83%E9%82%A3%E4%BB%96.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/6eee04c3eb9a708cf1a82c755ad0e3cbd2498527",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/2f986c1ef8c74947037a446a0c191944e1390303",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Dynamics_%E6%9D%83%E9%82%A3%E4%BB%96.zip"
     }
   },
