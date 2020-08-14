@@ -86,6 +86,7 @@
 						}
 						$api = @file_get_contents(str_replace('github.com','api.github.com/repos',$url).'/git/trees/master?recursive=1',0,
 							stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP')))));
+						$pluginFile = '';
 						if ($api) {
 							$datas = json_decode($api,true);
 							foreach ($datas['tree'] as $tree) {
