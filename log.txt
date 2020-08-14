@@ -1,1 +1,1 @@
-https://github.com/1628972070/typecho/raw/master/Kefu/Plugin.php
+https://github.com/MliKiowa/GitStatic/raw/master/Plugin.php
