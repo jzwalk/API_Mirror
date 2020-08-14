@@ -87,7 +87,7 @@
 						$api = @file_get_contents(str_replace('github.com','api.github.com/repos',$url).'/git/trees/master?recursive=1',0,
 							stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP')))));
 						$pluginFile = '';
-$s = print_r($api,true);
+$s = print_r(str_replace('github.com','api.github.com/repos',$url).'/git/trees/master?recursive=1',true);
 file_put_contents('log.txt',$s);
 						if ($api) {
 							$datas = json_decode($api,true);
