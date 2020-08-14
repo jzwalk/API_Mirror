@@ -1,0 +1,1 @@
+https://github.com/MliKiowa/GitStatic/raw/master/Plugin.php
