@@ -1,0 +1,1 @@
+https://github.com/SnowWarri0r/Typecho-ShortLinks-Plugin/raw/master/Plugin.phpLink2own.php
