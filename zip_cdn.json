@@ -7568,6 +7568,22 @@
     }
   },
   {
+    "name": "UserAgent_Hakula.zip",
+    "path": "ZIP_CDN/UserAgent_Hakula.zip",
+    "sha": "5ecf50e38d790ab2878b29e8809e81b2b24f9d9b",
+    "size": 112176,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/UserAgent_Hakula.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/UserAgent_Hakula.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/5ecf50e38d790ab2878b29e8809e81b2b24f9d9b",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/UserAgent_Hakula.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/UserAgent_Hakula.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/5ecf50e38d790ab2878b29e8809e81b2b24f9d9b",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/UserAgent_Hakula.zip"
+    }
+  },
+  {
     "name": "UserAgent_Unique.zip",
     "path": "ZIP_CDN/UserAgent_Unique.zip",
     "sha": "ecf4ee102d4070b1a821f25a51d0d62ee0701154",
