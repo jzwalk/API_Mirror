@@ -66,10 +66,10 @@
 		if ($line<38) {
 			$desciptions[] = $column;
 		} else {
-			preg_match_all('/(?<=\()[^\)]+/',$column,$links);
-			preg_match_all('/(?<=)[^\|]+/',$column,$metas);
 
 			if ($column) {
+				preg_match_all('/(?<=\()[^\)]+/',$column,$links);
+				preg_match_all('/(?<=)[^\|]+/',$column,$metas);
 				$url = $links['0']['0'];
 				//仅处理GitHub仓库
 				if (empty($argv['1']) ? strpos($url,'github.com') : (strpos($argv['1'],'github.com') && $argv['1']==$url)) { //兼容手动参数
@@ -94,6 +94,8 @@
 									break;
 								}
 							}
+$s = print_r($path,true);
+file_put_contents('log.txt',$s);
 							$pluginFile = $path ? $url.'/raw/master/'.$path : $url.'/raw/master/'.($sub ? $paths['1'].'/' : '').$name['0'].'.php';
 						} else {
 							$logs .= 'Error: "'.$url.'" not found!'.PHP_EOL;
