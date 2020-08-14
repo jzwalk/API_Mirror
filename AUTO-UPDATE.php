@@ -111,8 +111,7 @@
 					}
 
 					//对比文件版本号更新
-					$pluginFile = $detect ? $pluginFile.'Plugin.php' : $pluginFile;
-					$infos = call_user_func('parseInfo',$pluginFile);
+					$infos = call_user_func('parseInfo',($detect ? $pluginFile.'Plugin.php' : $pluginFile));
 					if (!$infos['version']) {
 						$pluginFile = $detect ? $pluginFile.$name['0'].'.php' : $pluginFile;
 						$infos = call_user_func('parseInfo',$pluginFile);
