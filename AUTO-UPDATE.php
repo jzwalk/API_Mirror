@@ -86,6 +86,7 @@
 						}
 						$api = @file_get_contents(str_replace('github.com','api.github.com/repos',$url).'/git/trees/master?recursive=1',0,
 							stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP')))));
+						$pluginFile = '';
 						if ($api) {
 							$datas = json_decode($api,true);
 							foreach ($datas['tree'] as $tree) {
@@ -109,6 +110,7 @@
 					if ($pluginFile) {
 						$infos = call_user_func('parseInfo',$pluginFile);
 						if ($infos['version']) {
+							$infos['version'] = trim(strip_tags($infos['version']));
 							$version = stripos($metas['0']['2'],'v')===0 ? trim(substr($metas['0']['2'],1)) : trim($metas['0']['2']);
 							if ($infos['version']>$version || !empty($argv['1'])) { //或手动强制更新
 								++$update;
