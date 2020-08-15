@@ -75,24 +75,28 @@
 				//仅处理GitHub仓库
 				if (empty($argv['1']) ? strpos($url,'github.com') : (strpos($argv['1'],'github.com') && $argv['1']==$url)) { //兼容手动参数
 					++$all;
+					preg_match('/(?<=\[)[^\]]+/',$metas['0']['0'],$name);
 
 					//获取插件主文件地址
-					preg_match('/(?<=\[)[^\]]+/',$metas['0']['0'],$name);
-					$doc = strpos($url,'/blob/master/') && strpos($url,'.php');
+					$doc = (strpos($url,'/blob/master/') || strpos($url,'/blob/main/')) && strpos($url,'.php');
 					if (!$doc) {
-						$sub = strpos($url,'/tree/master/');
+						$main = strpos($url,'/tree/main/');
+						$sub = strpos($url,'/tree/master/') || $main;
 						if ($sub) {
-							$paths = explode('/tree/master/',$url);
+							$paths = explode(($main ? '/tree/main/' : '/tree/master/'),$url);
 							$url = $paths['0'];
 						}
 						$api = @file_get_contents(str_replace('github.com','api.github.com/repos',$url).'/git/trees/master?recursive=1',0,
 							stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP')))));
 						if (!$api) {
-							$api = @file_get_contents(str_replace('github.com','api.github.com/repos',$url).'/git/trees/Main?recursive=1',0,
+							$api = @file_get_contents(str_replace('github.com','api.github.com/repos',$url).'/git/trees/main?recursive=1',0,
 								stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP')))));
+							if ($api) {
+								$main = true;
+							}
 						}
 						$detect = true;
-						$pluginFile = $url.'/raw/master/'.($sub ? $paths['1'].'/' : '');
+						$pluginFile = $url.($main ? '/raw/main/' : '/raw/master/').($sub ? $paths['1'].'/' : '');
 						if ($api) {
 							$datas = json_decode($api,true);
 							foreach ($datas['tree'] as $tree) {
@@ -104,20 +108,27 @@
 							}
 							if ($path) {
 								$detect = false;
-								$pluginFile = $url.'/raw/master/'.$path;
+								$pluginFile = $url.($main ? '/raw/main/' : '/raw/master/').$path;
 							}
 						}
 					} else {
 						$detect = false;
 						$pluginFile = str_replace('blob','raw',$url);
-						$paths = explode('/raw/master/',$pluginFile);
+						$paths = explode((strpos($url,'/raw/main/') ? '/raw/main/' : '/raw/master/'),$pluginFile);
 						$url = $paths['0'];
 					}
 
 					//对比文件版本号更新
 					$infos = call_user_func('parseInfo',($detect ? $pluginFile.'Plugin.php' : $pluginFile));
-					if (!$infos['version']) {
-						$infos = call_user_func('parseInfo',($detect ? $pluginFile.$name['0'].'.php' : $pluginFile));
+					if (!$infos['version'] && $detect) {
+						$infos = call_user_func('parseInfo',$pluginFile.$name['0'].'.php');
+						if (!$infos['version'] && !main) {
+							$pluginFile = $url.'/raw/main/'.($sub ? $paths['1'].'/' : '')
+							$infos = call_user_func('parseInfo',$pluginFile.'Plugin.php');
+							if (!$infos['version']) {
+								$infos = call_user_func('parseInfo',$pluginFile.$name['0'].'.php');
+							}
+						}
 					}
 					if ($infos['version']) {
 						$infos['version'] = trim(strip_tags($infos['version']));
