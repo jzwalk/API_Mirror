@@ -94,7 +94,7 @@
 							if ($api) {
 								$main = true;
 							}
-$s = print_r($api,true);
+$s = print_r(str_replace('github.com','api.github.com/repos',$url).'/git/trees/main?recursive=1',true);
 file_put_contents('log.txt',$s);
 						}
 						$detect = true;
