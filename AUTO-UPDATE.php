@@ -115,7 +115,7 @@
 					if (!$infos['version']) {
 						$infos = call_user_func('parseInfo',($detect ? $pluginFile.$name['0'].'.php' : $pluginFile));
 					}
-$s = print_r($pluginFile,true);
+$s = print_r($api,true);
 file_put_contents('log.txt',$s);
 					if ($infos['version']) {
 						$infos['version'] = trim(strip_tags($infos['version']));
