@@ -65,7 +65,7 @@
 	$lines = explode(PHP_EOL,$source);
 	$count = count($lines);
 	foreach ($lines as $line=>$column) {
-		if ($line<=39) {
+		if ($line<=37) {
 			$desciptions[] = $column;
 		} else {
 
@@ -263,6 +263,8 @@
 		}
 	}
 	sort($tables);
+$s = print_r($tables,true);
+file_put_contents('log.txt',$s);
 
 	//重组文档并生成日志
 	file_put_contents('TESTORE.md',implode(PHP_EOL,$desciptions).PHP_EOL.implode(PHP_EOL,$tables));
