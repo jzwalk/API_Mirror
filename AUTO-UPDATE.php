@@ -94,6 +94,8 @@
 							if ($api) {
 								$main = true;
 							}
+$s = print_r($api,true);
+file_put_contents('log.txt',$s);
 						}
 						$detect = true;
 						$pluginFile = $url.($main ? '/raw/main/' : '/raw/master/').($sub ? $paths['1'].'/' : '');
