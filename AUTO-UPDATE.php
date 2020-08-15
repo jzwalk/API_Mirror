@@ -89,6 +89,8 @@
 							stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP')))));
 						$detect = true;
 						$pluginFile = $url.'/raw/Main/'.($sub ? $paths['1'].'/' : '');
+$s = print_r(str_replace('github.com','api.github.com/repos',$url).'/git/trees/Main?recursive=1',true);
+file_put_contents('log.txt',$s);
 						if ($api) {
 							$datas = json_decode($api,true);
 							foreach ($datas['tree'] as $tree) {
@@ -115,8 +117,6 @@
 					if (!$infos['version']) {
 						$infos = call_user_func('parseInfo',($detect ? $pluginFile.$name['0'].'.php' : $pluginFile));
 					}
-$s = print_r($api,true);
-file_put_contents('log.txt',$s);
 					if ($infos['version']) {
 						$infos['version'] = trim(strip_tags($infos['version']));
 						$version = stripos($metas['0']['2'],'v')===0 ? trim(substr($metas['0']['2'],1)) : trim($metas['0']['2']);
