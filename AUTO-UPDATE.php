@@ -73,7 +73,7 @@
 				preg_match_all('/(?<=)[^\|]+/',$column,$metas);
 				$url = $links['0']['0'];
 				//仅处理GitHub仓库
-				if (empty($argv['1']) ? strpos($url,'github.com') : (strpos($argv['1'],'github.com') && $argv['1']==$url)) { //兼容手动参数
+				if (empty($argv['2']) ? strpos($url,'github.com') : (strpos($argv['2'],'github.com') && $argv['2']==$url)) { //兼容手动参数
 					++$all;
 					preg_match('/(?<=\[)[^\]]+/',$metas['0']['0'],$name);
 
@@ -86,16 +86,14 @@
 							$paths = explode(($main ? '/tree/main/' : '/tree/master/'),$url);
 							$url = $paths['0'];
 						}
-						$api = @file_get_contents(str_replace('github.com','api.github.com/repos',$url).'/git/trees/master?recursive=1',0,
+						$api = @file_get_contents(str_replace('github.com','api.github.com/repos',$url).'/git/trees/master?recursive=1&access_token='.$argv['1'],0,
 							stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP')))));
 						if (!$api) {
-							$api = @file_get_contents(str_replace('github.com','api.github.com/repos',$url).'/git/trees/main?recursive=1',0,
+							$api = @file_get_contents(str_replace('github.com','api.github.com/repos',$url).'/git/trees/main?recursive=1&access_token='.$argv['1'],0,
 								stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP')))));
 							if ($api) {
 								$main = true;
 							}
-$s = print_r(str_replace('github.com','api.github.com/repos',$url).'/git/trees/main?recursive=1',true);
-file_put_contents('log.txt',$s);
 						}
 						$detect = true;
 						$pluginFile = $url.($main ? '/raw/main/' : '/raw/master/').($sub ? $paths['1'].'/' : '');
@@ -135,7 +133,7 @@ file_put_contents('log.txt',$s);
 					if ($infos['version']) {
 						$infos['version'] = trim(strip_tags($infos['version']));
 						$version = stripos($metas['0']['2'],'v')===0 ? trim(substr($metas['0']['2'],1)) : trim($metas['0']['2']);
-						if ($infos['version']>$version || !empty($argv['1'])) { //或手动强制更新
+						if ($infos['version']>$version || !empty($argv['2'])) { //或手动强制更新
 							++$update;
 							$zip = end($links['0']);
 							//提取多作者名

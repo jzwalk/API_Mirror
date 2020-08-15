@@ -1,1 +1,0 @@
-https://api.github.com/repos/SnowWarri0r/Typecho-ShortLinks-Plugin/git/trees/main?recursive=1
