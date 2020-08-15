@@ -65,7 +65,7 @@
 	$lines = explode(PHP_EOL,$source);
 	$count = count($lines);
 	foreach ($lines as $line=>$column) {
-		if ($line<38) {
+		if ($line<=38) {
 			$desciptions[] = $column;
 		} else {
 
@@ -265,7 +265,7 @@
 	sort($tables);
 
 	//重组文档并生成日志
-	file_put_contents('TESTORE.md',implode(PHP_EOL,$desciptions).PHP_EOL.implode(PHP_EOL,$tables));
+	file_put_contents('TESTORE.md',implode(PHP_EOL,$desciptions).PHP_EOL.implode(PHP_EOL,$finished).PHP_EOL.implode(PHP_EOL,$tables));
 	file_put_contents($tmpDir.'/updates.log',$logs.
 		'SCANED: '.$all.PHP_EOL.
 		'NEED UPDATE: '.$update.PHP_EOL.
