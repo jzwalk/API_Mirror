@@ -35,8 +35,7 @@
 ```
 
 名称 | 简介 | 版本 | 作者 | zip包
----- | ----: | :---: | ----: | :----:
-[APlayerAtBottom](https://github.com/SatoSouta/Typecho-plugin-APlayerAtBottom) | 网易云解析吸底式音乐播放器插件 | 1.1.1 | [小太](https://github.com/SatoSouta) | [下载](https://github.com/SatoSouta/Typecho-plugin-APlayerAtBottom/archive/master.zip)
+---- | ----: | :---: | ----: | :----:[APlayerAtBottom](https://github.com/SatoSouta/Typecho-plugin-APlayerAtBottom) | 网易云解析吸底式音乐播放器插件 | 1.1.1 | [小太](https://github.com/SatoSouta) | [下载](https://github.com/SatoSouta/Typecho-plugin-APlayerAtBottom/archive/master.zip)
 [APlayer](https://github.com/zgq354/APlayer-Typecho-Plugin) | 网易云解析Html5音乐播放器插件 | 1.4.11 | [ZGQ](https://github.com/zgq354) | [下载](https://github.com/zgq354/APlayer-Typecho-Plugin/archive/master.zip)
 [Acc](https://github.com/qt06/typecho-plugin-accessibility) | Typecho无障碍读屏标记修正插件 | 1.0.0 | [杨永全](https://github.com/qt06) | [下载](https://github.com/qt06/typecho-plugin-accessibility/archive/master.zip)
 [AccessBmob](https://github.com/kraity/typecho-accessBmob) | Bmob后端云数据库版[Access](https://github.com/kokororin/typecho-plugin-Access)插件 | 1.2 | [权那他](https://github.com/kraity) | [下载](https://github.com/kraity/typecho-accessBmob/archive/master.zip)
@@ -312,8 +311,7 @@
 [SecCode](https://521-wf.com/archives/36.html) | 功能全面支持定制绚丽验证码插件 | 1.2.1 | [WiFeng](https://github.com/WiFeng) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-S_to_Z/SecCode.zip)
 [SequenceDiagram](http://forum.typecho.org/viewtopic.php?f=6&t=10873) | Markdown语法seq生成时序图插件 | 1.2.0 | [ZhangZijing(Venteto)](https://github.com/pluveto) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-S_to_Z/SequenceDiagram.zip)
 [SeriesIndex](https://github.com/slipperstree/SeriesIndex) | 按slug序号生成系列文章目录树插件 | 0.1.0 | [mango](https://github.com/slipperstree) | [下载](https://github.com/slipperstree/SeriesIndex/archive/master.zip)
-[ServerInformation](https://networkos.club/archives/typecho_ServerInformation.html) | 后台查看服务器流量等信息图插件 | 1.0.0 | [不明](https://networkos.club) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-S_to_Z/ServerInformation.zip)
-[ServerStatus](https://wfblog.net/archives/serverstatus_plugin.html) | Typecho前台服务器状态展示插件 | 2.0.0 | [Weifeng](https://github.com/acewfdy) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-S_to_Z/ServerStatus.zip)
+[ServerInformation](https://networkos.club/archives/typecho_ServerInformation.html) | 后台查看服务器流量等信息图插件 | 1.0.0 | [不明](https://networkos.club) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-S_to_Z/ServerInformation.zip)[ServerStatus](https://wfblog.net/archives/serverstatus_plugin.html) | Typecho前台服务器状态展示插件 | 2.0.0 | [Weifeng](https://github.com/acewfdy) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-S_to_Z/ServerStatus.zip)
 [SetCategoryPwd](https://github.com/coder-wu/typecho-pwd-plugin) | Typecho批量加密分类下文章插件 | 1.0.0 beta | [coderwu](https://github.com/coder-wu) | [下载](https://github.com/coder-wu/typecho-pwd-plugin/archive/master.zip)
 [ShenJianShou](https://www.wamuban.com/plugin/2097.html) | 神箭手采集器官方版内容发布插件 | 4.2.4 | [神箭手云](http://www.shenjian.io) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-S_to_Z/ShenJianShou.zip)
 [Shields](https://github.com/journey-ad/Shields-Typecho-Plugin) | 自解析[Shields.io](https://shields.io)版GitHub按钮插件 | 1.0.0 | [journey.ad](https://github.com/journey-ad) | [下载](https://github.com/journey-ad/Shields-Typecho-Plugin/archive/master.zip)
@@ -358,7 +356,7 @@
 [TePostViews](https://inwao.com/PostViews.html) | 按点击或评论数输出热门文章插件 | 1.0.0 | [inwao world](https://inwao.com),[绛木子](https://github.com/jiangmuzi) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-S_to_Z/TePostViews.zip)
 [TeStat](https://github.com/jiangmuzi/TeStat) | 文章浏览/点赞/运行数据统计插件 | 1.1 | [绛木子](https://github.com/jiangmuzi) | [下载](https://github.com/jiangmuzi/TeStat/archive/master.zip)
 [TeThumbnail](https://github.com/jiangmuzi/TeThumbnail) | 文章模板输出自动生成缩略图插件 | 1.0.0 | [绛木子](https://github.com/jiangmuzi) | [下载](https://github.com/jiangmuzi/TeThumbnail/archive/master.zip)
-[TeePay](https://github.com/mhcyong/TeePay) | 自媒体付费阅读插件(免费基础版) | 1.5.2 | [胖蒜网](https://github.com/mhcyong) | [下载](https://github.com/mhcyong/TeePay/archive/master.zip)
+[TeePay](https://github.com/mhcyong/TeePay) | 自媒体付费阅读插件(免费基础版) | 1.5.4 | [胖蒜网](https://github.com/mhcyong) | [下载](https://github.com/mhcyong/TeePay/archive/master.zip)
 [TextEditor](https://plugins.typecho.me/plugins/text-editor.html) | 基于[MooTools](https://mootools.net)Html文章编辑器插件 | 0.3.3 | [vfasky](http://vfasky.com) | [不可用](https://github.com/typecho-fans/plugins/releases/download/plugins-S_to_Z/TextEditor.zip)
 [Textends](https://github.com/jiangmuzi/Textends) | 常用模版输出效果多功能扩展插件 | 1.0.0 | [绛木子](https://github.com/jiangmuzi) | [下载](https://github.com/jiangmuzi/Textends/archive/master.zip)
 [Textile2](https://github.com/typecho/plugins/tree/master/Textile2) | [MT](https://www.movabletype.org)式Textile2写作语法解析器插件 | 2.1.1 | Jim Riggs | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-S_to_Z/Textile2.zip)
@@ -411,8 +409,7 @@
 [WeBlog](https://github.com/thinkmoon/WeBlog) | WeBlog微信QQ小程序搭建插件 | 0.1.9 | [醉月思](https://github.com/thinkmoon) | [特殊](https://github.com/thinkmoon/WeBlog/archive/master.zip)
 [WeChatHelper](https://github.com/ledccn/WeChatHelper) | 修改版微信助手插件(需Redis缓存) | 2.3.0 | [大卫科技Blog](https://github.com/ledccn) | [下载](https://github.com/ledccn/WeChatHelper/archive/master.zip)
 [WeChatNotice](https://github.com/zgcwkjOpenProject/Typecho_Plugins_WeChatNotice) | 文章评论推送自建微信公众号插件 | 1.0.0 | [zgcwkj](https://github.com/zgcwkjOpenProject) | [下载](https://github.com/zgcwkjOpenProject/Typecho_Plugins_WeChatNotice/archive/master.zip)
-[WeMedia](https://github.com/muzishanshi/WeMediaForTypecho) | Typecho积分商城版付费阅读插件 | 1.0.16 | [二呆](https://github.com/muzishanshi) | [下载](https://github.com/muzishanshi/WeMediaForTypecho/archive/master.zip)
-[WeTypecho](https://github.com/MingliangLu/WeTypecho) | 多功能Typecho微信小程序版插件 | 0.1 | [成都第七帅](https://github.com/MingliangLu) | [特殊](https://github.com/MingliangLu/WeTypecho/archive/master.zip)
+[WeMedia](https://github.com/muzishanshi/WeMediaForTypecho) | Typecho积分商城版付费阅读插件 | 1.0.16 | [二呆](https://github.com/muzishanshi) | [下载](https://github.com/muzishanshi/WeMediaForTypecho/archive/master.zip)[WeTypecho](https://github.com/MingliangLu/WeTypecho) | 多功能Typecho微信小程序版插件 | 0.1 | [成都第七帅](https://github.com/MingliangLu) | [特殊](https://github.com/MingliangLu/WeTypecho/archive/master.zip)
 [WebTotal](https://github.com/ss7247/Typecon__WebTotal) | 自增统计及输出网站浏览次数插件 | 1.0.0 | [astar](https://github.com/ss7247) | [下载](https://github.com/ss7247/Typecon__WebTotal/archive/master.zip)
 [WechatFans](https://github.com/muzishanshi/WechatFans) | 文章通过微信公众号验证可读插件 | 1.0.3 | [二呆](https://github.com/muzishanshi) | [下载](https://github.com/muzishanshi/WechatFans/archive/master.zip)
 [WechatShare](https://github.com/frederickjoe/Typecho_WechatShare_Plugin) | 缓存版微信分享缩略图与简介插件 | 1.0.0 | [huangfeiqiao](https://github.com/frederickjoe) | [下载](https://github.com/frederickjoe/Typecho_WechatShare_Plugin/archive/master.zip)
@@ -454,3 +451,4 @@
 [waterMark](https://github.com/internelp/waterMark) | 图片自动添加Gif/Png格式水印插件 | 1.0.1 | [应用侠](https://github.com/internelp) | [下载](https://github.com/internelp/waterMark/archive/master.zip)
 [ymplayer](https://github.com/kokororin/typecho-plugin-ymplayer) | Html5可伸缩海报音乐播放器插件 | 0.7 | [kokororin](https://github.com/kokororin) | [特殊](https://github.com/kokororin/typecho-plugin-ymplayer/archive/master.zip)
 [zbgray](http://forum.typecho.org/viewtopic.php?f=6&t=11271) | Typecho简易祭日用整站变灰插件 | 1.0.0 | jyzb02 | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-S_to_Z/zbgray.zip)
+
