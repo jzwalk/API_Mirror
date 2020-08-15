@@ -264,7 +264,7 @@ $s = print_r($tables,true);
 file_put_contents('log.txt',$s);
 
 	//重组文档并生成日志
-	file_put_contents('TESTORE.md',implode(PHP_EOL,$desciptions).PHP_EOL.implode(PHP_EOL,$tables));
+	file_put_contents('TESTORE.md',implode(PHP_EOL,$desciptions).PHP_EOL.implode(PHP_EOL,$tables).PHP_EOL);
 	file_put_contents($tmpDir.'/updates.log',$logs.
 		'SCANED: '.$all.PHP_EOL.
 		'NEED UPDATE: '.$update.PHP_EOL.
