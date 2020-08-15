@@ -170,8 +170,8 @@
 
 							//标签下载的要重新打包
 							if (strpos($zip,'typecho-fans/plugins/releases/download')) {
-								
-								$download = @file_get_contents($url.'/archive/master.zip');
+
+								$download = @file_get_contents($url.'/archive/'.(strpos($zip,'main.zip') ? 'main' : 'master').'.zip');
 								if ($download) {
 									$tmpName = '/'.$all.'_'.$name['0'];
 									$tmpZip = $tmpDir.$tmpName.'_master.zip';
