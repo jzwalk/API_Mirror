@@ -65,11 +65,9 @@
 	$lines = explode(PHP_EOL,$source);
 	$count = count($lines);
 	foreach ($lines as $line=>$column) {
-		if ($line<=37) {
+		if ($line<38) {
 			$desciptions[] = $column;
-		} else {
-
-			if ($column) {
+		} elseif ($column) {
 				preg_match_all('/(?<=\()[^\)]+/',$column,$links);
 				preg_match_all('/(?<=)[^\|]+/',$column,$metas);
 				$url = $links['0']['0'];
@@ -258,9 +256,8 @@
 						$logs .= 'Error: "'.$url.'" has no valid plugin file!'.PHP_EOL;
 					}
 				}
+				$tables[] = $column;
 			}
-			$tables[] = $column;
-		}
 	}
 	sort($tables);
 $s = print_r($tables,true);
