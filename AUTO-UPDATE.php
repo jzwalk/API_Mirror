@@ -38,7 +38,7 @@
 	$tmpZip = '';
 	$tmpSub = '';
 	$phpZip = (object)array();
-	$Main = '';
+	$master = '';
 	$plugin = '';
 	$codes = '';
 	$renamed = '';
@@ -78,18 +78,18 @@
 
 					//获取插件主文件地址
 					preg_match('/(?<=\[)[^\]]+/',$metas['0']['0'],$name);
-					$doc = strpos($url,'/blob/Main/') && strpos($url,'.php');
+					$doc = strpos($url,'/blob/master/') && strpos($url,'.php');
 					if (!$doc) {
-						$sub = strpos($url,'/tree/Main/');
+						$sub = strpos($url,'/tree/master/');
 						if ($sub) {
-							$paths = explode('/tree/Main/',$url);
+							$paths = explode('/tree/master/',$url);
 							$url = $paths['0'];
 						}
-						$api = @file_get_contents(str_replace('github.com','api.github.com/repos',$url).'/git/trees/Main?recursive=1',0,
+						$api = @file_get_contents(str_replace('github.com','api.github.com/repos',$url).'/git/trees/master?recursive=1',0,
 							stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP')))));
 						$detect = true;
-						$pluginFile = $url.'/raw/Main/'.($sub ? $paths['1'].'/' : '');
-$s = print_r(str_replace('github.com','api.github.com/repos',$url).'/git/trees/Main?recursive=1',true);
+						$pluginFile = $url.'/raw/master/'.($sub ? $paths['1'].'/' : '');
+$s = print_r(str_replace('github.com','api.github.com/repos',$url).'/git/trees/master?recursive=1',true);
 file_put_contents('log.txt',$s);
 						if ($api) {
 							$datas = json_decode($api,true);
@@ -102,13 +102,13 @@ file_put_contents('log.txt',$s);
 							}
 							if ($path) {
 								$detect = false;
-								$pluginFile = $url.'/raw/Main/'.$path;
+								$pluginFile = $url.'/raw/master/'.$path;
 							}
 						}
 					} else {
 						$detect = false;
 						$pluginFile = str_replace('blob','raw',$url);
-						$paths = explode('/raw/Main/',$pluginFile);
+						$paths = explode('/raw/master/',$pluginFile);
 						$url = $paths['0'];
 					}
 
@@ -158,24 +158,24 @@ file_put_contents('log.txt',$s);
 							//标签下载的要重新打包
 							if (strpos($zip,'typecho-fans/plugins/releases/download')) {
 								
-								$download = @file_get_contents($url.'/archive/Main.zip');
+								$download = @file_get_contents($url.'/archive/master.zip');
 								if ($download) {
 									$tmpName = '/'.$all.'_'.$name['0'];
-									$tmpZip = $tmpDir.$tmpName.'_Main.zip';
+									$tmpZip = $tmpDir.$tmpName.'_master.zip';
 									file_put_contents($tmpZip,$download);
 
-									//解压缩Main包
+									//解压缩master包
 									$phpZip = new ZipArchive();
 									$phpZip->open($tmpZip);
 									$tmpSub = $tmpDir.$tmpName;
 									mkdir($tmpSub);
 									$phpZip->extractTo($tmpSub);
-									$Main = $tmpSub.'/'.basename($url).'-Main/';
+									$master = $tmpSub.'/'.basename($url).'-master/';
 
 									//强制替换作者名
 									$renamed = '';
 									if ($authorName!==trim(strip_tags($infos['author']))) {
-										$plugin = $Main.($doc ? $paths['1'] : $path);
+										$plugin = $master.($doc ? $paths['1'] : $path);
 										$codes = file_get_contents($plugin);
 										file_put_contents($plugin,str_replace($infos['author'],$authorName,$codes));
 										$renamed = '/ Rename Author ';
@@ -197,7 +197,7 @@ file_put_contents('log.txt',$s);
 									//打包至临时目录
 									$phpZip->open($newZip,ZipArchive::CREATE | ZipArchive::OVERWRITE);
 									if (!$doc) {
-										$rootPath = $Main.($sub ? $paths['1'].'/' : '');
+										$rootPath = $master.($sub ? $paths['1'].'/' : '');
 										foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($rootPath)) as $file) {
 										if (!$file->isDir()) {
 											$filePath = $file->getRealPath();
@@ -205,7 +205,7 @@ file_put_contents('log.txt',$s);
 										}
 										}
 									} else {
-										$phpZip->addFile($Main.$paths['1'],$paths['1']);
+										$phpZip->addFile($master.$paths['1'],$paths['1']);
 									}
 
 									//复制一份到加速目录
