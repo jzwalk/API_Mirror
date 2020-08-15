@@ -36,13 +36,6 @@
 
 名称 | 简介 | 版本 | 作者 | zip包
 ---- | ----: | :---: | ----: | :----:
-[APlayerAtBottom](https://github.com/SatoSouta/Typecho-plugin-APlayerAtBottom) | 网易云解析吸底式音乐播放器插件 | 1.1.1 | [小太](https://github.com/SatoSouta) | [下载](https://github.com/SatoSouta/Typecho-plugin-APlayerAtBottom/archive/master.zip)
-[APlayer](https://github.com/zgq354/APlayer-Typecho-Plugin) | 网易云解析Html5音乐播放器插件 | 1.4.11 | [ZGQ](https://github.com/zgq354) | [下载](https://github.com/zgq354/APlayer-Typecho-Plugin/archive/master.zip)
-[Acc](https://github.com/qt06/typecho-plugin-accessibility) | Typecho无障碍读屏标记修正插件 | 1.0.0 | [杨永全](https://github.com/qt06) | [下载](https://github.com/qt06/typecho-plugin-accessibility/archive/master.zip)
-[AccessBmob](https://github.com/kraity/typecho-accessBmob) | Bmob后端云数据库版[Access](https://github.com/kokororin/typecho-plugin-Access)插件 | 1.2 | [权那他](https://github.com/kraity) | [下载](https://github.com/kraity/typecho-accessBmob/archive/master.zip)
-[Access](https://github.com/kokororin/typecho-plugin-Access) | Typecho查看访客记录统计表插件 | 2.0.2 | [Kokororin](https://github.com/kokororin) | [下载](https://github.com/kokororin/typecho-plugin-Access/archive/master.zip)
-[Accessories](https://xiamp.net/archives/accessories-pro.html) | 多功能附件下载增强插件(免费版) | 1.0.3 | [Ryan](https://github.com/benzBrake) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/Accessories.zip)
-[ActivatePowerMode](https://gitee.com/hoexhe/ActivatePowerMode) | (娱乐向)疯狂打字机输入特效插件 | 1.0.0 | [Hoe](https://gitee.com/hoexhe) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/ActivatePowerMode.zip)
-[ActiveSubmit](https://github.com/invelop/Typecho-ActiveSubmit) | 主动推送链接至百度插件(含分类) | 1.0 | [承影](https://github.com/invelop) | [下载](https://github.com/invelop/Typecho-ActiveSubmit/archive/master.zip)
-[AdminLogin](https://github.com/v03413/Typecho_Plugins/tree/master/AdminLogin) | 微信/QQ号后台扫码登录注册插件 | 0.1.1 | [_莫名_](https://github.com/v03413) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/AdminLogin.zip)
-[Adminer](https://github.com/kokororin/typecho-plugin-adminer) | 后台集成Adminer数据库管理插件 | 1.0 | [kokororin](https://github.com/kokororin) | [下载](https://github.com/kokororin/typecho-plugin-adminer/archive/master.zip)
+[SitemapSelf](https://github.com/lingsan-code/sitemap-for-typecho) | 自修改多文件缓存版站点地图插件 | 0.1 | [凌三](https://github.com/lingsan-code) | [下载](https://github.com/lingsan-code/sitemap-for-typecho/archive/master.zip)
+[Storyline](https://github.com/LeToNode/typecho-plugin-Storyline) | Typecho故事线归档页面效果插件 | 0.0.1 | [letonode](https://github.com/LeToNode) | [下载](https://github.com/LeToNode/typecho-plugin-Storyline/archive/master.zip)
+[XmlRpcAid](https://github.com/MliKiowa/XmlRpcAid-By-Nabo) | [南博](https://nabo.krait.cn)App用更新XmlRpc文件插件 | 2.0.0 | [乔千](https://github.com/MliKiowa) | [下载](https://github.com/MliKiowa/XmlRpcAid-By-Nabo/archive/master.zip)
