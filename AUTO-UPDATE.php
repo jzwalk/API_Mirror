@@ -122,7 +122,7 @@
 					$infos = call_user_func('parseInfo',($detect ? $pluginFile.'Plugin.php' : $pluginFile));
 					if (!$infos['version'] && $detect) {
 						$infos = call_user_func('parseInfo',$pluginFile.$name['0'].'.php');
-						if (!$infos['version'] && !main) {
+						if (!$infos['version'] && !$main) {
 							$pluginFile = $url.'/raw/main/'.($sub ? $paths['1'].'/' : '');
 							$infos = call_user_func('parseInfo',$pluginFile.'Plugin.php');
 							if (!$infos['version']) {
