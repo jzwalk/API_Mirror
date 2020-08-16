@@ -36,6 +36,8 @@
 
 名称 | 简介 | 版本 | 作者 | zip包
 ---- | ----: | :---: | ----: | :----:
+[APlayerAtBottom](https://github.com/SatoSouta/Typecho-plugin-APlayerAtBottom) | 网易云解析吸底式音乐播放器插件 | 1.1.1 | [小太](https://github.com/SatoSouta) | [下载](https://github.com/SatoSouta/Typecho-plugin-APlayerAtBottom/archive/master.zip)
+[APlayer](https://github.com/zgq354/APlayer-Typecho-Plugin) | 网易云解析Html5音乐播放器插件 | 1.4.11 | [ZGQ](https://github.com/zgq354) | [下载](https://github.com/zgq354/APlayer-Typecho-Plugin/archive/master.zip)
 [GitStatic](https://github.com/MliKiowa/GitStatic) | Typecho用GitHub做附件图床插件 | 2.0.0 | [乔千](https://github.com/MliKiowa) | [下载](https://github.com/MliKiowa/GitStatic/archive/master.zip)
 [Link2own](https://github.com/SnowWarri0r/Typecho-ShortLinks-Plugin) | [Handsome](https://www.ihewro.com/archives/489)用内链跳转至外链插件 | 0.1 | [SnowWarri0r ihesro](https://github.com/SnowWarri0r) | [下载](https://github.com/SnowWarri0r/Typecho-ShortLinks-Plugin/archive/Main.zip)
 [SitemapSelf](https://github.com/lingsan-code/sitemap-for-typecho) | 自修改多文件缓存版站点地图插件 | 0.1 | [凌三](https://github.com/lingsan-code) | [下载](https://github.com/lingsan-code/sitemap-for-typecho/archive/master.zip)
