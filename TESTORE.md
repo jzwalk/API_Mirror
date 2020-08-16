@@ -36,7 +36,7 @@
 
 名称 | 简介 | 版本 | 作者 | zip包
 ---- | ----: | :---: | ----: | :----:
-[Akismet](https://github.com/typecho/plugins/tree/master/Akismet) | 经典反垃圾评论服务Akismet插件 | 1.1.4 | [qining](https://github.com/joyqi) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/Akismet.zip)
+[Akismet](https://github.com/typecho/plugins/tree/master/Akismet) | 经典反垃圾评论服务Akismet插件 | 1.1.4 | [qining](https://github.com/joyqi) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/Akismet_.zip)
 [Album](https://github.com/THX-plus/Album) | Typecho模版型页面相册系统插件 | 1.2 | [我本奈何](https://github.com/THX-plus) | [下载](https://github.com/THX-plus/Album/archive/master.zip)
 [GitStatic](https://github.com/MliKiowa/GitStatic) | Typecho用GitHub做附件图床插件 | 2.0.0 | [乔千](https://github.com/MliKiowa) | [下载](https://github.com/MliKiowa/GitStatic/archive/master.zip)
 [Link2own](https://github.com/SnowWarri0r/Typecho-ShortLinks-Plugin) | [Handsome](https://www.ihewro.com/archives/489)用内链跳转至外链插件 | 0.1 | [SnowWarri0r ihesro](https://github.com/SnowWarri0r) | [下载](https://github.com/SnowWarri0r/Typecho-ShortLinks-Plugin/archive/Main.zip)
