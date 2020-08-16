@@ -16,4 +16,4 @@ jobs:
 
       - name: "执行PHP脚本"
         run: |
-          php AUTO-UPDATE.php diff ${{ secrets.GITHUB_TOKEN }}
+          php AUTO-UPDATE.php ${{ secrets.GITHUB_TOKEN }} diff

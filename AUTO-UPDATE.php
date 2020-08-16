@@ -18,7 +18,7 @@
 	}
 
 	//分析最近文档变化
-	if (!empty($argv['3'])) {
+	if (!empty($argv['2']) && $argv['2']=='diff') {
 		$record = file_get_contents('https://github.com/typecho-fans/plugins/commit/master.diff',0,
 			stream_context_create(array('http'=>array('header'=>array('Accept: application/vnd.github.v3.diff')))));
 		$diffs = explode(PHP_EOL,$record);
@@ -102,16 +102,12 @@
 			$url = $links['0']['0'];
 
 			//判断地址参数
-			switch (true) {
-				case (empty($argv['2']) && empty($argv['3'])) : //默认处理GitHub源
+			if (empty($argv['2'])) { //默认处理GitHub源
 				$condition = strpos($url,'github.com');
-				break;
-				case (!empty($argv['2'])) : //手动处理参数指定
-				$condition = strpos($argv['2'],'github.com') && $argv['2']==$url;
-				break;
-				case (!empty($argv['3'])) : //提交处理变化地址
+			} elseif ($argv['2']=='diff') { //提交处理变化地址
 				$condition = $urls && in_array($url,$urls);
-				break;
+			} else { //手动处理参数指定
+				$condition = strpos($argv['2'],'github.com') && $argv['2']==$url;
 			}
 			if ($condition) {
 				++$all;
@@ -183,7 +179,7 @@
 					$version = stripos($metas['0']['2'],'v')===0 ? trim(substr($metas['0']['2'],1)) : trim($metas['0']['2']);
 
 					//对比版本号判断更新
-					if ($infos['version']>$version || !empty($argv['2'])) { //或指定参数更新
+					if ($infos['version']>$version || !empty($argv['2'])) { //或有参数更新
 						++$update;
 						$zip = end($links['0']);
 
