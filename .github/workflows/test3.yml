@@ -1,0 +1,19 @@
+name: "推送更新变动GitHub插件"
+
+on:
+  push:
+    branches:
+      - "master"
+
+jobs:
+
+  auto-update:
+    name: "自动更新GitHub插件"
+    runs-on: "ubuntu-latest"
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: "执行PHP脚本"
+        run: |
+          php AUTO-UPDATE.php diff ${{ secrets.GITHUB_TOKEN }}
