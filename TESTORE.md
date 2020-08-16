@@ -36,6 +36,8 @@
 
 名称 | 简介 | 版本 | 作者 | zip包
 ---- | ----: | :---: | ----: | :----:
+[GitStatic](https://github.com/MliKiowa/GitStatic) | Typecho用GitHub做附件图床插件 | 2.0.0 | [乔千](https://github.com/MliKiowa) | [下载](https://github.com/MliKiowa/GitStatic/archive/master.zip)
+[Link2own](https://github.com/SnowWarri0r/Typecho-ShortLinks-Plugin) | [Handsome](https://www.ihewro.com/archives/489)用内链跳转至外链插件 | 0.1 | [SnowWarri0r ihesro](https://github.com/SnowWarri0r) | [下载](https://github.com/SnowWarri0r/Typecho-ShortLinks-Plugin/archive/Main.zip)
 [SitemapSelf](https://github.com/lingsan-code/sitemap-for-typecho) | 自修改多文件缓存版站点地图插件 | 0.1 | [凌三](https://github.com/lingsan-code) | [下载](https://github.com/lingsan-code/sitemap-for-typecho/archive/master.zip)
 [Storyline](https://github.com/LeToNode/typecho-plugin-Storyline) | Typecho故事线归档页面效果插件 | 0.0.1 | [letonode](https://github.com/LeToNode) | [下载](https://github.com/LeToNode/typecho-plugin-Storyline/archive/master.zip)
 [XmlRpcAid](https://github.com/MliKiowa/XmlRpcAid-By-Nabo) | [南博](https://nabo.krait.cn)App用更新XmlRpc文件插件 | 2.0.0 | [乔千](https://github.com/MliKiowa) | [下载](https://github.com/MliKiowa/XmlRpcAid-By-Nabo/archive/master.zip)
