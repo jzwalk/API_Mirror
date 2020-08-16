@@ -1,7 +1,7 @@
 <?php
 	/**
-	 * Typecho-Fans/Plugins专用自动化升级插件脚本
-	 * (非插件！供GitHub Actions功能调用，勿删改！)
+	 * Typecho-Fans/Plugins专用自动化更新插件信息与zip包脚本
+	 * (非Typecho插件，仅供GitHub Actions功能调用，勿删改！)
 	 * 作者：羽中
 	 * 反馈：https://github.com/typecho-fans/plugins/issues
 	 */
@@ -17,7 +17,7 @@
 		mkdir($tmpNew);
 	}
 
-	//分析最近文档变化
+	//分析最新文档变化
 	if (!empty($argv['2']) && $argv['2']=='diff') {
 		$record = file_get_contents('https://github.com/typecho-fans/plugins/commit/master.diff',0,
 			stream_context_create(array('http'=>array('header'=>array('Accept: application/vnd.github.v3.diff')))));

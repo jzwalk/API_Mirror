@@ -36,8 +36,8 @@
 
 名称 | 简介 | 版本 | 作者 | zip包
 ---- | ----: | :---: | ----: | :----:
-[APlayerAtBottom](https://github.com/SatoSouta/Typecho-plugin-APlayerAtBottom) | 网易云解析吸底式音乐播放器插件 | 1.1.1 | [小太](https://github.com/SatoSouta) | [下载](https://github.com/SatoSouta/Typecho-plugin-APlayerAtBottom/archive/master.zip)
-[APlayer](https://github.com/zgq354/APlayer-Typecho-Plugin) | 网易云解析Html5音乐播放器插件 | 1.4.11 | [ZGQ](https://github.com/zgq354) | [下载](https://github.com/zgq354/APlayer-Typecho-Plugin/archive/master.zip)
+[Akalin](https://github.com/huhaku/typecho_Akalin) | 指定常用登录地IP后台白名单插件 | 1.0.0 | [huhaku](https://github.com/huhaku) | [下载](https://github.com/huhaku/typecho_Akalin/archive/master.zip)
+[Akismet](https://github.com/typecho/plugins/tree/master/Akismet) | 经典反垃圾评论服务Akismet插件 | 1.1.4 | [qining](https://github.com/joyqi) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/Akismet.zip)
 [GitStatic](https://github.com/MliKiowa/GitStatic) | Typecho用GitHub做附件图床插件 | 2.0.0 | [乔千](https://github.com/MliKiowa) | [下载](https://github.com/MliKiowa/GitStatic/archive/master.zip)
 [Link2own](https://github.com/SnowWarri0r/Typecho-ShortLinks-Plugin) | [Handsome](https://www.ihewro.com/archives/489)用内链跳转至外链插件 | 0.1 | [SnowWarri0r ihesro](https://github.com/SnowWarri0r) | [下载](https://github.com/SnowWarri0r/Typecho-ShortLinks-Plugin/archive/Main.zip)
 [SitemapSelf](https://github.com/lingsan-code/sitemap-for-typecho) | 自修改多文件缓存版站点地图插件 | 0.1 | [凌三](https://github.com/lingsan-code) | [下载](https://github.com/lingsan-code/sitemap-for-typecho/archive/master.zip)
