@@ -19,11 +19,10 @@
 
 	//分析最新文档变化
 	if (!empty($argv['2']) && $argv['2']=='diff') {
-		$record = @file_get_contents('https://github.com/typecho-fans/plugins/commit/master.diff',0,
+//https://github.com/typecho-fans/plugins/commit/master.diff
+		$record = @file_get_contents('https://github.com/jzwalk/API_Mirror/commit/master.diff',0,
 			stream_context_create(array('http'=>array('header'=>array('Accept: application/vnd.github.v3.diff')))));
 		$diffs = explode(PHP_EOL,$record);
-$s = print_r($diffs,true);
-file_put_contents('log.txt',$s);
 
 		//确定行范围
 		$begin = 0;
