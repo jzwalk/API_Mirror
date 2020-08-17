@@ -212,7 +212,7 @@
 					//多作者情况
 					if ($separator) {
 						$authors = explode($separator,$authorCode);
-						$author = '';
+						$authorNames = array();
 						foreach ($authors as $key=>$author) {
 							preg_match('/(?<=\[)[^\]]+/',$author,$authorName);
 							$authorNames[] = empty($authorName['0']) ? $author : $authorName['0'];
