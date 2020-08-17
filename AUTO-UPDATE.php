@@ -226,7 +226,7 @@
 					$cdn = 'ZIP_CDN/'.$name['0'].'_'.($separator ? implode('_',$authorNames) : $author).'.zip';
 
 					//标签发布更新需再打包
-					if (strpos($zip,'typecho-fans/plugins/releases/download') && !push) {
+					if (strpos($zip,'typecho-fans/plugins/releases/download') && !$push) {
 						$repoZip = $url.'/archive/'.($main ? 'main' : 'master').'.zip';
 						$download = @file_get_contents();
 						if ($download) {
