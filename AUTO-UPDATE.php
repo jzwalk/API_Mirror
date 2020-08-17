@@ -17,9 +17,8 @@
 		mkdir($tmpNew);
 	}
 
-	$push = !empty($argv['2']) && $argv['2']=='diff';
 	//分析最新文档变化
-	if ($push) {
+	if (!empty($argv['2']) && $argv['2']=='diff') {
 //https://github.com/typecho-fans/plugins/commit/master.diff
 		$record = @file_get_contents('https://github.com/jzwalk/API_Mirror/commit/master.diff',0,
 			stream_context_create(array('http'=>array('header'=>array('Accept: application/vnd.github.v3.diff')))));
@@ -53,6 +52,7 @@
 	$links = array();
 	$metas = array();
 	$url = '';
+	$github = false;
 	$condition = false;
 	$all = 0;
 	$authorCode = '';
@@ -77,6 +77,7 @@
 	$version = '';
 	$update = 0;
 	$zip = '';
+	$repoZip = '';
 	$download = '';
 	$tmpName = '';
 	$tmpZip = '';
@@ -103,10 +104,11 @@
 			preg_match_all('/(?<=\()[^\)]+/',$column,$links);
 			preg_match_all('/(?<=)[^\|]+/',$column,$metas);
 			$url = $links['0']['0'];
+			$github = strpos($url,'github.com');
 
 			//判断地址参数
 			if (empty($argv['2'])) { //默认处理GitHub源
-				$condition = strpos($url,'github.com');
+				$condition = $github;
 			} elseif ($argv['2']=='diff') { //提交处理变化地址 (不限GitHub)
 				$condition = $urls && in_array($url,$urls);
 			} else { //手动处理参数指定
@@ -116,7 +118,7 @@
 				++$all;
 				preg_match('/(?<=\[)[^\]]+/',$metas['0']['0'],$name);
 
-				if (strpos($url,'github.com')) {
+				if ($github) {
 					//取插件主文件地址
 					$doc = (strpos($url,'/blob/master/') || strpos($url,'/blob/main/')) && strpos($url,'.php');
 					//单文件情况
@@ -225,8 +227,8 @@
 					//命名zip包 (加速目录用)
 					$cdn = 'ZIP_CDN/'.$name['0'].'_'.($separator ? implode('_',$authorNames) : $author).'.zip';
 
-					//标签发布更新需再打包
-					if (strpos($zip,'typecho-fans/plugins/releases/download') && !$push) {
+					//标签发布的需重新打包
+					if ($github && strpos($zip,'typecho-fans/plugins/releases/download')) {
 						$repoZip = $url.'/archive/'.($main ? 'main' : 'master').'.zip';
 						$download = @file_get_contents();
 						if ($download) {
@@ -308,7 +310,7 @@
 					}
 
 					//更新文档版本号记录
-					if ($infos['version'] && $status=='succeeded' && !$push) {
+					if ($github && $infos['version'] && $status=='succeeded') {
 						$column = str_replace($version,$infos['version'],$column);
 					}
 				}
