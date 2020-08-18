@@ -1,0 +1,17 @@
+name: "基于其他Action触发"
+
+on:
+  push:
+    branches:
+      - "master"
+
+jobs:
+
+  dispatch-mirror:
+    name: "其他workflow完成时"
+    runs-on: "ubuntu-latest"
+
+    steps:
+      - run: |
+          stamp=`date +%s`
+          echo "$stamp"
