@@ -4,6 +4,8 @@ on:
   workflow_run:
     workflows:
       - "手动更新单GitHub插件"
+      - "定时更新全GitHub插件"
+      - "推送更新变动GitHub插件"
     branches:
       - "master"
     types:
@@ -17,5 +19,5 @@ jobs:
 
     steps:
       - run: |
-          stamp=`date +%s`
-          echo "$stamp"
+          test=`curl -s https://github.com/jzwalk/API_Mirror/commit/master.diff | grep "+++ b/TESTORE.md"`
+          echo "$test"
