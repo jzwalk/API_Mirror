@@ -16,6 +16,7 @@ jobs:
   dispatch-mirror:
     name: "其他workflow完成时"
     runs-on: "ubuntu-latest"
+    if: curl -s https://github.com/jzwalk/API_Mirror/commit/master.diff | grep "+++ b/TESTORE.md"
 
     steps:
       - run: |
