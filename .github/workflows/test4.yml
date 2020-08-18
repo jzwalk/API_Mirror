@@ -19,5 +19,5 @@ jobs:
 
     steps:
       - run: |
-          test=`curl -s https://github.com/jzwalk/API_Mirror/commit/master.diff | grep "+++ b/TESTORE.md"`
+          test=`curl -s https://github.com/jzwalk/API_Mirror/commit/master.diff | grep -c "+++ b/TESTORE.md"`
           echo "$test"
