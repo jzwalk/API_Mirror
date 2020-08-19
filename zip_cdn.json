@@ -6850,16 +6850,16 @@
   {
     "name": "ThemeSwitcher_rain.zip",
     "path": "ZIP_CDN/ThemeSwitcher_rain.zip",
-    "sha": "9f8bba90d915144680ae78bc16c892aaa0f8d522",
-    "size": 2438,
+    "sha": "ca1f8c4e2b793ba2d414fafa1fd59bf230d5e609",
+    "size": 2512,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/ThemeSwitcher_rain.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/ThemeSwitcher_rain.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/9f8bba90d915144680ae78bc16c892aaa0f8d522",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/ca1f8c4e2b793ba2d414fafa1fd59bf230d5e609",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/ThemeSwitcher_rain.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/ThemeSwitcher_rain.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/9f8bba90d915144680ae78bc16c892aaa0f8d522",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/ca1f8c4e2b793ba2d414fafa1fd59bf230d5e609",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/ThemeSwitcher_rain.zip"
     }
   },
