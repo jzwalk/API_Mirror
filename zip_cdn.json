@@ -3088,6 +3088,22 @@
     }
   },
   {
+    "name": "HCaptcha_清浅.zip",
+    "path": "ZIP_CDN/HCaptcha_清浅.zip",
+    "sha": "87ab397092ed54674c3be39c047acaeb83536eef",
+    "size": 2339,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/HCaptcha_%E6%B8%85%E6%B5%85.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/HCaptcha_%E6%B8%85%E6%B5%85.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/87ab397092ed54674c3be39c047acaeb83536eef",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/HCaptcha_%E6%B8%85%E6%B5%85.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/HCaptcha_%E6%B8%85%E6%B5%85.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/87ab397092ed54674c3be39c047acaeb83536eef",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/HCaptcha_%E6%B8%85%E6%B5%85.zip"
+    }
+  },
+  {
     "name": "HPCache_雷鬼.zip",
     "path": "ZIP_CDN/HPCache_雷鬼.zip",
     "sha": "8aad9e9eb53196c2ee44bd792ab4a0ad0fa66abb",
@@ -5437,6 +5453,22 @@
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/RandomDescription_%E8%80%81%E9%AB%98@PHPer.zip?ref=master",
       "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/8a5d95f3a99fa406f48c696b5725fc083f8efc00",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/RandomDescription_%E8%80%81%E9%AB%98@PHPer.zip"
+    }
+  },
+  {
+    "name": "RandomNonsense_清浅.zip",
+    "path": "ZIP_CDN/RandomNonsense_清浅.zip",
+    "sha": "f33668883d5a7e2a65fe07761aef127d637c4bf3",
+    "size": 1701,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/RandomNonsense_%E6%B8%85%E6%B5%85.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/RandomNonsense_%E6%B8%85%E6%B5%85.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/f33668883d5a7e2a65fe07761aef127d637c4bf3",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/RandomNonsense_%E6%B8%85%E6%B5%85.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/RandomNonsense_%E6%B8%85%E6%B5%85.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/f33668883d5a7e2a65fe07761aef127d637c4bf3",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/RandomNonsense_%E6%B8%85%E6%B5%85.zip"
     }
   },
   {
@@ -7888,6 +7920,22 @@
     }
   },
   {
+    "name": "WeChatHelper_光辉之路MC.zip",
+    "path": "ZIP_CDN/WeChatHelper_光辉之路MC.zip",
+    "sha": "8d2d4aa170e89b3e17b77a232d0887ddcaf00ef7",
+    "size": 15083,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/WeChatHelper_%E5%85%89%E8%BE%89%E4%B9%8B%E8%B7%AFMC.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/WeChatHelper_%E5%85%89%E8%BE%89%E4%B9%8B%E8%B7%AFMC.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/8d2d4aa170e89b3e17b77a232d0887ddcaf00ef7",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/WeChatHelper_%E5%85%89%E8%BE%89%E4%B9%8B%E8%B7%AFMC.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/WeChatHelper_%E5%85%89%E8%BE%89%E4%B9%8B%E8%B7%AFMC.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/8d2d4aa170e89b3e17b77a232d0887ddcaf00ef7",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/WeChatHelper_%E5%85%89%E8%BE%89%E4%B9%8B%E8%B7%AFMC.zip"
+    }
+  },
+  {
     "name": "WeChatHelper_大卫科技Blog.zip",
     "path": "ZIP_CDN/WeChatHelper_大卫科技Blog.zip",
     "sha": "d32d3745b4b07bd60329befbe39500914737793e",
@@ -8605,6 +8653,22 @@
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/reCAPTCHAv3.zip?ref=master",
       "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/3e0d753eb1b7b07c9cb38fe812ae4d8cd2c8d45b",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/reCAPTCHAv3.zip"
+    }
+  },
+  {
+    "name": "reCaptcha_清浅.zip",
+    "path": "ZIP_CDN/reCaptcha_清浅.zip",
+    "sha": "7cf2016925accde22cc6b2fcd524f6b866d214ff",
+    "size": 2489,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/reCaptcha_%E6%B8%85%E6%B5%85.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/reCaptcha_%E6%B8%85%E6%B5%85.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/7cf2016925accde22cc6b2fcd524f6b866d214ff",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/reCaptcha_%E6%B8%85%E6%B5%85.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/reCaptcha_%E6%B8%85%E6%B5%85.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/7cf2016925accde22cc6b2fcd524f6b866d214ff",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/reCaptcha_%E6%B8%85%E6%B5%85.zip"
     }
   },
   {
