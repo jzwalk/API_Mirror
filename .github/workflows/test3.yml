@@ -18,9 +18,10 @@ jobs:
 
       - id: hash-name
         run: |
-          hash=`git log -n 1 | grep Merge | head -1 | awk '{print $2}'`
-          if [ -z $hash ]
+          if [ `git log -1 --pretty=%B | grep Merge` ]
             then
+              hash=`git log HEAD@{1} -1 | grep commit | head -1 | awk '{print $2}'`
+          else
               hash="master"
           fi
           diff=https://github.com/jzwalk/API_Mirror/commit/"$hash".diff
