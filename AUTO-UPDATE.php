@@ -18,9 +18,9 @@
 	}
 
 	//分析最新文档变化
-	if (!empty($argv['2']) && $argv['2']=='diff') {
+	if (!empty($argv['2']) && strpos($argv['2'],'.diff')) {
 //https://github.com/typecho-fans/plugins/commit/master.diff
-		$record = @file_get_contents('https://github.com/jzwalk/API_Mirror/commit/master.diff',0,
+		$record = @file_get_contents($argv['2'],0,
 			stream_context_create(array('http'=>array('header'=>array('Accept: application/vnd.github.v3.diff')))));
 		$diffs = explode(PHP_EOL,$record);
 
@@ -46,8 +46,6 @@
 			}
 		}
 	}
-$s = print_r($urls,true);
-file_put_contents('log.txt',$s);
 
 	//预设循环内变量
 	$desciptions = array();
