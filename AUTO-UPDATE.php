@@ -101,6 +101,8 @@
 		if ($line<38) {
 			if ($line=='31') {
 				preg_match('/(?<=\()[^\)]+/',$column,$counts);
+$s = print_r($counts['0'],true);
+file_put_contents('log.txt',$s);
 				$column = str_replace($counts['0'],$count-39,$column);
 			}
 			$desciptions[] = $column;
