@@ -40,3 +40,4 @@
 [AliOSS](https://github.com/chaclee/typecho-oss) | Typecho附件上传阿里云OSS插件 | 1.0.1 | [raintao](https://github.com/chaclee) | [下载](https://github.com/chaclee/typecho-oss/archive/master.zip)
 [AliOssForTypecho](https://github.com/droomo/AliOssForTypecho) | 新OSS云储存插件(本地备份+样式) | 1.1.8 | [droomo.](https://github.com/droomo) | [下载](https://github.com/droomo/AliOssForTypecho/archive/master.zip)
 [AliUpload](https://github.com/typecho/plugins/tree/master/AliUpload) | 经典附件上传阿里云储存OSS插件 | 1.0.0 Beta | [loftor](https://github.com/loftor-git) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/AliUpload.zip)
+[AliceStyle](https://github.com/racns/AliceStyle) | 常见主题外观用美化效果合集插件 | 2.4.0 | [racns](https://github.com/racns) | [下载](https://github.com/racns/AliceStyle/archive/master.zip)
