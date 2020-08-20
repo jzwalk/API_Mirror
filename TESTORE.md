@@ -36,8 +36,5 @@
 
 名称 | 简介 | 版本 | 作者 | zip包
 ---- | ----: | :---: | ----: | :----:
-[Album](https://github.com/THX-plus/Album) | Typecho模版型页面相册系统插件 | 1.2 | [我本奈何](https://github.com/THX-plus) | [下载](https://github.com/THX-plus/Album/archive/master.zip)
-[AliOSS](https://github.com/chaclee/typecho-oss) | Typecho附件上传阿里云OSS插件 | 1.0.1 | [raintao](https://github.com/chaclee) | [下载](https://github.com/chaclee/typecho-oss/archive/master.zip)
-[AliOssForTypecho](https://github.com/droomo/AliOssForTypecho) | 新OSS云储存插件(本地备份+样式) | 1.1.8 | [droomo.](https://github.com/droomo) | [下载](https://github.com/droomo/AliOssForTypecho/archive/master.zip)
-[AliUpload](https://github.com/typecho/plugins/tree/master/AliUpload) | 经典附件上传阿里云储存OSS插件 | 1.0.0 Beta | [loftor](https://github.com/loftor-git) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/AliUpload.zip)
-[AliceStyle](https://github.com/racns/AliceStyle) | 常见主题外观用美化效果合集插件 | 2.4.0 | [racns](https://github.com/racns) | [下载](https://github.com/racns/AliceStyle/archive/master.zip)
+[APlayerAtBottom](https://github.com/SatoSouta/Typecho-plugin-APlayerAtBottom) | 网易云解析吸底式音乐播放器插件 | 1.1.1 | [小太](https://github.com/SatoSouta) | [下载](https://github.com/SatoSouta/Typecho-plugin-APlayerAtBottom/archive/master.zip)
+[APlayer](https://github.com/zgq354/APlayer-Typecho-Plugin) | 网易云解析Html5音乐播放器插件 | 1.4.11 | [ZGQ](https://github.com/zgq354) | [下载](https://github.com/zgq354/APlayer-Typecho-Plugin/archive/master.zip)

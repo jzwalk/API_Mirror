@@ -46,6 +46,8 @@
 			}
 		}
 	}
+$s = print_r($urls,true);
+file_put_contents('log.txt',$s);
 
 	//预设循环内变量
 	$desciptions = array();
