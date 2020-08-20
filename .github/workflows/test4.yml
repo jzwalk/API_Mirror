@@ -13,40 +13,10 @@ on:
 
 jobs:
 
-  test-md:
-    name: "检测最近提交"
-    runs-on: "ubuntu-latest"
-    outputs:
-      diffUrl: ${{ steps.hash-name.outputs.url }}
-      isMD: ${{ steps.grep-diff.outputs.md }}
-    steps:
-      - uses: actions/checkout@v2
-
-      - id: hash-name
-        run: |
-          hash=`git log -n 1 --pretty | grep Merge | head -1 | awk '{print $2}'`
-          if [ -z $hash ]
-            then
-              hash="master"
-          fi
-          diff=https://github.com/jzwalk/API_Mirror/commit/"$hash".diff
-          echo "::set-output name=url::$diff"
-
-      - id: grep-diff
-        run: |
-          if curl -s "${{ steps.hash-name.outputs.url }}" | grep "+++ b/TESTORE.md"
-            then
-              echo "::set-output name=md::1"
-          else
-              echo "::set-output name=md::"
-          fi
-
   dispatch-mirror:
     name: "其他workflow完成时"
     runs-on: "ubuntu-latest"
-    needs: test-md
-    if: needs.test-md.outputs.isMD
 
     steps:
       - run: |
-          echo "${{ needs.test-md.outputs.diffUrl }}"
+          git log -n 1
