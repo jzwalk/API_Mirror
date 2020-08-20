@@ -99,7 +99,7 @@
 	$count = count($lines);
 	foreach ($lines as $line=>$column) {
 		if ($line<38) {
-			if ($line=='31') {
+			if ($line=='29') {
 				preg_match('/(?<=\()[^\)]+/',$column,$counts);
 				$column = str_replace($counts['0'],$count-39,$column);
 			}
@@ -324,8 +324,6 @@
 	}
 	//按插件名排序
 	sort($tables);
-$s = print_r($desciptions,true);
-file_put_contents('log.txt',$s);
 
 	//重组文档并生成日志
 	file_put_contents('TESTORE.md',implode(PHP_EOL,$desciptions).PHP_EOL.implode(PHP_EOL,$tables).PHP_EOL);
