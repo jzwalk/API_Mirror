@@ -17,16 +17,23 @@ jobs:
     name: "检测最近提交"
     runs-on: "ubuntu-latest"
     outputs:
-      isMD: ${{ steps.grep-diff.outputs.result }}
+      isMD: ${{ steps.grep-diff.outputs.md }}
+      diffUrl: ${{ steps.grep-diff.outputs.url }}
     steps:
       - id: grep-diff
         run: |
-          hash=`git log -n 1 --pretty | grep Merge | head -1 | awk '{print $2}'` && name="$hash" || name="master"
-          if curl -s https://github.com/jzwalk/API_Mirror/commit/"$name".diff | grep "+++ b/TESTORE.md"
+          hash=`git log -n 1 --pretty | grep Merge | head -1 | awk '{print $2}'`
+          if [ -z $hash ]
             then
-              echo "::set-output name=result::1"
+              hash="master"
+          fi
+          diff=https://github.com/jzwalk/API_Mirror/commit/"$hash".diff
+          echo "::set-output name=url::$diff"
+          if curl -s $diff | grep "+++ b/TESTORE.md"
+            then
+              echo "::set-output name=md::1"
           else
-              echo "::set-output name=result::"
+              echo "::set-output name=md::"
           fi
 
   dispatch-mirror:
@@ -37,4 +44,4 @@ jobs:
 
     steps:
       - run: |
-          echo "${{ needs.test-md.outputs.isMD }}"
+          echo "${{ needs.test-md.outputs.diffUrl }}"

@@ -99,7 +99,7 @@
 	$count = count($lines);
 	foreach ($lines as $line=>$column) {
 		if ($line<38) {
-			if ($line==31) {
+			if ($line=='31') {
 				preg_match('/(?<=\()[^\)]+/',$column,$counts);
 				$column = str_replace($counts['0'],$count-39,$column);
 			}
