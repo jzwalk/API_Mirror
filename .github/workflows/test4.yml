@@ -21,7 +21,8 @@ jobs:
     steps:
       - id: grep-diff
         run: |
-          if curl -s https://github.com/jzwalk/API_Mirror/commit/master.diff | grep "+++ b/TESTORE.md"
+          [ `git log -n 1 --pretty | grep Merge | head -1 | awk '{print $2}'` ] && a="$2" || a="master"
+          if curl -s https://github.com/jzwalk/API_Mirror/commit/"$a".diff | grep "+++ b/TESTORE.md"
             then
               echo "::set-output name=result::1"
           else
