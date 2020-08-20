@@ -18,7 +18,7 @@ jobs:
 
       - id: hash-name
         run: |
-          hash=`git log -n 1 --pretty | grep Merge | head -1 | awk '{print $2}'`
+          hash=`git log -n 1 | grep Merge | head -1 | awk '{print $2}'`
           if [ -z $hash ]
             then
               hash="master"

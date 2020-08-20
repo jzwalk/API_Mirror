@@ -36,7 +36,6 @@
 
 名称 | 简介 | 版本 | 作者 | zip包
 ---- | ----: | :---: | ----: | :----:
-[Aidnabo](https://github.com/kraity/typecho-aidnabo) | [南博](https://nabo.krait.cn)App账户登录等功能助手插件 | 1.2 | [权那他](https://github.com/kraity) | [下载](https://github.com/kraity/typecho-aidnabo/archive/master.zip)
-[AjaxComment](https://github.com/qlwz/AjaxComment-For-Typecho) | 原生JS评论Ajax异步提交功能插件 | 1.0.0.2 | [情留メ蚊子](https://github.com/qlwz) | [下载](https://github.com/qlwz/AjaxComment-For-Typecho/archive/master.zip)
-[Akalin](https://github.com/huhaku/typecho_Akalin) | 指定常用登录地IP后台白名单插件 | 1.0.0 | [huhaku](https://github.com/huhaku) | [下载](https://github.com/huhaku/typecho_Akalin/archive/master.zip)
-[Akismet](https://github.com/typecho/plugins/tree/master/Akismet) | 经典反垃圾评论服务Akismet插件 | 1.1.4 | [qining](https://github.com/joyqi) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/Akismet.zip)
+[APlayerAtBottom](https://github.com/SatoSouta/Typecho-plugin-APlayerAtBottom) | 网易云解析吸底式音乐播放器插件 | 1.1.1 | [小太](https://github.com/SatoSouta) | [下载](https://github.com/SatoSouta/Typecho-plugin-APlayerAtBottom/archive/master.zip)
+[APlayer](https://github.com/zgq354/APlayer-Typecho-Plugin) | 网易云解析Html5音乐播放器插件 | 1.4.11 | [ZGQ](https://github.com/zgq354) | [下载](https://github.com/zgq354/APlayer-Typecho-Plugin/archive/master.zip)
+[AbbrSlug](https://github.com/cyea/Typecho-AbbrSlug) | 多种算法生成数字文章缩略名插件 | 1.0.0 | [羽叶](https://github.com/cyea) | [下载](https://github.com/cyea/Typecho-AbbrSlug/archive/master.zip)
