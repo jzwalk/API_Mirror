@@ -36,5 +36,5 @@
 
 名称 | 简介 | 版本 | 作者 | zip包
 ---- | ----: | :---: | ----: | :----:
-[Adminer](https://github.com/kokororin/typecho-plugin-adminer) | 后台集成Adminer数据库管理插件 | 1.0 | [kokororin](https://github.com/kokororin) | [下载](https://github.com/kokororin/typecho-plugin-adminer/archive/master.zip)
-[AdsPlugin](https://github.com/ScientistPun/AdsPlugin_for_typecho) | Typecho自建数据广告位管理插件 | 1.0.0 | [ScientistPun](https://github.com/ScientistPun) | [下载](https://github.com/ScientistPun/AdsPlugin_for_typecho/archive/master.zip)
+[Aidnabo](https://github.com/kraity/typecho-aidnabo) | [南博](https://nabo.krait.cn)App账户登录等功能助手插件 | 1.2 | [权那他](https://github.com/kraity) | [下载](https://github.com/kraity/typecho-aidnabo/archive/master.zip)
+[AjaxComment](https://github.com/qlwz/AjaxComment-For-Typecho) | 原生JS评论Ajax异步提交功能插件 | 1.0.0.2 | [情留メ蚊子](https://github.com/qlwz) | [下载](https://github.com/qlwz/AjaxComment-For-Typecho/archive/master.zip)

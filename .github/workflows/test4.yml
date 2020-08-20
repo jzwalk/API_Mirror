@@ -17,12 +17,12 @@ jobs:
     name: "检测最近提交"
     runs-on: "ubuntu-latest"
     outputs:
+      diffUrl: ${{ steps.hash-name.outputs.url }}
       isMD: ${{ steps.grep-diff.outputs.md }}
-      diffUrl: ${{ steps.grep-diff.outputs.url }}
     steps:
       - uses: actions/checkout@v2
 
-      - id: grep-diff
+      - id: hash-name
         run: |
           hash=`git log -n 1 --pretty | grep Merge | head -1 | awk '{print $2}'`
           if [ -z $hash ]
@@ -31,7 +31,10 @@ jobs:
           fi
           diff=https://github.com/jzwalk/API_Mirror/commit/"$hash".diff
           echo "::set-output name=url::$diff"
-          if curl -s $diff | grep "+++ b/TESTORE.md"
+
+      - id: grep-diff
+        run: |
+          if curl -s "${{ steps.hash-name.outputs.url }}" | grep "+++ b/TESTORE.md"
             then
               echo "::set-output name=md::1"
           else
