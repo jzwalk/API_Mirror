@@ -113,7 +113,7 @@
 			//判断地址参数
 			if (empty($argv['2'])) { //默认处理GitHub源
 				$condition = $github;
-			} elseif ($argv['2']=='diff') { //提交处理变化地址 (不限GitHub)
+			} elseif (strpos($argv['2'],'.diff')) { //提交处理变化地址 (不限GitHub)
 				$condition = $urls && in_array($url,$urls);
 			} else { //手动处理参数指定
 				$condition = strpos($argv['2'],'github.com') && $argv['2']==$url;
