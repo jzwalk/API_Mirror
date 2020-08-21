@@ -2608,6 +2608,22 @@
     }
   },
   {
+    "name": "FancyBox_路飞.zip",
+    "path": "ZIP_CDN/FancyBox_路飞.zip",
+    "sha": "d75c4c87770005b0bce003b1abacb64389421bcc",
+    "size": 29279,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/FancyBox_%E8%B7%AF%E9%A3%9E.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/FancyBox_%E8%B7%AF%E9%A3%9E.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/d75c4c87770005b0bce003b1abacb64389421bcc",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/FancyBox_%E8%B7%AF%E9%A3%9E.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/FancyBox_%E8%B7%AF%E9%A3%9E.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/d75c4c87770005b0bce003b1abacb64389421bcc",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/FancyBox_%E8%B7%AF%E9%A3%9E.zip"
+    }
+  },
+  {
     "name": "FancyBox_阳光加冰.zip",
     "path": "ZIP_CDN/FancyBox_阳光加冰.zip",
     "sha": "4bdc708ce0f6b93572f811280feba2e22cc1eaf0",
@@ -4912,6 +4928,22 @@
     }
   },
   {
+    "name": "NewPost_ilay.zip",
+    "path": "ZIP_CDN/NewPost_ilay.zip",
+    "sha": "75e3fcb973de9d1e4b560c7aa4decbc920ead6ac",
+    "size": 3201,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/NewPost_ilay.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/NewPost_ilay.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/75e3fcb973de9d1e4b560c7aa4decbc920ead6ac",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/NewPost_ilay.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/NewPost_ilay.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/75e3fcb973de9d1e4b560c7aa4decbc920ead6ac",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/NewPost_ilay.zip"
+    }
+  },
+  {
     "name": "Nos_白宦成.zip",
     "path": "ZIP_CDN/Nos_白宦成.zip",
     "sha": "0bf86952bb29916ab293f4026e5eff98beba4858",
@@ -6528,6 +6560,22 @@
     }
   },
   {
+    "name": "SlideSubmit_老邦.zip",
+    "path": "ZIP_CDN/SlideSubmit_老邦.zip",
+    "sha": "14bc495e80335e651066d4f7d4c715dd99f20be9",
+    "size": 39974,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/SlideSubmit_%E8%80%81%E9%82%A6.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/SlideSubmit_%E8%80%81%E9%82%A6.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/14bc495e80335e651066d4f7d4c715dd99f20be9",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/SlideSubmit_%E8%80%81%E9%82%A6.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/SlideSubmit_%E8%80%81%E9%82%A6.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/14bc495e80335e651066d4f7d4c715dd99f20be9",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/SlideSubmit_%E8%80%81%E9%82%A6.zip"
+    }
+  },
+  {
     "name": "SlimBox2.zip",
     "path": "ZIP_CDN/SlimBox2.zip",
     "sha": "c07bd83b72bde12ccc0fd96d8799b14e2d18b39b",
@@ -7789,6 +7837,22 @@
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/UniTypecho_idealclover.zip?ref=master",
       "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/6c3adf6d505d02300a935dae7c1120802b03b3a4",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/UniTypecho_idealclover.zip"
+    }
+  },
+  {
+    "name": "UniversalAnalytics_銮尊.zip",
+    "path": "ZIP_CDN/UniversalAnalytics_銮尊.zip",
+    "sha": "5589c58b5c16d6055642e72cf7888851d309fee2",
+    "size": 2597,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/UniversalAnalytics_%E9%8A%AE%E5%B0%8A.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/UniversalAnalytics_%E9%8A%AE%E5%B0%8A.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/5589c58b5c16d6055642e72cf7888851d309fee2",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/UniversalAnalytics_%E9%8A%AE%E5%B0%8A.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/UniversalAnalytics_%E9%8A%AE%E5%B0%8A.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/5589c58b5c16d6055642e72cf7888851d309fee2",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/UniversalAnalytics_%E9%8A%AE%E5%B0%8A.zip"
     }
   },
   {
