@@ -26,7 +26,7 @@ jobs:
       - id: hash-name
         run: |
           grep=`git log -1 --pretty=%B | grep Merge | awk '{print $2}'`
-          if [ $grep=="branch" ]
+          if [[ $grep=="branch" ]]
             then
               hash=`git log HEAD@{1} -1 | grep commit | awk '{print $2}'`
           elif [ -z $grep ]
