@@ -4016,6 +4016,22 @@
     }
   },
   {
+    "name": "LaTeXTypecho_Khan.zip",
+    "path": "ZIP_CDN/LaTeXTypecho_Khan.zip",
+    "sha": "a5d0145fde94dc3a23284dac968463201446dfe7",
+    "size": 2130,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/LaTeXTypecho_Khan.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/LaTeXTypecho_Khan.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/a5d0145fde94dc3a23284dac968463201446dfe7",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/LaTeXTypecho_Khan.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/LaTeXTypecho_Khan.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/a5d0145fde94dc3a23284dac968463201446dfe7",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/LaTeXTypecho_Khan.zip"
+    }
+  },
+  {
     "name": "LaTex_mutoo.zip",
     "path": "ZIP_CDN/LaTex_mutoo.zip",
     "sha": "c49d376b221ac84157b8a4033a100724496ced3b",
@@ -5549,6 +5565,22 @@
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/PushToFirekylin_%E5%85%AC%E5%AD%90.zip?ref=master",
       "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/3b5b46bc1b1494d740a9ae26ec10edd4939ccc5d",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/PushToFirekylin_%E5%85%AC%E5%AD%90.zip"
+    }
+  },
+  {
+    "name": "PushToWeixin_Curtion.zip",
+    "path": "ZIP_CDN/PushToWeixin_Curtion.zip",
+    "sha": "0a103c62d232d061bafee380505ef5d9b336ff28",
+    "size": 2206,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/PushToWeixin_Curtion.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/PushToWeixin_Curtion.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/0a103c62d232d061bafee380505ef5d9b336ff28",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/PushToWeixin_Curtion.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/PushToWeixin_Curtion.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/0a103c62d232d061bafee380505ef5d9b336ff28",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/PushToWeixin_Curtion.zip"
     }
   },
   {
@@ -8480,6 +8512,22 @@
     }
   },
   {
+    "name": "WordsCounter_Elatis.zip",
+    "path": "ZIP_CDN/WordsCounter_Elatis.zip",
+    "sha": "f8cd6a5dc20c30e09ecc9a3b7725f1ee9310841a",
+    "size": 1908,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/WordsCounter_Elatis.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/WordsCounter_Elatis.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/f8cd6a5dc20c30e09ecc9a3b7725f1ee9310841a",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/WordsCounter_Elatis.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/WordsCounter_Elatis.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/f8cd6a5dc20c30e09ecc9a3b7725f1ee9310841a",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/WordsCounter_Elatis.zip"
+    }
+  },
+  {
     "name": "Words_息E-敛.zip",
     "path": "ZIP_CDN/Words_息E-敛.zip",
     "sha": "805a48f436be4b842a748b1b8e7638a0d15209de",
@@ -8893,6 +8941,22 @@
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/oneimg_%E7%96%AF%E7%8B%82%E5%87%8F%E8%82%A5%E5%B8%A6.zip?ref=master",
       "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/f7994dd901ddec8bdaeec62a6ac0a65292bf8a83",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/oneimg_%E7%96%AF%E7%8B%82%E5%87%8F%E8%82%A5%E5%B8%A6.zip"
+    }
+  },
+  {
+    "name": "pScaleUp_梁先生呀.zip",
+    "path": "ZIP_CDN/pScaleUp_梁先生呀.zip",
+    "sha": "aa08c68844f7913826933f10facc629af9f1abd5",
+    "size": 1962,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/pScaleUp_%E6%A2%81%E5%85%88%E7%94%9F%E5%91%80.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/pScaleUp_%E6%A2%81%E5%85%88%E7%94%9F%E5%91%80.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/aa08c68844f7913826933f10facc629af9f1abd5",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/pScaleUp_%E6%A2%81%E5%85%88%E7%94%9F%E5%91%80.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/pScaleUp_%E6%A2%81%E5%85%88%E7%94%9F%E5%91%80.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/aa08c68844f7913826933f10facc629af9f1abd5",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/pScaleUp_%E6%A2%81%E5%85%88%E7%94%9F%E5%91%80.zip"
     }
   },
   {
