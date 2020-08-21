@@ -16,6 +16,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - id: test-wtf
+        run: |
+          grep=`git log -1 --pretty=%B | grep Merge | awk '{print $2}'`
+          echo "$grep"
+
       - id: hash-name
         run: |
           grep=`git log -1 --pretty=%B | grep Merge | awk '{print $2}'`
