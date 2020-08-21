@@ -18,20 +18,12 @@ jobs:
         with:
           fetch-depth: 2
 
-      - id: test
-        run: |
-          test=`git log HEAD^ -1`
-          echo "$test"
-
       - id: hash-name
         run: |
-          grep=`git log -1 --pretty=%B | grep Merge | awk '{print $2}'`
-          if [ -z $grep ]
+          hash=`git log HEAD^ -1 | grep commit | awk '{print $2}'`
+          if [ -z `git log -1 --pretty=%B | grep Merge branch | awk '{print $2}'` ]
             then
               hash="master"
-          elif [ "$grep"=="branch" ]
-            then
-              hash=`git log HEAD^ -1 | grep commit | awk '{print $2}'`
           fi
           diff=https://github.com/jzwalk/API_Mirror/commit/"$hash".diff
           echo "::set-output name=url::$diff"
