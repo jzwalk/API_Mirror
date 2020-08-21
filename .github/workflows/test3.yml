@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - id: test-wtf
+      - id: test
         run: |
           grep=`git log -1 --pretty=%B | grep Merge | awk '{print $2}'`
           echo "$grep"
@@ -26,9 +26,8 @@ jobs:
           grep=`git log -1 --pretty=%B | grep Merge | awk '{print $2}'`
           if [ $grep=="branch" ]
             then
-              hash=`git log HEAD^ -1 | grep commit | awk '{print $2}'`
-          elif [ -z $grep ]
-            then
+              hash=`git log HEAD@{1} -1 | grep commit | awk '{print $2}'`
+          else
               hash="master"
           fi
           diff=https://github.com/jzwalk/API_Mirror/commit/"$hash".diff
