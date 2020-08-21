@@ -816,6 +816,22 @@
     }
   },
   {
+    "name": "BOSUpload_HyanCat.zip",
+    "path": "ZIP_CDN/BOSUpload_HyanCat.zip",
+    "sha": "148bbb107da54f817e7a60a242707ada51f4e572",
+    "size": 3996477,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/BOSUpload_HyanCat.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/BOSUpload_HyanCat.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/148bbb107da54f817e7a60a242707ada51f4e572",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/BOSUpload_HyanCat.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/BOSUpload_HyanCat.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/148bbb107da54f817e7a60a242707ada51f4e572",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/BOSUpload_HyanCat.zip"
+    }
+  },
+  {
     "name": "BackToTop.zip",
     "path": "ZIP_CDN/BackToTop.zip",
     "sha": "245a1c2c0035891938717cd3ba3bce623f4d85f9",
@@ -1533,6 +1549,22 @@
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/CodeMirror.zip?ref=master",
       "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/9ff29179170fee67a897951c5a322c76957727c9",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/CodeMirror.zip"
+    }
+  },
+  {
+    "name": "CodePrettify_HyanCat.zip",
+    "path": "ZIP_CDN/CodePrettify_HyanCat.zip",
+    "sha": "df1f656e14c907881f2c8865f4aeb512766dcb66",
+    "size": 9336,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/CodePrettify_HyanCat.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/CodePrettify_HyanCat.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/df1f656e14c907881f2c8865f4aeb512766dcb66",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/CodePrettify_HyanCat.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/CodePrettify_HyanCat.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/df1f656e14c907881f2c8865f4aeb512766dcb66",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/CodePrettify_HyanCat.zip"
     }
   },
   {
@@ -2973,6 +3005,22 @@
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/GitHubGit_weakish.zip?ref=master",
       "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/cca2a2c5ca86351e855d75c0371b866b31374777",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/GitHubGit_weakish.zip"
+    }
+  },
+  {
+    "name": "GitHubShow_HyanCat.zip",
+    "path": "ZIP_CDN/GitHubShow_HyanCat.zip",
+    "sha": "5a7d365a154d243bb0ea2cbf238347ff27f049ba",
+    "size": 1865,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/GitHubShow_HyanCat.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/GitHubShow_HyanCat.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/5a7d365a154d243bb0ea2cbf238347ff27f049ba",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/GitHubShow_HyanCat.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/GitHubShow_HyanCat.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/5a7d365a154d243bb0ea2cbf238347ff27f049ba",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/GitHubShow_HyanCat.zip"
     }
   },
   {
@@ -4797,6 +4845,22 @@
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/MouseFloating_icy2003.zip?ref=master",
       "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/4307c37acaf9a20a5068343fffe5447691e1ba25",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/MouseFloating_icy2003.zip"
+    }
+  },
+  {
+    "name": "MuPlayer_HyanCat.zip",
+    "path": "ZIP_CDN/MuPlayer_HyanCat.zip",
+    "sha": "49fbeecd20af6e63d604e08820350a1bbf804e41",
+    "size": 64331,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/MuPlayer_HyanCat.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/MuPlayer_HyanCat.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/49fbeecd20af6e63d604e08820350a1bbf804e41",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/MuPlayer_HyanCat.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/MuPlayer_HyanCat.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/49fbeecd20af6e63d604e08820350a1bbf804e41",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/MuPlayer_HyanCat.zip"
     }
   },
   {
