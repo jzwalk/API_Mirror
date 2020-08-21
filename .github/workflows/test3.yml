@@ -18,9 +18,10 @@ jobs:
 
       - id: hash-name
         run: |
-          if [ `git log -1 --pretty=%B | grep Merge` ]
+          grep=`git log -1 --pretty=%B | grep Merge | awk '{print $2}'`
+          if [ $grep=="branch" ]
             then
-              hash=`git log HEAD@{1} -1 | grep commit | head -1 | awk '{print $2}'`
+              hash=`git log HEAD@{1} -1 | grep commit | awk '{print $2}'`
           else
               hash="master"
           fi
