@@ -27,7 +27,8 @@ jobs:
           if [ $grep=="branch" ]
             then
               hash=`git log HEAD^ -1 | grep commit | awk '{print $2}'`
-          else
+          elif [ -z $grep ]
+            then
               hash="master"
           fi
           diff=https://github.com/jzwalk/API_Mirror/commit/"$hash".diff
