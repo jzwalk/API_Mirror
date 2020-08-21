@@ -27,7 +27,7 @@
 
  > 下表中的下载链接文字可用于附加图标：`下载`即非社区版，`不可用`显示为:no_entry:，`特殊`显示:warning:意为安装或启用方法特殊。
 
-### 插件信息 (4)
+### 插件信息 (3)
 
 ###### TeStore使用下表“名称”创建安装文件夹，“版本”提示升级，请务必确保文本准确；添加时注意按字母排序，自增上方括号内总数，简介不要太长。
 ```
@@ -36,7 +36,7 @@
 
 名称 | 简介 | 版本 | 作者 | zip包
 ---- | ----: | :---: | ----: | :----:
-[Akismet](https://github.com/typecho/plugins/tree/master/Akismet) | 经典反垃圾评论服务Akismet插件 | 1.1.4 | [qining](https://github.com/joyqi) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/Akismet.zip)
+[Akismet](https://github.com/typecho/plugins/tree/master/Akismet) | 经典反垃圾评论服务Akismet插件 | 1.1.4 | [qining](https://github.com/joyqi) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/Akismet_.zip)
 [Album](https://github.com/THX-plus/Album) | Typecho模版型页面相册系统插件 | 1.2 | [我本奈何](https://github.com/THX-plus) | [下载](https://github.com/THX-plus/Album/archive/master.zip)
 [AliOSS](https://github.com/chaclee/typecho-oss) | Typecho附件上传阿里云OSS插件 | 1.0.1 | [raintao](https://github.com/chaclee) | [下载](https://github.com/chaclee/typecho-oss/archive/master.zip)
 [AliOssForTypecho](https://github.com/droomo/AliOssForTypecho) | 新OSS云储存插件(本地备份+样式) | 1.1.8 | [droomo.](https://github.com/droomo) | [下载](https://github.com/droomo/AliOssForTypecho/archive/master.zip)
