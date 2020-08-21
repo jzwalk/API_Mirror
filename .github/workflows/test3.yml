@@ -26,12 +26,12 @@ jobs:
       - id: hash-name
         run: |
           grep=`git log -1 --pretty=%B | grep Merge | awk '{print $2}'`
-          if [[ $grep=="branch" ]]
-            then
-              hash=`git log HEAD@{1} -1 | grep commit | awk '{print $2}'`
-          elif [ -z $grep ]
+          if [ -z $grep ]
             then
               hash="master"
+          elif [ "$grep"=="branch" ]
+            then
+              hash=`git log HEAD^ -1 | grep commit | awk '{print $2}'`
           fi
           diff=https://github.com/jzwalk/API_Mirror/commit/"$hash".diff
           echo "::set-output name=url::$diff"
