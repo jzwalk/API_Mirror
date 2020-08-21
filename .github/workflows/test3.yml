@@ -18,8 +18,8 @@ jobs:
 
       - id: test
         run: |
-          grep=`git log -1 --pretty=%B | grep Merge | awk '{print $2}'`
-          echo "$grep"
+          test=`git log HEAD@{1} -1 | grep commit | awk '{print $2}'`
+          echo "$test"
 
       - id: hash-name
         run: |
