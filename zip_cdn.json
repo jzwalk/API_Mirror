@@ -6338,16 +6338,16 @@
   {
     "name": "ServerStatus_Weifeng.zip",
     "path": "ZIP_CDN/ServerStatus_Weifeng.zip",
-    "sha": "3c09f9f4c35fbb46a504c7a9a21f9c53d45df0b5",
-    "size": 55172,
+    "sha": "d00ac843dd4b09ba284ae733ab00811b6fe9cc98",
+    "size": 54728,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/ServerStatus_Weifeng.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/ServerStatus_Weifeng.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/3c09f9f4c35fbb46a504c7a9a21f9c53d45df0b5",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/d00ac843dd4b09ba284ae733ab00811b6fe9cc98",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/ServerStatus_Weifeng.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/ServerStatus_Weifeng.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/3c09f9f4c35fbb46a504c7a9a21f9c53d45df0b5",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/d00ac843dd4b09ba284ae733ab00811b6fe9cc98",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/ServerStatus_Weifeng.zip"
     }
   },
@@ -6690,16 +6690,16 @@
   {
     "name": "SkyMo_Alomerry.zip",
     "path": "ZIP_CDN/SkyMo_Alomerry.zip",
-    "sha": "74f98fe190aaad0df38ea21899acb9a7ba8ddbe0",
-    "size": 60262,
+    "sha": "cbbd30bfe90a6c13b1d41f2a07ac1bfed86c65f2",
+    "size": 60247,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/SkyMo_Alomerry.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/SkyMo_Alomerry.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/74f98fe190aaad0df38ea21899acb9a7ba8ddbe0",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/cbbd30bfe90a6c13b1d41f2a07ac1bfed86c65f2",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/SkyMo_Alomerry.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/SkyMo_Alomerry.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/74f98fe190aaad0df38ea21899acb9a7ba8ddbe0",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/cbbd30bfe90a6c13b1d41f2a07ac1bfed86c65f2",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/SkyMo_Alomerry.zip"
     }
   },
@@ -6941,6 +6941,22 @@
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Stat.zip?ref=master",
       "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/8bddb919b7d6522e5b3b89e1ac66da7789855b4e",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Stat.zip"
+    }
+  },
+  {
+    "name": "Statistics_Liudon.zip",
+    "path": "ZIP_CDN/Statistics_Liudon.zip",
+    "sha": "bba7593dd68fa9abcaab5fcc9ccc7107af8abaab",
+    "size": 785,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Statistics_Liudon.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Statistics_Liudon.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/bba7593dd68fa9abcaab5fcc9ccc7107af8abaab",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/Statistics_Liudon.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Statistics_Liudon.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/bba7593dd68fa9abcaab5fcc9ccc7107af8abaab",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Statistics_Liudon.zip"
     }
   },
   {
@@ -9101,6 +9117,22 @@
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/notice_jrotty.zip?ref=master",
       "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/fa41160e45f643ad8ec9180a7def3e642201ff7c",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/notice_jrotty.zip"
+    }
+  },
+  {
+    "name": "notice_jrotty_Weifeng.zip",
+    "path": "ZIP_CDN/notice_jrotty_Weifeng.zip",
+    "sha": "489c04868ffbce33b07361405f5e47dab4de4985",
+    "size": 7989,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/notice_jrotty_Weifeng.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/notice_jrotty_Weifeng.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/489c04868ffbce33b07361405f5e47dab4de4985",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/notice_jrotty_Weifeng.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/notice_jrotty_Weifeng.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/489c04868ffbce33b07361405f5e47dab4de4985",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/notice_jrotty_Weifeng.zip"
     }
   },
   {
