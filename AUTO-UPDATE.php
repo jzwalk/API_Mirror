@@ -165,7 +165,7 @@
 									break;
 								}
 							}
-$s = print_r($name['0'],true);
+$s = print_r(($sub ? $name['0'].'/Plugin.php' : 'Plugin.php'),true);
 file_put_contents('log.txt',$s);
 							//找到拼接出地址
 							if ($path) {
