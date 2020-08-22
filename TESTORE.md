@@ -27,7 +27,7 @@
 
  > 下表中的下载链接文字可用于附加图标：`下载`即非社区版，`不可用`显示为:no_entry:，`特殊`显示:warning:意为安装或启用方法特殊。
 
-### 插件信息 (2)
+### 插件信息 (1)
 
 ###### TeStore使用下表“名称”创建安装文件夹，“版本”提示升级，请务必确保文本准确；添加时注意按字母排序，自增上方括号内总数，简介不要太长。
 ```
@@ -36,4 +36,4 @@
 
 名称 | 简介 | 版本 | 作者 | zip包
 ---- | ----: | :---: | ----: | :----:
-[notice](https://github.com/acewfdy/Typecho/tree/master/Plugins/notice) | [Toastr](https://github.com/CodeSeven/toastr)样式版[notice](https://github.com/jrotty/typecho-for-notice)消息通知插件 | 0.4 | [jrotty](https://github.com/jrotty),[Weifeng](https://github.com/acewfdy) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-M_to_R/notice_.zip)
+[notice](https://github.com/acewfdy/Typecho/tree/master/Plugins/notice) | [Toastr](https://github.com/CodeSeven/toastr)样式版[notice](https://github.com/jrotty/typecho-for-notice)消息通知插件 | 1.0 | [jrotty](https://github.com/jrotty),[Weifeng](https://github.com/acewfdy) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-M_to_R/notice_.zip)
