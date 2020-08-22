@@ -6338,16 +6338,16 @@
   {
     "name": "ServerStatus_Weifeng.zip",
     "path": "ZIP_CDN/ServerStatus_Weifeng.zip",
-    "sha": "d00ac843dd4b09ba284ae733ab00811b6fe9cc98",
+    "sha": "dda88a3ec548585ae5ccee088207fa5f5a6b4590",
     "size": 54728,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/ServerStatus_Weifeng.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/ServerStatus_Weifeng.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/d00ac843dd4b09ba284ae733ab00811b6fe9cc98",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/dda88a3ec548585ae5ccee088207fa5f5a6b4590",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/ServerStatus_Weifeng.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/ServerStatus_Weifeng.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/d00ac843dd4b09ba284ae733ab00811b6fe9cc98",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/dda88a3ec548585ae5ccee088207fa5f5a6b4590",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/ServerStatus_Weifeng.zip"
     }
   },
@@ -9122,16 +9122,16 @@
   {
     "name": "notice_jrotty_Weifeng.zip",
     "path": "ZIP_CDN/notice_jrotty_Weifeng.zip",
-    "sha": "489c04868ffbce33b07361405f5e47dab4de4985",
-    "size": 7989,
+    "sha": "d3f44e3f9abcf1ecaaca7e2db26c3e152298c468",
+    "size": 7991,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/notice_jrotty_Weifeng.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/notice_jrotty_Weifeng.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/489c04868ffbce33b07361405f5e47dab4de4985",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/d3f44e3f9abcf1ecaaca7e2db26c3e152298c468",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/notice_jrotty_Weifeng.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/notice_jrotty_Weifeng.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/489c04868ffbce33b07361405f5e47dab4de4985",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/d3f44e3f9abcf1ecaaca7e2db26c3e152298c468",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/notice_jrotty_Weifeng.zip"
     }
   },
