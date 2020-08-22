@@ -165,11 +165,11 @@
 									break;
 								}
 							}
+$s = print_r($path,true);
+file_put_contents('log.txt',$s);
 							//找到拼接出地址
 							if ($path) {
 								$detect = false;
-$s = print_r($url,true);
-file_put_contents('log.txt',$s);
 								$pluginFile = $url.($main ? '/raw/main/' : '/raw/master/').$path;
 							}
 						}
