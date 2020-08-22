@@ -174,11 +174,11 @@
 					}
 
 					//从主文件提取信息
+$s = print_r($pluginFile,true);
+file_put_contents('log.txt',$s);
 					$infos = call_user_func('parseInfo',($detect ? $pluginFile.'Plugin.php' : $pluginFile));
 					//单文件情况
 					if (!$infos['version'] && $detect) {
-$s = print_r($pluginFile,true);
-file_put_contents('log.txt',$s);
 						$infos = call_user_func('parseInfo',$pluginFile.$name['0'].'.php');
 					}
 					if ($infos['version']) {
