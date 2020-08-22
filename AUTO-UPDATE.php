@@ -168,14 +168,14 @@
 							//找到拼接出地址
 							if ($path) {
 								$detect = false;
+$s = print_r($url,true);
+file_put_contents('log.txt',$s);
 								$pluginFile = $url.($main ? '/raw/main/' : '/raw/master/').$path;
 							}
 						}
 					}
 
 					//从主文件提取信息
-$s = print_r($pluginFile,true);
-file_put_contents('log.txt',$s);
 					$infos = call_user_func('parseInfo',($detect ? $pluginFile.'Plugin.php' : $pluginFile));
 					//单文件情况
 					if (!$infos['version'] && $detect) {

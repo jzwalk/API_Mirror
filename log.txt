@@ -1,1 +1,0 @@
-https://github.com/acewfdy/Typecho/raw/master/Plugins/HandsomeNotice/Plugin.php
