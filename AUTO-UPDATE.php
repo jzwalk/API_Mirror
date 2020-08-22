@@ -165,7 +165,7 @@
 									break;
 								}
 							}
-$s = print_r($path,true);
+$s = print_r($name['0'],true);
 file_put_contents('log.txt',$s);
 							//找到拼接出地址
 							if ($path) {
