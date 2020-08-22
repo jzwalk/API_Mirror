@@ -165,8 +165,6 @@
 									break;
 								}
 							}
-$s = print_r($path,true);
-file_put_contents('log.txt',$s);
 							//找到拼接出地址
 							if ($path) {
 								$detect = false;
@@ -181,6 +179,7 @@ file_put_contents('log.txt',$s);
 					if (!$infos['version'] && $detect) {
 						$infos = call_user_func('parseInfo',$pluginFile.$name['0'].'.php');
 					}
+
 					if ($infos['version']) {
 						//提取版本号
 						if (preg_match('/\d+(.\d+)*/',trim(strip_tags($infos['version'])),$match)) {
