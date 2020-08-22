@@ -36,4 +36,4 @@
 
 名称 | 简介 | 版本 | 作者 | zip包
 ---- | ----: | :---: | ----: | :----:
-[notice](https://github.com/acewfdy/Typecho/tree/master/Plugins/notice) | [Toastr](https://github.com/CodeSeven/toastr)样式版[notice](https://github.com/jrotty/typecho-for-notice)消息通知插件 | 0.4 | [jrotty](https://github.com/jrotty),[Weifeng](https://github.com/acewfdy) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-M_to_R/notice_.zip)
+[notice](https://github.com/acewfdy/Typecho/tree/master/Plugins/notice) | [Toastr](https://github.com/CodeSeven/toastr)样式版[notice](https://github.com/jrotty/typecho-for-notice)消息通知插件 | 1.0 | [jrotty](https://github.com/jrotty),[Weifeng](https://github.com/acewfdy) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-M_to_R/notice_.zip)
