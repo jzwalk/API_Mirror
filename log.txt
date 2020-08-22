@@ -1,1 +1,1 @@
-notice
+notice/Plugin.php
