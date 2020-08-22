@@ -160,12 +160,12 @@
 							//查找主文件路径
 							foreach ($datas['tree'] as $tree) {
 								$path = '';
-								if (false!==stripos($tree['path'],($sub ? $name['0'].'/Plugin.php' : 'Plugin.php'))) {
+								if (false!==strpos($tree['path'],($sub ? $name['0'].'/Plugin.php' : 'Plugin.php'))) {
 									$path = $tree['path'];
 									break;
 								}
 							}
-$s = print_r(($sub ? $name['0'].'/Plugin.php' : 'Plugin.php'),true);
+$s = print_r($path,true);
 file_put_contents('log.txt',$s);
 							//找到拼接出地址
 							if ($path) {
