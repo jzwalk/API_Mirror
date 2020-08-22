@@ -19,7 +19,6 @@
 
 	//分析最新文档变化
 	if (!empty($argv['2']) && strpos($argv['2'],'.diff')) {
-//https://github.com/typecho-fans/plugins/commit/master.diff
 		$record = @file_get_contents($argv['2'],0,
 			stream_context_create(array('http'=>array('header'=>array('Accept: application/vnd.github.v3.diff')))));
 		$diffs = explode(PHP_EOL,$record);

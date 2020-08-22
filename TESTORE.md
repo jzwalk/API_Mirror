@@ -36,9 +36,5 @@
 
 名称 | 简介 | 版本 | 作者 | zip包
 ---- | ----: | :---: | ----: | :----:
-[Akismet](https://github.com/typecho/plugins/tree/master/Akismet) | 经典反垃圾评论服务Akismet插件 | 1.1.4 | [qining](https://github.com/joyqi) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/Akismet_.zip)
-[Album](https://github.com/THX-plus/Album) | Typecho模版型页面相册系统插件 | 1.2 | [我本奈何](https://github.com/THX-plus) | [下载](https://github.com/THX-plus/Album/archive/master.zip)
-[AliOSS](https://github.com/chaclee/typecho-oss) | Typecho附件上传阿里云OSS插件 | 1.0.1 | [raintao](https://github.com/chaclee) | [下载](https://github.com/chaclee/typecho-oss/archive/master.zip)
-[AliOssForTypecho](https://github.com/droomo/AliOssForTypecho) | 新OSS云储存插件(本地备份+样式) | 1.1.8 | [droomo.](https://github.com/droomo) | [下载](https://github.com/droomo/AliOssForTypecho/archive/master.zip)
-[AliUpload](https://github.com/typecho/plugins/tree/master/AliUpload) | 经典附件上传阿里云储存OSS插件 | 1.0.0 | [loftor](https://github.com/loftor-git) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/AliUpload_.zip)
-[AliceStyle](https://github.com/racns/AliceStyle) | 常见主题外观用美化效果合集插件 | 2.4.0 | [racns](https://github.com/racns) | [下载](https://github.com/racns/AliceStyle/archive/master.zip)
+[ServerStatus](https://github.com/acewfdy/Typecho/tree/master/Plugins/ServerStatus) | Typecho前台服务器状态展示插件 | 2.1.0 | [Weifeng](https://github.com/acewfdy) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-S_to_Z/ServerStatus.zip)
+[notice](https://github.com/acewfdy/Typecho/tree/master/Plugins/notice) | [Toastr](https://github.com/CodeSeven/toastr)样式版[notice](https://github.com/jrotty/typecho-for-notice)消息通知插件 | 0.4 | [jrotty](https://github.com/jrotty),[Weifeng](https://github.com/acewfdy) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-M_to_R/notice.zip)
