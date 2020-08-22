@@ -179,7 +179,8 @@
 					if (!$infos['version'] && $detect) {
 						$infos = call_user_func('parseInfo',$pluginFile.$name['0'].'.php');
 					}
-
+$s = print_r($infos,true);
+file_put_contents('log.txt',$s);
 					if ($infos['version']) {
 						//提取版本号
 						if (preg_match('/\d+(.\d+)*/',trim(strip_tags($infos['version'])),$match)) {
