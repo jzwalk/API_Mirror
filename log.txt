@@ -1,1 +1,1 @@
-Plugins/HandsomeNotice/Plugin.php
+notice
