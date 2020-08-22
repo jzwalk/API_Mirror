@@ -6208,6 +6208,22 @@
     }
   },
   {
+    "name": "SEPusher_sp.zip",
+    "path": "ZIP_CDN/SEPusher_sp.zip",
+    "sha": "5c45b46c418affda859393af68e903b6718d6989",
+    "size": 2990,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/SEPusher_sp.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/SEPusher_sp.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/5c45b46c418affda859393af68e903b6718d6989",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/SEPusher_sp.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/SEPusher_sp.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/5c45b46c418affda859393af68e903b6718d6989",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/SEPusher_sp.zip"
+    }
+  },
+  {
     "name": "SNAuth_苏南.zip",
     "path": "ZIP_CDN/SNAuth_苏南.zip",
     "sha": "b598f35e486c1f080099a1281a93b1645ae75172",
@@ -8784,6 +8800,22 @@
     }
   },
   {
+    "name": "YkSwfNoAd_镜花水月.zip",
+    "path": "ZIP_CDN/YkSwfNoAd_镜花水月.zip",
+    "sha": "6637f35b73ce31acc90aa2e63e05c7ff70b88f30",
+    "size": 1303,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/YkSwfNoAd_%E9%95%9C%E8%8A%B1%E6%B0%B4%E6%9C%88.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/YkSwfNoAd_%E9%95%9C%E8%8A%B1%E6%B0%B4%E6%9C%88.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/6637f35b73ce31acc90aa2e63e05c7ff70b88f30",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/YkSwfNoAd_%E9%95%9C%E8%8A%B1%E6%B0%B4%E6%9C%88.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/YkSwfNoAd_%E9%95%9C%E8%8A%B1%E6%B0%B4%E6%9C%88.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/6637f35b73ce31acc90aa2e63e05c7ff70b88f30",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/YkSwfNoAd_%E9%95%9C%E8%8A%B1%E6%B0%B4%E6%9C%88.zip"
+    }
+  },
+  {
     "name": "YoduBGM.zip",
     "path": "ZIP_CDN/YoduBGM.zip",
     "sha": "659a40be171f65807fb081af8b0a57df760aad69",
@@ -8880,6 +8912,22 @@
     }
   },
   {
+    "name": "acfun_镜花水月.zip",
+    "path": "ZIP_CDN/acfun_镜花水月.zip",
+    "sha": "659e523e4df25ec3d7dfcfae905dad6b9d92ebf6",
+    "size": 1406,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/acfun_%E9%95%9C%E8%8A%B1%E6%B0%B4%E6%9C%88.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/acfun_%E9%95%9C%E8%8A%B1%E6%B0%B4%E6%9C%88.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/659e523e4df25ec3d7dfcfae905dad6b9d92ebf6",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/acfun_%E9%95%9C%E8%8A%B1%E6%B0%B4%E6%9C%88.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/acfun_%E9%95%9C%E8%8A%B1%E6%B0%B4%E6%9C%88.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/659e523e4df25ec3d7dfcfae905dad6b9d92ebf6",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/acfun_%E9%95%9C%E8%8A%B1%E6%B0%B4%E6%9C%88.zip"
+    }
+  },
+  {
     "name": "alexarank.zip",
     "path": "ZIP_CDN/alexarank.zip",
     "sha": "c9d7305f1bc752faec02406b79b42f203d52078b",
@@ -8925,6 +8973,22 @@
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/bilibili_Hcreak.zip?ref=master",
       "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/5358e1f633bcbf3f7cc9919492a4f3740ec8d8f6",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/bilibili_Hcreak.zip"
+    }
+  },
+  {
+    "name": "bilibili_镜花水月.zip",
+    "path": "ZIP_CDN/bilibili_镜花水月.zip",
+    "sha": "0d63b8fdc9d8c9813d4d4e70d5e151e4805e96fa",
+    "size": 1340,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/bilibili_%E9%95%9C%E8%8A%B1%E6%B0%B4%E6%9C%88.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/bilibili_%E9%95%9C%E8%8A%B1%E6%B0%B4%E6%9C%88.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/0d63b8fdc9d8c9813d4d4e70d5e151e4805e96fa",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/bilibili_%E9%95%9C%E8%8A%B1%E6%B0%B4%E6%9C%88.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/bilibili_%E9%95%9C%E8%8A%B1%E6%B0%B4%E6%9C%88.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/0d63b8fdc9d8c9813d4d4e70d5e151e4805e96fa",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/bilibili_%E9%95%9C%E8%8A%B1%E6%B0%B4%E6%9C%88.zip"
     }
   },
   {
