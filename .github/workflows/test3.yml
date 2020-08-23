@@ -15,15 +15,12 @@ jobs:
     runs-on: "ubuntu-latest"
 
     steps:
-      - run: |
-          git clone ${{ github.event.inputs.repo-git }} /home/runner/work/API_Mirror/GITEE
-
       - uses: actions/checkout@v2
       - run: |
-          ls /home/runner/work/API_Mirror/GITEE
+          php TEST-UPDATE.php ${{ github.event.inputs.repo-git }}
 
       - run: |
-          php TEST-UPDATE.php
+          ls /home/runner/work/API_Mirror/GITEE
 
       - name: "提交更新文件"
         uses: stefanzweifel/git-auto-commit-action@v4

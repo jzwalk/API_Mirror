@@ -15,6 +15,6 @@
 	}
 	//按插件名排序
 	sort($names);
-
-	$output = shell_exec('ls -lart');
+	shell_exec('git clone '.$argv['1'].' /home/runner/work/API_Mirror/GITEE');
+	$output = shell_exec('ls /home/runner/work/API_Mirror/GITEE');
 	file_put_contents('log.txt',$output);
