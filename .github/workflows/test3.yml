@@ -2,11 +2,11 @@ name: "手动更新单Gitee插件"
 
 on: 
   workflow_dispatch:
-#    inputs:
-#      repo-git:
-#        description: "Gitee插件克隆地址"
-#        required: true
-#        default: 'https://gitee.com/user/repo.git'
+    inputs:
+      repo-git:
+        description: "Gitee插件克隆地址"
+        required: true
+        default: 'https://gitee.com/user/repo.git'
 
 jobs:
 
@@ -15,12 +15,17 @@ jobs:
     runs-on: "ubuntu-latest"
 
     steps:
-#      - run: |
-#          git clone ${{ github.event.inputs.repo-git }}
-
-#      - run: |
-#          ls
+      - run: |
+          git clone ${{ github.event.inputs.repo-git }} ../
 
       - uses: actions/checkout@v2
       - run: |
+          ls -d ../
+
+      - run: |
           php TEST-UPDATE.php
+
+      - name: "提交更新文件"
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "Test: auto update plugins"
