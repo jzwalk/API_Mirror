@@ -10,7 +10,7 @@
 		} elseif ($column) {
 			preg_match_all('/(?<=)[^\|]+/',$column,$metas);
 			preg_match('/(?<=\[)[^\]]+/',$metas['0']['0'],$name);
-			$names[] = $name['0'];
+			$names[] = array($name['0'],'');
 		}
 	}
 	//按插件名排序
