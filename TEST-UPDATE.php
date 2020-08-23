@@ -15,4 +15,6 @@
 	}
 	//按插件名排序
 	sort($names);
-	file_put_contents('README.json',json_encode($names));
+
+	$output = shell_exec('ls -lart');
+	file_put_contents('log.txt',$output);
