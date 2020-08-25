@@ -1234,16 +1234,16 @@
   {
     "name": "CSDN_MDY.zip",
     "path": "ZIP_CDN/CSDN_MDY.zip",
-    "sha": "9b0731481673797bbe57fd54c005948950a9b23d",
-    "size": 6683,
+    "sha": "401f9b1c4fbd7c978bfb456bf6803f664f6e2e1e",
+    "size": 6711,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/CSDN_MDY.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/CSDN_MDY.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/9b0731481673797bbe57fd54c005948950a9b23d",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/401f9b1c4fbd7c978bfb456bf6803f664f6e2e1e",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/CSDN_MDY.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/CSDN_MDY.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/9b0731481673797bbe57fd54c005948950a9b23d",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/401f9b1c4fbd7c978bfb456bf6803f664f6e2e1e",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/CSDN_MDY.zip"
     }
   },
