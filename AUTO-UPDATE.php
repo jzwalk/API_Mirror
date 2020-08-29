@@ -292,7 +292,7 @@
 						} else {
 							$rootPath = $pluginFolder.($sub ? $paths['1'].'/' : '');
 							foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($rootPath)) as $file) {
-								if (!$file->isDir() && false!==strpos($file->getPath(),'.git')) {
+								if (!$file->isDir() && false===strpos($file->getPath(),'.git')) {
 									$filePath = $file->getRealPath();
 									$phpZip->addFile($filePath,$name['0'].'/'.substr($filePath,strlen($rootPath)));
 								}
