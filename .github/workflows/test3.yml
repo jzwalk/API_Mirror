@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: |
-          php AUTO-UPDATE.php ${{ github.event.inputs.repo-git }}
+          php AUTO-UPDATE.php ${{ secrets.GITHUB_TOKEN }} ${{ github.event.inputs.repo-git }}
 
       - name: "提交更新文件"
         uses: stefanzweifel/git-auto-commit-action@v4

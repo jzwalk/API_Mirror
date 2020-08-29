@@ -196,8 +196,6 @@
 					}
 				}
 
-$s = print_r($argv['2'],true);
-file_put_contents('log.txt',$s);
 				//对比版本号判断更新
 				if ($infos['version'] && $infos['version']>$version || !empty($argv['2'])) { //或有参数即可
 					++$update;
@@ -238,22 +236,34 @@ file_put_contents('log.txt',$s);
 					$cdn = 'ZIP_CDN/'.$name['0'].'_'.($separator ? implode('_',$authorNames) : $author).'.zip';
 
 					//标签发布的需重新打包
-					if ($github && strpos($zip,'typecho-fans/plugins/releases/download')) {
-						$repoZip = $url.'/archive/'.($main ? 'main' : 'master').'.zip';
-						$download = @file_get_contents($repoZip);
-						if ($download) {
-							$tmpName = '/'.$all.'_'.$name['0'];
-							$tmpZip = $tmpDir.$tmpName.'_master.zip';
-							//下载实时zip
-							file_put_contents($tmpZip,$download);
+					if (strpos($zip,'typecho-fans/plugins/releases/download')) {
+						$tmpName = '/'.$all.'_'.$name['0'];
 
-							//解压实时zip
-							$phpZip = new ZipArchive();
-							$phpZip->open($tmpZip);
-							$tmpSub = $tmpDir.$tmpName;
-							mkdir($tmpSub);
-							$phpZip->extractTo($tmpSub);
-							$pluginFolder = $tmpSub.'/'.basename($url).($main ? '-main/' : '-master/');
+						if ($github) {
+							$repoZip = $url.'/archive/'.($main ? 'main' : 'master').'.zip';
+							$download = @file_get_contents($repoZip);
+							if ($download) {
+								$tmpZip = $tmpDir.$tmpName.'.zip';
+								//下载实时zip
+								file_put_contents($tmpZip,$download);
+
+								//解压实时zip
+								$phpZip = new ZipArchive();
+								$phpZip->open($tmpZip);
+								$tmpSub = $tmpDir.$tmpName;
+								mkdir($tmpSub);
+								$phpZip->extractTo($tmpSub);
+								$pluginFolder = $tmpSub.'/'.basename($url).($main ? '-main/' : '-master/');
+							} else {
+								$logs .= 'Error: "'.$repoZip.'" not found!'.PHP_EOL;
+							}
+						} elseif ($gitee) {
+							$pluginFolder = $tmpDir.'/GITEE'.$tmpName;
+							shell_exec('git clone '.$url.'.git '.$pluginFolder);
+							$output = shell_exec('ls '.$pluginFolder);
+$s = print_r($output,true);
+file_put_contents('log.txt',$s);
+						}
 
 							//替换作者名
 							$renamed = '';
@@ -300,9 +310,6 @@ file_put_contents('log.txt',$s);
 							}
 							//完成处理记录日志
 							$logs .= $name['0'].' - '.date('Y-m-d H:i',time()).' - RE-ZIP '.$renamed.$status.PHP_EOL;
-						} else {
-							$logs .= 'Error: "'.$repoZip.'" not found!'.PHP_EOL;
-						}
 
 					//其他仅下载至加速目录
 					} else {
