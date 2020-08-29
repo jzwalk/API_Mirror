@@ -1,4 +1,1 @@
-Array
-(
-    [0] => ActiveSubmit
-)
+https://gitee.com/hoexhe/ActivatePowerMode/raw/master/Plugin.php
