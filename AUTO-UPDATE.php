@@ -123,6 +123,8 @@
 			if ($condition) {
 				++$all;
 				preg_match('/(?<=\[)[^\]]+/',$metas['0']['0'],$name);
+$s = print_r($name,true);
+file_put_contents('log.txt',$s);
 
 				if ($github || $gitee) {
 					//取插件主文件地址
