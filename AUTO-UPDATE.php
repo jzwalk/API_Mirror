@@ -177,8 +177,6 @@
 							}
 						}
 					}
-$s = print_r($pluginFile,true);
-file_put_contents('log.txt',$s);
 
 					//从主文件提取信息
 					$infos = call_user_func('parseInfo',($detect ? $pluginFile.'Plugin.php' : $pluginFile));
@@ -237,6 +235,8 @@ file_put_contents('log.txt',$s);
 					//命名zip包 (加速目录用)
 					$cdn = 'ZIP_CDN/'.$name['0'].'_'.($separator ? implode('_',$authorNames) : $author).'.zip';
 
+$s = print_r($cdn,true);
+file_put_contents('log.txt',$s);
 					//标签发布的需重新打包
 					if ($github && strpos($zip,'typecho-fans/plugins/releases/download')) {
 						$repoZip = $url.'/archive/'.($main ? 'main' : 'master').'.zip';
