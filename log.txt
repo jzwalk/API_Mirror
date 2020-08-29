@@ -1,1 +1,1 @@
-https://gitee.com/hoexhe/ActivatePowerMode/raw/master/Plugin.php
+1.0.0
