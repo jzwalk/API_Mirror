@@ -196,12 +196,12 @@
 					}
 				}
 
+$s = print_r($argv['2'],true);
+file_put_contents('log.txt',$s);
 				//对比版本号判断更新
 				if ($infos['version'] && $infos['version']>$version || !empty($argv['2'])) { //或有参数即可
 					++$update;
 					$zip = end($links['0']);
-$s = print_r($zip,true);
-file_put_contents('log.txt',$s);
 
 					//准备作者名
 					$authorCode = html_entity_decode(trim($metas['0']['3']));
