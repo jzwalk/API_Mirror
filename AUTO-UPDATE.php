@@ -196,6 +196,8 @@
 					}
 				}
 
+$s = print_r($infos['version'],true);
+file_put_contents('log.txt',$s);
 				//对比版本号判断更新
 				if ($infos['version'] && $infos['version']>$version || !empty($argv['2'])) { //或有参数即可
 					++$update;
@@ -235,8 +237,6 @@
 					//命名zip包 (加速目录用)
 					$cdn = 'ZIP_CDN/'.$name['0'].'_'.($separator ? implode('_',$authorNames) : $author).'.zip';
 
-$s = print_r($cdn,true);
-file_put_contents('log.txt',$s);
 					//标签发布的需重新打包
 					if ($github && strpos($zip,'typecho-fans/plugins/releases/download')) {
 						$repoZip = $url.'/archive/'.($main ? 'main' : 'master').'.zip';
