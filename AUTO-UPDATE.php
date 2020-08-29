@@ -261,8 +261,6 @@
 							$pluginFolder = $tmpDir.'/GITEE'.$tmpName.'/';
 							shell_exec('git clone '.$url.'.git '.$pluginFolder);
 							$output = shell_exec('ls '.$pluginFolder);
-$s = print_r($pluginFolder,true);
-file_put_contents('log.txt',$s);
 						}
 
 						//替换作者名
@@ -294,7 +292,7 @@ file_put_contents('log.txt',$s);
 						} else {
 							$rootPath = $pluginFolder.($sub ? $paths['1'].'/' : '');
 							foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($rootPath)) as $file) {
-								if (!$file->isDir()) {
+								if (!$file->isDir() && false!==strpos($file->getPath(),'.git')) {
 									$filePath = $file->getRealPath();
 									$phpZip->addFile($filePath,$name['0'].'/'.substr($filePath,strlen($rootPath)));
 								}
