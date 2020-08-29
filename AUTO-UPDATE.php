@@ -123,8 +123,6 @@
 			if ($condition) {
 				++$all;
 				preg_match('/(?<=\[)[^\]]+/',$metas['0']['0'],$name);
-$s = print_r($name,true);
-file_put_contents('log.txt',$s);
 
 				if ($github || $gitee) {
 					//取插件主文件地址
@@ -179,6 +177,8 @@ file_put_contents('log.txt',$s);
 							}
 						}
 					}
+$s = print_r($pluginFile,true);
+file_put_contents('log.txt',$s);
 
 					//从主文件提取信息
 					$infos = call_user_func('parseInfo',($detect ? $pluginFile.'Plugin.php' : $pluginFile));
