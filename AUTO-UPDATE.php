@@ -261,7 +261,7 @@
 							$pluginFolder = $tmpDir.'/GITEE'.$tmpName;
 							shell_exec('git clone '.$url.'.git '.$pluginFolder);
 							$output = shell_exec('ls '.$pluginFolder);
-$s = print_r($output,true);
+$s = print_r($pluginFolder,true);
 file_put_contents('log.txt',$s);
 						}
 
