@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       repo-git:
-        description: "Gitee插件克隆地址"
+        description: "Gitee插件目录地址(结尾勿带'/'号)"
         required: true
-        default: 'https://gitee.com/user/repo.git'
+        default: 'https://gitee.com/user/repo'
 
 jobs:
 
@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: |
-          php TEST-UPDATE.php ${{ github.event.inputs.repo-git }}
+          php AUTO-UPDATE.php ${{ github.event.inputs.repo-git }}
 
       - name: "提交更新文件"
         uses: stefanzweifel/git-auto-commit-action@v4
