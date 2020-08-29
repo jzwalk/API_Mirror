@@ -238,6 +238,7 @@
 					//标签发布的需重新打包
 					if (strpos($zip,'typecho-fans/plugins/releases/download')) {
 						$tmpName = '/'.$all.'_'.$name['0'];
+						$phpZip = new ZipArchive();
 
 						if ($github) {
 							$repoZip = $url.'/archive/'.($main ? 'main' : 'master').'.zip';
@@ -248,7 +249,6 @@
 								file_put_contents($tmpZip,$download);
 
 								//解压实时zip
-								$phpZip = new ZipArchive();
 								$phpZip->open($tmpZip);
 								$tmpSub = $tmpDir.$tmpName;
 								mkdir($tmpSub);
@@ -265,51 +265,51 @@ $s = print_r($output,true);
 file_put_contents('log.txt',$s);
 						}
 
-							//替换作者名
-							$renamed = '';
-							if (!empty($infos['author']) && trim(strip_tags($infos['author']))!==$author) {
-								$plugin = $pluginFolder.($doc ? $paths['1'] : $path);
-								file_put_contents($plugin,str_replace($infos['author'],$author,file_get_contents($plugin)));
-								$renamed = '/ Rename Author ';
-							}
+						//替换作者名
+						$renamed = '';
+						if (!empty($infos['author']) && trim(strip_tags($infos['author']))!==$author) {
+							$plugin = $pluginFolder.($doc ? $paths['1'] : $path);
+							file_put_contents($plugin,str_replace($infos['author'],$author,file_get_contents($plugin)));
+							$renamed = '/ Rename Author ';
+						}
 
-							//命名zip包 (标签发布用)
-							$newZip = $tmpNew.'/'.$name['0'].'_'; //因不支持中文仅用下划线
-							for ($j=$line+1;$j<$count;++$j) {
-								if ($lines[$j]) {
-									preg_match_all('/(?<=)[^\|]+/',$lines[$j],$reMetas);
-									preg_match('/(?<=\[)[^\]]+/',$reMetas['0']['0'],$reName);
-									//重名增加下划线
-									if (!strcasecmp($reName['0'],$name['0'])) {
-										$newZip .= '_';
-									}
+						//命名zip包 (标签发布用)
+						$newZip = $tmpNew.'/'.$name['0'].'_'; //因不支持中文仅用下划线
+						for ($j=$line+1;$j<$count;++$j) {
+							if ($lines[$j]) {
+								preg_match_all('/(?<=)[^\|]+/',$lines[$j],$reMetas);
+								preg_match('/(?<=\[)[^\]]+/',$reMetas['0']['0'],$reName);
+								//重名增加下划线
+								if (!strcasecmp($reName['0'],$name['0'])) {
+									$newZip .= '_';
 								}
 							}
-							$newZip = $newZip.'.zip';
+						}
+						$newZip = $newZip.'.zip';
 
-							//打包至临时目录
-							$phpZip->open($newZip,ZipArchive::CREATE | ZipArchive::OVERWRITE);
-							if ($doc) {
-								$phpZip->addFile($pluginFolder.$paths['1'],$paths['1']);
-							} else {
-								$rootPath = $pluginFolder.($sub ? $paths['1'].'/' : '');
-								foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($rootPath)) as $file) {
-									if (!$file->isDir()) {
-										$filePath = $file->getRealPath();
-										$phpZip->addFile($filePath,$name['0'].'/'.substr($filePath,strlen($rootPath)));
-									}
+						//打包至临时目录
+						$phpZip->open($newZip,ZipArchive::CREATE | ZipArchive::OVERWRITE);
+						if ($doc) {
+							$phpZip->addFile($pluginFolder.$paths['1'],$paths['1']);
+						} else {
+							$rootPath = $pluginFolder.($sub ? $paths['1'].'/' : '');
+							foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($rootPath)) as $file) {
+								if (!$file->isDir()) {
+									$filePath = $file->getRealPath();
+									$phpZip->addFile($filePath,$name['0'].'/'.substr($filePath,strlen($rootPath)));
 								}
 							}
+						}
 
-							//复制至加速目录
-							if ($phpZip->close() && @copy($newZip,$cdn)) {
-								//更新文档下载地址
-								$column = str_replace($zip,dirname($zip).'/'.basename($newZip),$column);
-								$status = 'succeeded';
-								++$done;
-							}
-							//完成处理记录日志
-							$logs .= $name['0'].' - '.date('Y-m-d H:i',time()).' - RE-ZIP '.$renamed.$status.PHP_EOL;
+						//复制至加速目录
+						if ($phpZip->close() && @copy($newZip,$cdn)) {
+							//更新文档下载地址
+							$column = str_replace($zip,dirname($zip).'/'.basename($newZip),$column);
+							$status = 'succeeded';
+							++$done;
+						}
+						//完成处理记录日志
+						$logs .= $name['0'].' - '.date('Y-m-d H:i',time()).' - RE-ZIP '.$renamed.$status.PHP_EOL;
 
 					//其他仅下载至加速目录
 					} else {
