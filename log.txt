@@ -1,5 +1,1 @@
-LICENSE
-Plugin.php
-README.md
-play.gif
-static
+/home/runner/work/API_Mirror/TMP/GITEE/1_ActivatePowerMode
