@@ -258,7 +258,7 @@
 								$logs .= 'Error: "'.$repoZip.'" not found!'.PHP_EOL;
 							}
 						} elseif ($gitee) {
-							$pluginFolder = $tmpDir.'/GITEE'.$tmpName;
+							$pluginFolder = $tmpDir.'/GITEE'.$tmpName.'/';
 							shell_exec('git clone '.$url.'.git '.$pluginFolder);
 							$output = shell_exec('ls '.$pluginFolder);
 $s = print_r($pluginFolder,true);
