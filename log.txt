@@ -1,0 +1,5 @@
+LICENSE
+Plugin.php
+README.md
+play.gif
+static
