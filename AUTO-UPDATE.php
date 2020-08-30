@@ -259,9 +259,11 @@
 							}
 						} elseif ($gitee) {
 							$pluginFolder = $tmpDir.'/GITEE'.$tmpName.'/';
-							@exec('git clone '.$url.'.git '.$pluginFolder,$output,$returns);
-$s = print_r($returns,true);
-file_put_contents('log.txt',$s);
+							//执行克隆命令
+							exec('git clone '.$url.'.git '.$pluginFolder,$output,$returns);
+							if ($returns!=0) {
+								$logs .= 'Error: "'.$url.'.git" not found!'.PHP_EOL;
+							}
 						}
 
 						if (is_dir($pluginFolder)) {

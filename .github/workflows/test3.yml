@@ -23,3 +23,9 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "Test: auto update plugins"
+
+      - name: "上传操作记录"
+        uses: actions/upload-artifact@v2
+        with:
+          name: "updates-log"
+          path: /home/runner/work/API_Mirror/TMP/updates.log
