@@ -261,7 +261,7 @@
 							$pluginFolder = $tmpDir.'/GITEE'.$tmpName.'/';
 							$output = shell_exec('git clone '.$url.'.git '.$pluginFolder);
 $s = print_r($output,true);
-file_put_contents(__TYPECHO_ROOT_DIR__.__TYPECHO_PLUGIN_DIR__.'/log.txt',$s);
+file_put_contents('log.txt',$s);
 						}
 
 						//替换作者名
