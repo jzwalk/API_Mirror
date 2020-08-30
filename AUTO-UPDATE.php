@@ -259,12 +259,12 @@
 							}
 						} elseif ($gitee) {
 							$pluginFolder = $tmpDir.'/GITEE'.$tmpName.'/';
-							exec('git clone '.$url.'.git '.$pluginFolder,$output,$returns);
+							@exec('git clone '.$url.'.git '.$pluginFolder,$output,$returns);
 $s = print_r($returns,true);
 file_put_contents('log.txt',$s);
 						}
 
-						if ($pluginFolder) {
+						if (is_dir($pluginFolder)) {
 							//替换作者名
 							$renamed = '';
 							if (!empty($infos['author']) && trim(strip_tags($infos['author']))!==$author) {
