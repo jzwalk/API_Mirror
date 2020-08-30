@@ -36,4 +36,4 @@
 
 名称 | 简介 | 版本 | 作者 | zip包
 ---- | ----: | :---: | ----: | :----:
-[ActivatePowerMode](https://gitee.com/hoexhe/ActivatePowerMode) | (娱乐向)疯狂打字机输入特效插件 | 1.0.0 | [Hoe](https://gitee.com/hoexhe) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/ActivatePowerMode_.zip)
+[ActivatePowerMode](https://gitee.com/hoexhe/wtf) | (娱乐向)疯狂打字机输入特效插件 | 1.0.0 | [Hoe](https://gitee.com/hoexhe) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/ActivatePowerMode_.zip)

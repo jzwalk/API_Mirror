@@ -259,8 +259,9 @@
 							}
 						} elseif ($gitee) {
 							$pluginFolder = $tmpDir.'/GITEE'.$tmpName.'/';
-							shell_exec('git clone '.$url.'.git '.$pluginFolder);
-							$output = shell_exec('ls '.$pluginFolder);
+							$output = shell_exec('git clone '.$url.'.git '.$pluginFolder);
+$s = print_r($output,true);
+file_put_contents(__TYPECHO_ROOT_DIR__.__TYPECHO_PLUGIN_DIR__.'/log.txt',$s);
 						}
 
 						//替换作者名
