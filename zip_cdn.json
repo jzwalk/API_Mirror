@@ -9056,6 +9056,22 @@
     }
   },
   {
+    "name": "fancyboxJQ_尚寂新.zip",
+    "path": "ZIP_CDN/fancyboxJQ_尚寂新.zip",
+    "sha": "441a9a12f6fe90e26ee43839dbeca5be1fc0ecac",
+    "size": 14776,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/fancyboxJQ_%E5%B0%9A%E5%AF%82%E6%96%B0.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/fancyboxJQ_%E5%B0%9A%E5%AF%82%E6%96%B0.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/441a9a12f6fe90e26ee43839dbeca5be1fc0ecac",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/fancyboxJQ_%E5%B0%9A%E5%AF%82%E6%96%B0.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/fancyboxJQ_%E5%B0%9A%E5%AF%82%E6%96%B0.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/441a9a12f6fe90e26ee43839dbeca5be1fc0ecac",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/fancyboxJQ_%E5%B0%9A%E5%AF%82%E6%96%B0.zip"
+    }
+  },
+  {
     "name": "footeranimation_jyzb02.zip",
     "path": "ZIP_CDN/footeranimation_jyzb02.zip",
     "sha": "036b1bb863799474ee70ea3317088864d03bf36e",
