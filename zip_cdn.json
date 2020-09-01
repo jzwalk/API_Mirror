@@ -3858,16 +3858,16 @@
   {
     "name": "IuckyMagic_Wibus.zip",
     "path": "ZIP_CDN/IuckyMagic_Wibus.zip",
-    "sha": "99b7995249b5517076e385dbade40bd473d29800",
-    "size": 122211,
+    "sha": "5a3b8a4b03c2f84ca3b234f29c815c5e5461211e",
+    "size": 64152,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/IuckyMagic_Wibus.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/IuckyMagic_Wibus.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/99b7995249b5517076e385dbade40bd473d29800",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/5a3b8a4b03c2f84ca3b234f29c815c5e5461211e",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/IuckyMagic_Wibus.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/IuckyMagic_Wibus.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/99b7995249b5517076e385dbade40bd473d29800",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/5a3b8a4b03c2f84ca3b234f29c815c5e5461211e",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/IuckyMagic_Wibus.zip"
     }
   },
