@@ -296,14 +296,14 @@
 							} else {
 								$rootPath = $pluginFolder.($sub ? $paths['1'].'/' : '');
 								foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($rootPath)) as $file) {
-									if (!$file->isDir() && false===strpos($file->getPath(),'.git')) {
+									if (!$file->isDir() && false===strpos($file->getPath(),'.git')) { //排除git文件夹
 										$filePath = $file->getRealPath();
 										$phpZip->addFile($filePath,$name['0'].'/'.substr($filePath,strlen($rootPath)));
 									}
 								}
 							}
 
-						//复制至加速目录
+							//复制至加速目录
 							if ($phpZip->close() && @copy($newZip,$cdn)) {
 								//更新文档下载地址
 								$column = str_replace($zip,dirname($zip).'/'.basename($newZip),$column);
@@ -341,8 +341,38 @@
 	//按插件名排序
 	sort($tables);
 
+	//检查社区版文档关联
+	$source2 = file_get_contents('README_test.md');
+	$lines2 = explode(PHP_EOL,$source2);
+	$count2 = count($lines2);
+	$line2 = '';
+	$column2 = '';
+	$counts2 = array();
+	$desciptions2 = array();
+	$links2 = array();
+	$folder = '';
+	$tables2 = array();
+	foreach ($lines2 as $line2=>$column2) {
+		if ($line2<40) {
+			if ($line2=='31') {
+				preg_match('/(?<=\()[^\)]+/',$column2,$counts2);
+				$column2 = str_replace($counts2['0'],$count2-41,$column2);
+			}
+			$desciptions2[] = $column2;
+		} elseif ($column2) {
+			preg_match_all('/(?<=\()[^\)]+/',$column2,$links2);
+			$folder = $links2['0']['0'];
+			$folders[$folder] = '';
+			$tables2[] = $column2;
+		}
+	}
+	//按插件名排序
+	sort($tables2);
+	file_put_contents('README.json',json_encode($folders));
+
 	//重组文档并生成日志
 	file_put_contents('TESTORE.md',implode(PHP_EOL,$desciptions).PHP_EOL.implode(PHP_EOL,$tables).PHP_EOL);
+	file_put_contents('README_test.md',implode(PHP_EOL,$desciptions2).PHP_EOL.implode(PHP_EOL,$tables2).PHP_EOL);
 	file_put_contents($tmpDir.'/updates.log',$logs.
 		'SCANED: '.$all.PHP_EOL.
 		'NEED UPDATE: '.$update.PHP_EOL.
