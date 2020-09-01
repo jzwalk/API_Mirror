@@ -8768,6 +8768,22 @@
     }
   },
   {
+    "name": "XMUserAgent_Ryan.zip",
+    "path": "ZIP_CDN/XMUserAgent_Ryan.zip",
+    "sha": "afcad8ba1fc8c8538b9518e1fcba73300dfdcafd",
+    "size": 109237,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/XMUserAgent_Ryan.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/XMUserAgent_Ryan.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/afcad8ba1fc8c8538b9518e1fcba73300dfdcafd",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/XMUserAgent_Ryan.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/XMUserAgent_Ryan.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/afcad8ba1fc8c8538b9518e1fcba73300dfdcafd",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/XMUserAgent_Ryan.zip"
+    }
+  },
+  {
     "name": "XiaMiPlayer.zip",
     "path": "ZIP_CDN/XiaMiPlayer.zip",
     "sha": "b84ec2c2b6a903453f939cf52d1b08407a5b2e74",
