@@ -1,4 +1,4 @@
-name: "定时更新全GitHub插件"
+name: "定时更新全Git源插件"
 
 on:
   workflow_dispatch
@@ -6,7 +6,7 @@ on:
 jobs:
 
   test-update:
-    name: "自动更新GitHub插件"
+    name: "自动更新Git源插件"
     runs-on: "ubuntu-latest"
 
     steps:
@@ -14,7 +14,7 @@ jobs:
 
       - name: "执行PHP脚本"
         run: |
-          php TEST-UPDATE.php ${{ secrets.GITHUB_TOKEN }}
+          php AUTO-UPDATE.php ${{ secrets.GITHUB_TOKEN }}
 
       - name: "提交更新文件"
         uses: stefanzweifel/git-auto-commit-action@v4
