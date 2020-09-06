@@ -1618,16 +1618,16 @@
   {
     "name": "Collection_息E-敛.zip",
     "path": "ZIP_CDN/Collection_息E-敛.zip",
-    "sha": "70716c49e8548b5c5adbb3408f75cac2bd0482b6",
-    "size": 56871,
+    "sha": "d2daa38a48fb0cfb324671a37c6dff80c750137c",
+    "size": 55998,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Collection_%E6%81%AFE-%E6%95%9B.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Collection_%E6%81%AFE-%E6%95%9B.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/70716c49e8548b5c5adbb3408f75cac2bd0482b6",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/d2daa38a48fb0cfb324671a37c6dff80c750137c",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/Collection_%E6%81%AFE-%E6%95%9B.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Collection_%E6%81%AFE-%E6%95%9B.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/70716c49e8548b5c5adbb3408f75cac2bd0482b6",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/d2daa38a48fb0cfb324671a37c6dff80c750137c",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Collection_%E6%81%AFE-%E6%95%9B.zip"
     }
   },
