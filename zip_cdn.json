@@ -1618,16 +1618,16 @@
   {
     "name": "Collection_息E-敛.zip",
     "path": "ZIP_CDN/Collection_息E-敛.zip",
-    "sha": "d2daa38a48fb0cfb324671a37c6dff80c750137c",
-    "size": 55998,
+    "sha": "3cd275bb2a581a15ff806f122e64fafe4012bc3d",
+    "size": 56655,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Collection_%E6%81%AFE-%E6%95%9B.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Collection_%E6%81%AFE-%E6%95%9B.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/d2daa38a48fb0cfb324671a37c6dff80c750137c",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/3cd275bb2a581a15ff806f122e64fafe4012bc3d",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/Collection_%E6%81%AFE-%E6%95%9B.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Collection_%E6%81%AFE-%E6%95%9B.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/d2daa38a48fb0cfb324671a37c6dff80c750137c",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/3cd275bb2a581a15ff806f122e64fafe4012bc3d",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Collection_%E6%81%AFE-%E6%95%9B.zip"
     }
   },
@@ -1794,16 +1794,16 @@
   {
     "name": "CommentAuditor_ihesro.zip",
     "path": "ZIP_CDN/CommentAuditor_ihesro.zip",
-    "sha": "ec676681f8bfdd853f2786eaeeeba128024c3bc9",
-    "size": 2706,
+    "sha": "04bf48ad3a7867d6fa75638a6007df937e9ea927",
+    "size": 3154,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/CommentAuditor_ihesro.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/CommentAuditor_ihesro.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/ec676681f8bfdd853f2786eaeeeba128024c3bc9",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/04bf48ad3a7867d6fa75638a6007df937e9ea927",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/CommentAuditor_ihesro.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/CommentAuditor_ihesro.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/ec676681f8bfdd853f2786eaeeeba128024c3bc9",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/04bf48ad3a7867d6fa75638a6007df937e9ea927",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/CommentAuditor_ihesro.zip"
     }
   },
@@ -3826,16 +3826,16 @@
   {
     "name": "Integration_Satrs_Kim.zip",
     "path": "ZIP_CDN/Integration_Satrs_Kim.zip",
-    "sha": "287ab64b967d6f17774cfeb556a5afb94e96b1d1",
-    "size": 117337,
+    "sha": "20f8bf168af61945dd2f9835fbb7a2491a293522",
+    "size": 117648,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Integration_Satrs_Kim.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Integration_Satrs_Kim.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/287ab64b967d6f17774cfeb556a5afb94e96b1d1",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/20f8bf168af61945dd2f9835fbb7a2491a293522",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/Integration_Satrs_Kim.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Integration_Satrs_Kim.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/287ab64b967d6f17774cfeb556a5afb94e96b1d1",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/20f8bf168af61945dd2f9835fbb7a2491a293522",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Integration_Satrs_Kim.zip"
     }
   },
