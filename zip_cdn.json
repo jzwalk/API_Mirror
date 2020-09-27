@@ -3826,16 +3826,16 @@
   {
     "name": "Integration_Satrs_Kim.zip",
     "path": "ZIP_CDN/Integration_Satrs_Kim.zip",
-    "sha": "fb060ac2646e7fcd08fe9214472ec04c57728da8",
-    "size": 119919,
+    "sha": "c8a6898306b6fc44d5ee37a3ae3a7de83e9ef98f",
+    "size": 120473,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Integration_Satrs_Kim.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Integration_Satrs_Kim.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/fb060ac2646e7fcd08fe9214472ec04c57728da8",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/c8a6898306b6fc44d5ee37a3ae3a7de83e9ef98f",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/Integration_Satrs_Kim.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Integration_Satrs_Kim.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/fb060ac2646e7fcd08fe9214472ec04c57728da8",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/c8a6898306b6fc44d5ee37a3ae3a7de83e9ef98f",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Integration_Satrs_Kim.zip"
     }
   },
