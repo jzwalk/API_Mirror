@@ -3826,16 +3826,16 @@
   {
     "name": "Integration_Satrs_Kim.zip",
     "path": "ZIP_CDN/Integration_Satrs_Kim.zip",
-    "sha": "c8a6898306b6fc44d5ee37a3ae3a7de83e9ef98f",
-    "size": 120473,
+    "sha": "31c25aef7441c785bbb2776f2a361aab4dd97c12",
+    "size": 124083,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Integration_Satrs_Kim.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Integration_Satrs_Kim.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/c8a6898306b6fc44d5ee37a3ae3a7de83e9ef98f",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/31c25aef7441c785bbb2776f2a361aab4dd97c12",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/Integration_Satrs_Kim.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Integration_Satrs_Kim.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/c8a6898306b6fc44d5ee37a3ae3a7de83e9ef98f",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/31c25aef7441c785bbb2776f2a361aab4dd97c12",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Integration_Satrs_Kim.zip"
     }
   },
@@ -6706,16 +6706,16 @@
   {
     "name": "SkyMo_Alomerry.zip",
     "path": "ZIP_CDN/SkyMo_Alomerry.zip",
-    "sha": "cbbd30bfe90a6c13b1d41f2a07ac1bfed86c65f2",
-    "size": 60247,
+    "sha": "bf4ad1fc071e4456bf2b241cb358e0eeca689045",
+    "size": 62131,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/SkyMo_Alomerry.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/SkyMo_Alomerry.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/cbbd30bfe90a6c13b1d41f2a07ac1bfed86c65f2",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/bf4ad1fc071e4456bf2b241cb358e0eeca689045",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/SkyMo_Alomerry.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/SkyMo_Alomerry.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/cbbd30bfe90a6c13b1d41f2a07ac1bfed86c65f2",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/bf4ad1fc071e4456bf2b241cb358e0eeca689045",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/SkyMo_Alomerry.zip"
     }
   },
