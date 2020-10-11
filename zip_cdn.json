@@ -3618,16 +3618,16 @@
   {
     "name": "Hitokoto_LittleJake.zip",
     "path": "ZIP_CDN/Hitokoto_LittleJake.zip",
-    "sha": "c89afdc91b79e6f380d79840d28de1f9bc7e43b1",
-    "size": 6948,
+    "sha": "fc4df546e0ed10e85df814bc52ae743bafd38884",
+    "size": 6952,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Hitokoto_LittleJake.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Hitokoto_LittleJake.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/c89afdc91b79e6f380d79840d28de1f9bc7e43b1",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/fc4df546e0ed10e85df814bc52ae743bafd38884",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/Hitokoto_LittleJake.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Hitokoto_LittleJake.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/c89afdc91b79e6f380d79840d28de1f9bc7e43b1",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/fc4df546e0ed10e85df814bc52ae743bafd38884",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Hitokoto_LittleJake.zip"
     }
   },
@@ -8370,16 +8370,16 @@
   {
     "name": "Viewers_息E-敛.zip",
     "path": "ZIP_CDN/Viewers_息E-敛.zip",
-    "sha": "59fbe8e7478a72669d42d9f3b47e89ca83ea9b2d",
-    "size": 2162,
+    "sha": "493dba0b5b2afa81236ec2f86d5cfea682372e30",
+    "size": 14911,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Viewers_%E6%81%AFE-%E6%95%9B.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Viewers_%E6%81%AFE-%E6%95%9B.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/59fbe8e7478a72669d42d9f3b47e89ca83ea9b2d",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/493dba0b5b2afa81236ec2f86d5cfea682372e30",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/Viewers_%E6%81%AFE-%E6%95%9B.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Viewers_%E6%81%AFE-%E6%95%9B.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/59fbe8e7478a72669d42d9f3b47e89ca83ea9b2d",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/493dba0b5b2afa81236ec2f86d5cfea682372e30",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Viewers_%E6%81%AFE-%E6%95%9B.zip"
     }
   },
