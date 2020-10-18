@@ -3618,16 +3618,16 @@
   {
     "name": "Hitokoto_LittleJake.zip",
     "path": "ZIP_CDN/Hitokoto_LittleJake.zip",
-    "sha": "fc4df546e0ed10e85df814bc52ae743bafd38884",
-    "size": 6952,
+    "sha": "3e1c8d427838dab0dfb62fbdb33f3115924a64d6",
+    "size": 7742,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Hitokoto_LittleJake.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Hitokoto_LittleJake.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/fc4df546e0ed10e85df814bc52ae743bafd38884",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/3e1c8d427838dab0dfb62fbdb33f3115924a64d6",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/Hitokoto_LittleJake.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Hitokoto_LittleJake.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/fc4df546e0ed10e85df814bc52ae743bafd38884",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/3e1c8d427838dab0dfb62fbdb33f3115924a64d6",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Hitokoto_LittleJake.zip"
     }
   },
@@ -3826,16 +3826,16 @@
   {
     "name": "Integration_Satrs_Kim.zip",
     "path": "ZIP_CDN/Integration_Satrs_Kim.zip",
-    "sha": "31c25aef7441c785bbb2776f2a361aab4dd97c12",
-    "size": 124083,
+    "sha": "85f6efb083ddfd3cdf9ed854c6045f91bf0781a6",
+    "size": 445233,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Integration_Satrs_Kim.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Integration_Satrs_Kim.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/31c25aef7441c785bbb2776f2a361aab4dd97c12",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/85f6efb083ddfd3cdf9ed854c6045f91bf0781a6",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/Integration_Satrs_Kim.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Integration_Satrs_Kim.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/31c25aef7441c785bbb2776f2a361aab4dd97c12",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/85f6efb083ddfd3cdf9ed854c6045f91bf0781a6",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Integration_Satrs_Kim.zip"
     }
   },
@@ -5426,16 +5426,16 @@
   {
     "name": "Plyr_杨永全.zip",
     "path": "ZIP_CDN/Plyr_杨永全.zip",
-    "sha": "42db87131f52e97d9634c20bfc4113e1a56718d1",
-    "size": 86447,
+    "sha": "73f1ee0a6188d6188e66828a200d72e516c4e8e9",
+    "size": 72827,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Plyr_%E6%9D%A8%E6%B0%B8%E5%85%A8.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Plyr_%E6%9D%A8%E6%B0%B8%E5%85%A8.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/42db87131f52e97d9634c20bfc4113e1a56718d1",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/73f1ee0a6188d6188e66828a200d72e516c4e8e9",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/Plyr_%E6%9D%A8%E6%B0%B8%E5%85%A8.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Plyr_%E6%9D%A8%E6%B0%B8%E5%85%A8.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/42db87131f52e97d9634c20bfc4113e1a56718d1",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/73f1ee0a6188d6188e66828a200d72e516c4e8e9",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Plyr_%E6%9D%A8%E6%B0%B8%E5%85%A8.zip"
     }
   },
