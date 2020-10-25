@@ -3826,16 +3826,16 @@
   {
     "name": "Integration_Satrs_Kim.zip",
     "path": "ZIP_CDN/Integration_Satrs_Kim.zip",
-    "sha": "85f6efb083ddfd3cdf9ed854c6045f91bf0781a6",
-    "size": 445233,
+    "sha": "117c2a5c4557d4cfb610a2954bc7df390ed746c5",
+    "size": 595157,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Integration_Satrs_Kim.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Integration_Satrs_Kim.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/85f6efb083ddfd3cdf9ed854c6045f91bf0781a6",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/117c2a5c4557d4cfb610a2954bc7df390ed746c5",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/Integration_Satrs_Kim.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Integration_Satrs_Kim.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/85f6efb083ddfd3cdf9ed854c6045f91bf0781a6",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/117c2a5c4557d4cfb610a2954bc7df390ed746c5",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Integration_Satrs_Kim.zip"
     }
   },
@@ -8370,16 +8370,16 @@
   {
     "name": "Viewers_息E-敛.zip",
     "path": "ZIP_CDN/Viewers_息E-敛.zip",
-    "sha": "493dba0b5b2afa81236ec2f86d5cfea682372e30",
-    "size": 14911,
+    "sha": "6f8f0c0c3f261757c0413350d67a6c220c1522ce",
+    "size": 14945,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Viewers_%E6%81%AFE-%E6%95%9B.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Viewers_%E6%81%AFE-%E6%95%9B.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/493dba0b5b2afa81236ec2f86d5cfea682372e30",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/6f8f0c0c3f261757c0413350d67a6c220c1522ce",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/Viewers_%E6%81%AFE-%E6%95%9B.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Viewers_%E6%81%AFE-%E6%95%9B.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/493dba0b5b2afa81236ec2f86d5cfea682372e30",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/6f8f0c0c3f261757c0413350d67a6c220c1522ce",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Viewers_%E6%81%AFE-%E6%95%9B.zip"
     }
   },
