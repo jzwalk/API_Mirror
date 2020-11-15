@@ -9410,16 +9410,16 @@
   {
     "name": "stop_张老师.zip",
     "path": "ZIP_CDN/stop_张老师.zip",
-    "sha": "c529eb323963cf390077de1df8a551a8612fa8b6",
-    "size": 1503,
+    "sha": "9f0dba6bdc9842d99bcecec2152e4f7894410b0a",
+    "size": 1680,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/stop_%E5%BC%A0%E8%80%81%E5%B8%88.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/stop_%E5%BC%A0%E8%80%81%E5%B8%88.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/c529eb323963cf390077de1df8a551a8612fa8b6",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/9f0dba6bdc9842d99bcecec2152e4f7894410b0a",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/stop_%E5%BC%A0%E8%80%81%E5%B8%88.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/stop_%E5%BC%A0%E8%80%81%E5%B8%88.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/c529eb323963cf390077de1df8a551a8612fa8b6",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/9f0dba6bdc9842d99bcecec2152e4f7894410b0a",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/stop_%E5%BC%A0%E8%80%81%E5%B8%88.zip"
     }
   },
