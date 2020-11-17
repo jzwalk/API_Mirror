@@ -5026,16 +5026,16 @@
   {
     "name": "NavMenu_merdan.zip",
     "path": "ZIP_CDN/NavMenu_merdan.zip",
-    "sha": "8b920b2b76cd993d2fd04ad7a366bd7bf724e090",
-    "size": 94096,
+    "sha": "455372ec32200625712c8f50dcac9240e6def139",
+    "size": 127878,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/NavMenu_merdan.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/NavMenu_merdan.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/8b920b2b76cd993d2fd04ad7a366bd7bf724e090",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/455372ec32200625712c8f50dcac9240e6def139",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/NavMenu_merdan.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/NavMenu_merdan.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/8b920b2b76cd993d2fd04ad7a366bd7bf724e090",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/455372ec32200625712c8f50dcac9240e6def139",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/NavMenu_merdan.zip"
     }
   },
