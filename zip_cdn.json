@@ -4418,16 +4418,16 @@
   {
     "name": "LoveKKComment.zip",
     "path": "ZIP_CDN/LoveKKComment.zip",
-    "sha": "ac024971b7798d6b20b5222f26c734c4cace8dbb",
-    "size": 77576,
+    "sha": "3e780066391695663f3cc4f3114a4627266ae572",
+    "size": 80040,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/LoveKKComment.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/LoveKKComment.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/ac024971b7798d6b20b5222f26c734c4cace8dbb",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/3e780066391695663f3cc4f3114a4627266ae572",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/LoveKKComment.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/LoveKKComment.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/ac024971b7798d6b20b5222f26c734c4cace8dbb",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/3e780066391695663f3cc4f3114a4627266ae572",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/LoveKKComment.zip"
     }
   },
