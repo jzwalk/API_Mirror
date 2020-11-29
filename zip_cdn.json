@@ -5746,16 +5746,16 @@
   {
     "name": "QPlayer2_MoeShin.zip",
     "path": "ZIP_CDN/QPlayer2_MoeShin.zip",
-    "sha": "9428b0c1ca3728e6f122b1b2cfa9c4ee51220448",
-    "size": 63325,
+    "sha": "4eabed4a8404deccc99e51243d48d4369be37dbd",
+    "size": 63297,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/QPlayer2_MoeShin.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/QPlayer2_MoeShin.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/9428b0c1ca3728e6f122b1b2cfa9c4ee51220448",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/4eabed4a8404deccc99e51243d48d4369be37dbd",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/QPlayer2_MoeShin.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/QPlayer2_MoeShin.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/9428b0c1ca3728e6f122b1b2cfa9c4ee51220448",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/4eabed4a8404deccc99e51243d48d4369be37dbd",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/QPlayer2_MoeShin.zip"
     }
   },
