@@ -2944,6 +2944,22 @@
     }
   },
   {
+    "name": "Geetest_小胖狐.zip",
+    "path": "ZIP_CDN/Geetest_小胖狐.zip",
+    "sha": "baf07cf4a01b7ae2b657553d621db385f420a2e9",
+    "size": 44063,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Geetest_%E5%B0%8F%E8%83%96%E7%8B%90.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Geetest_%E5%B0%8F%E8%83%96%E7%8B%90.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/baf07cf4a01b7ae2b657553d621db385f420a2e9",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/Geetest_%E5%B0%8F%E8%83%96%E7%8B%90.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Geetest_%E5%B0%8F%E8%83%96%E7%8B%90.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/baf07cf4a01b7ae2b657553d621db385f420a2e9",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Geetest_%E5%B0%8F%E8%83%96%E7%8B%90.zip"
+    }
+  },
+  {
     "name": "Geetest_玖玖kyuu.zip",
     "path": "ZIP_CDN/Geetest_玖玖kyuu.zip",
     "sha": "b6e1ba422ebe5dc1b5871805614d95c5f97f9b49",
