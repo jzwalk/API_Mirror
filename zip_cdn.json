@@ -1490,16 +1490,16 @@
   {
     "name": "ClsoFun_二笔青年.zip",
     "path": "ZIP_CDN/ClsoFun_二笔青年.zip",
-    "sha": "3811dec4eb8e3a2a9874794abeb74856f91511ae",
-    "size": 94201,
+    "sha": "0b579db4f8abb45b972dfdf0075f5e44fc82c68b",
+    "size": 94824,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/ClsoFun_%E4%BA%8C%E7%AC%94%E9%9D%92%E5%B9%B4.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/ClsoFun_%E4%BA%8C%E7%AC%94%E9%9D%92%E5%B9%B4.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/3811dec4eb8e3a2a9874794abeb74856f91511ae",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/0b579db4f8abb45b972dfdf0075f5e44fc82c68b",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/ClsoFun_%E4%BA%8C%E7%AC%94%E9%9D%92%E5%B9%B4.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/ClsoFun_%E4%BA%8C%E7%AC%94%E9%9D%92%E5%B9%B4.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/3811dec4eb8e3a2a9874794abeb74856f91511ae",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/0b579db4f8abb45b972dfdf0075f5e44fc82c68b",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/ClsoFun_%E4%BA%8C%E7%AC%94%E9%9D%92%E5%B9%B4.zip"
     }
   },
