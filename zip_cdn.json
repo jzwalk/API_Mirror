@@ -3074,16 +3074,16 @@
   {
     "name": "GitStatic_乔千.zip",
     "path": "ZIP_CDN/GitStatic_乔千.zip",
-    "sha": "bc859580244f9ef206f6469ed4d4622966eb3c35",
-    "size": 5838,
+    "sha": "e375876c4d8c90a5d9415eb3fbc75c6e4c2de784",
+    "size": 8840,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/GitStatic_%E4%B9%94%E5%8D%83.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/GitStatic_%E4%B9%94%E5%8D%83.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/bc859580244f9ef206f6469ed4d4622966eb3c35",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/e375876c4d8c90a5d9415eb3fbc75c6e4c2de784",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/GitStatic_%E4%B9%94%E5%8D%83.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/GitStatic_%E4%B9%94%E5%8D%83.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/bc859580244f9ef206f6469ed4d4622966eb3c35",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/e375876c4d8c90a5d9415eb3fbc75c6e4c2de784",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/GitStatic_%E4%B9%94%E5%8D%83.zip"
     }
   },
