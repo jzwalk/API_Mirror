@@ -3136,6 +3136,22 @@
     }
   },
   {
+    "name": "GithubStatic_乔千.zip",
+    "path": "ZIP_CDN/GithubStatic_乔千.zip",
+    "sha": "00cb73ce815614952467ebb59866dd69271f8bca",
+    "size": 8504,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/GithubStatic_%E4%B9%94%E5%8D%83.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/GithubStatic_%E4%B9%94%E5%8D%83.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/00cb73ce815614952467ebb59866dd69271f8bca",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/GithubStatic_%E4%B9%94%E5%8D%83.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/GithubStatic_%E4%B9%94%E5%8D%83.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/00cb73ce815614952467ebb59866dd69271f8bca",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/GithubStatic_%E4%B9%94%E5%8D%83.zip"
+    }
+  },
+  {
     "name": "GithubWidgetUser.zip",
     "path": "ZIP_CDN/GithubWidgetUser.zip",
     "sha": "9335f8d1a70e677b36285eb6aa3d8c9718bc1587",
