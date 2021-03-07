@@ -1794,16 +1794,16 @@
   {
     "name": "CommentAuditor_ihesro.zip",
     "path": "ZIP_CDN/CommentAuditor_ihesro.zip",
-    "sha": "04bf48ad3a7867d6fa75638a6007df937e9ea927",
-    "size": 3154,
+    "sha": "bf9cd298661d8c740e12f645832ec55249d2cc4e",
+    "size": 2553,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/CommentAuditor_ihesro.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/CommentAuditor_ihesro.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/04bf48ad3a7867d6fa75638a6007df937e9ea927",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/bf9cd298661d8c740e12f645832ec55249d2cc4e",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/CommentAuditor_ihesro.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/CommentAuditor_ihesro.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/04bf48ad3a7867d6fa75638a6007df937e9ea927",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/bf9cd298661d8c740e12f645832ec55249d2cc4e",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/CommentAuditor_ihesro.zip"
     }
   },
