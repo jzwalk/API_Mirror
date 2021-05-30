@@ -5168,6 +5168,22 @@
     }
   },
   {
+    "name": "Notice_Rainshaw.zip",
+    "path": "ZIP_CDN/Notice_Rainshaw.zip",
+    "sha": "955ce5cc11dd59f1cb87bbe79c2aa0062a2d4d00",
+    "size": 229004,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Notice_Rainshaw.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Notice_Rainshaw.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/955ce5cc11dd59f1cb87bbe79c2aa0062a2d4d00",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/Notice_Rainshaw.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Notice_Rainshaw.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/955ce5cc11dd59f1cb87bbe79c2aa0062a2d4d00",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Notice_Rainshaw.zip"
+    }
+  },
+  {
     "name": "Notifier_zengxs.zip",
     "path": "ZIP_CDN/Notifier_zengxs.zip",
     "sha": "7c723ae2ef54ca7778c51c8d076a077619f32d42",
