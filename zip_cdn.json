@@ -4096,6 +4096,22 @@
     }
   },
   {
+    "name": "KirinShiKi_JeffersonQin_Sanakey.zip",
+    "path": "ZIP_CDN/KirinShiKi_JeffersonQin_Sanakey.zip",
+    "sha": "e47d4b70d040cd6e940cc60c4ae62997e735557d",
+    "size": 12698,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/KirinShiKi_JeffersonQin_Sanakey.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/KirinShiKi_JeffersonQin_Sanakey.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/e47d4b70d040cd6e940cc60c4ae62997e735557d",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/KirinShiKi_JeffersonQin_Sanakey.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/KirinShiKi_JeffersonQin_Sanakey.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/e47d4b70d040cd6e940cc60c4ae62997e735557d",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/KirinShiKi_JeffersonQin_Sanakey.zip"
+    }
+  },
+  {
     "name": "KodoForTypecho_沈唁.zip",
     "path": "ZIP_CDN/KodoForTypecho_沈唁.zip",
     "sha": "646028d2a6b5bc89018b76ff9f544d13ccf037eb",
