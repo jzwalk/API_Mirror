@@ -5378,16 +5378,16 @@
   {
     "name": "PartiallyPassword_wuxianucw.zip",
     "path": "ZIP_CDN/PartiallyPassword_wuxianucw.zip",
-    "sha": "82194011048f50be24ff5b0b35f54f0bd66a3eeb",
+    "sha": "50253c28869c766670aa998506e0dbfd95893b23",
     "size": 13011,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/PartiallyPassword_wuxianucw.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/PartiallyPassword_wuxianucw.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/82194011048f50be24ff5b0b35f54f0bd66a3eeb",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/50253c28869c766670aa998506e0dbfd95893b23",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/PartiallyPassword_wuxianucw.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/PartiallyPassword_wuxianucw.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/82194011048f50be24ff5b0b35f54f0bd66a3eeb",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/50253c28869c766670aa998506e0dbfd95893b23",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/PartiallyPassword_wuxianucw.zip"
     }
   },
