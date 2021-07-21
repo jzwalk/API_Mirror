@@ -8880,6 +8880,22 @@
     }
   },
   {
+    "name": "XEditor_Ryan.zip",
+    "path": "ZIP_CDN/XEditor_Ryan.zip",
+    "sha": "80161ca0951dfb9096c2d80c301a47d9173f7b54",
+    "size": 2323226,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/XEditor_Ryan.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/XEditor_Ryan.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/80161ca0951dfb9096c2d80c301a47d9173f7b54",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/XEditor_Ryan.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/XEditor_Ryan.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/80161ca0951dfb9096c2d80c301a47d9173f7b54",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/XEditor_Ryan.zip"
+    }
+  },
+  {
     "name": "XMUserAgent_Ryan.zip",
     "path": "ZIP_CDN/XMUserAgent_Ryan.zip",
     "sha": "afcad8ba1fc8c8538b9518e1fcba73300dfdcafd",
