@@ -640,6 +640,22 @@
     }
   },
   {
+    "name": "AutoBackup_Ryan.zip",
+    "path": "ZIP_CDN/AutoBackup_Ryan.zip",
+    "sha": "07b165db654675526b9de1be5f61de442496ec6a",
+    "size": 200873,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/AutoBackup_Ryan.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/AutoBackup_Ryan.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/07b165db654675526b9de1be5f61de442496ec6a",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/AutoBackup_Ryan.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/AutoBackup_Ryan.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/07b165db654675526b9de1be5f61de442496ec6a",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/AutoBackup_Ryan.zip"
+    }
+  },
+  {
     "name": "AutoBaiduSubmit_JinFeiJie.zip",
     "path": "ZIP_CDN/AutoBaiduSubmit_JinFeiJie.zip",
     "sha": "bc1131e695744f7e5946fa61c9fb9bd2c3ac12e2",
