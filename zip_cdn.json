@@ -354,16 +354,16 @@
   {
     "name": "AliceStyle_racns.zip",
     "path": "ZIP_CDN/AliceStyle_racns.zip",
-    "sha": "b3a17de696a0b19609c5008abaf60aebdc77596c",
-    "size": 2415427,
+    "sha": "206a4b3bbf052e939b6b7b17943397f1629251b2",
+    "size": 10567865,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/AliceStyle_racns.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/AliceStyle_racns.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/b3a17de696a0b19609c5008abaf60aebdc77596c",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/206a4b3bbf052e939b6b7b17943397f1629251b2",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/AliceStyle_racns.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/AliceStyle_racns.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/b3a17de696a0b19609c5008abaf60aebdc77596c",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/206a4b3bbf052e939b6b7b17943397f1629251b2",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/AliceStyle_racns.zip"
     }
   },
