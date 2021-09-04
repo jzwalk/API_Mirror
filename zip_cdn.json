@@ -160,6 +160,22 @@
     }
   },
   {
+    "name": "AddTheme_ciki.zip",
+    "path": "ZIP_CDN/AddTheme_ciki.zip",
+    "sha": "a877e2041c1f380f627944201df2864332b2a4af",
+    "size": 5363910,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/AddTheme_ciki.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/AddTheme_ciki.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/a877e2041c1f380f627944201df2864332b2a4af",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/AddTheme_ciki.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/AddTheme_ciki.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/a877e2041c1f380f627944201df2864332b2a4af",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/AddTheme_ciki.zip"
+    }
+  },
+  {
     "name": "AdminLogin__莫名_.zip",
     "path": "ZIP_CDN/AdminLogin__莫名_.zip",
     "sha": "d1e362adcece44911d5f152f10efd3c30deee2ae",
