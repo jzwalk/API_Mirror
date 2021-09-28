@@ -8242,16 +8242,16 @@
   {
     "name": "UploadGithubForTypecho_AyagawaSeirin.zip",
     "path": "ZIP_CDN/UploadGithubForTypecho_AyagawaSeirin.zip",
-    "sha": "e20fbcc229bd1ec530ea2334d4489ecba34d74e9",
-    "size": 8873,
+    "sha": "f28fe3e0b591b828a599d2729947697995557be9",
+    "size": 8931,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/UploadGithubForTypecho_AyagawaSeirin.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/UploadGithubForTypecho_AyagawaSeirin.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/e20fbcc229bd1ec530ea2334d4489ecba34d74e9",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/f28fe3e0b591b828a599d2729947697995557be9",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/UploadGithubForTypecho_AyagawaSeirin.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/UploadGithubForTypecho_AyagawaSeirin.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/e20fbcc229bd1ec530ea2334d4489ecba34d74e9",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/f28fe3e0b591b828a599d2729947697995557be9",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/UploadGithubForTypecho_AyagawaSeirin.zip"
     }
   },
