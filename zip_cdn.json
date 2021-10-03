@@ -3490,16 +3490,16 @@
   {
     "name": "HeAdmin_南玖.zip",
     "path": "ZIP_CDN/HeAdmin_南玖.zip",
-    "sha": "fcbbb971fa155bc23e4decdba1729a75e2526831",
-    "size": 64495,
+    "sha": "4ea201ed3183d675c9d183f2bbba02940410a580",
+    "size": 64494,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/HeAdmin_%E5%8D%97%E7%8E%96.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/HeAdmin_%E5%8D%97%E7%8E%96.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/fcbbb971fa155bc23e4decdba1729a75e2526831",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/4ea201ed3183d675c9d183f2bbba02940410a580",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/HeAdmin_%E5%8D%97%E7%8E%96.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/HeAdmin_%E5%8D%97%E7%8E%96.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/fcbbb971fa155bc23e4decdba1729a75e2526831",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/4ea201ed3183d675c9d183f2bbba02940410a580",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/HeAdmin_%E5%8D%97%E7%8E%96.zip"
     }
   },
