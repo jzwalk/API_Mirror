@@ -978,16 +978,16 @@
   {
     "name": "BaiduTextCensor_沈唁.zip",
     "path": "ZIP_CDN/BaiduTextCensor_沈唁.zip",
-    "sha": "55e72f9550e33c593f6678a16a1b6f905a8d317f",
-    "size": 28179,
+    "sha": "36af0751d8abaac5c6212b361968c06777ef96ad",
+    "size": 28215,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/BaiduTextCensor_%E6%B2%88%E5%94%81.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/BaiduTextCensor_%E6%B2%88%E5%94%81.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/55e72f9550e33c593f6678a16a1b6f905a8d317f",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/36af0751d8abaac5c6212b361968c06777ef96ad",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/BaiduTextCensor_%E6%B2%88%E5%94%81.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/BaiduTextCensor_%E6%B2%88%E5%94%81.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/55e72f9550e33c593f6678a16a1b6f905a8d317f",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/36af0751d8abaac5c6212b361968c06777ef96ad",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/BaiduTextCensor_%E6%B2%88%E5%94%81.zip"
     }
   },
