@@ -1,5 +1,21 @@
 [
   {
+    "name": "AAThemeDemo_Ryan.zip",
+    "path": "ZIP_CDN/AAThemeDemo_Ryan.zip",
+    "sha": "7297524a15f8a2e7569ce834c96a5b03e658aa1f",
+    "size": 2337,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/AAThemeDemo_Ryan.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/AAThemeDemo_Ryan.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/7297524a15f8a2e7569ce834c96a5b03e658aa1f",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/AAThemeDemo_Ryan.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/AAThemeDemo_Ryan.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/7297524a15f8a2e7569ce834c96a5b03e658aa1f",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/AAThemeDemo_Ryan.zip"
+    }
+  },
+  {
     "name": "AMP.zip",
     "path": "ZIP_CDN/AMP.zip",
     "sha": "ff91671544c9d38aaffde4237466c0a43857bc8c",
