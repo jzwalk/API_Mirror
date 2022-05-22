@@ -2242,16 +2242,16 @@
   {
     "name": "DPlayer_Volio.zip",
     "path": "ZIP_CDN/DPlayer_Volio.zip",
-    "sha": "7a89c386a01d08a1cf9c5cd22d06ed5897c7f7a0",
-    "size": 102160,
+    "sha": "23678e5ef03f7028be14697f2665fdd98ebdb046",
+    "size": 102152,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/DPlayer_Volio.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/DPlayer_Volio.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/7a89c386a01d08a1cf9c5cd22d06ed5897c7f7a0",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/23678e5ef03f7028be14697f2665fdd98ebdb046",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/DPlayer_Volio.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/DPlayer_Volio.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/7a89c386a01d08a1cf9c5cd22d06ed5897c7f7a0",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/23678e5ef03f7028be14697f2665fdd98ebdb046",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/DPlayer_Volio.zip"
     }
   },
@@ -4722,16 +4722,16 @@
   {
     "name": "MarkdownParse_mrgeneral.zip",
     "path": "ZIP_CDN/MarkdownParse_mrgeneral.zip",
-    "sha": "9389f1ca1d396665caece2ca401123e5e88fbcb9",
-    "size": 19646,
+    "sha": "9cce1fcb1dd739ea89a45ada68d50cad31b95127",
+    "size": 20204,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/MarkdownParse_mrgeneral.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/MarkdownParse_mrgeneral.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/9389f1ca1d396665caece2ca401123e5e88fbcb9",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/9cce1fcb1dd739ea89a45ada68d50cad31b95127",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/MarkdownParse_mrgeneral.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/MarkdownParse_mrgeneral.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/9389f1ca1d396665caece2ca401123e5e88fbcb9",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/9cce1fcb1dd739ea89a45ada68d50cad31b95127",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/MarkdownParse_mrgeneral.zip"
     }
   },
