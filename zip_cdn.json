@@ -2000,6 +2000,22 @@
     }
   },
   {
+    "name": "CommentToMail_v4_Uniartisan.zip",
+    "path": "ZIP_CDN/CommentToMail_v4_Uniartisan.zip",
+    "sha": "219ca1a58abc11752c817904d35b9f021597fbe5",
+    "size": 80563,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/CommentToMail_v4_Uniartisan.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/CommentToMail_v4_Uniartisan.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/219ca1a58abc11752c817904d35b9f021597fbe5",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/CommentToMail_v4_Uniartisan.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/CommentToMail_v4_Uniartisan.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/219ca1a58abc11752c817904d35b9f021597fbe5",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/CommentToMail_v4_Uniartisan.zip"
+    }
+  },
+  {
     "name": "CommentToWechat_lscho.zip",
     "path": "ZIP_CDN/CommentToWechat_lscho.zip",
     "sha": "df516ccc77a4030fee6283e4d2d40ca71755232e",
