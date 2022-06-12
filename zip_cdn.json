@@ -34,16 +34,16 @@
   {
     "name": "APlayerAtBottom_小太.zip",
     "path": "ZIP_CDN/APlayerAtBottom_小太.zip",
-    "sha": "e9335071f5642b81ede2214a5cfb7215ddc1af4a",
-    "size": 307840,
+    "sha": "7e6e86be5fbda39db4c9ab720f365c225c7d170c",
+    "size": 411773,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/APlayerAtBottom_%E5%B0%8F%E5%A4%AA.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/APlayerAtBottom_%E5%B0%8F%E5%A4%AA.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/e9335071f5642b81ede2214a5cfb7215ddc1af4a",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/7e6e86be5fbda39db4c9ab720f365c225c7d170c",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/APlayerAtBottom_%E5%B0%8F%E5%A4%AA.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/APlayerAtBottom_%E5%B0%8F%E5%A4%AA.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/e9335071f5642b81ede2214a5cfb7215ddc1af4a",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/7e6e86be5fbda39db4c9ab720f365c225c7d170c",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/APlayerAtBottom_%E5%B0%8F%E5%A4%AA.zip"
     }
   },
