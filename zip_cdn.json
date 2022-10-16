@@ -3184,6 +3184,22 @@
     }
   },
   {
+    "name": "GithubFile_Mlikiowa.zip",
+    "path": "ZIP_CDN/GithubFile_Mlikiowa.zip",
+    "sha": "6ca063288a1e91e091f35003a40dd92f8dd5756f",
+    "size": 12242,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/GithubFile_Mlikiowa.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/GithubFile_Mlikiowa.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/6ca063288a1e91e091f35003a40dd92f8dd5756f",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/GithubFile_Mlikiowa.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/GithubFile_Mlikiowa.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/6ca063288a1e91e091f35003a40dd92f8dd5756f",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/GithubFile_Mlikiowa.zip"
+    }
+  },
+  {
     "name": "GithubGist_Simple Code.zip",
     "path": "ZIP_CDN/GithubGist_Simple Code.zip",
     "sha": "69875ad2e47fd5e8004378f45aaff5f8fe43b7b8",
