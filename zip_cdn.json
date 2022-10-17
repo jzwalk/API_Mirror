@@ -9280,6 +9280,22 @@
     }
   },
   {
+    "name": "freewindreward_kevinlu98.zip",
+    "path": "ZIP_CDN/freewindreward_kevinlu98.zip",
+    "sha": "fdf769099fd7218223e25772ddf29425516af802",
+    "size": 2517,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/freewindreward_kevinlu98.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/freewindreward_kevinlu98.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/fdf769099fd7218223e25772ddf29425516af802",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/freewindreward_kevinlu98.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/freewindreward_kevinlu98.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/fdf769099fd7218223e25772ddf29425516af802",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/freewindreward_kevinlu98.zip"
+    }
+  },
+  {
     "name": "fuckadblock_泽泽社长.zip",
     "path": "ZIP_CDN/fuckadblock_泽泽社长.zip",
     "sha": "176d867a9c81917431c6dafbc06b4c51aa61c468",
