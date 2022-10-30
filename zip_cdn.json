@@ -3074,16 +3074,16 @@
   {
     "name": "GetRealIP_Pony.zip",
     "path": "ZIP_CDN/GetRealIP_Pony.zip",
-    "sha": "1c79dcbcbcb0e4c5fc89e912e671087cbc0ca4cb",
-    "size": 1818,
+    "sha": "e4cd3a23559ddef624de23b1a076508154f0dc4a",
+    "size": 1762,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/GetRealIP_Pony.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/GetRealIP_Pony.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/1c79dcbcbcb0e4c5fc89e912e671087cbc0ca4cb",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/e4cd3a23559ddef624de23b1a076508154f0dc4a",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/GetRealIP_Pony.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/GetRealIP_Pony.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/1c79dcbcbcb0e4c5fc89e912e671087cbc0ca4cb",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/e4cd3a23559ddef624de23b1a076508154f0dc4a",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/GetRealIP_Pony.zip"
     }
   },
@@ -5394,16 +5394,16 @@
   {
     "name": "PageViews_Pony.zip",
     "path": "ZIP_CDN/PageViews_Pony.zip",
-    "sha": "15fa370b3459e41c06333b05167b6f47e34118a1",
-    "size": 1835,
+    "sha": "63642229e148d209aecfcfbf6264da2feaae5630",
+    "size": 2101,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/PageViews_Pony.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/PageViews_Pony.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/15fa370b3459e41c06333b05167b6f47e34118a1",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/63642229e148d209aecfcfbf6264da2feaae5630",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/PageViews_Pony.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/PageViews_Pony.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/15fa370b3459e41c06333b05167b6f47e34118a1",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/63642229e148d209aecfcfbf6264da2feaae5630",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/PageViews_Pony.zip"
     }
   },
