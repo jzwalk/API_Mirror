@@ -114,16 +114,16 @@
   {
     "name": "Access_Kokororin.zip",
     "path": "ZIP_CDN/Access_Kokororin.zip",
-    "sha": "b6c976216131cb96bdac3cfe964c9c457f715b35",
-    "size": 1370439,
+    "sha": "2c49adbcdd5af267265dc4478900922dc90afbed",
+    "size": 3703724,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Access_Kokororin.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Access_Kokororin.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/b6c976216131cb96bdac3cfe964c9c457f715b35",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/2c49adbcdd5af267265dc4478900922dc90afbed",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/Access_Kokororin.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Access_Kokororin.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/b6c976216131cb96bdac3cfe964c9c457f715b35",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/2c49adbcdd5af267265dc4478900922dc90afbed",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Access_Kokororin.zip"
     }
   },
