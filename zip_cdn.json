@@ -5266,16 +5266,16 @@
   {
     "name": "Notice_Rainshaw.zip",
     "path": "ZIP_CDN/Notice_Rainshaw.zip",
-    "sha": "b396eafec9e69e27635ed92c8552d172d75fa8bc",
-    "size": 332076,
+    "sha": "25b0e57666e65d0c9e5a652397c84a99179133ab",
+    "size": 332078,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Notice_Rainshaw.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Notice_Rainshaw.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/b396eafec9e69e27635ed92c8552d172d75fa8bc",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/25b0e57666e65d0c9e5a652397c84a99179133ab",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/Notice_Rainshaw.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Notice_Rainshaw.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/b396eafec9e69e27635ed92c8552d172d75fa8bc",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/25b0e57666e65d0c9e5a652397c84a99179133ab",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Notice_Rainshaw.zip"
     }
   },
