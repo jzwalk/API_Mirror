@@ -3186,16 +3186,16 @@
   {
     "name": "GithubFile_Mlikiowa.zip",
     "path": "ZIP_CDN/GithubFile_Mlikiowa.zip",
-    "sha": "6ca063288a1e91e091f35003a40dd92f8dd5756f",
-    "size": 12242,
+    "sha": "43f721a37396e4892621a08dcfafce1dc5628423",
+    "size": 19312,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/GithubFile_Mlikiowa.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/GithubFile_Mlikiowa.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/6ca063288a1e91e091f35003a40dd92f8dd5756f",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/43f721a37396e4892621a08dcfafce1dc5628423",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/GithubFile_Mlikiowa.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/GithubFile_Mlikiowa.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/6ca063288a1e91e091f35003a40dd92f8dd5756f",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/43f721a37396e4892621a08dcfafce1dc5628423",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/GithubFile_Mlikiowa.zip"
     }
   },
