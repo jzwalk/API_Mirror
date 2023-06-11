@@ -9666,16 +9666,16 @@
   {
     "name": "waterMark_应用侠.zip",
     "path": "ZIP_CDN/waterMark_应用侠.zip",
-    "sha": "0e4f1d9e9497039a2d564a81e8d7028d45fb06d1",
-    "size": 18232,
+    "sha": "c535a673f72219bce6d46e8a820b473d57c67118",
+    "size": 18231,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/waterMark_%E5%BA%94%E7%94%A8%E4%BE%A0.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/waterMark_%E5%BA%94%E7%94%A8%E4%BE%A0.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/0e4f1d9e9497039a2d564a81e8d7028d45fb06d1",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/c535a673f72219bce6d46e8a820b473d57c67118",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/waterMark_%E5%BA%94%E7%94%A8%E4%BE%A0.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/waterMark_%E5%BA%94%E7%94%A8%E4%BE%A0.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/0e4f1d9e9497039a2d564a81e8d7028d45fb06d1",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/c535a673f72219bce6d46e8a820b473d57c67118",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/waterMark_%E5%BA%94%E7%94%A8%E4%BE%A0.zip"
     }
   },
