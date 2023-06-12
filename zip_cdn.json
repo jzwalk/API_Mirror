@@ -130,16 +130,16 @@
   {
     "name": "Accessories_Ryan.zip",
     "path": "ZIP_CDN/Accessories_Ryan.zip",
-    "sha": "d1a0a71989924f70baad161a97e28d2159da88f8",
-    "size": 14068,
+    "sha": "6649d14895c605aa8b109542f3dfb128c7748e7e",
+    "size": 14300,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Accessories_Ryan.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Accessories_Ryan.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/d1a0a71989924f70baad161a97e28d2159da88f8",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/6649d14895c605aa8b109542f3dfb128c7748e7e",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/Accessories_Ryan.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Accessories_Ryan.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/d1a0a71989924f70baad161a97e28d2159da88f8",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/6649d14895c605aa8b109542f3dfb128c7748e7e",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Accessories_Ryan.zip"
     }
   },
