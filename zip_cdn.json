@@ -8864,6 +8864,22 @@
     }
   },
   {
+    "name": "WindsCkEditor_下载.zip",
+    "path": "ZIP_CDN/WindsCkEditor_下载.zip",
+    "sha": "a7aa32ce4700e7536604463edbb3174957227a8f",
+    "size": 2187551,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/WindsCkEditor_%E4%B8%8B%E8%BD%BD.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/WindsCkEditor_%E4%B8%8B%E8%BD%BD.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/a7aa32ce4700e7536604463edbb3174957227a8f",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/WindsCkEditor_%E4%B8%8B%E8%BD%BD.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/WindsCkEditor_%E4%B8%8B%E8%BD%BD.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/a7aa32ce4700e7536604463edbb3174957227a8f",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/WindsCkEditor_%E4%B8%8B%E8%BD%BD.zip"
+    }
+  },
+  {
     "name": "WordCount_Jrotty.zip",
     "path": "ZIP_CDN/WordCount_Jrotty.zip",
     "sha": "b09f998793b693076e1cf4b3e2a014892419eee3",
