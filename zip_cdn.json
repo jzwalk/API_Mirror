@@ -6624,6 +6624,22 @@
     }
   },
   {
+    "name": "ShortLinks_Ryan.zip",
+    "path": "ZIP_CDN/ShortLinks_Ryan.zip",
+    "sha": "3edc719076e0a4dfa192f0776662ca9a72c3917e",
+    "size": 23560,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/ShortLinks_Ryan.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/ShortLinks_Ryan.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/3edc719076e0a4dfa192f0776662ca9a72c3917e",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/ShortLinks_Ryan.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/ShortLinks_Ryan.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/3edc719076e0a4dfa192f0776662ca9a72c3917e",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/ShortLinks_Ryan.zip"
+    }
+  },
+  {
     "name": "ShowGithubRepo_Loststar.zip",
     "path": "ZIP_CDN/ShowGithubRepo_Loststar.zip",
     "sha": "9d38dba1e98fa5ad4ff66d759fa7bb09c157e985",
