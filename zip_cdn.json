@@ -194,16 +194,16 @@
   {
     "name": "AdminLogin__莫名_.zip",
     "path": "ZIP_CDN/AdminLogin__莫名_.zip",
-    "sha": "d1e362adcece44911d5f152f10efd3c30deee2ae",
-    "size": 12771,
+    "sha": "4d6d7a88bd6ef2d95317072de54ef1363642438a",
+    "size": 13001,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/AdminLogin__%E8%8E%AB%E5%90%8D_.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/AdminLogin__%E8%8E%AB%E5%90%8D_.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/d1e362adcece44911d5f152f10efd3c30deee2ae",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/4d6d7a88bd6ef2d95317072de54ef1363642438a",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/AdminLogin__%E8%8E%AB%E5%90%8D_.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/AdminLogin__%E8%8E%AB%E5%90%8D_.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/d1e362adcece44911d5f152f10efd3c30deee2ae",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/4d6d7a88bd6ef2d95317072de54ef1363642438a",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/AdminLogin__%E8%8E%AB%E5%90%8D_.zip"
     }
   },
