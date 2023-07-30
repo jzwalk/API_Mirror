@@ -4850,16 +4850,16 @@
   {
     "name": "MemorialDay_沈唁.zip",
     "path": "ZIP_CDN/MemorialDay_沈唁.zip",
-    "sha": "c53a7ec19b21d50a2aa28f10f9298f7ff1e932e3",
-    "size": 306783,
+    "sha": "1b755778b1cd909c7ed98db2e0214e1e46598add",
+    "size": 308717,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/MemorialDay_%E6%B2%88%E5%94%81.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/MemorialDay_%E6%B2%88%E5%94%81.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/c53a7ec19b21d50a2aa28f10f9298f7ff1e932e3",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/1b755778b1cd909c7ed98db2e0214e1e46598add",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/MemorialDay_%E6%B2%88%E5%94%81.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/MemorialDay_%E6%B2%88%E5%94%81.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/c53a7ec19b21d50a2aa28f10f9298f7ff1e932e3",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/1b755778b1cd909c7ed98db2e0214e1e46598add",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/MemorialDay_%E6%B2%88%E5%94%81.zip"
     }
   },
