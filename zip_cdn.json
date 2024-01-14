@@ -578,16 +578,16 @@
   {
     "name": "ArticlePoster_MoLeft.zip",
     "path": "ZIP_CDN/ArticlePoster_MoLeft.zip",
-    "sha": "eafb8a966888152457be0d39c9f04a630157399a",
-    "size": 2061894,
+    "sha": "53118fd99c6f52579c98fc4ec6e01ec2eaab2213",
+    "size": 13264730,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/ArticlePoster_MoLeft.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/ArticlePoster_MoLeft.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/eafb8a966888152457be0d39c9f04a630157399a",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/53118fd99c6f52579c98fc4ec6e01ec2eaab2213",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/ArticlePoster_MoLeft.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/ArticlePoster_MoLeft.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/eafb8a966888152457be0d39c9f04a630157399a",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/53118fd99c6f52579c98fc4ec6e01ec2eaab2213",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/ArticlePoster_MoLeft.zip"
     }
   },
