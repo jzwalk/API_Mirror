@@ -1776,6 +1776,22 @@
     }
   },
   {
+    "name": "Comment2PushDeer_马春杰.zip",
+    "path": "ZIP_CDN/Comment2PushDeer_马春杰.zip",
+    "sha": "b43a8195e9cfbf8568834d6b84d315ae5d3024fa",
+    "size": 6350,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Comment2PushDeer_%E9%A9%AC%E6%98%A5%E6%9D%B0.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Comment2PushDeer_%E9%A9%AC%E6%98%A5%E6%9D%B0.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/b43a8195e9cfbf8568834d6b84d315ae5d3024fa",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/Comment2PushDeer_马春杰.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/Comment2PushDeer_%E9%A9%AC%E6%98%A5%E6%9D%B0.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/b43a8195e9cfbf8568834d6b84d315ae5d3024fa",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/Comment2PushDeer_%E9%A9%AC%E6%98%A5%E6%9D%B0.zip"
+    }
+  },
+  {
     "name": "Comment2Slack_kaze.zip",
     "path": "ZIP_CDN/Comment2Slack_kaze.zip",
     "sha": "5f023bbec3c81a0d2c7446bd18ad904f1cf138b3",
