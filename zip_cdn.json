@@ -2032,6 +2032,22 @@
     }
   },
   {
+    "name": "CommentToTelegram_opswill.zip",
+    "path": "ZIP_CDN/CommentToTelegram_opswill.zip",
+    "sha": "a8052510a0511146af2e74ff41ed756afaad0699",
+    "size": 4866,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/CommentToTelegram_opswill.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/CommentToTelegram_opswill.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/a8052510a0511146af2e74ff41ed756afaad0699",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/CommentToTelegram_opswill.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/CommentToTelegram_opswill.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/a8052510a0511146af2e74ff41ed756afaad0699",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/CommentToTelegram_opswill.zip"
+    }
+  },
+  {
     "name": "CommentToWechat_lscho.zip",
     "path": "ZIP_CDN/CommentToWechat_lscho.zip",
     "sha": "df516ccc77a4030fee6283e4d2d40ca71755232e",
