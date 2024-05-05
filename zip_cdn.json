@@ -8896,6 +8896,22 @@
     }
   },
   {
+    "name": "WindsCkEditor_awinds.zip",
+    "path": "ZIP_CDN/WindsCkEditor_awinds.zip",
+    "sha": "a7aa32ce4700e7536604463edbb3174957227a8f",
+    "size": 2187551,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/WindsCkEditor_awinds.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/WindsCkEditor_awinds.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/a7aa32ce4700e7536604463edbb3174957227a8f",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/WindsCkEditor_awinds.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/WindsCkEditor_awinds.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/a7aa32ce4700e7536604463edbb3174957227a8f",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/WindsCkEditor_awinds.zip"
+    }
+  },
+  {
     "name": "WindsCkEditor_下载.zip",
     "path": "ZIP_CDN/WindsCkEditor_下载.zip",
     "sha": "a7aa32ce4700e7536604463edbb3174957227a8f",
