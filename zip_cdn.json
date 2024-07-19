@@ -6624,6 +6624,22 @@
     }
   },
   {
+    "name": "ShikiHighlighter_Emt-lin.zip",
+    "path": "ZIP_CDN/ShikiHighlighter_Emt-lin.zip",
+    "sha": "e783b46d35034becd2e71aedbd55758729b3c20a",
+    "size": 2114469,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/ShikiHighlighter_Emt-lin.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/ShikiHighlighter_Emt-lin.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/e783b46d35034becd2e71aedbd55758729b3c20a",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/ShikiHighlighter_Emt-lin.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/ShikiHighlighter_Emt-lin.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/e783b46d35034becd2e71aedbd55758729b3c20a",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/ShikiHighlighter_Emt-lin.zip"
+    }
+  },
+  {
     "name": "Shop_LiCxi.zip",
     "path": "ZIP_CDN/Shop_LiCxi.zip",
     "sha": "ac7426b6465c6e87359d1387ae54b646cf7cc73c",
