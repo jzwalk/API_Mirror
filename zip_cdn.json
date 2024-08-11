@@ -2674,16 +2674,16 @@
   {
     "name": "ExImg_fmujie.zip",
     "path": "ZIP_CDN/ExImg_fmujie.zip",
-    "sha": "1f49a929e2fd21af942e2bbd778a55fc03e7d7fd",
-    "size": 2867,
+    "sha": "920369649b447db74d66ef654ba6d28c70b91838",
+    "size": 3139,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/ExImg_fmujie.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/ExImg_fmujie.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/1f49a929e2fd21af942e2bbd778a55fc03e7d7fd",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/920369649b447db74d66ef654ba6d28c70b91838",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/ExImg_fmujie.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/ExImg_fmujie.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/1f49a929e2fd21af942e2bbd778a55fc03e7d7fd",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/920369649b447db74d66ef654ba6d28c70b91838",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/ExImg_fmujie.zip"
     }
   },
