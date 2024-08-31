@@ -752,6 +752,22 @@
     }
   },
   {
+    "name": "AutoSSL_Aurorum.zip",
+    "path": "ZIP_CDN/AutoSSL_Aurorum.zip",
+    "sha": "c04064857c7fbd2753230ac0bb68970403230c73",
+    "size": 16813,
+    "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/AutoSSL_Aurorum.zip?ref=master",
+    "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/AutoSSL_Aurorum.zip",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/c04064857c7fbd2753230ac0bb68970403230c73",
+    "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/AutoSSL_Aurorum.zip",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/AutoSSL_Aurorum.zip?ref=master",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/c04064857c7fbd2753230ac0bb68970403230c73",
+      "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/AutoSSL_Aurorum.zip"
+    }
+  },
+  {
     "name": "AutoSaveImage_dream.zip",
     "path": "ZIP_CDN/AutoSaveImage_dream.zip",
     "sha": "b27736e3c5c130036d1eeb3bc7b820f3db3bb2f0",
