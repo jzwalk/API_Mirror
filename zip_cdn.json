@@ -1010,16 +1010,16 @@
   {
     "name": "BaiduTextCensor_沈唁.zip",
     "path": "ZIP_CDN/BaiduTextCensor_沈唁.zip",
-    "sha": "36af0751d8abaac5c6212b361968c06777ef96ad",
-    "size": 28215,
+    "sha": "92f51b1911e41d14543fbee4729c0a135bcb1bf0",
+    "size": 29130,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/BaiduTextCensor_%E6%B2%88%E5%94%81.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/BaiduTextCensor_%E6%B2%88%E5%94%81.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/36af0751d8abaac5c6212b361968c06777ef96ad",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/92f51b1911e41d14543fbee4729c0a135bcb1bf0",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/BaiduTextCensor_沈唁.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/BaiduTextCensor_%E6%B2%88%E5%94%81.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/36af0751d8abaac5c6212b361968c06777ef96ad",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/92f51b1911e41d14543fbee4729c0a135bcb1bf0",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/BaiduTextCensor_%E6%B2%88%E5%94%81.zip"
     }
   },
@@ -4802,16 +4802,16 @@
   {
     "name": "MarkdownParse_mrgeneral.zip",
     "path": "ZIP_CDN/MarkdownParse_mrgeneral.zip",
-    "sha": "1f9fad70616d5086a164efd511519a8d964d24fb",
-    "size": 112083,
+    "sha": "f470b2af431ab5ae6e463eb658a684e32139d95d",
+    "size": 112774,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/MarkdownParse_mrgeneral.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/MarkdownParse_mrgeneral.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/1f9fad70616d5086a164efd511519a8d964d24fb",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/f470b2af431ab5ae6e463eb658a684e32139d95d",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/MarkdownParse_mrgeneral.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/MarkdownParse_mrgeneral.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/1f9fad70616d5086a164efd511519a8d964d24fb",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/f470b2af431ab5ae6e463eb658a684e32139d95d",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/MarkdownParse_mrgeneral.zip"
     }
   },
@@ -4898,16 +4898,16 @@
   {
     "name": "MemorialDay_沈唁.zip",
     "path": "ZIP_CDN/MemorialDay_沈唁.zip",
-    "sha": "1b755778b1cd909c7ed98db2e0214e1e46598add",
-    "size": 308717,
+    "sha": "d5973b48f250012fd14f27842ecc1df733757708",
+    "size": 339136,
     "url": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/MemorialDay_%E6%B2%88%E5%94%81.zip?ref=master",
     "html_url": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/MemorialDay_%E6%B2%88%E5%94%81.zip",
-    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/1b755778b1cd909c7ed98db2e0214e1e46598add",
+    "git_url": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/d5973b48f250012fd14f27842ecc1df733757708",
     "download_url": "https://raw.githubusercontent.com/typecho-fans/plugins/master/ZIP_CDN/MemorialDay_沈唁.zip",
     "type": "file",
     "_links": {
       "self": "https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN/MemorialDay_%E6%B2%88%E5%94%81.zip?ref=master",
-      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/1b755778b1cd909c7ed98db2e0214e1e46598add",
+      "git": "https://api.github.com/repos/typecho-fans/plugins/git/blobs/d5973b48f250012fd14f27842ecc1df733757708",
       "html": "https://github.com/typecho-fans/plugins/blob/master/ZIP_CDN/MemorialDay_%E6%B2%88%E5%94%81.zip"
     }
   },
