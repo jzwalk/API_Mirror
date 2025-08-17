@@ -76,9 +76,9 @@
 			}
 		}
 
+		$tmpDir = realpath('../').'/TMP';
 		if ($tableLine) {
 			//创建临时文件夹
-			$tmpDir = realpath('../').'/TMP';
 			$tmpNew = $tmpDir.'/NEW';
 			if (!is_dir($tmpDir)) {
 				mkdir($tmpDir,0777,true);
@@ -400,7 +400,9 @@
 				if ($extras) {
 					$logs .= 'Warning: The correct zip already exists, "'.implode(' / ',$extras).'" will be deleted.'.PHP_EOL;
 					foreach ($extras as $extra) {
-						unlink('ZIP_CDN/'.$extra);
+						if (is_file('ZIP_CDN/'.$extra)) {
+							unlink('ZIP_CDN/'.$extra);
+						}
 					}
 				}
 			}
