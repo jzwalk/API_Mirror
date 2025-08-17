@@ -1,441 +1,498 @@
 <?php
+
 	/**
-	 * Typecho-Fans/Plugins专用自动化更新插件信息与zip包脚本
-	 * (非Typecho插件，仅供GitHub Actions功能调用，勿删改！)
-	 * 作者：羽中
+	 * Typecho-Fans/Plugins专用脚本：自动化更新插件信息文档及zip包
+	 * (GitHub Actions工作流调用，每次提交自动运行，修改务必谨慎！)
 	 * 反馈：https://github.com/typecho-fans/plugins/issues
 	 */
+
 	date_default_timezone_set('Asia/Shanghai');
+	$authKey = $argv[1];
+	$requestUrl = $argv[2];
 
-	//创建临时文件夹
-	$tmpDir = realpath('../').'/TMP';
-	$tmpNew = $tmpDir.'/NEW';
-	if (!is_dir($tmpDir)) {
-		mkdir($tmpDir);
-	}
-	if (!is_dir($tmpNew)) {
-		mkdir($tmpNew);
-	}
-
-	//分析最新文档变化
-	if (!empty($argv['2']) && strpos($argv['2'],'.diff')) {
-		$record = @file_get_contents($argv['2'],0,
+	//读取最近一条提交
+	if (!empty($requestUrl) && strpos($requestUrl,'.diff')) {
+		$record = @file_get_contents($requestUrl,0,
 			stream_context_create(array('http'=>array('header'=>array('Accept: application/vnd.github.v3.diff')))));
 		$diffs = explode(PHP_EOL,$record);
 
-		//确定行范围
 		$begin = 0;
-		$end = count($diffs)-1;
+		$urls = [];
 		foreach ($diffs as $line=>$diff) {
+			//查找有关文档变化
 			if ($diff=='+++ b/TESTORE.md') {
 				$begin = $line;
 			}
-			if ($begin && $line>$begin && strpos($diff,'diff --git')===0) {
-				$end = $line;
+			if ($begin && $line>$begin) {
+				//匹配改动repo信息
+				if (strpos($diff,'+[')===0) {
+					preg_match_all('/(?<=\()[^\)]+/',$diff,$links);
+					if ($links && strpos($diff,'](')) {
+						$urls[] = trim($links[0][0]); //取第一个链接内容
+					}
+				}
+				if (strpos($diff,'diff --git')===0) {
+					break;
+				}
+			}
+		}
+	}
+
+	//检测文档执行更新
+	$movable = updatePlugins('README.md',$urls,$requestUrl,$authKey);
+	updatePlugins('TESTORE.md',$urls,$requestUrl,$authKey,$movable);
+
+	/**
+	 * 循环每行检测更新并重组文档
+	 *
+	 * @param string $tableFile MD文档路径
+	 * @param array $changed 最近改动repo信息
+	 * @param string $requested 请求更新repo信息
+	 * @param string $token GitHub Token
+	 * @param array $added 转移的表格条目
+	 * @return array
+	 */
+	function updatePlugins(string $tableFile,array $changed,string $requested='',string $token='',array $added=[]): array
+	{
+		$nameList = 'ZIP_CDN/NAME_LIST.log';
+		$listContent = is_file($nameList) ? file_get_contents($nameList) : '';
+		$logs = '-------'.$tableFile.'-------'.PHP_EOL.date('Y-m-d',time()).PHP_EOL;
+		$all = 0;
+		$update = 0;
+		$noTag = strpos($listContent,'README.md'.PHP_EOL)===false;
+		$listNames = explode(PHP_EOL,$listContent);
+		$done = 0;
+		$descriptions = [];
+		$tables = [];
+		$movable = [];
+
+		//分割文档准备开始循环
+		$source = file_get_contents($tableFile);
+		$lines = explode(PHP_EOL,trim($source));
+		$tableLine = 0;
+		foreach ($lines as $line=>$column) {
+			if (strpos($column,'| :----:')) {
+				$tableLine = $line; //定位表格行
+			}
+		}
+
+		if ($tableLine) {
+			//创建临时文件夹
+			$tmpDir = realpath('../').'/TMP';
+			$tmpNew = $tmpDir.'/NEW';
+			if (!is_dir($tmpDir)) {
+				mkdir($tmpDir,0777,true);
+			}
+			if (!is_dir($tmpNew)) {
+				mkdir($tmpNew,0777,true);
+			}
+
+			$counts = count($lines);
+			foreach ($lines as $line=>$column) {
+				//说明部分更新收录总数
+				if ($line<$tableLine+1) {
+					if ($line==$tableLine-8) {
+						preg_match('/(?<=\()[^\)]*/',$column,$total);
+						if ($total) {
+							$column = str_replace($total[0],$counts-($tableLine+1),$column);
+						} else {
+							$logs .= 'Error: Cannot find the total number in "'.$tableFile.'"!'.PHP_EOL;
+						}
+					}
+					$descriptions[] = $column;
+				//表格部分匹配repo信息
+				} elseif ($column) {
+					$metas = explode(' | ',$column);
+					if (count($metas)==5) {
+
+						$nameMeta = $metas[0];
+						preg_match('/(?<=\[)[^\]]*/',$nameMeta,$names);
+						$name = trim($names ? $names[0] : $nameMeta); //取第一个栏位(链接)文本
+						if ($name) {
+
+							$url = '';
+							preg_match_all('/(?<=\()[^)]*/',$column,$links);
+							$url = $links && strpos($nameMeta,'](') ? trim($links[0][0]) : ''; //取第一个栏位链接内容
+
+							$github = parse_url($url,PHP_URL_HOST)=='github.com';
+							//默认处理来自GitHub插件
+							if (!$requested) {
+								$condition = $github;
+							//文档变化则处理变化插件
+							} elseif (strpos($requested,'.diff') && $changed) {
+								$condition = in_array($url,$changed) || in_array($name,$changed);
+							//手动输入则处理指定插件
+							} else {
+								$condition = $requested==$url || $requested==$name;
+							}
+							if ($condition) {
+								++$all; //记录检测次数
+
+								$sub = strpos($url,'/tree/master/');
+								//子目录提取地址
+								if ($sub) {
+									$paths = explode('/tree/master/',$url);
+									$url = $paths[0];
+									$folder = $paths[1].'/';
+								}
+
+								$tf = $tableFile=='README.md';
+								$tfLocal = $tf && is_dir($url);
+								$gitee = parse_url($url,PHP_URL_HOST)=='gitee.com';
+								$api = '';
+								$datas = '';
+								$isUrl = strpos($url,'https://')===0;
+								if (!$tfLocal) {
+									//API查询repo文件树
+									if ($github || $gitee) {
+										$api = @file_get_contents(str_replace(['/github.com/','/gitee.com/'],['/api.github.com/repos/','/api.gitee.com/api/v5/repos/'],$url).'/git/trees/master?recursive=1'.($github ? '&access_token='.$token : ''),0,
+											stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP')))));
+									}
+									if ($api) {
+										$datas = array_column(json_decode($api,true)['tree'],'path');
+										//定位主文件路径
+										$path = pluginRoute($datas,$name);
+									}
+
+									//下载主文件获取信息
+									if ($isUrl) {
+										$pluginUri = $url.'/raw/master/'.$folder;
+										$plugin = $path ? $url.'/raw/master/'.$path : $pluginUri.'Plugin.php';
+										$infos = parseInfo($plugin);
+										//无API重试单文件
+										if (!$infos['version'] && !$path) {
+											$plugin = $pluginUri.$name.'.php';
+											$infos = parseInfo($plugin);
+										}
+									}
+								} else {
+									//本地读取主文件信息
+									$plugin = pluginRoute($url,$name);
+									$infos = parseInfo($plugin);
+								}
+
+								$noPlugin = empty($infos['version']); //表格repo信息无效
+								$gitIsh = !$noPlugin && !$api && !$tfLocal; //有效但无API
+								$zipMeta = end($metas);
+								$zip = strpos($zipMeta,'](') ? trim(end($links[0])) : ''; //取最后一个栏位链接地址
+								$tmpSub = $tmpDir.'/'.$all.'_'.$name;
+								$pluginZip = '';
+								//解压zip包(获取信息)
+								if ($noPlugin || $gitIsh) {
+									$download = @file_get_contents($zip);
+									if ($download) {
+										$tmpZip = $tmpSub.'_origin.zip';
+										file_put_contents($tmpZip,$download);
+										$phpZip = new ZipArchive();
+										if ($phpZip->open($tmpZip,ZipArchive::CHECKCONS)!==true) {
+											$logs .= 'Error: Table zip - "'.$zip.'" is not valid!'.PHP_EOL;
+										} else {
+											mkdir($tmpSub,0777,true);
+											$phpZip->extractTo($tmpSub);
+											$pluginZip = pluginRoute($tmpSub,$name);
+											if ($pluginZip && !$gitIsh) {
+												$infos = parseInfo($pluginZip);
+											}
+										}
+									} else {
+										$logs .= 'Error: Table zip - "'.$zip.'" cannot be downloaded!'.PHP_EOL;
+									}
+								}
+
+								//有主文件信息即检查
+								if (!empty($infos['version'])) {
+									$fixed = '';
+									$updated = '';
+
+									//修正表格插件名与链接
+									$nameData = workingName($plugin);
+									$nameFile = $nameData[0];
+									if ($nameFile) {
+										if ($noPlugin) {
+											$logs .= 'Warning: "'.$url.'" is not valid, using "'.$zip.'" to read info.'.PHP_EOL;
+											$column = str_replace($nameMeta,'['.$nameFile.']('.($tfLocal ? $url : $infos['homepage']).')',$column);
+											$fixed .= ' / Table Repo Masked';
+										} elseif ($name!==$nameFile) {
+											$logs .= 'Warning: "'.$name.'" in table does not match "'.$nameFile.'" in file.'.PHP_EOL;
+											$column = str_replace($nameMeta,str_replace($name.'](',$nameFile.'](',$nameMeta),$column);
+											$fixed .= ' / Table Name Fixed';
+										}
+									} else {
+										$nameFile = $name;
+									}
+
+									//处理表格作者名
+									$authorMeta = $metas[3];
+									$authorCode = html_entity_decode(trim($authorMeta));
+									preg_match('/[\t ]*(,|&|，)[ \t]*/',$authorCode,$separators); //匹配分隔符
+									//多作者情况
+									if ($separators) {
+										$separator = $separators[0];
+										$authors = explode($separator,$authorCode);
+										$authorNames = [];
+										$authorMDfix = [];
+										foreach ($authors as $author) {
+											preg_match('/(?<=\[)[^\]]*/',$author,$authorName); //匹配链接文字
+											$authorNames[] = trim($authorName ? $authorName[0] : $author);
+											$authorMDfix[] = str_replace(['_','*'],['&#95;','&#42;'],$author); //Markdown转义
+										}
+									//单作者情况
+									} else {
+										preg_match('/(?<=\[)[^\]]*/',$authorCode,$authorName);
+										$author = trim($authorName ? $authorName[0] : $authorCode);
+										$authorMD = str_replace(['_','*'],['&#95;','&#42;'],$author);
+									}
+									$authorTable = $separator ? implode($separator,$authorNames) : $author;
+									//处理repo作者名
+									$authorInfo = strip_tags(trim($infos['author']));
+
+									//修正表格作者名与链接
+									if ($authorTable!==$authorInfo) {
+										$logs .= 'Warning: "'.$authorTable.'" in table does not match "'.$authorInfo.'" in file.'.PHP_EOL;
+										$column = str_replace($authorMeta,'['.$authorInfo.']('.$infos['homepage'].')',$column);
+										$fixed .= ' / Table Author Fixed';
+									} else {
+										$column = str_replace($authorMeta,($separator ? str_replace($authorNames,$authorMDfix,$authorMeta) : str_replace($author,$authorMD,$authorMeta)),$column); //使*和_正常显示
+									}
+
+									//生成加速文件夹用zip
+									$zipName = $nameFile.'_'.str_replace([':','"','/','\\','|','?','*'],'',preg_replace('/[\t ]*(,|&|，)[ \t]*/','_',$authorInfo)).'.zip'; //作者名转文件名
+									$cdn = 'ZIP_CDN/'.$zipName;
+									$params = [$tableFile,!$noPlugin,$url,$nameFile,$datas,$plugin,$pluginZip,$cdn,$zip,$all,$logs];
+									$newCdn = false;
+									if (!is_file($cdn)) {
+										$newCdn = true;
+										$logs = dispatchZips(...$params);
+										$fixed .= ' / CDN Zip Created';
+									}
+
+									//表格版本落后则更新(或强制更新)
+									$version = trim($metas[2]); //取第三个栏位文本
+									if (version_compare(trim($infos['version']),$version,'>') || !empty($requested)) {
+										++$update; //记录更新次数
+
+										//更新加速文件夹用zip
+										if (!$newCdn) {
+											dispatchZips(...$params);
+											$fixed .= ' / CDN Zip Renewed';
+										}
+
+										$release = strpos($zip,'typecho-fans/plugins/releases/download');
+										//复制到release发布用
+										if ($release && is_file($cdn)) {
+											$releaseZip = $tmpNew.'/'.$nameFile;
+											//重名追加下划线(Assets附件不支持中文)
+											for ($j=$line+1;$j<$counts;++$j) {
+												if ($lines[$j]) {
+													$reMetas = explode(' | ',$lines[$j]);
+													preg_match('/(?<=\[)[^\]]+/',$reMetas[0],$reName);
+													if (!strcasecmp(trim($reName[0]),$nameFile)) {
+														$releaseZip .= '_';
+													}
+												}
+											}
+											$releaseZip = $releaseZip.'.zip';
+											copy($cdn,$releaseZip);
+											//更新表格下载地址
+											$column = str_replace($zip,dirname($zip).'/'.basename($releaseZip),$column);
+										}
+
+										//更新表格版本号
+										$column = str_replace($version,trim($infos['version']),$column);
+
+										//标记表格下载文本(用于TeStore筛选)
+										preg_match('/(?<=\[)[^\]]*/',$zipMeta,$zipText);
+										$mark = $zipText ? trim($zipText[0]) : ($tf ? 'Download' : '下载'); //取最后一个栏位链接文本
+										if ($mark=='Download' || $mark=='下载') {
+											$newOr = 'Lat';
+											$orNew = '近';
+											//标记新版写法
+											if ($nameData[1]) {
+												$newOr = 'New';
+												$orNew = '新';
+												$fixed .= ' / Marked as 1.2.1+';
+											}
+											//标记最近更新
+											$column = str_replace($zipMeta,str_replace($mark,($tf ? $newOr.'est' : '最'.$orNew),$zipMeta),$column);
+										}
+
+										//按最近置顶排序zip名表
+										$latest = [];
+										if ($noTag) {
+											array_splice($listNames,array_search($zipName,$listNames),1);
+											array_unshift($listNames,$zipName);
+											$latest = array_slice($listNames,0,20); //分割前20
+										}
+
+										$updated = '& Updated';
+										++$done; //记录完成次数
+									}
+									if ($fixed || $updated) {
+										$logs .= $nameFile.' - '.date('Y-m-d H:i',time()).' - Revised '.$updated.$fixed.PHP_EOL; //记录改动明细
+									}
+								} else {
+									$logs .= 'Error: Table info - "'.$url.'" & "'.$zip.'" are not valid!'.PHP_EOL;
+								}
+							}
+
+							//整理zip名表(非前20移除标记)
+							if (!$listContent || !$noTag) {
+								$listNames[] = $zipName;
+							} else {
+								if ($latest && !in_array($zipName,$latest)) {
+									$column = str_replace($zipMeta,str_replace(['Latest','Newest','最近','最新'],['Download','NewVer','下载','新版'],$zipMeta),$column);
+								}
+							}
+
+							//筛出README.md的外部信息
+							if ($tf && $isUrl) {
+								$movable[] = $column;
+								if (is_dir($nameFile)) {
+									$logs .= 'Warning: "'.$nameFile.'" is local but table info "'.$url.'" is external.'.PHP_EOL;
+								}
+							}
+
+						} else {
+							$logs .= 'Error: Line '.$line.' has no plugin name!'.PHP_EOL;
+						}
+					} else {
+						$logs .= 'Error: Line '.$line.' has the wrong columns!'.PHP_EOL;
+					}
+					$tables[] = $column;
+				}
+			}
+
+			//合并所有行排序后重建文档
+			$tables = array_unique(array_merge(array_diff($tables,$movable),$added));
+			sort($tables);
+			file_put_contents($tableFile,implode(PHP_EOL,$descriptions).PHP_EOL.implode(PHP_EOL,$tables).PHP_EOL);
+
+		} else {
+			$logs .= 'Error: "'.$tableFile.'" has no table in it!'.PHP_EOL;
+		}
+
+		//清空临时目录(保留updates.log)
+		exec('find "'.$tmpDir.'" -mindepth 1 ! -name "updates.log" -exec rm -rf {} +');
+
+		//合并两个zip名表
+		if (!$noTag) {
+			$listNames = array_merge($listNames,explode(PHP_EOL,str_replace('README.md'.PHP_EOL,'',$listContent)));
+		}
+		if ($listNames) {
+			//检查重复项
+			$duplicates = array_keys(
+				array_filter(
+					array_count_values($listNames),
+					fn($count)=>$count>1
+				)
+			);
+			if ($duplicates) {
+				$logs .= 'Warning: Table info about "'.implode(' / ',$duplicates).'" may be added repeatedly.'.PHP_EOL;
+			}
+			//保存zip名表
+			file_put_contents($nameList,($listContent ? '' : 'README.md'.PHP_EOL).implode(PHP_EOL,array_unique($listNames)));
+			//清除冗余zip
+			$api = @file_get_contents('https://api.github.com/repositories/14101953/contents/ZIP_CDN',0,
+				stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP')))));
+			if ($api) {
+				$datas = json_decode($api,true);
+				$extras = array_diff(array_column($datas,'name'),$listNames);
+				if ($extras) {
+					$logs .= 'Warning: The correct zip already exists, "'.implode(' / ',$extras).'" will be deleted.'.PHP_EOL;
+					foreach ($extras as $extra) {
+						unlink('ZIP_CDN/'.$extra);
+					}
+				}
+			}
+		} else {
+			$logs .= 'Error: "'.$nameList.'" is not established!'.PHP_EOL;
+		}
+
+		//生成完整的操作日志
+		$logFile = $tmpDir.'/updates.log';
+		$logs .= 'SCANED: '.$all.PHP_EOL.
+			'NEED UPDATE: '.$update.PHP_EOL.
+			'DONE: '.$done.PHP_EOL;
+		file_put_contents($logFile,$logs,FILE_APPEND|LOCK_EX);
+
+		return $movable;
+	}
+
+	/**
+	 * 获取插件主文件路径或文件树数据
+	 *
+	 * @param string|array $pluginData 文件夹路径或文件树数据
+	 * @param string $name 表格插件名
+	 * @param boolean $needTree 是否返回文件树数据
+	 * @return string|array
+	 */
+	function pluginRoute(string|array $pluginData,string $name,bool $needTree=false): string|array
+	{
+		$plugin = '';
+		$routes = is_array($pluginData) ? $pluginData : array();
+
+		//遍历获取文件树
+		if (!$routes) {
+			foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($pluginData)) as $files) {
+				if (!$files->isDir() && !strpos($files,'/.git/') && !strpos($files,'/.github/')) {
+					$routes[] = $files->getRealPath();
+				}
+			}
+		}
+		//定位主文件路径
+		foreach ($routes as $route) {
+			if (strpos($route,'Plugin.php')!==false) { //目录型优先
+				$plugin = $route;
+				break;
+			} elseif (strpos($route,$name.'.php')!==false) {
+				$plugin = $route;
 				break;
 			}
 		}
-		//提取变化行
-		$links = array();
-		$urls = array();
-		foreach ($diffs as $line=>$diff) {
-			if ($begin && $line>$begin && $line<$end && strpos($diff,'+[')===0) {
-				preg_match_all('/(?<=\()[^\)]+/',$diff,$links);
-				$urls[] = $links['0']['0'];
-			}
-		}
+
+		return $needTree ? $routes : $plugin;
 	}
-
-	//预设循环内变量
-	$desciptions = array();
-	$links = array();
-	$metas = array();
-	$url = '';
-	$github = false;
-	$gitee = false;
-	$condition = false;
-	$all = 0;
-	$authorCode = '';
-	$separator = '';
-	$authors = array();
-	$authorName = array();
-	$authorNames = array();
-	$author = '';
-	$name = array();
-	$doc = false;
-	$main = false;
-	$sub = false;
-	$paths = array();
-	$api = '';
-	$json = '';
-	$detect = true;
-	$datas = array();
-	$path = '';
-	$pluginFile = '';
-	$logs = '--------------'.PHP_EOL.date('Y-m-d',time()).PHP_EOL;
-	$infos = array();
-	$match = array();
-	$version = '';
-	$update = 0;
-	$zip = '';
-	$repoZip = '';
-	$download = '';
-	$tmpName = '';
-	$tmpZip = '';
-	$tmpSub = '';
-	$phpZip = (object)array();
-	$pluginFolder = '';
-	$plugin = '';
-	$renamed = '';
-	$cdn = '';
-	$rootPath = '';
-	$filePath = '';
-	$status = 'failed';
-	$done = 0;
-	$tables = array();
-
-	//开始分割文档循环
-	$source = file_get_contents('TESTORE.md');
-	$lines = explode(PHP_EOL,$source);
-	$count = count($lines);
-	foreach ($lines as $line=>$column) {
-		if ($line<38) {
-			if ($line=='29') {
-				preg_match('/(?<=\()[^\)]+/',$column,$counts);
-				$column = str_replace($counts['0'],$count-39,$column);
-			}
-			$desciptions[] = $column;
-		} elseif ($column) {
-			preg_match_all('/(?<=\()[^\)]+/',$column,$links);
-			preg_match_all('/(?<=)[^\|]+/',$column,$metas);
-			$url = $links['0']['0'];
-			$github = strpos($url,'github.com');
-			$gitee = strpos($url,'gitee.com');
-
-			//判断地址参数
-			if (empty($argv['2'])) { //默认处理Git服务地址
-				$condition = $github || $gitee;
-			} elseif (strpos($argv['2'],'.diff')) { //推送处理有变化地址(不限Git)
-				$condition = $urls && in_array($url,$urls);
-			} else { //手动处理参数指定地址
-				$condition = $argv['2']==$url && ($github || $gitee);
-			}
-			if ($condition) {
-				++$all;
-				preg_match('/(?<=\[)[^\]]+/',$metas['0']['0'],$name);
-
-				if ($github || $gitee) {
-					//取插件主文件地址
-					$doc = (strpos($url,'/blob/master/') || strpos($url,'/blob/main/')) && strpos($url,'.php');
-					//单文件情况
-					if ($doc) {
-						$detect = false;
-						$pluginFile = str_replace('blob','raw',$url); //直接确定地址
-						$paths = explode((strpos($url,'/raw/main/') ? '/raw/main/' : '/raw/master/'),$pluginFile);
-						$url = $paths['0']; //提取仓库路径
-					} else {
-						$main = strpos($url,'/tree/main/');
-						$sub = strpos($url,'/tree/master/') || $main;
-						//子目录情况
-						if ($sub) {
-							$paths = explode(($main ? '/tree/main/' : '/tree/master/'),$url);
-							$url = $paths['0']; //提取仓库路径
-						}
-
-						$api = $github ? str_replace('github.com','api.github.com/repos',$url).'/git/trees/master?recursive=1&access_token='.$argv['1'] : 
-							str_replace('gitee.com','gitee.com/api/v5/repos',$url).'/git/trees/master?recursive=1';
-						//查询仓库文件结构
-						if (!$main) {
-							$json = @file_get_contents($api,0,
-								stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP')))));
-						}
-						//兼容main分支名
-						if (!$json || $main) {
-							$json = @file_get_contents(str_replace('master','main',$api),0,
-							stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP')))));
-							if ($json && !$main) {
-								$main = true;
-							}
-						}
-
-						$detect = true;
-						$pluginFile = $url.($main ? '/raw/main/' : '/raw/master/').($sub ? $paths['1'].'/' : ''); //默认确定前缀
-						if ($json) {
-							$datas = json_decode($json,true);
-							//查找主文件路径
-							foreach ($datas['tree'] as $tree) {
-								$path = '';
-								if (false!==strpos($tree['path'],($sub ? $name['0'].'/Plugin.php' : 'Plugin.php'))) {
-									$path = $tree['path'];
-									break;
-								}
-							}
-							//找到拼接出地址
-							if ($path) {
-								$detect = false;
-								$pluginFile = $url.($main ? '/raw/main/' : '/raw/master/').$path;
-							}
-						}
-					}
-
-					//从主文件提取信息
-					$infos = call_user_func('parseInfo',($detect ? $pluginFile.'Plugin.php' : $pluginFile));
-					//单文件情况
-					if (!$infos['version'] && $detect) {
-						$infos = call_user_func('parseInfo',$pluginFile.$name['0'].'.php');
-					}
-
-					if ($infos['version']) {
-						//提取版本号
-						if (preg_match('/\d+(.\d+)*/',trim(strip_tags($infos['version'])),$match)) {
-							$infos['version'] = $match['0'];
-						}
-						$version = stripos($metas['0']['2'],'v')===0 ? trim(substr($metas['0']['2'],1)) : trim($metas['0']['2']);
-					} else {
-						$logs .= 'Error: "'.$pluginFile.'" not valid!'.PHP_EOL;
-					}
-				}
-
-				//对比版本号判断更新
-				if ($infos['version'] && $infos['version']>$version || !empty($argv['2'])) { //或有参数即可
-					++$update;
-					$zip = end($links['0']);
-
-					//准备作者名
-					$authorCode = html_entity_decode(trim($metas['0']['3']));
-					switch (true) {
-						case (strpos($authorCode,',')) :
-						$separator = ',';
-						break;
-						case (strpos($authorCode,', ')) :
-						$separator = ', ';
-						break;
-						case (strpos($authorCode,'&')) :
-						$separator = '&';
-						break;
-						case (strpos($authorCode,' & ')) :
-						$separator = ' & ';
-						break;
-					}
-					//多作者情况
-					if ($separator) {
-						$authors = explode($separator,$authorCode);
-						$authorNames = array();
-						foreach ($authors as $key=>$author) {
-							preg_match('/(?<=\[)[^\]]+/',$author,$authorName);
-							$authorNames[] = empty($authorName['0']) ? $author : $authorName['0'];
-						}
-						$author = implode($separator,$authorNames);
-					//单作者情况
-					} else {
-						$author = '';
-						preg_match('/(?<=\[)[^\]]+/',$authorCode,$authorName);
-						$author = empty($authorName['0']) ? $authorCode : $authorName['0'];
-					}
-					//命名zip包 (加速目录用)
-					$cdn = 'ZIP_CDN/'.$name['0'].'_'.($separator ? implode('_',$authorNames) : $author).'.zip';
-
-					//标签发布的需重新打包
-					if (strpos($zip,'typecho-fans/plugins/releases/download')) {
-						$tmpName = '/'.$all.'_'.$name['0'];
-						$phpZip = new ZipArchive();
-
-						if ($github) {
-							$repoZip = $url.'/archive/'.($main ? 'main' : 'master').'.zip';
-							$download = @file_get_contents($repoZip);
-							if ($download) {
-								$tmpZip = $tmpDir.$tmpName.'.zip';
-								//下载实时zip
-								file_put_contents($tmpZip,$download);
-
-								//解压实时zip
-								$phpZip->open($tmpZip);
-								$tmpSub = $tmpDir.$tmpName;
-								mkdir($tmpSub);
-								$phpZip->extractTo($tmpSub);
-								$pluginFolder = $tmpSub.'/'.basename($url).($main ? '-main/' : '-master/');
-							} else {
-								$logs .= 'Error: "'.$repoZip.'" not found!'.PHP_EOL;
-							}
-						} elseif ($gitee) {
-							$pluginFolder = $tmpDir.'/GITEE'.$tmpName.'/';
-							//执行克隆命令
-							exec('git clone '.$url.'.git '.$pluginFolder,$output,$returns);
-							if ($returns!=0) {
-								$logs .= 'Error: "'.$url.'.git" not found!'.PHP_EOL;
-							}
-						}
-
-						if (is_dir($pluginFolder)) {
-							//替换作者名
-							$renamed = '';
-							if (!empty($infos['author']) && trim(strip_tags($infos['author']))!==$author) {
-								$plugin = $pluginFolder.($doc ? $paths['1'] : $path);
-								file_put_contents($plugin,str_replace($infos['author'],$author,file_get_contents($plugin)));
-								$renamed = '/ Rename Author ';
-							}
-
-							//命名zip包 (标签发布用)
-							$newZip = $tmpNew.'/'.$name['0'].'_'; //因不支持中文仅用下划线
-							for ($j=$line+1;$j<$count;++$j) {
-								if ($lines[$j]) {
-									preg_match_all('/(?<=)[^\|]+/',$lines[$j],$reMetas);
-									preg_match('/(?<=\[)[^\]]+/',$reMetas['0']['0'],$reName);
-									//重名增加下划线
-									if (!strcasecmp($reName['0'],$name['0'])) {
-										$newZip .= '_';
-									}
-								}
-							}
-							$newZip = $newZip.'.zip';
-
-							//打包至临时目录
-							$phpZip->open($newZip,ZipArchive::CREATE | ZipArchive::OVERWRITE);
-							if ($doc) {
-								$phpZip->addFile($pluginFolder.$paths['1'],$paths['1']);
-							} else {
-								$rootPath = $pluginFolder.($sub ? $paths['1'].'/' : '');
-								foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($rootPath)) as $file) {
-									if (!$file->isDir() && false===strpos($file->getPath(),'.git')) { //排除git文件夹
-										$filePath = $file->getRealPath();
-										$phpZip->addFile($filePath,$name['0'].'/'.substr($filePath,strlen($rootPath)));
-									}
-								}
-							}
-
-							//复制至加速目录
-							if ($phpZip->close() && @copy($newZip,$cdn)) {
-								//更新文档下载地址
-								$column = str_replace($zip,dirname($zip).'/'.basename($newZip),$column);
-								$status = 'succeeded';
-								++$done;
-							}
-							//完成处理记录日志
-							$logs .= $name['0'].' - '.date('Y-m-d H:i',time()).' - RE-ZIP '.$renamed.$status.PHP_EOL;
-						}
-
-					//其他仅下载至加速目录
-					} else {
-						$download = @file_get_contents($zip);
-						if ($download) {
-							if (@file_put_contents($cdn,$download)) {
-								$status = 'succeeded';
-								++$done;
-							}
-							//完成处理记录日志
-							$logs .= $name['0'].' - '.date('Y-m-d H:i',time()).' - '.$status.PHP_EOL;
-						} else {
-							$logs .= 'Error: "'.$zip.'" not found!'.PHP_EOL;
-						}
-					}
-
-					//更新文档版本号记录
-					if ($github && $infos['version'] && $status=='succeeded') {
-						$column = str_replace($version,$infos['version'],$column);
-					}
-				}
-			}
-			$tables[] = $column;
-		}
-	}
-	//按插件名排序
-	sort($tables);
-
-	//检查社区版文档关联
-	$source2 = file_get_contents('README_test.md');
-	$lines2 = explode(PHP_EOL,$source2);
-	$count2 = count($lines2);
-	$line2 = '';
-	$column2 = '';
-	$counts2 = array();
-	$desciptions2 = array();
-	$links2 = array();
-	$folder = '';
-	$tables2 = array();
-	foreach ($lines2 as $line2=>$column2) {
-		if ($line2<40) {
-			if ($line2=='31') {
-				preg_match('/(?<=\()[^\)]+/',$column2,$counts2);
-				$column2 = str_replace($counts2['0'],$count2-41,$column2);
-			}
-			$desciptions2[] = $column2;
-		} elseif ($column2) {
-			preg_match_all('/(?<=\()[^\)]+/',$column2,$links2);
-			$folder = $links2['0']['0'];
-			$folders[$folder] = '';
-			$tables2[] = $column2;
-		}
-	}
-	//按插件名排序
-	sort($tables2);
-	file_put_contents('README.json',json_encode($folders));
-
-	//重组文档并生成日志
-	file_put_contents('TESTORE.md',implode(PHP_EOL,$desciptions).PHP_EOL.implode(PHP_EOL,$tables).PHP_EOL);
-	file_put_contents('README_test.md',implode(PHP_EOL,$desciptions2).PHP_EOL.implode(PHP_EOL,$tables2).PHP_EOL);
-	file_put_contents($tmpDir.'/updates.log',$logs.
-		'SCANED: '.$all.PHP_EOL.
-		'NEED UPDATE: '.$update.PHP_EOL.
-		'DONE: '.$done.PHP_EOL);
 
 	/**
 	 * 获取插件文件的头信息 (Typecho)
 	 *
-	 * @param string $pluginFile 插件文件路径
+	 * @param string $pluginFile 主文件路径或地址
 	 * @return array
 	 */
-	function parseInfo($pluginFile)
+	function parseInfo(string $pluginFile): array
 	{
-		$tokens = token_get_all(@file_get_contents($pluginFile));
-		$isDoc = false;
-		$isFunction = false;
-		$isClass = false;
-		$isInClass = false;
-		$isInFunction = false;
-		$isDefined = false;
-		$current = NULL;
+		$codes = @file_get_contents($pluginFile);
+		$tokens = $codes ? token_get_all($codes) : [];
 
 		/** 初始信息 */
-		$info = array(
-			'description'	   => '',
-			'title'			 => '',
-			'author'			=> '',
-			'homepage'		  => '',
-			'version'		   => '',
-			'dependence'		=> '',
-			'activate'		  => false,
-			'deactivate'		=> false,
-			'config'			=> false,
-			'personalConfig'	=> false
-		);
+		$info = [
+			'title'=>'',
+			'author'=>'',
+			'homepage'=>'',
+			'version'=>'',
+			'since'=>''
+		];
 
-		$map = array(
-			'package'   =>  'title',
-			'author'	=>  'author',
-			'link'	  =>  'homepage',
-			'dependence'=>  'dependence',
-			'version'   =>  'version'
-		);
+		$map = [
+			'package'=>'title',
+			'author'=>'author',
+			'link'=>'homepage',
+			'since'=>'since',
+			'version'=>'version'
+		];
 
 		foreach ($tokens as $token) {
 			/** 获取doc comment */
-			if (!$isDoc && is_array($token) && T_DOC_COMMENT == $token[0]) {
+			if (is_array($token) && T_DOC_COMMENT == $token[0]) {
 
 				/** 分行读取 */
-				$described = false;
 				$lines = preg_split("(\r|\n)", $token[1]);
 				foreach ($lines as $line) {
 					$line = trim($line);
 					if (!empty($line) && '*' == $line[0]) {
 						$line = trim(substr($line, 1));
-						if (!$described && !empty($line) && '@' == $line[0]) {
-							$described = true;
-						}
 
-						if (!$described && !empty($line)) {
-							$info['description'] .= $line . "\n";
-						} else if ($described && !empty($line) && '@' == $line[0]) {
-							$info['description'] = trim($info['description']);
+						if (!empty($line) && '@' == $line[0]) {
 							$line = trim(substr($line, 1));
 							$args = explode(' ', $line);
 							$key = array_shift($args);
@@ -446,77 +503,133 @@
 						}
 					}
 				}
-
-				$isDoc = true;
-			}
-
-			if (is_array($token)) {
-				switch ($token[0]) {
-					case T_FUNCTION:
-						$isFunction = true;
-						break;
-					case T_IMPLEMENTS:
-						$isClass = true;
-						break;
-					case T_WHITESPACE:
-					case T_COMMENT:
-					case T_DOC_COMMENT:
-						break;
-					case T_STRING:
-						$string = strtolower($token[1]);
-						switch ($string) {
-							case 'typecho_plugin_interface':
-								$isInClass = $isClass;
-								break;
-							case 'activate':
-							case 'deactivate':
-							case 'config':
-							case 'personalconfig':
-								if ($isFunction) {
-									$current = ('personalconfig' == $string ? 'personalConfig' : $string);
-								}
-								break;
-							default:
-								if (!empty($current) && $isInFunction && $isInClass) {
-									$info[$current] = true;
-								}
-								break;
-						}
-						break;
-					default:
-						if (!empty($current) && $isInFunction && $isInClass) {
-							$info[$current] = true;
-						}
-						break;
-				}
-			} else {
-				$token = strtolower($token);
-				switch ($token) {
-					case '{':
-						if ($isDefined) {
-							$isInFunction = true;
-						}
-						break;
-					case '(':
-						if ($isFunction && !$isDefined) {
-							$isDefined = true;
-						}
-						break;
-					case '}':
-					case ';':
-						$isDefined = false;
-						$isFunction = false;
-						$isInFunction = false;
-						$current = NULL;
-						break;
-					default:
-						if (!empty($current) && $isInFunction && $isInClass) {
-							$info[$current] = true;
-						}
-						break;
-				}
 			}
 		}
 
 		return $info;
+	}
+
+	/**
+	 * 获取插件文件的有效命名
+	 *
+	 * @param string $pluginFile 主文件路径或地址
+	 * @return array
+	 */
+	function workingName(string $pluginFile): array
+	{
+		$codes = @file_get_contents($pluginFile);
+		$tokens = $codes ? token_get_all($codes) : [];
+		$count = count($tokens);
+
+		$namespace = '';
+		$classes = '';
+		if ($tokens) {
+			for ($i=0;$i<$count;$i++) {
+				if ($tokens[$i][0]===T_NAMESPACE) {
+					for ($j=$i+1;$j<$count;++$j) {
+						if ($tokens[$j][0]===T_STRING) {
+							$namespace = $tokens[$j][1];
+						} elseif ($tokens[$j]==='{' || $tokens[$j]===';') {
+							break;
+						}
+					}
+				}
+				if ($tokens[$i][0]===T_CLASS) {
+					for ($j=$i+1;$j<$count;++$j) {
+						if ($tokens[$j]==='{') {
+							$classes=$namespace.(!$namespace ? $tokens[$i+2][1] : '');
+ 						}
+ 					}
+				}
+			}
+		}
+
+		return [str_replace('_Plugin','',$classes),!empty($namespace)];
+	}
+
+	/**
+	 * 下载或重新打包加速用zip
+	 *
+	 * @param string $md Markdown文档路径
+	 * @param boolean $bingo 表格repo信息有效
+	 * @param string $url 表格repo链接
+	 * @param string $name 插件有效命名
+	 * @param array $datas API文件树数据(Gitee)
+	 * @param string $plugin 插件有效主文件地址
+	 * @param string $pluginZip 解包有效主文件路径
+	 * @param string $cdn 加速用zip文件路径
+	 * @param string $zip 表格zip地址
+	 * @param integer $index 循环次数序号
+	 * @param string $logs 已记录日志
+	 * @return string
+	 */
+	function dispatchZips(string $md,bool $bingo,string $url,string $name,array $datas,string $plugin,string $pluginZip,string $cdn,string $zip,int $index,string $logs): string
+	{
+		$host = parse_url($url,PHP_URL_HOST);
+		$github  = $host=='github.com';
+		$folder = realpath('../').'/TMP/'.$index.'_'.$name;
+		$tfLocal = $md=='README.md' && is_dir($url);
+		if (!is_dir($folder) && !$tfLocal) {
+			mkdir($folder,0777,true);
+		}
+
+		//重新打包到加速文件夹
+		if ($bingo && !$github) {
+			if ($host=='gitee.com') {
+				if (count($datas)=<50) {
+					foreach ($datas as $data) {
+						if (!strpos($data,'.gitignore') && !strpos($data,'/.github/')) {
+							$plugin = $url.'/raw/master/'.$data;
+							$download = @file_get_contents($plugin);
+							if ($download) {
+								$path = $folder.'/'.$data;
+								if (!is_dir(dirname($path))) {
+									mkdir(dirname($path),0777,true);
+								}
+								file_put_contents($path,$download); //逐一抓取文件
+							} else {
+								$logs .= 'Error: Plugin file - "'.$plugin.'" cannot be downloaded!'.PHP_EOL;
+							}
+						}
+					}
+				} else {
+					$logs .= 'Error: Gitee API - Too many files, please update manually!'.PHP_EOL;
+				}
+			} elseif (!$datas && !$tfLocal) {
+				$download = @file_get_contents($plugin); //只能取主文件
+				$path = $pluginZip ?: $folder.'/'.basename($plugin);
+				if (!is_dir(dirname($path))) {
+					mkdir(dirname($path),0777,true);
+				}
+				if ($download) {
+					file_put_contents($path,$download); //覆盖解包位置
+				}
+			} elseif ($tfLocal) {
+				$folder = $url; //就地打包社区版
+			}
+			$phpZip = new ZipArchive();
+			if ($phpZip->open($cdn,ZipArchive::CREATE | ZipArchive::OVERWRITE)!==true) {
+				$logs .= 'Error: Packing zip - "'.$cdn.'" failed to create files!'.PHP_EOL;
+			} else {
+				$filePaths = pluginRoute($folder,$name,true);
+				foreach ($filePaths as $filePath) {
+					$phpZip->addFile($filePath,$name.'/'.substr($filePath,strlen($folder)));
+				}
+				$phpZip->close();
+			}
+		//直接下载到加速文件夹
+		} else {
+			$zip = $bingo && $github ? $url.'/archive/master.zip' : $zip;
+			$download = @file_get_contents($zip);
+			if ($download) {
+				file_put_contents($cdn,$download);
+			} else {
+				$logs .= 'Error: Source zip - "'.$zip.'" cannot be downloaded!'.PHP_EOL;
+			}
+			if ($tfLocal) {
+				$logs .= 'Warning: Local "'.$url.'" is not valid, using "'.$zip.'" for download.'.PHP_EOL;
+			}
+		}
+
+		return $logs;
 	}
