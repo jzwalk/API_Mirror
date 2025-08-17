@@ -8,16 +8,16 @@
 
 	date_default_timezone_set('Asia/Shanghai');
 	$authKey = $argv[1];
-	$requestUrl = $argv[2];
+	$requestUrl = $argv[2] ?? '';
 
 	//读取最近一条提交
-	if (!empty($requestUrl) && strpos($requestUrl,'.diff')) {
+	$urls = [];
+	if (strpos($requestUrl,'.diff')) {
 		$record = @file_get_contents($requestUrl,0,
 			stream_context_create(array('http'=>array('header'=>array('Accept: application/vnd.github.v3.diff')))));
 		$diffs = explode(PHP_EOL,$record);
 
 		$begin = 0;
-		$urls = [];
 		foreach ($diffs as $line=>$diff) {
 			//查找有关文档变化
 			if ($diff=='+++ b/TESTORE.md') {
