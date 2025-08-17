@@ -136,7 +136,7 @@
 								$tfLocal = $tf && is_dir($url);
 								$gitee = parse_url($url,PHP_URL_HOST)=='gitee.com';
 								$api = '';
-								$datas = '';
+								$datas = [];
 								$isUrl = strpos($url,'https://')===0;
 								if (!$tfLocal) {
 									//API查询repo文件树
