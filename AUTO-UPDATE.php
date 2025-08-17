@@ -66,6 +66,12 @@
 		$tables = [];
 		$movable = [];
 
+		//创建临时文件夹
+		$tmpDir = realpath('../').'/TMP';
+		if (!is_dir($tmpDir)) {
+			mkdir($tmpDir,0777,true);
+		}
+
 		//分割文档准备开始循环
 		$source = file_get_contents($tableFile);
 		$lines = explode(PHP_EOL,trim($source));
@@ -75,18 +81,7 @@
 				$tableLine = $line; //定位表格行
 			}
 		}
-
-		$tmpDir = realpath('../').'/TMP';
 		if ($tableLine) {
-			//创建临时文件夹
-			$tmpNew = $tmpDir.'/NEW';
-			if (!is_dir($tmpDir)) {
-				mkdir($tmpDir,0777,true);
-			}
-			if (!is_dir($tmpNew)) {
-				mkdir($tmpNew,0777,true);
-			}
-
 			$counts = count($lines);
 			foreach ($lines as $line=>$column) {
 				//说明部分更新收录总数
@@ -130,6 +125,7 @@
 
 								$sub = strpos($url,'/tree/master/');
 								//子目录提取地址
+								$folder = '';
 								if ($sub) {
 									$paths = explode('/tree/master/',$url);
 									$url = $paths[0];
@@ -148,6 +144,7 @@
 										$api = @file_get_contents(str_replace(['/github.com/','/gitee.com/'],['/api.github.com/repos/','/api.gitee.com/api/v5/repos/'],$url).'/git/trees/master?recursive=1'.($github ? '&access_token='.$token : ''),0,
 											stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP')))));
 									}
+									$path = '';
 									if ($api) {
 										$datas = array_column(json_decode($api,true)['tree'],'path');
 										//定位主文件路径
@@ -226,6 +223,7 @@
 									$authorCode = html_entity_decode(trim($authorMeta));
 									preg_match('/[\t ]*(,|&|，)[ \t]*/',$authorCode,$separators); //匹配分隔符
 									//多作者情况
+									$separator = '';
 									if ($separators) {
 										$separator = $separators[0];
 										$authors = explode($separator,$authorCode);
@@ -280,6 +278,10 @@
 										$release = strpos($zip,'typecho-fans/plugins/releases/download');
 										//复制到release发布用
 										if ($release && is_file($cdn)) {
+											$tmpNew = $tmpDir.'/NEW';
+											if (!is_dir($tmpNew)) {
+												mkdir($tmpNew,0777,true);
+											}
 											$releaseZip = $tmpNew.'/'.$nameFile;
 											//重名追加下划线(Assets附件不支持中文)
 											for ($j=$line+1;$j<$counts;++$j) {
