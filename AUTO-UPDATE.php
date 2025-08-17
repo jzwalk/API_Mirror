@@ -576,7 +576,7 @@
 		//重新打包到加速文件夹
 		if ($bingo && !$github) {
 			if ($host=='gitee.com') {
-				if (count($datas)=<50) {
+				if (count($datas)<=50) {
 					foreach ($datas as $data) {
 						if (!strpos($data,'.gitignore') && !strpos($data,'/.github/')) {
 							$plugin = $url.'/raw/master/'.$data;
