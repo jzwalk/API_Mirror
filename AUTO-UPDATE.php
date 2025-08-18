@@ -215,7 +215,7 @@
 											$column = str_replace($nameMeta,'['.$nameFile.']('.($tfLocal ? $url : $infos['homepage']).')',$column);
 											$fixed .= ' / Table Repo Masked';
 										} elseif ($name!==$nameFile) {
-											$logs .= 'Warning: "'.$name.'" in table does not match "'.$nameFile.'" in file: '$plugin.'.'.PHP_EOL;
+											$logs .= 'Warning: "'.$name.'" in table does not match "'.$nameFile.'" in file: '.$plugin.'.'.PHP_EOL;
 											$column = str_replace($nameMeta,str_replace($name.'](',$nameFile.'](',$nameMeta),$column);
 											$fixed .= ' / Table Name Fixed';
 										}
