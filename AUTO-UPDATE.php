@@ -39,7 +39,7 @@
 	}
 
 	//检测文档执行更新
-	$movable = updatePlugins('README.md',$urls,$requestUrl,$authKey);
+	$movable = updatePlugins('README_test.md',$urls,$requestUrl,$authKey);
 	updatePlugins('TESTORE.md',$urls,$requestUrl,$authKey,$movable);
 
 	/**
@@ -70,6 +70,10 @@
 		$tmpDir = realpath('../').'/TMP';
 		if (!is_dir($tmpDir)) {
 			mkdir($tmpDir,0777,true);
+		}
+		$tmpNew = $tmpDir.'/NEW';
+		if (!is_dir($tmpNew)) {
+			mkdir($tmpNew,0777,true);
 		}
 
 		//分割文档准备开始循环
@@ -278,10 +282,6 @@
 										$release = strpos($zip,'typecho-fans/plugins/releases/download');
 										//复制到release发布用
 										if ($release && is_file($cdn)) {
-											$tmpNew = $tmpDir.'/NEW';
-											if (!is_dir($tmpNew)) {
-												mkdir($tmpNew,0777,true);
-											}
 											$releaseZip = $tmpNew.'/'.$nameFile;
 											//重名追加下划线(Assets附件不支持中文)
 											for ($j=$line+1;$j<$counts;++$j) {
@@ -353,13 +353,13 @@
 									$logs .= 'Warning: "'.$nameFile.'" is local but table info "'.$url.'" is external.'.PHP_EOL;
 								}
 							}
-
 						} else {
 							$logs .= 'Error: Line '.$line.' has no plugin name!'.PHP_EOL;
 						}
 					} else {
 						$logs .= 'Error: Line '.$line.' has the wrong columns!'.PHP_EOL;
 					}
+
 					$tables[] = $column;
 				}
 			}
@@ -368,7 +368,6 @@
 			$tables = array_unique(array_merge(array_diff($tables,$movable),$added));
 			sort($tables);
 			file_put_contents($tableFile,implode(PHP_EOL,$descriptions).PHP_EOL.implode(PHP_EOL,$tables).PHP_EOL);
-
 		} else {
 			$logs .= 'Error: "'.$tableFile.'" has no table in it!'.PHP_EOL;
 		}
@@ -376,6 +375,7 @@
 		//清空临时目录(保留updates.log)
 		exec('find "'.$tmpDir.'" -mindepth 1 ! -name "updates.log" -exec rm -rf {} +');
 
+			file_put_contents('ZIP_CDN/tmp_check',print_r($listNames,true).'ListContent: '.$listContent);
 		//合并两个zip名表
 		if (!$noTag) {
 			$listNames = array_merge($listNames,explode(PHP_EOL,str_replace('README.md'.PHP_EOL,'',$listContent)));
@@ -400,7 +400,7 @@
 				$datas = json_decode($api,true);
 				$extras = array_diff(array_column($datas,'name'),$listNames);
 				if ($extras) {
-					$logs .= 'Warning: The correct zip already exists, "'.implode(' / ',$extras).'" will be deleted.'.PHP_EOL;
+					$logs .= 'Warning: These zip files do not match the names in NAME_LIST.log and will be deleted: "'.implode(' / ',$extras).'"'.PHP_EOL;
 					foreach ($extras as $extra) {
 						if (is_file('ZIP_CDN/'.$extra)) {
 							unlink('ZIP_CDN/'.$extra);
