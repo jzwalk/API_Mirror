@@ -249,11 +249,14 @@
 									$authorTable = $separator ? implode($separator,$authorNames) : $author;
 									//处理repo作者名
 									$authorInfo = strip_tags(trim($infos['author']));
+									preg_match('/[\t ]*(,|&|，)[ \t]*/',$authorInfo,$seps);
+									$sep = $seps ? $seps[0] : '';
+									$authors = array_map(fn($id)=>'['.trim($id).']('.$infos['homepage'].')',explode($sep,$authorInfo));
 
 									//修正表格作者名与链接
 									if ($authorTable!==$authorInfo) {
 										$logs .= 'Warning: "'.$authorTable.'" in table does not match "'.$authorInfo.'" in file: '.$plugin.'.'.PHP_EOL;
-										$column = str_replace($authorMeta,'['.$authorInfo.']('.$infos['homepage'].')',$column);
+										$column = str_replace($authorMeta,($sep ? implode($sep,$authors) : '['.$authorInfo.']('.$infos['homepage'].')'),$column);
 										$fixed .= ' / Table Author Fixed';
 									} else {
 										$column = str_replace($authorMeta,($separator ? str_replace($authorNames,$authorMDfix,$authorMeta) : str_replace($author,$authorMD,$authorMeta)),$column); //使*和_正常显示
@@ -358,6 +361,7 @@
 									$column = str_replace($zipMeta,str_replace(['Latest','Newest','最近','最新'],['Download','NewVer','下载','新版'],$zipMeta),$column);
 								}
 							}
+											file_put_contents('ZIP_CDN/tmp_check_'.$tableFile,'Condition1: '.print_r(($fileNames && $noTag && in_array($zipName,$fileNames)),true).'Condition2: '.print_r((!$listContent || !$noTag),true),FILE_APPEND|LOCK_EX);
 
 							//筛出README.md的外部信息
 							if ($tf && $isUrl) {
@@ -388,7 +392,7 @@
 		//清空临时目录(保留updates.log)
 		exec('find "'.$tmpDir.'" -mindepth 1 ! -name "updates.log" -exec rm -rf {} +');
 
-			file_put_contents('ZIP_CDN/tmp_check'.$tableFile,print_r($listNames,true).'ListContent: '.$listContent);
+				file_put_contents('ZIP_CDN/tmp_check_'.$tableFile,'Outer: '.print_r($listNames,true).'ListContent: '.$listContent,FILE_APPEND|LOCK_EX);
 		//合并两个zip名表
 		if (!$noTag) {
 			$listNames = array_merge($listNames,$fileNames);
@@ -540,11 +544,13 @@
 
 		$namespace = '';
 		$classes = '';
+				$test = ['default'];
 		if ($tokens) {
 			for ($i=0;$i<$count;$i++) {
 				if ($tokens[$i][0]===T_NAMESPACE) {
 					for ($j=$i+1;$j<$count;++$j) {
 						if ($tokens[$j][0]===T_STRING) {
+									$test = $tokens[$j];
 							$namespace = $tokens[$j][1];
 						} elseif ($tokens[$j]==='{' || $tokens[$j]===';') {
 							break;
@@ -560,6 +566,7 @@
 				}
 			}
 		}
+				file_put_contents('ZIP_CDN/tmp_workingname',print_r($test,true).'Classes: '.$classes,FILE_APPEND|LOCK_EX);
 
 		return [str_replace('_Plugin','',$classes),!empty($namespace)];
 	}
