@@ -42,7 +42,7 @@
 [BeianFooter](https://github.com/JoyNop/BeianFooter) | 自定义ICP备案和公安备案插件 | 1.0.0 | [JoyNop](https://github.com/JoyNop) | [下载](https://github.com/JoyNop/BeianFooter/archive/refs/tags/1.0.0.zip)
 [CommentToMail](https://github.com/uniartisan/CommentToMail) | 网址监控触发版评论邮件提醒插件 | 4.3.0 | [Uniartisan](https://github.com/uniartisan) | [下载](https://github.com/uniartisan/CommentToMail/archive/refs/tags/v4.3.0.zip)
 [DoubanBooklist](https://github.com/FaithPatrick/DoubanBookList) | 博客展示豆瓣正在和已读书单插件 | 1.0.0 | [Patrick95](https://github.com/FaithPatrick) | [下载](https://github.com/FaithPatrick/DoubanBookList/archive/master.zip)
-[GithubWidgetPlus](https://github.com/sundaqiang/GithubWidgetPlus) | Github名片 | 0.3.0 | [sunadqiang,hongweipeng](https://www.letuisoft.com) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-D_to_G/GithubWidgetPlus.zip)
+[GithubWidgetPlus](https://github.com/sundaqiang/GithubWidgetPlus) | Github名片 | 0.3.0 | [sunadqiang](https://github.com/sundaqiang),[hongweipeng](https://github.com/hongweipeng) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-D_to_G/GithubWidgetPlus.zip)
 [HuifengMembers](https://github.com/wedojava/HuifengMember) | Typecho自建会员信息数据表插件 | 0.1.1 | [回风](https://github.com/wedojava) | [下载](https://github.com/wedojava/HuifengMember/archive/master.zip)
 [NotAllowIp](https://github.com/tangmaoguo/NotAllowIp-Typecho-Plugin) | Typecho设禁止访问IP黑名单插件 | 1.0.0 | [BlackStyle](https://github.com/tangmaoguo) | [下载](https://github.com/tangmaoguo/NotAllowIp-Typecho-Plugin/archive/master.zip)
 [Plugin](https://github.com/benzBrake/AAThemeDemo) | ThemeDemo2 修复版，仅支持 Typecho 1.2 | 1.0.0 | [Ryan, doudou](http://doufu.ru) | [下载](https://github.com/benzBrake/AAThemeDemo/archive/refs/heads/master.zip)

@@ -60,18 +60,19 @@
 		$all = 0;
 		$update = 0;
 		$noTag = strpos($listContent,'README.md'.PHP_EOL)===false;
-		$listNames = explode(PHP_EOL,$listContent);
+		$fileNames = explode(PHP_EOL,trim(str_replace('README.md'.PHP_EOL,'',$listContent)));
 		$done = 0;
 		$descriptions = [];
-		$tables = [];
+		$listNames = [];
 		$movable = [];
+		$tables = [];
 
 		//创建临时文件夹
 		$tmpDir = realpath('../').'/TMP';
 		if (!is_dir($tmpDir)) {
 			mkdir($tmpDir,0777,true);
 		}
-		$tmpNew = $tmpDir.'/NEW';
+		$tmpNew = realpath('../').'/NEW';
 		if (!is_dir($tmpNew)) {
 			mkdir($tmpNew,0777,true);
 		}
@@ -214,7 +215,7 @@
 											$column = str_replace($nameMeta,'['.$nameFile.']('.($tfLocal ? $url : $infos['homepage']).')',$column);
 											$fixed .= ' / Table Repo Masked';
 										} elseif ($name!==$nameFile) {
-											$logs .= 'Warning: "'.$name.'" in table does not match "'.$nameFile.'" in file.'.PHP_EOL;
+											$logs .= 'Warning: "'.$name.'" in table does not match "'.$nameFile.'" in file: '$plugin.'.'.PHP_EOL;
 											$column = str_replace($nameMeta,str_replace($name.'](',$nameFile.'](',$nameMeta),$column);
 											$fixed .= ' / Table Name Fixed';
 										}
@@ -235,8 +236,9 @@
 										$authorMDfix = [];
 										foreach ($authors as $author) {
 											preg_match('/(?<=\[)[^\]]*/',$author,$authorName); //匹配链接文字
-											$authorNames[] = trim($authorName ? $authorName[0] : $author);
-											$authorMDfix[] = str_replace(['_','*'],['&#95;','&#42;'],$author); //Markdown转义
+											$authorText = trim($authorName ? $authorName[0] : $author);
+											$authorNames[] = $authorText;
+											$authorMDfix[] = str_replace(['_','*'],['&#95;','&#42;'],$authorText); //Markdown转义
 										}
 									//单作者情况
 									} else {
@@ -250,7 +252,7 @@
 
 									//修正表格作者名与链接
 									if ($authorTable!==$authorInfo) {
-										$logs .= 'Warning: "'.$authorTable.'" in table does not match "'.$authorInfo.'" in file.'.PHP_EOL;
+										$logs .= 'Warning: "'.$authorTable.'" in table does not match "'.$authorInfo.'" in file: '.$plugin.'.'.PHP_EOL;
 										$column = str_replace($authorMeta,'['.$authorInfo.']('.$infos['homepage'].')',$column);
 										$fixed .= ' / Table Author Fixed';
 									} else {
@@ -283,6 +285,7 @@
 										//复制到release发布用
 										if ($release && is_file($cdn)) {
 											$releaseZip = $tmpNew.'/'.$nameFile;
+
 											//重名追加下划线(Assets附件不支持中文)
 											for ($j=$line+1;$j<$counts;++$j) {
 												if ($lines[$j]) {
@@ -293,6 +296,15 @@
 													}
 												}
 											}
+											$theOther = $tableFile=='TESTORE.md' ? 'README_test.md' : 'TESTORE.md';
+											$otherLines = explode(PHP_EOL,trim(file_get_contents($theOther)));
+											foreach ($otherLines as $otherLine) {
+												preg_match('/(?<=\[)[^\]]+/',explode(' | ',$otherLine)[0],$otherName);
+												if (!strcasecmp(trim($otherName[0]),$nameFile)) {
+													$releaseZip .= '_';
+												}
+											}
+
 											$releaseZip = $releaseZip.'.zip';
 											copy($cdn,$releaseZip);
 											//更新表格下载地址
@@ -320,7 +332,8 @@
 
 										//按最近置顶排序zip名表
 										$latest = [];
-										if ($noTag) {
+										if ($fileNames && $noTag && in_array($zipName,$fileNames)) {
+											$listNames = $fileNames;
 											array_splice($listNames,array_search($zipName,$listNames),1);
 											array_unshift($listNames,$zipName);
 											$latest = array_slice($listNames,0,20); //分割前20
@@ -357,7 +370,7 @@
 							$logs .= 'Error: Line '.$line.' has no plugin name!'.PHP_EOL;
 						}
 					} else {
-						$logs .= 'Error: Line '.$line.' has the wrong columns!'.PHP_EOL;
+						$logs .= 'Error: Line '.$line.' has the wrong columns: '.count($metas).'!'.PHP_EOL;
 					}
 
 					$tables[] = $column;
@@ -375,10 +388,10 @@
 		//清空临时目录(保留updates.log)
 		exec('find "'.$tmpDir.'" -mindepth 1 ! -name "updates.log" -exec rm -rf {} +');
 
-			file_put_contents('ZIP_CDN/tmp_check',print_r($listNames,true).'ListContent: '.$listContent);
+			file_put_contents('ZIP_CDN/tmp_check'.$tableFile,print_r($listNames,true).'ListContent: '.$listContent);
 		//合并两个zip名表
 		if (!$noTag) {
-			$listNames = array_merge($listNames,explode(PHP_EOL,str_replace('README.md'.PHP_EOL,'',$listContent)));
+			$listNames = array_merge($listNames,$fileNames);
 		}
 		if ($listNames) {
 			//检查重复项
