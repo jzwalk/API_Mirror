@@ -226,7 +226,7 @@
 											$column = str_replace($nameMeta,'['.$nameFile.']('.($tfLocal ? $url : $infos['homepage']).')',$column);
 											$fixed .= ' / Table Repo Masked';
 										} elseif ($name!==$nameFile) {
-											$logs .= 'Warning: "'.$name.'" in table does not match "'.$nameFile.'" in file: '.$plugin.'.'.PHP_EOL;
+											$logs .= 'Warning: "'.$name.'" in table does not match "'.$nameFile.'" in file.'.PHP_EOL;
 											$column = str_replace($nameMeta,str_replace($name.'](',$nameFile.'](',$nameMeta),$column);
 											$fixed .= ' / Table Name Fixed';
 										}
@@ -268,7 +268,7 @@
 
 									//修正表格作者名与链接
 									if ($authorTable!==$authorInfo) {
-										$logs .= 'Warning: "'.$authorTable.'" in table does not match "'.$authorInfo.'" in file: '.$plugin.'.'.PHP_EOL;
+										$logs .= 'Warning: "'.$authorTable.'" in table does not match "'.$authorInfo.'" in file.'.PHP_EOL;
 										$column = str_replace($authorMeta,($sep ? implode($sep,$authors) : '['.$authorInfo.']('.$infos['homepage'].')'),$column);
 										$fixed .= ' / Table Author Fixed';
 									} else {
@@ -299,9 +299,9 @@
 											$fixed .= ' / CDN Zip Renewed';
 										}
 
-										$release = strpos($zip,'typecho-fans/plugins/releases/download');
+										$isRelease = strpos($zip,'typecho-fans/plugins/releases/download');
 										//复制到release发布用
-										if ($release && file_exists($cdn)) {
+										if ($isRelease && file_exists($cdn)) {
 											$releaseZip = $tmpNew.'/'.$name;
 
 											//重名追加下划线(Assets附件不支持中文)
@@ -315,12 +315,14 @@
 												}
 											}
 											//跨文档检测重名
-											$theOther = $tableFile=='TESTORE.md' ? 'README_test.md' : 'TESTORE.md';
-											$otherLines = explode(PHP_EOL,trim(file_get_contents($theOther)));
-											foreach ($otherLines as $otherLine) {
-												preg_match('/(?<=\[)[^\]]+/',explode(' | ',$otherLine)[0],$otherName);
-												if (!strcasecmp(trim($otherName[0]),$name)) {
-													$releaseZip .= '_';
+											if ($tableFile=='README_test.md') {
+												$theOther = $tableFile=='TESTORE.md' ? 'README_test.md' : 'TESTORE.md';
+												$otherLines = explode(PHP_EOL,trim(file_get_contents($theOther)));
+												foreach ($otherLines as $otherLine) {
+													preg_match('/(?<=\[)[^\]]+/',explode(' | ',$otherLine)[0],$otherName);
+													if (!strcasecmp(trim($otherName[0]),$name)) {
+														$releaseZip .= '_';
+													}
 												}
 											}
 
