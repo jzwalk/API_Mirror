@@ -447,7 +447,7 @@
 			'REVISED: '.$revise.PHP_EOL.
 			'NEED UPDATE: '.$update.PHP_EOL.
 			'DONE: '.$done.PHP_EOL.
-			'ZIPS: Created-'.$creat.', Renewed-'.$renew.', Released-'.$release.PHP_EOL.;
+			'ZIPS: Created-'.$creat.', Renewed-'.$renew.', Released-'.$release.PHP_EOL;
 		file_put_contents($logFile,$logs,FILE_APPEND|LOCK_EX);
 
 		return $movable;
