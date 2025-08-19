@@ -251,8 +251,11 @@
 									//处理repo作者名
 									$authorInfo = strip_tags(trim($infos['author']));
 									preg_match('/[\t ]*(,|&|，)[ \t]*/',$authorInfo,$seps);
-									$sep = $seps ? $seps[0] : '';
-									$authors = array_map(fn($id)=>'['.trim($id).']('.$infos['homepage'].')',explode($sep,$authorInfo));
+									$sep = '';
+									if ($seps) {
+										$sep = $seps[0];
+										$authors = array_map(fn($id)=>'['.trim($id).']('.$infos['homepage'].')',explode($sep,$authorInfo));
+									}
 
 									//修正表格作者名与链接
 									if ($authorTable!==$authorInfo) {
