@@ -60,7 +60,7 @@
 		$all = 0;
 		$update = 0;
 		$noTag = strpos($listContent,'README.md'.PHP_EOL)===false;
-		$fileNames = explode(PHP_EOL,trim(str_replace('README.md'.PHP_EOL,'',$listContent)));
+		$fileNames = $listContent ? explode(PHP_EOL,trim(str_replace('README.md'.PHP_EOL,'',$listContent))) : [];
 		$done = 0;
 		$descriptions = [];
 		$listNames = [];
@@ -271,11 +271,12 @@
 									$cdn = 'ZIP_CDN/'.$zipName;
 									$params = [$tableFile,!$noPlugin,$url,$name,$datas,$plugin,$pluginZip,$cdn,$zip,$all,$logs];
 									$newCdn = false;
-									if (!is_file($cdn)) {
+									if (!file_exists($cdn)) {
 										$newCdn = true;
 										$logs = dispatchZips(...$params);
 										$fixed .= ' / CDN Zip Created';
 									}
+											file_put_contents('ZIP_CDN/tmp_check_'.$tableFile,'$cdn: '.print_r($cdn,true).'is_file: '.print_r(is_file($cdn),true).PHP_EOL,FILE_APPEND|LOCK_EX);
 
 									//表格版本落后则更新(或强制更新)
 									$version = trim($metas[2]); //取第三个栏位文本
@@ -357,14 +358,13 @@
 							}
 
 							//整理zip名表(非前20移除标记)
-							if (!$listContent || !$noTag) {
+							if ((!$listContent || !$noTag) && $zipName) {
 								$listNames[] = $zipName;
 							} else {
 								if ($latest && !in_array($zipName,$latest)) {
 									$column = str_replace($zipMeta,str_replace(['Latest','Newest','最近','最新'],['Download','NewVer','下载','新版'],$zipMeta),$column);
 								}
 							}
-											file_put_contents('ZIP_CDN/tmp_check_'.$tableFile,'Condition1: '.print_r(($fileNames && $noTag && in_array($zipName,$fileNames)),true).'Condition2: '.print_r((!$listContent || !$noTag),true),FILE_APPEND|LOCK_EX);
 
 							//筛出README.md的外部信息
 							if ($tf && $isUrl) {
@@ -377,7 +377,7 @@
 							$logs .= 'Error: Line '.$line.' has no plugin name!'.PHP_EOL;
 						}
 					} else {
-						$logs .= 'Error: Line '.$line.' has the wrong columns: '.count($metas).'!'.PHP_EOL;
+						$logs .= 'Error: Line '.$line+1.' has the wrong columns!'.PHP_EOL;
 					}
 
 					$tables[] = $column;
@@ -395,12 +395,12 @@
 		//清空临时目录(保留updates.log)
 		exec('find "'.$tmpDir.'" -mindepth 1 ! -name "updates.log" -exec rm -rf {} +');
 
-				file_put_contents('ZIP_CDN/tmp_check_'.$tableFile,'Outer: '.print_r($listNames,true).'ListContent: '.$listContent,FILE_APPEND|LOCK_EX);
+				file_put_contents('ZIP_CDN/tmp_check_'.$tableFile,'Outer: '.print_r($listNames,true).'ListContent: '.$listContent.PHP_EOL,FILE_APPEND|LOCK_EX);
 		//合并两个zip名表
 		if (!$noTag) {
 			$listNames = array_merge($listNames,$fileNames);
 		}
-		if ($listNames) {
+		if ($listNames = array_filter($listNames)) {
 			//检查重复项
 			$duplicates = array_keys(
 				array_filter(
@@ -438,6 +438,7 @@
 			'NEED UPDATE: '.$update.PHP_EOL.
 			'DONE: '.$done.PHP_EOL;
 		file_put_contents($logFile,$logs,FILE_APPEND|LOCK_EX);
+				file_put_contents('ZIP_CDN/tmp_check_'.$tableFile,'TMP: '.print_r(glob($tmpDir.'/*'),true).'NEW: '.print_r(glob($tmpNew.'/*'),true),FILE_APPEND|LOCK_EX);
 
 		return $movable;
 	}
@@ -547,14 +548,12 @@
 
 		$namespace = '';
 		$classes = '';
-				$test = ['default'];
 		if ($tokens) {
 			for ($i=0;$i<$count;$i++) {
 				if ($tokens[$i][0]===T_NAMESPACE) {
 					for ($j=$i+1;$j<$count;++$j) {
-						if ($tokens[$j][0]===T_STRING) {
-									$test = $tokens[$j];
-							$namespace = $tokens[$j][1];
+						if ($tokens[$j][0]===T_NAME_QUALIFIED) {
+							$namespace = substr($tokens[$j][1],14);
 						} elseif ($tokens[$j]==='{' || $tokens[$j]===';') {
 							break;
 						}
@@ -569,7 +568,6 @@
 				}
 			}
 		}
-				file_put_contents('ZIP_CDN/tmp_workingname',print_r($test,true).'Classes: '.$classes,FILE_APPEND|LOCK_EX);
 
 		return [str_replace('_Plugin','',$classes),!empty($namespace)];
 	}

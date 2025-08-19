@@ -31,15 +31,15 @@ jobs:
         id: match-zips
         run: |
           a2c=`find /home/runner/work/API_Mirror/NEW -type f -name "[a-cA-C]*"`
-          echo "::set-output name=A2C::$a2c"
+          echo "A2C=$a2c" >> $GITHUB_OUTPUT
           d2g=`find /home/runner/work/API_Mirror/NEW -type f -name "[d-gD-G]*"`
-          echo "::set-output name=D2G::$d2g"
+          echo "D2G=$d2g" >> $GITHUB_OUTPUT
           h2l=`find /home/runner/work/API_Mirror/NEW -type f -name "[h-lH-L]*"`
-          echo "::set-output name=H2L::$h2l"
+          echo "H2L=$h2l" >> $GITHUB_OUTPUT
           m2r=`find /home/runner/work/API_Mirror/NEW -type f -name "[m-rM-R]*"`
-          echo "::set-output name=M2R::$m2r"
+          echo "M2R=$m2r" >> $GITHUB_OUTPUT
           s2z=`find /home/runner/work/API_Mirror/NEW -type f -name "[s-zS-Z]*"`
-          echo "::set-output name=S2Z::$s2z"
+          echo "S2Z=$s2z" >> $GITHUB_OUTPUT
 
       - name: "发布压缩包A-C"
         uses: svenstaro/upload-release-action@v2
