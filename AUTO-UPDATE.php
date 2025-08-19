@@ -54,13 +54,18 @@
 	 */
 	function updatePlugins(string $tableFile,array $changed,string $requested='',string $token='',array $added=[]): array
 	{
+		//预设出循环变量
 		$nameList = 'ZIP_CDN/NAME_LIST.log';
-		$listContent = is_file($nameList) ? file_get_contents($nameList) : '';
+		$listContent = file_exists($nameList) ? file_get_contents($nameList) : '';
 		$logs = '-------'.$tableFile.'-------'.PHP_EOL.date('Y-m-d',time()).PHP_EOL;
 		$all = 0;
+		$revise = 0;
+		$creat = 0;
 		$update = 0;
-		$noTag = strpos($listContent,'README.md'.PHP_EOL)===false;
+		$renew = 0;
+		$release = 0;
 		$fileNames = $listContent ? explode(PHP_EOL,trim(str_replace('README.md'.PHP_EOL,'',$listContent))) : [];
+		$noTag = strpos($listContent,'README.md'.PHP_EOL)===false;
 		$done = 0;
 		$descriptions = [];
 		$listNames = [];
@@ -133,8 +138,8 @@
 							if ($condition) {
 								++$all; //记录检测次数
 
-								$sub = strpos($url,'/tree/master/');
 								//子目录提取地址
+								$sub = strpos($url,'/tree/master/');
 								$folder = '';
 								if ($sub) {
 									$paths = explode('/tree/master/',$url);
@@ -181,7 +186,7 @@
 								$zip = strpos($zipMeta,'](') ? trim(end($links[0])) : ''; //取最后一个栏位链接地址
 								$tmpSub = $tmpDir.'/'.$all.'_'.$name;
 								$pluginZip = '';
-								//解压zip包(获取信息)
+								//解压zip包获取信息
 								if ($noPlugin || $gitIsh) {
 									$download = @file_get_contents($zip);
 									if ($download) {
@@ -203,8 +208,9 @@
 									}
 								}
 
-								//有主文件信息即检查
+								//有主文件信息即修正
 								if (!empty($infos['version'])) {
+									++$revise; //记录修正次数
 									$fixed = '';
 									$updated = '';
 
@@ -266,7 +272,7 @@
 										$column = str_replace($authorMeta,($separator ? str_replace($authorNames,$authorMDfix,$authorMeta) : str_replace($author,$authorMD,$authorMeta)),$column); //使*和_正常显示
 									}
 
-									//生成加速文件夹用zip
+									//创建加速文件夹用zip
 									$zipName = $name.'_'.str_replace([':','"','/','\\','|','?','*'],'',preg_replace('/[\t ]*(,|&|，)[ \t]*/','_',$authorInfo)).'.zip'; //作者名转文件名
 									$cdn = 'ZIP_CDN/'.$zipName;
 									$params = [$tableFile,!$noPlugin,$url,$name,$datas,$plugin,$pluginZip,$cdn,$zip,$all,$logs];
@@ -274,9 +280,9 @@
 									if (!file_exists($cdn)) {
 										$newCdn = true;
 										$logs = dispatchZips(...$params);
+										++$creat;
 										$fixed .= ' / CDN Zip Created';
 									}
-											file_put_contents('ZIP_CDN/tmp_check_'.$tableFile,'$cdn: '.print_r($cdn,true).'is_file: '.print_r(is_file($cdn),true).PHP_EOL,FILE_APPEND|LOCK_EX);
 
 									//表格版本落后则更新(或强制更新)
 									$version = trim($metas[2]); //取第三个栏位文本
@@ -286,12 +292,13 @@
 										//更新加速文件夹用zip
 										if (!$newCdn) {
 											dispatchZips(...$params);
+											++$renew;
 											$fixed .= ' / CDN Zip Renewed';
 										}
 
 										$release = strpos($zip,'typecho-fans/plugins/releases/download');
 										//复制到release发布用
-										if ($release && is_file($cdn)) {
+										if ($release && file_exists($cdn)) {
 											$releaseZip = $tmpNew.'/'.$name;
 
 											//重名追加下划线(Assets附件不支持中文)
@@ -304,6 +311,7 @@
 													}
 												}
 											}
+											//跨文档检测重名
 											$theOther = $tableFile=='TESTORE.md' ? 'README_test.md' : 'TESTORE.md';
 											$otherLines = explode(PHP_EOL,trim(file_get_contents($theOther)));
 											foreach ($otherLines as $otherLine) {
@@ -317,12 +325,13 @@
 											copy($cdn,$releaseZip);
 											//更新表格下载地址
 											$column = str_replace($zip,dirname($zip).'/'.basename($releaseZip),$column);
+											++$release;
 										}
 
 										//更新表格版本号
 										$column = str_replace($version,trim($infos['version']),$column);
 
-										//标记表格下载文本(用于TeStore筛选)
+										//更新表格下载标记(用于TeStore筛选)
 										preg_match('/(?<=\[)[^\]]*/',$zipMeta,$zipText);
 										$mark = $zipText ? trim($zipText[0]) : ($tf ? 'Download' : '下载'); //取最后一个栏位链接文本
 										if ($mark=='Download' || $mark=='下载') {
@@ -357,7 +366,7 @@
 								}
 							}
 
-							//整理zip名表(非前20移除标记)
+							//归纳zip名表(非前20移除标记)
 							if ((!$listContent || !$noTag) && $zipName) {
 								$listNames[] = $zipName;
 							} else {
@@ -395,7 +404,6 @@
 		//清空临时目录(保留updates.log)
 		exec('find "'.$tmpDir.'" -mindepth 1 ! -name "updates.log" -exec rm -rf {} +');
 
-				file_put_contents('ZIP_CDN/tmp_check_'.$tableFile,'Outer: '.print_r($listNames,true).'ListContent: '.$listContent.PHP_EOL,FILE_APPEND|LOCK_EX);
 		//合并两个zip名表
 		if (!$noTag) {
 			$listNames = array_merge($listNames,$fileNames);
@@ -411,34 +419,36 @@
 			if ($duplicates) {
 				$logs .= 'Warning: Table info about "'.implode(' / ',$duplicates).'" may be added repeatedly.'.PHP_EOL;
 			}
-			//保存zip名表
-			file_put_contents($nameList,($listContent ? '' : 'README.md'.PHP_EOL).implode(PHP_EOL,array_unique($listNames)));
 			//清除冗余zip
-			$api = @file_get_contents('https://api.github.com/repositories/14101953/contents/ZIP_CDN',0,
-				stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP')))));
-			if ($api) {
-				$datas = json_decode($api,true);
-				$extras = array_diff(array_column($datas,'name'),$listNames);
-				if ($extras) {
-					$logs .= 'Warning: These zip files do not match the names in NAME_LIST.log and will be deleted: "'.implode(' / ',$extras).'"'.PHP_EOL;
-					foreach ($extras as $extra) {
-						if (is_file('ZIP_CDN/'.$extra)) {
-							unlink('ZIP_CDN/'.$extra);
+			$listNames = array_unique($listNames);
+			if (count($listNames)>600) { //有足量记录后
+				$api = @file_get_contents('https://api.github.com/repositories/14101953/contents/ZIP_CDN',0,
+					stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP')))));
+				if ($api) {
+					$datas = json_decode($api,true);
+					$extras = array_diff(array_column($datas,'name'),$listNames);
+					if ($extras) {
+						$logs .= 'Warning: These zip files do not match the names in NAME_LIST.log and will be deleted: "'.implode(' / ',$extras).'"'.PHP_EOL;
+						foreach ($extras as $extra) {
+							if (file_exists('ZIP_CDN/'.$extra)) {
+								unlink('ZIP_CDN/'.$extra);
+							}
 						}
 					}
 				}
 			}
-		} else {
-			$logs .= 'Error: "'.$nameList.'" is not established!'.PHP_EOL;
 		}
+		//保存zip名表记录
+		file_put_contents($nameList,($listContent ? '' : 'README.md'.PHP_EOL).implode(PHP_EOL,$listNames));
 
 		//生成完整的操作日志
 		$logFile = $tmpDir.'/updates.log';
 		$logs .= 'SCANED: '.$all.PHP_EOL.
+			'REVISED: '.$revise.PHP_EOL.
 			'NEED UPDATE: '.$update.PHP_EOL.
-			'DONE: '.$done.PHP_EOL;
+			'DONE: '.$done.PHP_EOL
+			'ZIPS: Created-'.$creat.', Renewed-'.$renew.', Released-'.$release.PHP_EOL.;
 		file_put_contents($logFile,$logs,FILE_APPEND|LOCK_EX);
-				file_put_contents('ZIP_CDN/tmp_check_'.$tableFile,'TMP: '.print_r(glob($tmpDir.'/*'),true).'NEW: '.print_r(glob($tmpNew.'/*'),true),FILE_APPEND|LOCK_EX);
 
 		return $movable;
 	}
