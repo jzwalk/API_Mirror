@@ -125,6 +125,11 @@
 							} else {
 								$condition = $requested==$url || $requested==$name;
 							}
+							$zipName = '';
+							$latest = [];
+							$zipMeta = end($metas);
+							$tf = $tableFile=='README.md';
+							$isUrl = strpos($url,'https://')===0;
 							if ($condition) {
 								++$all; //记录检测次数
 
@@ -137,12 +142,10 @@
 									$folder = $paths[1].'/';
 								}
 
-								$tf = $tableFile=='README.md';
 								$tfLocal = $tf && is_dir($url);
 								$gitee = parse_url($url,PHP_URL_HOST)=='gitee.com';
 								$api = '';
 								$datas = [];
-								$isUrl = strpos($url,'https://')===0;
 								if (!$tfLocal) {
 									//API查询repo文件树
 									if ($github || $gitee) {
@@ -175,7 +178,6 @@
 
 								$noPlugin = empty($infos['version']); //表格repo信息无效
 								$gitIsh = !$noPlugin && !$api && !$tfLocal; //有效但无API
-								$zipMeta = end($metas);
 								$zip = strpos($zipMeta,'](') ? trim(end($links[0])) : ''; //取最后一个栏位链接地址
 								$tmpSub = $tmpDir.'/'.$all.'_'.$name;
 								$pluginZip = '';
@@ -219,8 +221,7 @@
 											$column = str_replace($nameMeta,str_replace($name.'](',$nameFile.'](',$nameMeta),$column);
 											$fixed .= ' / Table Name Fixed';
 										}
-									} else {
-										$nameFile = $name;
+										$name = $nameFile;
 									}
 
 									//处理表格作者名
@@ -263,9 +264,9 @@
 									}
 
 									//生成加速文件夹用zip
-									$zipName = $nameFile.'_'.str_replace([':','"','/','\\','|','?','*'],'',preg_replace('/[\t ]*(,|&|，)[ \t]*/','_',$authorInfo)).'.zip'; //作者名转文件名
+									$zipName = $name.'_'.str_replace([':','"','/','\\','|','?','*'],'',preg_replace('/[\t ]*(,|&|，)[ \t]*/','_',$authorInfo)).'.zip'; //作者名转文件名
 									$cdn = 'ZIP_CDN/'.$zipName;
-									$params = [$tableFile,!$noPlugin,$url,$nameFile,$datas,$plugin,$pluginZip,$cdn,$zip,$all,$logs];
+									$params = [$tableFile,!$noPlugin,$url,$name,$datas,$plugin,$pluginZip,$cdn,$zip,$all,$logs];
 									$newCdn = false;
 									if (!is_file($cdn)) {
 										$newCdn = true;
@@ -287,14 +288,14 @@
 										$release = strpos($zip,'typecho-fans/plugins/releases/download');
 										//复制到release发布用
 										if ($release && is_file($cdn)) {
-											$releaseZip = $tmpNew.'/'.$nameFile;
+											$releaseZip = $tmpNew.'/'.$name;
 
 											//重名追加下划线(Assets附件不支持中文)
 											for ($j=$line+1;$j<$counts;++$j) {
 												if ($lines[$j]) {
 													$reMetas = explode(' | ',$lines[$j]);
 													preg_match('/(?<=\[)[^\]]+/',$reMetas[0],$reName);
-													if (!strcasecmp(trim($reName[0]),$nameFile)) {
+													if (!strcasecmp(trim($reName[0]),$name)) {
 														$releaseZip .= '_';
 													}
 												}
@@ -303,7 +304,7 @@
 											$otherLines = explode(PHP_EOL,trim(file_get_contents($theOther)));
 											foreach ($otherLines as $otherLine) {
 												preg_match('/(?<=\[)[^\]]+/',explode(' | ',$otherLine)[0],$otherName);
-												if (!strcasecmp(trim($otherName[0]),$nameFile)) {
+												if (!strcasecmp(trim($otherName[0]),$name)) {
 													$releaseZip .= '_';
 												}
 											}
@@ -334,7 +335,6 @@
 										}
 
 										//按最近置顶排序zip名表
-										$latest = [];
 										if ($fileNames && $noTag && in_array($zipName,$fileNames)) {
 											$listNames = $fileNames;
 											array_splice($listNames,array_search($zipName,$listNames),1);
@@ -346,7 +346,7 @@
 										++$done; //记录完成次数
 									}
 									if ($fixed || $updated) {
-										$logs .= $nameFile.' - '.date('Y-m-d H:i',time()).' - Revised '.$updated.$fixed.PHP_EOL; //记录改动明细
+										$logs .= $name.' - '.date('Y-m-d H:i',time()).' - Revised '.$updated.$fixed.PHP_EOL; //记录改动明细
 									}
 								} else {
 									$logs .= 'Error: Table info - "'.$url.'" & "'.$zip.'" are not valid!'.PHP_EOL;
@@ -366,8 +366,8 @@
 							//筛出README.md的外部信息
 							if ($tf && $isUrl) {
 								$movable[] = $column;
-								if (is_dir($nameFile)) {
-									$logs .= 'Warning: "'.$nameFile.'" is local but table info "'.$url.'" is external.'.PHP_EOL;
+								if (is_dir($name)) {
+									$logs .= 'Warning: "'.$name.'" is local but table info "'.$url.'" is external.'.PHP_EOL;
 								}
 							}
 						} else {
