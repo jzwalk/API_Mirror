@@ -146,6 +146,7 @@
 									$url = $paths[0];
 									$folder = $paths[1].'/';
 								}
+								$plugin = '';
 
 								$tfLocal = $tf && is_dir($url);
 								$gitee = parse_url($url,PHP_URL_HOST)=='gitee.com';
@@ -215,8 +216,10 @@
 									$updated = '';
 
 									//修正表格插件名与链接
-									$nameData = workingName($plugin);
-									$nameFile = $nameData[0];
+									if ($plugin) {
+										$nameData = workingName($plugin);
+									}
+									$nameFile = $nameData[0] ?? '';
 									if ($nameFile) {
 										if ($noPlugin) {
 											$logs .= 'Warning: "'.$url.'" is not valid, using "'.$zip.'" to read info.'.PHP_EOL;
@@ -338,7 +341,7 @@
 											$newOr = 'Lat';
 											$orNew = '近';
 											//标记新版写法
-											if ($nameData[1]) {
+											if (!empty($nameData[1])) {
 												$newOr = 'New';
 												$orNew = '新';
 												$fixed .= ' / Marked as 1.2.1+';
