@@ -377,7 +377,7 @@
 							$logs .= 'Error: Line '.$line.' has no plugin name!'.PHP_EOL;
 						}
 					} else {
-						$logs .= 'Error: Line '.$line+1.' has the wrong columns!'.PHP_EOL;
+						$logs .= 'Error: Line '.($line+1).' has the wrong columns!'.PHP_EOL;
 					}
 
 					$tables[] = $column;
