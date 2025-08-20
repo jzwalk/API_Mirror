@@ -201,7 +201,8 @@
 											$phpZip->extractTo($tmpSub);
 											$pluginZip = pluginRoute($tmpSub,$name);
 											if ($pluginZip && !$gitIsh) {
-												$infos = parseInfo($pluginZip);
+												$plugin = $pluginZip;
+												$infos = parseInfo($plugin);
 											}
 										}
 									} else {
@@ -625,7 +626,7 @@
 				} else {
 					$logs .= 'Error: Gitee API - Too many files, please upload the zip manually!'.PHP_EOL;
 				}
-			} elseif (!$datas && !$tfLocal) {
+			} elseif (!$datas && !$tfLocal) { //即$gitIsh
 				$download = @file_get_contents($plugin); //只能取主文件
 				$path = $pluginZip ?: $folder.'/'.basename($plugin);
 				if (!is_dir(dirname($path))) {
