@@ -35,16 +35,11 @@ jobs:
       - name: "检测压缩文件"
         id: match-zips
         run: |
-          a2c=`find /home/runner/work/API_Mirror/NEW -type f -name "[a-cA-C]*"`
-          echo "A2C=$a2c" >> $GITHUB_OUTPUT
-          d2g=`find /home/runner/work/API_Mirror/NEW -type f -name "[d-gD-G]*"`
-          echo "D2G=$d2g" >> $GITHUB_OUTPUT
-          h2l=`find /home/runner/work/API_Mirror/NEW -type f -name "[h-lH-L]*"`
-          echo "H2L=$h2l" >> $GITHUB_OUTPUT
-          m2r=`find /home/runner/work/API_Mirror/NEW -type f -name "[m-rM-R]*"`
-          echo "M2R=$m2r" >> $GITHUB_OUTPUT
-          s2z=`find /home/runner/work/API_Mirror/NEW -type f -name "[s-zS-Z]*"`
-          echo "S2Z=$s2z" >> $GITHUB_OUTPUT
+          echo A2C=$(find /home/runner/work/API_Mirror/NEW -type f -name "[a-cA-C]*") >> $GITHUB_OUTPUT
+          echo D2G=$(find /home/runner/work/API_Mirror/NEW -type f -name "[d-gD-G]*") >> $GITHUB_OUTPUT
+          echo H2L=$(find /home/runner/work/API_Mirror/NEW -type f -name "[h-lH-L]*") >> $GITHUB_OUTPUT
+          echo M2R=$(find /home/runner/work/API_Mirror/NEW -type f -name "[m-rM-R]*") >> $GITHUB_OUTPUT
+          echo S2Z=$(find /home/runner/work/API_Mirror/NEW -type f -name "[s-zS-Z]*") >> $GITHUB_OUTPUT
 
       - name: "发布压缩包A-C"
         uses: svenstaro/upload-release-action@v2

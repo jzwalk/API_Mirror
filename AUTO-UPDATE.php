@@ -364,7 +364,7 @@
 										++$done; //记录完成次数
 									}
 									if ($fixed || $updated) {
-										$logs .= $name.' - '.date('Y-m-d H:i',time()).' - Revised '.$updated.$fixed.PHP_EOL; //记录改动明细
+										$logs .= $name.' By '.$authorInfo.' - '.date('Y-m-d H:i',time()).' - Revised '.$updated.$fixed.PHP_EOL; //记录改动明细
 									}
 								} else {
 									$logs .= 'Error: Table info - "'.$url.'" & "'.$zip.'" are not valid!'.PHP_EOL;
