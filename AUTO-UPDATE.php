@@ -129,7 +129,7 @@
 							}
 
 							$tf = $tableFile=='README_test.md';
-							$isUrl = strpos($url,'https://')===0;
+							$isUrl = str_starts_with($url,'http://') || str_starts_with($url,'https://');
 							$zipMeta = end($metas);
 							$zipName = '';
 							$latest = [];
@@ -224,8 +224,10 @@
 									if ($nameFile) {
 										if ($noPlugin) {
 											$logs .= 'Warning: "'.$url.'" is not valid, using "'.$zip.'" to read info.'.PHP_EOL;
-											$column = str_replace($nameMeta,'['.$nameFile.']('.($tfLocal ? $url : $infos['homepage']).')',$column);
-											$fixed .= ' / Table Repo Masked';
+											if (!isUrl) { //TeStore不显示无文档链接插件
+												$column = str_replace($nameMeta,'['.$nameFile.']('.($tfLocal ? $url : $infos['homepage']).')',$column);
+												$fixed .= ' / Table Repo Masked';
+											}
 										} elseif ($name!==$nameFile) {
 											$logs .= 'Warning: "'.$name.'" in table does not match "'.$nameFile.'" in file.'.PHP_EOL;
 											$column = str_replace($nameMeta,str_replace($name.'](',$nameFile.'](',$nameMeta),$column);
@@ -300,36 +302,10 @@
 											$fixed .= ' / CDN Zip Renewed';
 										}
 
-										$isRelease = strpos($zip,'typecho-fans/plugins/releases/download');
 										//复制到release发布用
+										$isRelease = strpos($zip,'typecho-fans/plugins/releases/download');
 										if ($isRelease && file_exists($cdn)) {
-											$releaseZip = $tmpNew.'/'.$name;
-
-											//重名追加下划线(Assets附件不支持中文)
-											for ($j=$line+1;$j<$counts;++$j) {
-												if ($lines[$j]) {
-													$reMetas = explode(' | ',$lines[$j]);
-													preg_match('/(?<=\[)[^\]]+/',$reMetas[0],$reName);
-													if (!strcasecmp(trim($reName[0]),$name)) {
-														$releaseZip .= '_';
-													}
-												}
-											}
-											//跨文档检测重名
-											if ($tf) {
-												$otherLines = explode(PHP_EOL,trim(file_get_contents('TESTORE.md')));
-												foreach ($otherLines as $otherLine) {
-													preg_match('/(?<=\[)[^\]]+/',explode(' | ',$otherLine)[0],$otherName);
-													if (!strcasecmp(trim($otherName[0]),$name)) {
-														$releaseZip .= '_';
-													}
-												}
-											}
-
-											$releaseZip = $releaseZip.'.zip';
-											copy($cdn,$releaseZip);
-											//更新表格下载地址
-											$column = str_replace($zip,dirname($zip).'/'.basename($releaseZip),$column);
+											copy($cdn,$tmpNew.'/'.$basename($zip));
 											++$release;
 										}
 
@@ -586,7 +562,7 @@
 	 * @param string $url 表格repo链接
 	 * @param string $name 插件有效命名
 	 * @param array $datas API文件树数据(Gitee)
-	 * @param string $plugin 插件有效主文件地址
+	 * @param string $plugin 表格有效主文件地址
 	 * @param string $pluginZip 解包有效主文件路径
 	 * @param string $cdn 加速用zip文件路径
 	 * @param string $zip 表格zip地址
@@ -626,7 +602,8 @@
 				} else {
 					$logs .= 'Error: Gitee API - Too many files, please upload the zip manually!'.PHP_EOL;
 				}
-			} elseif (!$datas && !$tfLocal) { //即$gitIsh
+			//即$gitIsh已解包
+			} elseif (!$datas && !$tfLocal) {
 				$download = @file_get_contents($plugin); //只能取主文件
 				$path = $pluginZip ?: $folder.'/'.basename($plugin);
 				if (!is_dir(dirname($path))) {
@@ -635,8 +612,9 @@
 				if ($download) {
 					file_put_contents($path,$download); //覆盖解包位置
 				}
+			//社区版就地打包
 			} elseif ($tfLocal) {
-				$folder = $url; //就地打包社区版
+				$folder = realpath($url);
 			}
 			$phpZip = new ZipArchive();
 			if ($phpZip->open($cdn,ZipArchive::CREATE | ZipArchive::OVERWRITE)!==true) {
