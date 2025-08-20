@@ -55,20 +55,17 @@
 	function updatePlugins(string $tableFile,array $changed,string $requested='',string $token='',array $added=[]): array
 	{
 		//预设出循环变量
-		$nameList = 'ZIP_CDN/NAME_LIST.log';
-		$listContent = file_exists($nameList) ? file_get_contents($nameList) : '';
 		$logs = '-------'.$tableFile.'-------'.PHP_EOL.date('Y-m-d',time()).PHP_EOL;
+		$descriptions = [];
 		$all = 0;
 		$revise = 0;
 		$creat = 0;
 		$update = 0;
 		$renew = 0;
 		$release = 0;
-		$fileNames = $listContent ? explode(PHP_EOL,trim(str_replace('README.md'.PHP_EOL,'',$listContent))) : [];
-		$noTag = strpos($listContent,'README.md'.PHP_EOL)===false;
 		$done = 0;
-		$descriptions = [];
-		$listNames = $fileNames;
+		$nameList = 'ZIP_CDN/NAME_LIST.log';
+		$listNames = file_exists($nameList) ? explode(PHP_EOL,file_get_contents($nameList)) : [];
 		$movable = [];
 		$tables = [];
 
@@ -130,11 +127,14 @@
 							} else {
 								$condition = $requested==$url || $requested==$name;
 							}
-							$zipName = '';
-							$latest = [];
-							$zipMeta = end($metas);
+
 							$tf = $tableFile=='README_test.md';
 							$isUrl = strpos($url,'https://')===0;
+							$zipMeta = end($metas);
+							$zipName = '';
+							$latest = [];
+							preg_match('/(?<=\[)[^\]]*/',$zipMeta,$zipText);
+							$mark = $zipText ? trim($zipText[0]) : ($tf ? 'Download' : '下载'); //取最后一个栏位链接文本
 							if ($condition) {
 								++$all; //记录检测次数
 
@@ -336,8 +336,6 @@
 										$column = str_replace($version,trim($infos['version']),$column);
 
 										//更新表格下载标记(用于TeStore筛选)
-										preg_match('/(?<=\[)[^\]]*/',$zipMeta,$zipText);
-										$mark = $zipText ? trim($zipText[0]) : ($tf ? 'Download' : '下载'); //取最后一个栏位链接文本
 										if ($mark=='Download' || $mark=='下载') {
 											$newOr = 'Lat';
 											$orNew = '近';
@@ -351,34 +349,32 @@
 											$column = str_replace($zipMeta,str_replace($mark,($tf ? $newOr.'est' : '最'.$orNew),$zipMeta),$column);
 										}
 
-										//按最近置顶排序zip名表
-										if ($fileNames && $noTag && in_array($zipName,$fileNames)) {
-											array_splice($listNames,array_search($zipName,$listNames),1);
-											array_unshift($listNames,$zipName);
-											$latest = array_slice($listNames,0,20); //分割前20
-										}
-
 										$updated = '& Updated';
 										++$done; //记录完成次数
 									}
+
 									if ($fixed || $updated) {
-										$logs .= $name.' By '.$authorInfo.' - '.date('Y-m-d H:i',time()).' - Revised '.$updated.$fixed.PHP_EOL; //记录改动明细
+										//置顶排序zip名表
+										if (in_array($zipName,$listNames)) {
+											array_splice($listNames,array_search($zipName,$listNames),1);
+										}
+										array_unshift($listNames,$zipName);
+										$latest = array_slice($listNames,0,20); //分割前20
+										//记录插件改动明细
+										$logs .= $name.' By '.$authorInfo.' - '.date('Y-m-d H:i',time()).' - Revised '.$updated.$fixed.PHP_EOL;
 									}
 								} else {
 									$logs .= 'Error: Table info - "'.$url.'" & "'.$zip.'" are not valid!'.PHP_EOL;
 								}
 							}
 
-							//归纳zip名表(非前20移除标记)
-							if ((!$listContent || !$noTag) && $zipName) {
-								$listNames[] = $zipName;
-							} else {
-								if ($latest && !in_array($zipName,$latest)) {
-									$column = str_replace($zipMeta,str_replace(['Latest','Newest','最近','最新'],['Download','NewVer','下载','新版'],$zipMeta),$column);
-								}
+							//非前20移除标记
+							$latestMark = ['Latest','Newest','最近','最新'];
+							if (in_array($mark,$latestMark) && $latest && !in_array($zipName,$latest)) {
+								$column = str_replace($zipMeta,str_replace($latestMark,['Download','NewVer','下载','新版'],$zipMeta),$column);
 							}
 
-							//筛出README.md的外部信息
+							//筛出README.md外部信息
 							if ($tf && $isUrl) {
 								$movable[] = $column;
 								if (is_dir($name)) {
@@ -407,11 +403,7 @@
 		//清空临时目录(保留updates.log)
 		exec('find "'.$tmpDir.'" -mindepth 1 ! -name "updates.log" -exec rm -rf {} +');
 
-		//合并两个zip名表
-		if (!$noTag) {
-			$listNames = array_merge($listNames,$fileNames);
-		}
-		if ($listNames = array_filter($listNames)) {
+		if ($listNames) {
 			//检查重复项
 			$duplicates = array_keys(
 				array_filter(
@@ -442,7 +434,7 @@
 			}
 		}
 		//保存zip名表记录
-		file_put_contents($nameList,($listContent ? '' : 'README.md'.PHP_EOL).implode(PHP_EOL,$listNames));
+		file_put_contents($nameList,implode(PHP_EOL,$listNames));
 
 		//生成完整的操作日志
 		$logFile = $tmpDir.'/updates.log';
