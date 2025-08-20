@@ -68,7 +68,7 @@
 		$noTag = strpos($listContent,'README.md'.PHP_EOL)===false;
 		$done = 0;
 		$descriptions = [];
-		$listNames = [];
+		$listNames = $fileNames;
 		$movable = [];
 		$tables = [];
 
@@ -354,7 +354,6 @@
 
 										//按最近置顶排序zip名表
 										if ($fileNames && $noTag && in_array($zipName,$fileNames)) {
-											$listNames = $fileNames;
 											array_splice($listNames,array_search($zipName,$listNames),1);
 											array_unshift($listNames,$zipName);
 											$latest = array_slice($listNames,0,20); //分割前20
@@ -616,7 +615,7 @@
 		//重新打包到加速文件夹
 		if ($bingo && !$github) {
 			if ($host=='gitee.com') {
-				if (count($datas)<=50) {
+				if (count($datas)<=30) {
 					foreach ($datas as $data) {
 						if (!strpos($data,'.gitignore') && !strpos($data,'/.github/')) {
 							$plugin = $url.'/raw/master/'.$data;
@@ -633,7 +632,7 @@
 						}
 					}
 				} else {
-					$logs .= 'Error: Gitee API - Too many files, please update manually!'.PHP_EOL;
+					$logs .= 'Error: Gitee API - Too many files, please upload the zip manually!'.PHP_EOL;
 				}
 			} elseif (!$datas && !$tfLocal) {
 				$download = @file_get_contents($plugin); //只能取主文件
@@ -653,7 +652,7 @@
 			} else {
 				$filePaths = pluginRoute($folder,$name,true);
 				foreach ($filePaths as $filePath) {
-					$phpZip->addFile($filePath,$name.'/'.substr($filePath,strlen($folder)));
+					$phpZip->addFile($filePath,$name.substr($filePath,strlen($folder)));
 				}
 				$phpZip->close();
 			}
