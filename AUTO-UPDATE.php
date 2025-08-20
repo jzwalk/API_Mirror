@@ -305,7 +305,7 @@
 										//复制到release发布用
 										$isRelease = strpos($zip,'typecho-fans/plugins/releases/download');
 										if ($isRelease && file_exists($cdn)) {
-											copy($cdn,$tmpNew.'/'.$basename($zip));
+											copy($cdn,$tmpNew.'/'.basename($zip));
 											++$release;
 										}
 
