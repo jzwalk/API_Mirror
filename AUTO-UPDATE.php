@@ -133,7 +133,7 @@
 							$zipName = '';
 							$latest = [];
 							$zipMeta = end($metas);
-							$tf = $tableFile=='README.md';
+							$tf = $tableFile=='README_test.md';
 							$isUrl = strpos($url,'https://')===0;
 							if ($condition) {
 								++$all; //记录检测次数
@@ -315,9 +315,8 @@
 												}
 											}
 											//跨文档检测重名
-											if ($tableFile=='README_test.md') {
-												$theOther = $tableFile=='TESTORE.md' ? 'README_test.md' : 'TESTORE.md';
-												$otherLines = explode(PHP_EOL,trim(file_get_contents($theOther)));
+											if ($tf) {
+												$otherLines = explode(PHP_EOL,trim(file_get_contents('TESTORE.md')));
 												foreach ($otherLines as $otherLine) {
 													preg_match('/(?<=\[)[^\]]+/',explode(' | ',$otherLine)[0],$otherName);
 													if (!strcasecmp(trim($otherName[0]),$name)) {
@@ -607,7 +606,7 @@
 		$host = parse_url($url,PHP_URL_HOST);
 		$github  = $host=='github.com';
 		$folder = realpath('../').'/TMP/'.$index.'_'.$name;
-		$tfLocal = $md=='README.md' && is_dir($url);
+		$tfLocal = $md=='README_test.md' && is_dir($url);
 		if (!is_dir($folder) && !$tfLocal) {
 			mkdir($folder,0777,true);
 		}
