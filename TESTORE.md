@@ -38,7 +38,7 @@
 ---- | ----: | :---: | ----: | :----:
 [AAThemeDemo](https://github.com/benzBrake/AAThemeDemo) | ThemeDemo2 修复版，仅支持 Typecho 1.2 | 1.0.0 | [Ryan](http://doufu.ru), [doudou](http://doufu.ru) | [下载](https://github.com/benzBrake/AAThemeDemo/archive/refs/heads/master.zip)
 [AdminLogin](https://github.com/v03413/Typecho_Plugins/tree/master/AdminLogin) | 微信/QQ号后台扫码登录注册插件 | 0.1.2 | [&#95;莫名&#95;](https://github.com/v03413) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/AdminLogin_.zip)
-[AutoBackup](https://xiamp.net/archives/automatic-backup-of-typecho-database-to-mailbox-plugin-autobackup.html) | 数据库备份到邮箱 | 1.3.2 | [Ryan](https://github.com/benzBrake) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/AutoBackup_Ryan.zip)
+[AutoBackup](https://xiamp.net/archives/automatic-backup-of-typecho-database-to-mailbox-plugin-autobackup.html) | 数据库备份到邮箱 | 1.3.2 | [Ryan](https://github.com/benzBrake) | [最近](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/AutoBackup_Ryan.zip)
 [AutoSSL](https://github.com/Aurorum-Studio/Typecho-AutoSSL) | 在线轻松生成免费SSL证书，解决SSL证书的烦恼 | 0.2.2 | [Aurorum-Studios](https://open.aurorum.co/t/aurorum-studio-typecho-autossl) | [下载](https://github.com/Aurorum-Studio/Typecho-AutoSSL/archive/refs/tags/v.0.2.2-alpha.zip)
 [BeianFooter](https://github.com/JoyNop/BeianFooter) | 自定义ICP备案和公安备案插件 | 1.0.0 | [JoyNop](https://github.com/JoyNop) | [下载](https://github.com/JoyNop/BeianFooter/archive/refs/tags/1.0.0.zip)
 [CommentToMail](https://github.com/uniartisan/CommentToMail) | 网址监控触发版评论邮件提醒插件 | 4.3.0 | [Uniartisan](https://github.com/uniartisan) | [下载](https://github.com/uniartisan/CommentToMail/archive/refs/tags/v4.3.0.zip)
