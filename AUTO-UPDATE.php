@@ -241,7 +241,7 @@
 									if ($nameFile) {
 										if ($noPlugin) {
 											$logs .= 'Warning: "'.($plugin ?: $url).'" is not valid, using "'.$zip.'" to read info.'.PHP_EOL;
-											if (!$isUrl) { //TeStore不显示无文档链接插件
+											if (!$isUrl && !$tfLocal) { //TeStore不显示无文档链接插件
 												$column = str_replace($nameMeta,'['.$nameFile.']('.($tfLocal ? $url : $infos['homepage']).')',$column);
 												$fixed .= ' / Table Repo Masked';
 											}
