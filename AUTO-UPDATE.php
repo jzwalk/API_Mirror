@@ -298,7 +298,7 @@
 									//创建加速文件夹用zip
 									$zipName = $name.'_'.str_replace([':','"','/','\\','|','?','*'],'',preg_replace('/[\t ]*(,|&|，)[ \t]*/','_',$authorInfo)).'.zip'; //作者名转文件名
 									$cdn = 'ZIP_CDN/'.$zipName;
-									$params = [$tableFile,!$noPlugin,$url,$name,$datas,$plugin,$pluginZip,$cdn,$zip,$all,$logs];
+									$params = [$tableFile,!$noPlugin,$url,$name,$datas,$branch,$plugin,$pluginZip,$cdn,$zip,$all,$logs];
 									$newCdn = false;
 									if (!file_exists($cdn)) {
 										$newCdn = true;
