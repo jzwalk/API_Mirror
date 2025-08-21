@@ -10,13 +10,15 @@
 	$authKey = $argv[1];
 	$requestUrl = $argv[2] ?? '';
 
-	//读取最近一条提交
-	$urls = [];
+	$urls = explode(',',$requestUrl);
+
+	//提取最近变更信息
 	if (strpos($requestUrl,'.diff')) {
 		$record = @file_get_contents($requestUrl,0,
 			stream_context_create(array('http'=>array('header'=>array('Accept: application/vnd.github.v3.diff')))));
 		$diffs = explode(PHP_EOL,$record);
 
+		$urls = [];
 		$begin = 0;
 		foreach ($diffs as $line=>$diff) {
 			//查找有关文档变化
@@ -24,7 +26,7 @@
 				$begin = $line;
 			}
 			if ($begin && $line>$begin) {
-				//匹配改动repo信息
+				//匹配变更repo信息
 				if (strpos($diff,'+[')===0) {
 					preg_match_all('/(?<=\()[^\)]+/',$diff,$links);
 					if ($links && strpos($diff,'](')) {
@@ -39,20 +41,28 @@
 	}
 
 	//检测文档执行更新
-	$movable = updatePlugins('README_test.md',$urls,$requestUrl,$authKey);
-	updatePlugins('TESTORE.md',$urls,$requestUrl,$authKey,$movable);
+	$movable = [];
+	if (file_exists('README_test.md')) {
+		$movable = updatePlugins('README_test.md',$urls,$authKey);
+	} else {
+		throw new RuntimeException('README.md is missing!');
+	}
+	if (file_exists('TESTORE.md')) {
+		updatePlugins('TESTORE.md',$urls,$authKey,$movable);
+	} else {
+		throw new RuntimeException('TESTORE.md is missing!');
+	}
 
 	/**
 	 * 循环每行检测更新并重组文档
 	 *
 	 * @param string $tableFile MD文档路径
-	 * @param array $changed 最近改动repo信息
-	 * @param string $requested 请求更新repo信息
+	 * @param array $requested 需求更新repo信息
 	 * @param string $token GitHub Token
-	 * @param array $added 转移的表格条目
+	 * @param array $added 转移表格条目
 	 * @return array
 	 */
-	function updatePlugins(string $tableFile,array $changed,string $requested='',string $token='',array $added=[]): array
+	function updatePlugins(string $tableFile,array $requested,string $token='',array $added=[]): array
 	{
 		//预设出循环变量
 		$logs = '-------'.$tableFile.'-------'.PHP_EOL.date('Y-m-d',time()).PHP_EOL;
@@ -112,20 +122,15 @@
 						$name = trim($names ? $names[0] : $nameMeta); //取第一个栏位(链接)文本
 						if ($name) {
 
-							$url = '';
 							preg_match_all('/(?<=\()[^)]*/',$column,$links);
 							$url = $links && strpos($nameMeta,'](') ? trim($links[0][0]) : ''; //取第一个栏位链接内容
-
 							$github = parse_url($url,PHP_URL_HOST)=='github.com';
-							//默认处理来自GitHub插件
-							if (!$requested) {
-								$condition = $github;
-							//文档变化则处理变化插件
-							} elseif (strpos($requested,'.diff') && $changed) {
-								$condition = in_array($url,$changed) || in_array($name,$changed);
-							//手动输入则处理指定插件
+							//处理文档变更或指定插件
+							if ($requested = array_filter($requested)) {
+								$condition = in_array($url,$requested) || in_array($name,$requested);
+							//默认处理全GitHub源插件
 							} else {
-								$condition = $requested==$url || $requested==$name;
+								$condition = $github;
 							}
 
 							$tf = $tableFile=='README_test.md';
