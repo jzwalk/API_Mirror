@@ -156,9 +156,9 @@
 									$branch = 'master';
 									//API查询分支名
 									if ($github || $gitee) {
-										$api = @file_get_contents($apiUrl.($github ? '?access_token='.$token : ''),0,
+										$api_b = @file_get_contents($apiUrl,0,
 											stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP')))));
-										if ($api) {
+										if ($api_b) {
 											$branch = json_decode($api,true)['default_branch'];
 										}
 									}
@@ -240,7 +240,7 @@
 									$nameFile = $nameData[0] ?? '';
 									if ($nameFile) {
 										if ($noPlugin) {
-											$logs .= 'Warning: "'.$plugin.'" is not valid, using "'.$zip.'" to read info.'.PHP_EOL;
+											$logs .= 'Warning: "'.$url.'" is not valid('.$api_b.'), using "'.$zip.'" to read info.'.PHP_EOL;
 											if (!$isUrl) { //TeStore不显示无文档链接插件
 												$column = str_replace($nameMeta,'['.$nameFile.']('.($tfLocal ? $url : $infos['homepage']).')',$column);
 												$fixed .= ' / Table Repo Masked';
