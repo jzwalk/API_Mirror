@@ -165,7 +165,10 @@
 									}
 									$path = '';
 									if ($api) {
-										$datas = array_column(json_decode($api,true)['tree'],'path');
+										$datas = array_column(array_filter(
+											json_decode($api,true)['tree'],
+											fn($item)=>$item['type']==='blob' //排除目录
+										),'path');
 										//定位主文件路径
 										$path = pluginRoute($datas,$name);
 									}
@@ -206,8 +209,7 @@
 											$phpZip->extractTo($tmpSub);
 											$pluginZip = pluginRoute($tmpSub,$name);
 											if ($pluginZip && !$gitIsh) {
-												$plugin = $pluginZip;
-												$infos = parseInfo($plugin);
+												$infos = parseInfo($pluginZip);
 											}
 										}
 									} else {
@@ -222,13 +224,13 @@
 									$updated = '';
 
 									//修正表格插件名与链接
-									if ($plugin) {
-										$nameData = workingName($plugin);
+									if ($pluginFile = $pluginZip ?: $plugin) {
+										$nameData = workingName($pluginFile);
 									}
 									$nameFile = $nameData[0] ?? '';
 									if ($nameFile) {
 										if ($noPlugin) {
-											$logs .= 'Warning: "'.$url.'" is not valid, using "'.$zip.'" to read info.'.PHP_EOL;
+											$logs .= 'Warning: "'.$plugin.'" is not valid, using "'.$zip.'" to read info.'.PHP_EOL;
 											if (!$isUrl) { //TeStore不显示无文档链接插件
 												$column = str_replace($nameMeta,'['.$nameFile.']('.($tfLocal ? $url : $infos['homepage']).')',$column);
 												$fixed .= ' / Table Repo Masked';
