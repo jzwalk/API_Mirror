@@ -36,7 +36,7 @@
 
 名称 | 简介 | 版本 | 作者 | zip包
 ---- | ----: | :---: | ----: | :----:
-[AMP](AMP) | 生成AMP/MIP移动标准页面插件 | 0.7.6.1 | [Holmesian](https://github.com/holmesian) | [Download](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/AMP.zip)
+[AMP](AMP) | 生成AMP/MIP移动标准页面插件 | 0.7.6.1 | [Holmesian](https://github.com/holmesian) | [Latest](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/AMP.zip)
 [AjaxComments](AjaxComments) | 嵌套评论Ajax异步提交效果插件 | 1.2.0 | [Byends](https://github.com/visamz), Willin Kan | [Latest](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/AjaxComments.zip)
 [AnotherLike](AnotherLike)  | 基于[Like](Like)动画美化点赞按钮插件 | 1.0.0 | [idealclover](https://github.com/idealclover)  | [Latest](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/AnotherLike.zip)
 [AntiSpam](AntiSpam) | 经典反垃圾评论机器人陷阱插件 | 1.0.3 | Willin Kan | [Latest](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/AntiSpam.zip)
