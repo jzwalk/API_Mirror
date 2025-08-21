@@ -159,7 +159,7 @@
 										$api_b = @file_get_contents($apiUrl,0,
 											stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP')))));
 										if ($api_b) {
-											$branch = json_decode($api,true)['default_branch'];
+											$branch = json_decode($api_b,true)['default_branch'];
 										}
 									}
 								}
