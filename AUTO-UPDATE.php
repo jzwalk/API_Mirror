@@ -370,7 +370,7 @@
 
 							//筛出README.md外部信息
 							if ($tf && $isUrl) {
-								$movable[] = $column;
+								$movable[] = str_replace($zipMeta,str_replace(['Download','N/A','Special','NewVer','Latest','Newest'],['下载','不可用','特殊','新版','最近','最新'],$zipMeta),$column);
 								if (is_dir($name)) {
 									$logs .= 'Warning: "'.$name.'" is local but table info "'.$url.'" is external.'.PHP_EOL;
 								}
