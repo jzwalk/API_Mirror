@@ -146,8 +146,8 @@
 								//提取子目录(分支名)
 								$paths = preg_split('#/tree/([^/]+)/#',$url,2,PREG_SPLIT_DELIM_CAPTURE);
 								$url = rtrim($paths[0],'/');
-								$branch = $paths[0] ?? '';
-								$folder = !empty($paths[1]) ? rtrim($paths[1],'/').'/' : '';
+								$branch = $paths[1] ?? '';
+								$folder = !empty($paths[2]) ? rtrim($paths[2],'/').'/' : '';
 
 								$gitee = parse_url($url,PHP_URL_HOST)=='gitee.com';
 								$apiUrl = str_replace(['/github.com/','/gitee.com/'],['/api.github.com/repos/','/api.gitee.com/api/v5/repos/'],$url);
