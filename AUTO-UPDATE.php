@@ -108,7 +108,7 @@
 						if ($total) {
 							$column = str_replace($total[0],$counts-($tableLine+1),$column);
 						} else {
-							$logs .= 'Error: Cannot find the total number in "'.$tableFile.'"!'.PHP_EOL;
+							$logs .= 'Error: Cannot match the total number in "'.$tableFile.'"!'.PHP_EOL;
 						}
 					}
 					$descriptions[] = $column;
@@ -358,7 +358,7 @@
 										$logs .= $name.' By '.$authorInfo.' - '.date('Y-m-d H:i',time()).' - Revised '.$updated.$fixed.PHP_EOL;
 									}
 								} else {
-									$logs .= 'Error: Table info - "'.$url.'" & "'.$zip.'" are not valid!'.PHP_EOL;
+									$logs .= 'Error: Table info - "'.$url.'" & "'.$zip.'" both invalid, nothing is revised!'.PHP_EOL;
 								}
 							}
 
@@ -376,10 +376,10 @@
 								}
 							}
 						} else {
-							$logs .= 'Error: Line '.$line.' has no plugin name!'.PHP_EOL;
+							$logs .= 'Error: Line '.$line.' matches no plugin name!'.PHP_EOL;
 						}
 					} else {
-						$logs .= 'Error: Line '.($line+1).' has the wrong columns!'.PHP_EOL;
+						$logs .= 'Error: Line '.($line+1).' matches wrong columns!'.PHP_EOL;
 					}
 
 					$tables[] = $column;
