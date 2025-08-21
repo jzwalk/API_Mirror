@@ -143,24 +143,34 @@
 							if ($condition) {
 								++$all; //记录检测次数
 
-								//子目录提取地址
-								$sub = strpos($url,'/tree/master/');
-								$folder = '';
-								if ($sub) {
-									$paths = explode('/tree/master/',$url);
-									$url = $paths[0];
-									$folder = $paths[1].'/';
-								}
-								$plugin = '';
+								//提取子目录(分支名)
+								$paths = preg_split('#/tree/([^/]+)/#',$url,2,PREG_SPLIT_DELIM_CAPTURE);
+								$url = rtrim($paths[0],'/');
+								$branch = $paths[0] ?? '';
+								$folder = $paths[1] ?? rtrim($paths[1],'/').'/';
 
-								$tfLocal = $tf && is_dir($url);
 								$gitee = parse_url($url,PHP_URL_HOST)=='gitee.com';
+								$apiUrl = str_replace(['/github.com/','/gitee.com/'],['/api.github.com/repos/','/api.gitee.com/api/v5/repos/'],$url);
 								$api = '';
+								if (!$branch) {
+									$branch = 'master';
+									//API查询分支名
+									if ($github || $gitee) {
+										$api = @file_get_contents($apiUrl.($github ? '?access_token='.$token : ''),0,
+											stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP')))));
+										if ($api) {
+											$branch = json_decode($api,true)['default_branch'];
+										}
+									}
+								}
+
+								$tfLocal = $tf && is_dir($url); //本地社区维护版
 								$datas = [];
+								$plugin = '';
 								if (!$tfLocal) {
 									//API查询repo文件树
 									if ($github || $gitee) {
-										$api = @file_get_contents(str_replace(['/github.com/','/gitee.com/'],['/api.github.com/repos/','/api.gitee.com/api/v5/repos/'],$url).'/git/trees/master?recursive=1'.($github ? '&access_token='.$token : ''),0,
+										$api = @file_get_contents($apiUrl.'/git/trees/'.$branch.'?recursive=1'.($github ? '&access_token='.$token : ''),0,
 											stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP')))));
 									}
 									$path = '';
@@ -175,8 +185,8 @@
 
 									//下载主文件获取信息
 									if ($isUrl) {
-										$pluginUri = $url.'/raw/master/'.$folder;
-										$plugin = $path ? $url.'/raw/master/'.$path : $pluginUri.'Plugin.php';
+										$pluginUri = $url.'/raw/'.$branch.'/'.$folder;
+										$plugin = $path ? $url.'/raw/'.$branch.'/'.$path : $pluginUri.'Plugin.php';
 										$infos = parseInfo($plugin);
 										//无API重试单文件
 										if (!$infos['version'] && !$path) {
@@ -569,7 +579,8 @@
 	 * @param string $url 表格repo链接
 	 * @param string $name 插件有效命名
 	 * @param array $datas API文件树数据(Gitee)
-	 * @param string $plugin 表格有效主文件地址
+	 * @param string $branch repo有效分支名
+	 * @param string $plugin repo有效主文件地址
 	 * @param string $pluginZip 解包有效主文件路径
 	 * @param string $cdn 加速用zip文件路径
 	 * @param string $zip 表格zip地址
@@ -577,7 +588,7 @@
 	 * @param string $logs 已记录日志
 	 * @return string
 	 */
-	function dispatchZips(string $md,bool $bingo,string $url,string $name,array $datas,string $plugin,string $pluginZip,string $cdn,string $zip,int $index,string $logs): string
+	function dispatchZips(string $md,bool $bingo,string $url,string $name,array $datas,string $branch,string $plugin,string $pluginZip,string $cdn,string $zip,int $index,string $logs): string
 	{
 		$host = parse_url($url,PHP_URL_HOST);
 		$github  = $host=='github.com';
@@ -593,7 +604,7 @@
 				if (count($datas)<=30) {
 					foreach ($datas as $data) {
 						if (!strpos($data,'.gitignore') && !strpos($data,'/.github/')) {
-							$plugin = $url.'/raw/master/'.$data;
+							$plugin = $url.'/raw/'.$branch.'/'.$data;
 							$download = @file_get_contents($plugin);
 							if ($download) {
 								$path = $folder.'/'.$data;
@@ -635,7 +646,7 @@
 			}
 		//直接下载到加速文件夹
 		} else {
-			$zip = $bingo && $github ? $url.'/archive/master.zip' : $zip;
+			$zip = $bingo && $github ? $url.'/archive/'.$branch.'.zip' : $zip;
 			$download = @file_get_contents($zip);
 			if ($download) {
 				file_put_contents($cdn,$download);

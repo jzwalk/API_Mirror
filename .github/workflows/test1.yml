@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       repo-git:
-        description: "插件名称或目录地址(结尾勿带'/'号)，多项可用','号分隔"
+        description: "插件名称或目录地址，多项可用','号分隔"
         required: true
         default: "https://github.com/user/repo"
 
