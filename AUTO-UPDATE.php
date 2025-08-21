@@ -212,7 +212,7 @@
 										$tmpZip = $tmpSub.'_origin.zip';
 										file_put_contents($tmpZip,$download);
 										$phpZip = new ZipArchive();
-										if ($phpZip->open($tmpZip,ZipArchive::CHECKCONS)!==true) {
+										if ($phpZip->open($tmpZip)!==true) {
 											$logs .= 'Error: Table zip - "'.$zip.'" is not valid!'.PHP_EOL;
 										} else {
 											mkdir($tmpSub,0777,true);
@@ -240,7 +240,7 @@
 									$nameFile = $nameData[0] ?? '';
 									if ($nameFile) {
 										if ($noPlugin) {
-											$logs .= 'Warning: "'.$plugin.'" is not valid, using "'.$zip.'" to read info.'.PHP_EOL;
+											$logs .= 'Warning: "'.($plugin ?: $url).'" is not valid, using "'.$zip.'" to read info.'.PHP_EOL;
 											if (!$isUrl) { //TeStore不显示无文档链接插件
 												$column = str_replace($nameMeta,'['.$nameFile.']('.($tfLocal ? $url : $infos['homepage']).')',$column);
 												$fixed .= ' / Table Repo Masked';
