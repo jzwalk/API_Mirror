@@ -1,12 +1,12 @@
-<div align="center"><img src="https://typecho-fans.github.io/soap-group.png"/>
+<html><img src='https://typecho-fans.github.io/soap-group.png' align="right"/>
 
-## Typecho Fans 内部插件目录 (社区维护版列表)
+<h2 style="font-size:1.4em;border:none;">## Typecho Fans 内部插件目录 (社区维护版列表)</h2>
 
 [![compatible](https://img.shields.io/badge/Typecho-1.2.1+-blue.svg?style=for-the-badge)](https://github.com/typecho/typecho)
 [![support](https://img.shields.io/badge/TeStore-Supported-green.svg?style=for-the-badge)](TeStore)
 [![issues](https://img.shields.io/github/issues-closed-raw/typecho-fans/plugins.svg?style=for-the-badge)](https://github.com/typecho-fans/plugins/issues?q=is%3Aissue+is%3Aclosed)
 
-本目录内插件源码由社区成员自愿共同维护，尽量维持可用，报错可提交[Issues](https://github.com/typecho-fans/plugins/issues)，作者加入请阅读下方须知。🐧交流QQ群：[**40412938**](http://shang.qq.com/wpa/qunwpa?idkey=a5a8afedf099e18ddf9b530db9217251e39001d52aace42888bf470d9b6cb86a)</div>
+<p style="color:#9198a1;">本目录内插件源码由社区成员自愿共同维护，尽量维持可用，报错可提交[Issues](https://github.com/typecho-fans/plugins/issues)，作者加入请阅读下方须知。🐧交流QQ群：[**40412938**](http://shang.qq.com/wpa/qunwpa?idkey=a5a8afedf099e18ddf9b530db9217251e39001d52aace42888bf470d9b6cb86a)</p></html>
 ------------------------------
 
 ### 使用帮助
