@@ -1,12 +1,12 @@
 <img src='https://typecho-fans.github.io/soap-group.png' align="right"/>
 
-<h2 style="font-size:1.4em;border:none;">Typecho Fans 内部插件目录（社区维护版列表）</h2>
+<h2 style="font-size:1.4em !important;border:none !important;">Typecho Fans 内部插件目录（社区维护版列表）</h2>
 
 [![compatible](https://img.shields.io/badge/Typecho-1.2.1+-blue.svg?style=for-the-badge)](https://github.com/typecho/typecho)
 [![support](https://img.shields.io/badge/TeStore-Supported-green.svg?style=for-the-badge)](TeStore)
 [![issues](https://img.shields.io/github/issues-closed-raw/typecho-fans/plugins.svg?style=for-the-badge)](https://github.com/typecho-fans/plugins/issues?q=is%3Aissue+is%3Aclosed)
 
-<p style="color:#9198a1;">本目录内插件源码由社区成员自愿共同维护，尽量维持可用，报错可提交[Issues](https://github.com/typecho-fans/plugins/issues)，作者加入请阅读下方须知。🐧交流QQ群：[**40412938**](http://shang.qq.com/wpa/qunwpa?idkey=a5a8afedf099e18ddf9b530db9217251e39001d52aace42888bf470d9b6cb86a)</p>
+<p style="color:#9198a1 !important;">本目录内插件源码由社区成员自愿共同维护，尽量维持可用，报错可提交[Issues](https://github.com/typecho-fans/plugins/issues)，作者加入请阅读下方须知。🐧交流QQ群：[**40412938**](http://shang.qq.com/wpa/qunwpa?idkey=a5a8afedf099e18ddf9b530db9217251e39001d52aace42888bf470d9b6cb86a)</p>
 ------------------------------
 
 ### 使用帮助
@@ -23,7 +23,7 @@
 
  > 若原目录作者回归而本目录源码未有改动可继续拉取更新，已产生社区版勿盲目覆盖，应视情况手动修改合并。
 
-3. 插件应自带子目录**README**，zip上传至[Releases](https://github.com/typecho-fans/plugins/releases)或放ZIP_CDN文件夹，地址写入下方表格即可在TeStore安装。
+3. 插件应自带子目录**README**，zip上传至[Releases](https://github.com/typecho-fans/plugins/releases)或放进ZIP_CDN文件夹，地址写入下方表格即可在TeStore安装。
 
  > 下表中下载链接文字可在TeStore附加图标：`Download`即社区版，`N/A`为不可用，`Special`是安装或用法特殊。
 
