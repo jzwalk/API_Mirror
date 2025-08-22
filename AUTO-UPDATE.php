@@ -128,16 +128,44 @@
 							//处理文档变更或指定插件
 							if ($requested = array_filter($requested)) {
 								$condition = in_array($url,$requested) || in_array($name,$requested);
-							//默认处理全GitHub源插件
+							//定期处理全GitHub源插件
 							} else {
 								$condition = $github;
 							}
 
+							//处理表格作者名
+							$authorMeta = $metas[3];
+							$authorCode = html_entity_decode(trim($authorMeta));
+							preg_match('/[\t ]*(,|&|，)[ \t]*/',$authorCode,$separators); //匹配分隔符
+							//多作者情况
+							$separator = '';
+							if ($separators) {
+								$separator = $separators[0];
+								$authors = explode($separator,$authorCode);
+								$authorNames = [];
+								$authorMDfix = [];
+								foreach ($authors as $author) {
+									preg_match('/(?<=\[)[^\]]*/',$author,$authorName); //匹配链接文字
+									$authorText = trim($authorName ? $authorName[0] : $author);
+									$authorNames[] = $authorText;
+									$authorMDfix[] = str_replace(['_','*'],['&#95;','&#42;'],$authorText); //Markdown转义
+								}
+							//单作者情况
+							} else {
+								preg_match('/(?<=\[)[^\]]*/',$authorCode,$authorName);
+								$author = trim($authorName ? $authorName[0] : $authorCode);
+								$authorMD = str_replace(['_','*'],['&#95;','&#42;'],$author);
+							}
+							$authorTable = $separator ? implode($separator,$authorNames) : $author;
+							//使*和_正常显示
+							$column = str_replace($authorMeta,($separator ? str_replace($authorNames,$authorMDfix,$authorMeta) : str_replace($author,$authorMD,$authorMeta)),$column);
+							//作者名转文件名
+							$zipName = $name.'_'.str_replace([':','"','/','\\','|','?','*'],'',preg_replace('/[\t ]*(,|&|，)[ \t]*/','_',$authorTable)).'.zip';
+
 							$tf = $tableFile=='README_test.md';
 							$isUrl = str_starts_with($url,'http://') || str_starts_with($url,'https://');
 							$zipMeta = end($metas);
-							$zipName = '';
-							$latest = [];
+							$latest = array_slice($listNames,0,20); //分割前20
 							preg_match('/(?<=\[)[^\]]*/',$zipMeta,$zipText);
 							$mark = $zipText ? trim($zipText[0]) : ($tf ? 'Download' : '下载'); //取最后一个栏位链接文本
 							if ($condition) {
@@ -253,30 +281,6 @@
 										$name = $nameFile;
 									}
 
-									//处理表格作者名
-									$authorMeta = $metas[3];
-									$authorCode = html_entity_decode(trim($authorMeta));
-									preg_match('/[\t ]*(,|&|，)[ \t]*/',$authorCode,$separators); //匹配分隔符
-									//多作者情况
-									$separator = '';
-									if ($separators) {
-										$separator = $separators[0];
-										$authors = explode($separator,$authorCode);
-										$authorNames = [];
-										$authorMDfix = [];
-										foreach ($authors as $author) {
-											preg_match('/(?<=\[)[^\]]*/',$author,$authorName); //匹配链接文字
-											$authorText = trim($authorName ? $authorName[0] : $author);
-											$authorNames[] = $authorText;
-											$authorMDfix[] = str_replace(['_','*'],['&#95;','&#42;'],$authorText); //Markdown转义
-										}
-									//单作者情况
-									} else {
-										preg_match('/(?<=\[)[^\]]*/',$authorCode,$authorName);
-										$author = trim($authorName ? $authorName[0] : $authorCode);
-										$authorMD = str_replace(['_','*'],['&#95;','&#42;'],$author);
-									}
-									$authorTable = $separator ? implode($separator,$authorNames) : $author;
 									//处理repo作者名
 									$authorInfo = strip_tags(trim($infos['author']));
 									preg_match('/[\t ]*(,|&|，)[ \t]*/',$authorInfo,$seps);
@@ -291,12 +295,10 @@
 										$logs .= 'Warning: "'.$authorTable.'" in table does not match "'.$authorInfo.'" in file.'.PHP_EOL;
 										$column = str_replace($authorMeta,($sep ? implode($sep,$authors) : '['.$authorInfo.']('.$infos['homepage'].')'),$column);
 										$fixed .= ' / Table Author Fixed';
-									} else {
-										$column = str_replace($authorMeta,($separator ? str_replace($authorNames,$authorMDfix,$authorMeta) : str_replace($author,$authorMD,$authorMeta)),$column); //使*和_正常显示
 									}
 
 									//创建加速文件夹用zip
-									$zipName = $name.'_'.str_replace([':','"','/','\\','|','?','*'],'',preg_replace('/[\t ]*(,|&|，)[ \t]*/','_',$authorInfo)).'.zip'; //作者名转文件名
+									$zipName = $name.'_'.str_replace([':','"','/','\\','|','?','*'],'',preg_replace('/[\t ]*(,|&|，)[ \t]*/','_',$authorInfo)).'.zip';
 									$cdn = 'ZIP_CDN/'.$zipName;
 									$params = [$tableFile,!$noPlugin,$url,$name,$datas,$branch,$plugin,$pluginZip,$cdn,$zip,$all,$logs];
 									$newCdn = false;
@@ -353,7 +355,7 @@
 											array_splice($listNames,array_search($zipName,$listNames),1);
 										}
 										array_unshift($listNames,$zipName);
-										$latest = array_slice($listNames,0,20); //分割前20
+										$latest = array_slice($listNames,0,20);
 										//记录插件改动明细
 										$logs .= $name.' By '.$authorInfo.' - '.date('Y-m-d H:i',time()).' - Revised '.$updated.$fixed.PHP_EOL;
 									}
