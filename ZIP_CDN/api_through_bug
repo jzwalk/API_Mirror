@@ -1,1 +1,9 @@
-branch: main, path: , plugin: https://github.com/Aurorum-Studio/Typecho-AutoSSL/raw/main/Plugin.php, noPlugin: , gitIsh: 1
+branch: main, path: , plugin: https://github.com/Aurorum-Studio/Typecho-AutoSSL/raw/main/Plugin.php, noPlugin: , gitIsh: 1apiUrl: https://api.github.com/repos/Aurorum-Studio/Typecho-AutoSSL/git/trees/main?recursive=1&access_token=ghs_K2LtEgI0JHcmbWrPTymhBztR928Hd61BU8QI, datas: Array
+(
+    [0] => Action.php
+    [1] => LICENSE
+    [2] => Plugin.php
+    [3] => README.md
+    [4] => theme.php
+)
+, plugin: https://github.com/Aurorum-Studio/Typecho-AutoSSL/raw/main/Plugin.php, noPlugin: , gitIsh: 
