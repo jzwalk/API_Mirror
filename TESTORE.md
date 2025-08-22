@@ -1,12 +1,12 @@
-<img src='https://typecho-fans.github.io/soap-group.png' style="float:right"/>
+<img src='https://typecho-fans.github.io/soap-group.png' align="right"/>
 
-## Typecho Fans 外部插件登记表（TeStore专用）
+<h2 style="font-size:1.4em;border:none;">Typecho Fans 外部插件登记表（TeStore专用）</h2>
 
-[![compatible](https://img.shields.io/badge/Typecho-%E2%89%881.0-red.svg?style=for-the-badge)](https://github.com/typecho/typecho)
+[![compatible](https://img.shields.io/badge/Typecho-1.2.1+-darkgreen.svg?style=for-the-badge)](https://github.com/typecho/typecho)
 [![support](https://img.shields.io/badge/TeStore-Supported-green.svg?style=for-the-badge)](TeStore)
 [![contributors](https://img.shields.io/github/contributors/typecho-fans/plugins.svg?style=for-the-badge)](https://github.com/typecho-fans/plugins/graphs/contributors)
 
- > 本文件插件信息由成员手动添加或Action工作流自动修改，指向作者发布目录，不保证各版本兼容性但可以通过下载链接文字标记，具体方式详见下方说明。🐧交流QQ群：[**40412938**](http://shang.qq.com/wpa/qunwpa?idkey=a5a8afedf099e18ddf9b530db9217251e39001d52aace42888bf470d9b6cb86a)
+<p style="color:#9198a1;">本文件内插件信息由成员手动添加，[Actions脚本](AUTO-UPDATE.php)辅助修正，若名称链接指向Github目录可每周自动检测更新，成员也可运行[手动工作流](/actions/workflows/test1.yml)随时更新任意指定插件。🐧交流QQ群：[**40412938**](http://shang.qq.com/wpa/qunwpa?idkey=a5a8afedf099e18ddf9b530db9217251e39001d52aace42888bf470d9b6cb86a)</p>
 ------------------------------
 
 ### 使用帮助
@@ -15,23 +15,23 @@
 
 ### 编辑说明
 
-1. 插件作者可在[Issues](https://github.com/typecho-fans/plugins/issues)申请加入获得成员权限，克隆项目后修改本文件提交即可，同时欢迎参与维护本目录下的社区版插件。
+1. 插件作者可在[Issues](https://github.com/typecho-fans/plugins/issues)申请加入获得成员权限，克隆项目后修改本文件提交即可，同时欢迎参与维护本目录下社区版插件。
 
  > commit附注请写明修改要点，如果有弃更插件愿意交由其他成员接手也可上传源码至本目录下，具体详见[README.md](README.md)。
 
-2. 其他童鞋可Fork本目录后修改TESTORE.md表格内容，然后提交Pull Request，或在[Issues](https://github.com/typecho-fans/plugins/issues)按格式贴出插件信息请求添加。
+2. 其他童鞋可Fork本目录后修改TESTORE.md表格内容后发起Pull Request，或在[Issues](https://github.com/typecho-fans/plugins/issues)按格式贴出插件信息请求成员添加。
 
  > 修改前最好先Ctrl+F本文件及[README.md](README.md)搜索下插件名，无版本号或作者署名区别的同名插件将视作重复添加或被去除。
 
 3. zip包下载链接请确保长期稳定，推荐上传至[releases](https://github.com/typecho-fans/plugins/releases)或放入ZIP_CDN文件夹后，再将文件地址添加到下方的表格信息里。
 
- > 表格zip栏的下载链接文字可用于附加图标或关键字筛选：如`下载`即非社区版，`不可用`带⛔，`特殊`带⚠️意为启用前务必阅读文档说明等。
+ > 下载链接文字可用于附加图标和关键字筛选：如`下载`即非社区版，`不可用`带⛔，`特殊`带⚠️意为启用须遵照文档步骤。
 
 ### 插件信息 (17)
 
-###### TeStore将使用下表“名称”创建文件夹，“版本”数字判断升级，请确保文本准确；添加尽量按字母排序，简介便于关键字搜索即可。
+###### TeStore会使用下表“名称”创建文件夹，“版本”数字判断升级，请尽量确保文本准确，按字母排序，简介便于关键字搜索。
 ```
-对于同名插件TeStore会再根据作者名区分，所以下表“作者”文本请与Plugin.php内的署名保持一致(多人用,号或&号分隔)。
+同名插件TeStore根据作者名区分，注意“作者”文本要与Plugin.php内署名一致(多人用,或&号分隔)。
 ```
 
 名称 | 简介 | 版本 | 作者 | zip
