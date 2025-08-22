@@ -185,7 +185,7 @@
 									//API查询分支名
 									if ($github || $gitee) {
 										$api = @file_get_contents($apiUrl,0,
-											stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP')))));
+											stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP','Authorization: token '.$token)))));
 										if ($api) {
 											$branch = json_decode($api,true)['default_branch'];
 										}
@@ -199,7 +199,7 @@
 									//API查询repo文件树
 									if ($github || $gitee) {
 										$api = @file_get_contents($apiUrl.'/git/trees/'.$branch.'?recursive=1',0,
-											stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP')))));
+											stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP','Authorization: token '.$token)))));
 									}
 									$path = '';
 									if ($api) {
@@ -233,7 +233,6 @@
 								$zip = strpos($zipMeta,'](') ? trim(end($links[0])) : ''; //取最后一个栏位链接地址
 								$tmpSub = $tmpDir.'/'.$all.'_'.$name;
 								$pluginZip = '';
-file_put_contents('ZIP_CDN/api_through_bug', 'apiUrl: '.$apiUrl.'/git/trees/'.$branch.'?recursive=1'.($github ? '&access_token='.$token : '').', datas: '.print_r($datas,true).', plugin: '.$plugin.', noPlugin: '.print_r($noPlugin,true).', gitIsh: '.print_r($gitIsh,true),FILE_APPEND|LOCK_EX);
 								//解压zip包获取信息
 								if ($noPlugin || $gitIsh) {
 									$download = @file_get_contents($zip);
