@@ -6,7 +6,8 @@
 [![support](https://img.shields.io/badge/TeStore-Supported-green.svg?style=for-the-badge)](TeStore)
 [![contributors](https://img.shields.io/github/contributors/typecho-fans/plugins.svg?style=for-the-badge)](https://github.com/typecho-fans/plugins/graphs/contributors)
 
-本文件内插件信息由成员手动添加，[Actions脚本](AUTO-UPDATE.php)辅助修正，若名称链接指向Github目录可每周自动检测更新，成员也可运行[手动工作流](/actions/workflows/test1.yml)随时更新任意指定插件。🐧交流QQ群：[**40412938**](http://shang.qq.com/wpa/qunwpa?idkey=a5a8afedf099e18ddf9b530db9217251e39001d52aace42888bf470d9b6cb86a)</div>
+**本文件内插件信息由成员手动添加，[Actions脚本](AUTO-UPDATE.php)辅助修正，若名称链接指向Github目录可每周自动检测更新，成员也可运行[手动工作流](/actions/workflows/test1.yml)随时更新任意指定插件。🐧交流QQ群：[**40412938**](http://shang.qq.com/wpa/qunwpa?idkey=a5a8afedf099e18ddf9b530db9217251e39001d52aace42888bf470d9b6cb86a)**</div>
+
 ------------------------------
 
 ### 使用帮助
