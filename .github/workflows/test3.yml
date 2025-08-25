@@ -45,7 +45,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: "updates-log"
-          path: /home/runner/work/plugins/TMP/updates.log
+          path: /home/runner/work/API_Mirror/TMP/updates.log
 
       - name: "检测压缩文件"
         id: match-zips
@@ -61,7 +61,7 @@ jobs:
         if: steps.match-zips.outputs.A2C
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: /home/runner/work/plugins/NEW/[a-cA-C]*
+          file: /home/runner/work/API_Mirror/NEW/[a-cA-C]*
           tag: "plugins-A_to_C"
           overwrite: true
           file_glob: true
@@ -71,7 +71,7 @@ jobs:
         if: steps.match-zips.outputs.D2G
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: /home/runner/work/plugins/NEW/[d-gD-G]*
+          file: /home/runner/work/API_Mirror/NEW/[d-gD-G]*
           tag: "plugins-D_to_G"
           overwrite: true
           file_glob: true
@@ -81,7 +81,7 @@ jobs:
         if: steps.match-zips.outputs.H2L
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: /home/runner/work/plugins/NEW/[h-lH-L]*
+          file: /home/runner/work/API_Mirror/NEW/[h-lH-L]*
           tag: "plugins-H_to_L"
           overwrite: true
           file_glob: true
@@ -91,7 +91,7 @@ jobs:
         if: steps.match-zips.outputs.M2R
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: /home/runner/work/plugins/NEW/[m-rM-R]*
+          file: /home/runner/work/API_Mirror/NEW/[m-rM-R]*
           tag: "plugins-M_to_R"
           overwrite: true
           file_glob: true
@@ -101,7 +101,7 @@ jobs:
         if: steps.match-zips.outputs.S2Z
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: /home/runner/work/plugins/NEW/[s-zS-Z]*
+          file: /home/runner/work/API_Mirror/NEW/[s-zS-Z]*
           tag: "plugins-S_to_Z"
           overwrite: true
           file_glob: true

@@ -10,15 +10,13 @@
 	$authKey = $argv[1];
 	$requestUrl = $argv[2] ?? '';
 
-	$urls = explode(',',$requestUrl);
-
 	//提取最近变更信息
-	if (strpos($requestUrl,'.diff')) {
+	$urls = [];
+	if (str_contains($requestUrl,'.diff')) {
 		$record = @file_get_contents($requestUrl,0,
 			stream_context_create(array('http'=>array('header'=>array('Accept: application/vnd.github.v3.diff')))));
 		$diffs = explode(PHP_EOL,$record);
 
-		$urls = [];
 		foreach ($diffs as $line=>$diff) {
 			$begin = 0;
 			//查找有关文档变化
@@ -26,18 +24,20 @@
 				$begin = $line;
 				if ($line>$begin) {
 					//匹配变更repo信息
-					if (strpos($diff,'+[')===0) {
+					if (str_starts_with($diff,'+[')) {
 						preg_match_all('/(?<=\()[^\)]+/',$diff,$links);
-						if ($links && strpos($diff,'](')) {
+						if ($links && str_contains($diff,'](')) {
 							$urls[] = trim($links[0][0]); //取第一个链接内容
 						}
 					}
-					if (!str_starts_with($diff,'diff --git a/README_test.md') && !str_starts_with($diff,'diff --git a/TESTORE.md')) {
+					if (preg_match('/^diff --git a\/(?!README_test\.md|TESTORE\.md).*/',$diff)) {
 						break;
 					}
 				}
 			}
 		}
+	} else {
+		$urls = explode(',',$requestUrl);
 	}
 
 	//检测文档执行更新
@@ -94,7 +94,7 @@
 		$lines = explode(PHP_EOL,trim($source));
 		$tableLine = 0;
 		foreach ($lines as $line=>$column) {
-			if (strpos($column,'| :----:')) {
+			if (str_contains($column,'| :----:')) {
 				$tableLine = $line; //定位表格行
 			}
 		}
@@ -123,7 +123,7 @@
 						if ($name) {
 
 							preg_match_all('/(?<=\()[^)]*/',$column,$links);
-							$url = $links && strpos($nameMeta,'](') ? trim($links[0][0]) : ''; //取第一个栏位链接内容
+							$url = $links && str_contains($nameMeta,'](') ? trim($links[0][0]) : ''; //取第一个栏位链接内容
 							$github = parse_url($url,PHP_URL_HOST)=='github.com';
 							//处理文档变更或指定插件
 							if ($requested = array_filter($requested)) {
@@ -230,7 +230,7 @@
 
 								$noPlugin = empty($infos['version']); //表格repo信息无效
 								$gitIsh = !$noPlugin && !$api && !$tfLocal; //有效但无API
-								$zip = strpos($zipMeta,'](') ? trim(end($links[0])) : ''; //取最后一个栏位链接地址
+								$zip = str_contains($zipMeta,'](') ? trim(end($links[0])) : ''; //取最后一个栏位链接地址
 								$tmpSub = $tmpDir.'/'.$all.'_'.$name;
 								$pluginZip = '';
 								//解压zip包获取信息
@@ -322,7 +322,7 @@
 										}
 
 										//复制到release发布用
-										$isRelease = strpos($zip,'typecho-fans/plugins/releases/download');
+										$isRelease = str_contains($zip,'typecho-fans/plugins/releases/download');
 										if ($isRelease && file_exists($cdn)) {
 											copy($cdn,$tmpNew.'/'.basename($zip));
 											++$release;
@@ -456,21 +456,32 @@
 	{
 		$plugin = '';
 		$routes = is_array($pluginData) ? $pluginData : array();
-		$name = preg_quote($name);
 
 		//遍历获取文件树
 		if (!$routes) {
 			foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($pluginData)) as $files) {
-				if (!$files->isDir() && !strpos($files,'/.git/') && !strpos($files,'/.github/')) {
+				if (!$files->isDir() && !str_contains($files,'/.git/') && !str_contains($files,'/.github/')) {
 					$routes[] = $files->getRealPath();
 				}
 			}
 		}
 		//定位主文件路径
+		$maxPriority = 0;
 		foreach ($routes as $route) {
-			if (preg_match('/(?:'.$name.'\/Plugin\.php|Plugin\.php|'.$name.'\/'.$name.'\.php|'.$name.'\.php)/',$route)) { //带路径目录型优先
+			//带路径目录型优先
+			$priority = match (true) {
+				str_contains($route,$name.'/Plugin.php')=>4,
+				str_contains($route,$name.'/'.$name.'.php')=>3,
+				str_contains($route,'Plugin.php')=>2,
+				str_contains($route,$name.'.php')=>1,
+				default=>0,
+			};
+			if ($priority>$maxPriority) {
+				$maxPriority = $priority;
 				$plugin = $route;
-				break;
+				if ($priority==4) {
+					break;
+				}
 			}
 		}
 
@@ -603,7 +614,7 @@
 			if ($host=='gitee.com') {
 				if (count($datas)<=30) {
 					foreach ($datas as $data) {
-						if (!strpos($data,'.gitignore') && !strpos($data,'/.github/')) {
+						if (!str_contains($data,'.gitignore') && !str_contains($data,'/.github/')) {
 							$plugin = $url.'/raw/'.$branch.'/'.$data;
 							$download = @file_get_contents($plugin);
 							if ($download) {
