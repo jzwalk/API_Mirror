@@ -1,42 +1,45 @@
 diff --git a/AUTO-UPDATE.php b/AUTO-UPDATE.php
-index 6f3db64..1d795b7 100644
+index 1d795b7..09dbd61 100644
 --- a/AUTO-UPDATE.php
 +++ b/AUTO-UPDATE.php
-@@ -13,8 +13,8 @@
- 	//提取最近变更信息
+@@ -14,12 +14,11 @@
  	$urls = [];
  	if (str_contains($requestUrl,'.diff')) {
--		$record = @file_get_contents($requestUrl);
--		$diffs = explode(PHP_EOL,$record);
-+		$record = file_get_contents($requestUrl);
-+		$diffs = explode(PHP_EOL,$record);print_r($diffs);
+ 		$record = file_get_contents($requestUrl);
+-		$diffs = explode(PHP_EOL,$record);print_r($diffs);
++		$diffs = explode(PHP_EOL,$record);
  
  		//查找有关文档变更
  		$begin = array_search('+++ b/README_test.md',$diffs) ?? array_search('+++ b/TESTORE.md', $diffs) ?? 0;
-@@ -33,7 +33,7 @@
- 					break;
- 				}
- 			}
--		}print_r($urls);
-+		}
- 	//指定插件信息情况
- 	} else {
- 		$urls = explode(',',$requestUrl);
+ 		foreach ($diffs as $line=>$diff) {
+-			$begin = $line;
+ 			if ($line>$begin) {
+ 				//匹配变更行repo信息
+ 				if (str_starts_with($diff,'+[')) {
 diff --git a/README_test.md b/README_test.md
-index b5b448a..e002ec9 100644
+index e002ec9..b5b448a 100644
 --- a/README_test.md
 +++ b/README_test.md
 @@ -43,5 +43,5 @@
  [AntiSpam](AntiSpam) | 经典反垃圾评论机器人陷阱插件 | 1.0.3 | Willin Kan | [Latest](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/AntiSpam.zip)
  [AutoBackup](AutoBackup) | 数据库定时备份至邮箱插件 | 1.3.2 | [泽泽社长](https://zezeshe.com/archives/autobackup-typecho-plugins.html) | [Download](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/AutoBackup.zip)
  [JSON](JSON) | 以Json格式输出博客数据API插件 | 1.1 | [姬长信](https://github.com/insoxin),[SangSir](https://gitee.com/hkq15),[公子](https://github.com/lizheming) | [Latest](https://github.com/typecho-fans/plugins/releases/download/plugins-H_to_L/JSON.zip)
--[ShortLinks](ShortLinks) | 基于[GoLinks](GoLinks)增强外链转换插件 | 1.0.0 | [Ryan](https://github.com/benzBrake) | [下载](https://github.com/benzBrake/ShortLinks/archive/refs/heads/master.zip)
-+[ShortLinks](ShortLinks) | 基于[GoLinks](GoLinks)增强外链转换插件 | 1.1.0 | [Ryan](https://github.com/benzBrake) | [下载](https://github.com/benzBrake/ShortLinks/archive/refs/heads/master.zip)
+-[ShortLinks](ShortLinks) | 基于[GoLinks](GoLinks)增强外链转换插件 | 1.1.0 | [Ryan](https://github.com/benzBrake) | [下载](https://github.com/benzBrake/ShortLinks/archive/refs/heads/master.zip)
++[ShortLinks](ShortLinks) | 基于[GoLinks](GoLinks)增强外链转换插件 | 1.0.0 | [Ryan](https://github.com/benzBrake) | [下载](https://github.com/benzBrake/ShortLinks/archive/refs/heads/master.zip)
  [changyandandian](changyandandian) | 搜狐畅言单点登录插件 | 1.0.0 | [泽泽社长](https://github.com/jrotty) | [Latest](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/changyandandian.zip)
 diff --git a/TESTORE.md b/TESTORE.md
-index 3ea3804..262d0ce 100644
+index 3ea3804..ad74943 100644
 --- a/TESTORE.md
 +++ b/TESTORE.md
+@@ -6,7 +6,7 @@
+ [![support](https://img.shields.io/badge/TeStore-Supported-green.svg?style=for-the-badge)](TeStore)
+ [![contributors](https://img.shields.io/github/contributors/typecho-fans/plugins.svg?style=for-the-badge)](https://github.com/typecho-fans/plugins/graphs/contributors)
+ 
+-**本文件内插件信息由成员手动添加，[Actions脚本](AUTO-UPDATE.php)辅助修正，若名称链接指向Github目录可每周自动检测更新，成员也可运行[手动工作流](../actions/workflows/test1.yml)随时更新任意指定插件。🐧交流QQ群：[**40412938**](http://shang.qq.com/wpa/qunwpa?idkey=a5a8afedf099e18ddf9b530db9217251e39001d52aace42888bf470d9b6cb86a)**</div>
++**本文件内插件信息由成员手动添加，[Actions脚本](AUTO-UPDATE.php)辅助修正，若名称链接指向Github目录可每周自动检测更新，成员也可运行[手动工作流](../../actions/workflows/test1.yml)随时更新任意指定插件。🐧交流QQ群：[**40412938**](http://shang.qq.com/wpa/qunwpa?idkey=a5a8afedf099e18ddf9b530db9217251e39001d52aace42888bf470d9b6cb86a)**</div>
+ 
+ ------------------------------
+ 
 @@ -47,7 +47,7 @@
  [GithubWidgetPlus](https://github.com/sundaqiang/GithubWidgetPlus) | Github名片 | 0.3.0 | [sunadqiang](https://github.com/sundaqiang),[hongweipeng](https://github.com/hongweipeng) | [最近](https://github.com/typecho-fans/plugins/releases/download/plugins-D_to_G/GithubWidgetPlus.zip)
  [HuifengMembers](https://github.com/wedojava/HuifengMember) | Typecho自建会员信息数据表插件 | 0.1.1 | [回风](https://github.com/wedojava) | [最近](https://github.com/wedojava/HuifengMember/archive/master.zip)
