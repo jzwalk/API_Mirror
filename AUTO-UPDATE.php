@@ -17,25 +17,25 @@
 			stream_context_create(array('http'=>array('header'=>array('Accept: application/vnd.github.v3.diff')))));
 		$diffs = explode(PHP_EOL,$record);
 
+		//查找有关文档变更
+		$begin = array_search('+++ b/README_test.md',$diffs) ?? array_search('+++ b/TESTORE.md', $diffs) ?? 0;
 		foreach ($diffs as $line=>$diff) {
-			$begin = 0;
-			//查找有关文档变化
-			if ($diff=='+++ b/README_test.md' || $diff=='+++ b/TESTORE.md') {
-				$begin = $line;
-				if ($line>$begin) {
-					//匹配变更repo信息
-					if (str_starts_with($diff,'+[')) {
-						preg_match_all('/(?<=\()[^\)]+/',$diff,$links);
-						if ($links && str_contains($diff,'](')) {
-							$urls[] = trim($links[0][0]); //取第一个链接内容
-						}
+			$begin = $line;
+			if ($line>$begin) {
+				//匹配变更行repo信息
+				if (str_starts_with($diff,'+[')) {
+					preg_match_all('/(?<=\()[^\)]+/',$diff,$links);
+					if ($links && str_contains($diff,'](')) {
+						$urls[] = trim($links[0][0]); //取第一个链接内容
 					}
-					if (preg_match('/^diff --git a\/(?!README_test\.md|TESTORE\.md).*/',$diff)) {
-						break;
-					}
+				}
+				//至非文档部分跳出
+				if (preg_match('/^diff --git a\/(?!README_test\.md|TESTORE\.md).*/',$diff)) {
+					break;
 				}
 			}
 		}
+	//指定插件信息情况
 	} else {
 		$urls = explode(',',$requestUrl);
 	}
