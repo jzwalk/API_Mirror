@@ -7,27 +7,9 @@ on:
 
 jobs:
 
-  md-check:
-    name: "检测文档是否有改动"
-    runs-on: "ubuntu-latest"
-    outputs:
-      hasMD: ${{ steps.grep-diff.outputs.md }}
-
-    steps:
-      - id: grep-diff
-        run: |
-          if curl -s "https://github.com/jzwalk/API_Mirror/commit/master.diff" | grep -qE "^\+\+\+ b/(TESTORE\.md|README_test\.md)"
-          then
-              echo md=1 >> $GITHUB_OUTPUT
-          else
-              echo md= >> $GITHUB_OUTPUT
-          fi
-
   test-update:
     name: "更新有变动的插件zip"
     runs-on: "ubuntu-latest"
-    needs: md-check
-    if: needs.md-check.outputs.hasMD
 
     steps:
       - uses: actions/checkout@v4
@@ -35,26 +17,37 @@ jobs:
           fetch-depth: 0
 
       - name: "生成实时diff"
+        id: match-diff
         run: |
-          git diff HEAD^ HEAD > latest.diff
+          diff=$(git diff HEAD^ HEAD)
+          if echo "$diff" | tee latest.diff | grep -qE "^\+\+\+ b/(TESTORE\.md|README_test\.md)"
+          then
+              echo md=1 >> $GITHUB_OUTPUT
+          else
+              echo md= >> $GITHUB_OUTPUT
+          fi
 
       - name: "执行PHP脚本"
+        if: steps.match-diff.outputs.md
         run: |
           php AUTO-UPDATE.php ${{ secrets.GITHUB_TOKEN }} latest.diff
 
       - name: "提交更新文件"
         uses: stefanzweifel/git-auto-commit-action@v6
+        if: steps.match-diff.outputs.md
         with:
           commit_message: "Upload zips of altered plugins in TESTORE.md & README.md"
 
       - name: "上传操作记录"
         uses: actions/upload-artifact@v4
+        if: steps.match-diff.outputs.md
         with:
           name: "updates-log"
           path: /home/runner/work/API_Mirror/TMP/updates.log
 
       - name: "检测压缩文件"
         id: match-zips
+        if: steps.match-diff.outputs.md
         run: |
           echo A2C=$(find /home/runner/work/API_Mirror/NEW -type f -name "[a-cA-C]*") >> $GITHUB_OUTPUT
           echo D2G=$(find /home/runner/work/API_Mirror/NEW -type f -name "[d-gD-G]*") >> $GITHUB_OUTPUT

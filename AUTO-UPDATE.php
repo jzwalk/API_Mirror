@@ -17,7 +17,7 @@
 		$diffs = explode(PHP_EOL,$record);
 
 		//查找有关文档变更
-		$begin = array_search('+++ b/README_test.md',$diffs) ?? array_search('+++ b/TESTORE.md', $diffs) ?? 0;
+		$begin = array_search('+++ b/README_test.md',$diffs) ?? array_search('+++ b/TESTORE.md',$diffs) ?? 0;
 		foreach ($diffs as $line=>$diff) {
 			if ($line>$begin) {
 				//匹配变更行repo信息
@@ -94,6 +94,7 @@
 		foreach ($lines as $line=>$column) {
 			if (str_contains($column,'| :----:')) {
 				$tableLine = $line; //定位表格行
+				break;
 			}
 		}
 		if ($tableLine) {
@@ -519,19 +520,19 @@
 			if (is_array($token) && T_DOC_COMMENT == $token[0]) {
 
 				/** 分行读取 */
-				$lines = preg_split("(\r|\n)", $token[1]);
+				$lines = preg_split("(\r|\n)",$token[1]);
 				foreach ($lines as $line) {
 					$line = trim($line);
 					if (!empty($line) && '*' == $line[0]) {
-						$line = trim(substr($line, 1));
+						$line = trim(substr($line,1));
 
 						if (!empty($line) && '@' == $line[0]) {
-							$line = trim(substr($line, 1));
-							$args = explode(' ', $line);
+							$line = trim(substr($line,1));
+							$args = explode(' ',$line);
 							$key = array_shift($args);
 
 							if (isset($map[$key])) {
-								$info[$map[$key]] = trim(implode(' ', $args));
+								$info[$map[$key]] = trim(implode(' ',$args));
 							}
 						}
 					}
