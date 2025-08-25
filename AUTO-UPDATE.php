@@ -13,8 +13,7 @@
 	//提取最近变更信息
 	$urls = [];
 	if (str_contains($requestUrl,'.diff')) {
-		$record = @file_get_contents($requestUrl,0,
-			stream_context_create(array('http'=>array('header'=>array('Accept: application/vnd.github.v3.diff')))));
+		$record = @file_get_contents($requestUrl);
 		$diffs = explode(PHP_EOL,$record);
 
 		//查找有关文档变更

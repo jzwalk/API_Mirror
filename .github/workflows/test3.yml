@@ -36,12 +36,11 @@ jobs:
 
       - name: "生成实时diff"
         run: |
-          mkdir -p ../TMP
-          git diff HEAD^ HEAD > ../TMP/latest.diff
+          git diff HEAD^ HEAD > latest.diff
 
       - name: "执行PHP脚本"
         run: |
-          php AUTO-UPDATE.php ${{ secrets.GITHUB_TOKEN }} ../TMP/latest.diff
+          php AUTO-UPDATE.php ${{ secrets.GITHUB_TOKEN }} latest.diff
 
       - name: "提交更新文件"
         uses: stefanzweifel/git-auto-commit-action@v6
