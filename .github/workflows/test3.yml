@@ -16,7 +16,7 @@ jobs:
     steps:
       - id: grep-diff
         run: |
-          if curl -s "https://github.com/jzwalk/API_Mirror/commit/master.diff" | grep -qE "+++ b/(TESTORE\.md|README_test\.md)"
+          if curl -s "https://github.com/jzwalk/API_Mirror/commit/master.diff" | grep -qE "^\+\+\+ b/(TESTORE\.md|README_test\.md)"
           then
               echo md=1 >> $GITHUB_OUTPUT
           else

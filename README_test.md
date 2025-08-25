@@ -43,5 +43,5 @@
 [AntiSpam](AntiSpam) | 经典反垃圾评论机器人陷阱插件 | 1.0.3 | Willin Kan | [Latest](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/AntiSpam.zip)
 [AutoBackup](AutoBackup) | 数据库定时备份至邮箱插件 | 1.3.2 | [泽泽社长](https://zezeshe.com/archives/autobackup-typecho-plugins.html) | [Download](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/AutoBackup.zip)
 [JSON](JSON) | 以Json格式输出博客数据API插件 | 1.1 | [姬长信](https://github.com/insoxin),[SangSir](https://gitee.com/hkq15),[公子](https://github.com/lizheming) | [Latest](https://github.com/typecho-fans/plugins/releases/download/plugins-H_to_L/JSON.zip)
-[ShortLinks](ShortLinks) | 基于[GoLinks](GoLinks)增强外链转换插件 | 1.2.0 | [Ryan](https://github.com/benzBrake) | [下载](https://github.com/benzBrake/ShortLinks/archive/refs/heads/master.zip)
+[ShortLinks](ShortLinks) | 基于[GoLinks](GoLinks)增强外链转换插件 | 1.3.0 | [Ryan](https://github.com/benzBrake) | [下载](https://github.com/benzBrake/ShortLinks/archive/refs/heads/master.zip)
 [changyandandian](changyandandian) | 搜狐畅言单点登录插件 | 1.0.0 | [泽泽社长](https://github.com/jrotty) | [Latest](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/changyandandian.zip)
