@@ -172,8 +172,8 @@
 								++$all; //记录检测次数
 
 								//提取子目录(分支名)
-								$paths = preg_split('#/tree/([^/]+)/#',$url,2,PREG_SPLIT_DELIM_CAPTURE);
-								$url = rtrim($paths[0],'/');
+								$paths = preg_split('/\/tree\/([^/]+)\//',$url,2,PREG_SPLIT_DELIM_CAPTURE);
+								$url = $paths[0];
 								$branch = $paths[1] ?? '';
 								$folder = !empty($paths[2]) ? rtrim($paths[2],'/').'/' : '';
 
@@ -456,6 +456,7 @@
 	{
 		$plugin = '';
 		$routes = is_array($pluginData) ? $pluginData : array();
+		$name = preg_quote($name);
 
 		//遍历获取文件树
 		if (!$routes) {
@@ -467,10 +468,7 @@
 		}
 		//定位主文件路径
 		foreach ($routes as $route) {
-			if (strpos($route,'Plugin.php')!==false) { //目录型优先
-				$plugin = $route;
-				break;
-			} elseif (strpos($route,$name.'.php')!==false) {
+			if (preg_match('/(?:'.$name.'\/Plugin\.php|Plugin\.php|'.$name.'\/'.$name.'\.php|'.$name.'\.php)/',$route)) { //带路径目录型优先
 				$plugin = $route;
 				break;
 			}
