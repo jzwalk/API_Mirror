@@ -172,7 +172,7 @@
 								++$all; //记录检测次数
 
 								//提取子目录(分支名)
-								$paths = preg_split('/\/tree\/([^/]+)\//',$url,2,PREG_SPLIT_DELIM_CAPTURE);
+								$paths = preg_split('/\/tree\/([^\/]+)\//',$url,2,PREG_SPLIT_DELIM_CAPTURE);
 								$url = $paths[0];
 								$branch = $paths[1] ?? '';
 								$folder = !empty($paths[2]) ? rtrim($paths[2],'/').'/' : '';
