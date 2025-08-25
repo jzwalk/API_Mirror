@@ -19,22 +19,22 @@
 		$diffs = explode(PHP_EOL,$record);
 
 		$urls = [];
-		$begin = 0;
 		foreach ($diffs as $line=>$diff) {
+			$begin = 0;
 			//查找有关文档变化
-			if ($diff=='+++ b/TESTORE.md') {
+			if ($diff=='+++ b/README_test.md' || $diff=='+++ b/TESTORE.md') {
 				$begin = $line;
-			}
-			if ($begin && $line>$begin) {
-				//匹配变更repo信息
-				if (strpos($diff,'+[')===0) {
-					preg_match_all('/(?<=\()[^\)]+/',$diff,$links);
-					if ($links && strpos($diff,'](')) {
-						$urls[] = trim($links[0][0]); //取第一个链接内容
+				if ($line>$begin) {
+					//匹配变更repo信息
+					if (strpos($diff,'+[')===0) {
+						preg_match_all('/(?<=\()[^\)]+/',$diff,$links);
+						if ($links && strpos($diff,'](')) {
+							$urls[] = trim($links[0][0]); //取第一个链接内容
+						}
 					}
-				}
-				if (strpos($diff,'diff --git')===0) {
-					break;
+					if (!str_starts_with($diff,'diff --git a/README_test.md') && !str_starts_with($diff,'diff --git a/TESTORE.md')) {
+						break;
+					}
 				}
 			}
 		}

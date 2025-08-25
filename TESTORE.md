@@ -6,7 +6,7 @@
 [![support](https://img.shields.io/badge/TeStore-Supported-green.svg?style=for-the-badge)](TeStore)
 [![contributors](https://img.shields.io/github/contributors/typecho-fans/plugins.svg?style=for-the-badge)](https://github.com/typecho-fans/plugins/graphs/contributors)
 
-**本文件内插件信息由成员手动添加，[Actions脚本](AUTO-UPDATE.php)辅助修正，若名称链接指向Github目录可每周自动检测更新，成员也可运行[手动工作流](/actions/workflows/test1.yml)随时更新任意指定插件。🐧交流QQ群：[**40412938**](http://shang.qq.com/wpa/qunwpa?idkey=a5a8afedf099e18ddf9b530db9217251e39001d52aace42888bf470d9b6cb86a)**</div>
+**本文件内插件信息由成员手动添加，[Actions脚本](AUTO-UPDATE.php)辅助修正，若名称链接指向Github目录可每周自动检测更新，成员也可运行[手动工作流](../actions/workflows/test1.yml)随时更新任意指定插件。🐧交流QQ群：[**40412938**](http://shang.qq.com/wpa/qunwpa?idkey=a5a8afedf099e18ddf9b530db9217251e39001d52aace42888bf470d9b6cb86a)**</div>
 
 ------------------------------
 
@@ -47,6 +47,7 @@
 [GithubWidgetPlus](https://github.com/sundaqiang/GithubWidgetPlus) | Github名片 | 0.3.0 | [sunadqiang](https://github.com/sundaqiang),[hongweipeng](https://github.com/hongweipeng) | [最近](https://github.com/typecho-fans/plugins/releases/download/plugins-D_to_G/GithubWidgetPlus.zip)
 [HuifengMembers](https://github.com/wedojava/HuifengMember) | Typecho自建会员信息数据表插件 | 0.1.1 | [回风](https://github.com/wedojava) | [最近](https://github.com/wedojava/HuifengMember/archive/master.zip)
 [NotAllowIp](https://github.com/tangmaoguo/NotAllowIp-Typecho-Plugin) | Typecho设禁止访问IP黑名单插件 | 1.0.0 | [BlackStyle](https://github.com/tangmaoguo) | [最近](https://github.com/tangmaoguo/NotAllowIp-Typecho-Plugin/archive/master.zip)
+[OssImg](https://github.com/v03413/Typecho_Plugins/tree/master/OssImg) | 基于[OssForTypecho](https://github.com/typecho-fans/plugins/tree/master/OssForTypecho)图床外链插件 | 1.0.0 | [_莫名_](https://github.com/v03413) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-M_to_R/OssImg.zip)
 [RobotsPlusPlus](https://xiamp.net/archives/typecho-spider-visit-record-plugin-enhanced-enhanced-version-robotsplusplus.html) | 新可定制版搜索引擎爬虫记录插件 | 2.0.7 | [Ryan](https://github.com/benzBrake), [YoviSun](http://www.yovisun.com), Shion | [最近](https://github.com/typecho-fans/plugins/releases/download/plugins-M_to_R/RobotsPlusPlus.zip)
 [SiteMap](http://forum.typecho.org/viewtopic.php?f=6&t=9115) | Google/百度双生版站点地图插件 | 1.0.0 | 王And木 | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-S_to_Z/SiteMap_.And.zip)
 [SiteMap](https://gitee.com/freej2015/SiteMap) | 简易版发布生成Xml站点地图插件 | 1.0.0 | [yaecho](https://gitee.com/freej2015) | [最近](https://github.com/typecho-fans/plugins/releases/download/plugins-S_to_Z/SiteMap_yaecho.zip)
