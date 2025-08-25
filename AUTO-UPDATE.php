@@ -33,7 +33,7 @@
 					break;
 				}
 			}
-		}
+		}print_r($urls);
 	//指定插件信息情况
 	} else {
 		$urls = explode(',',$requestUrl);
