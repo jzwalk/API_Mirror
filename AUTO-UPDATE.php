@@ -267,8 +267,8 @@
 									if ($nameFile) {
 										if ($noPlugin) {
 											$logs .= 'Warning: "'.($plugin ?: $url).'" is not valid, using "'.$zip.'" to read info.'.PHP_EOL;
-											if (!$isUrl) { //TeStore不显示无文档链接插件
-												$column = str_replace($nameMeta,'['.$nameFile.']('.($tf ? $url : $infos['homepage']).')',$column);
+											if (!$isUrl && !$tf) { //TeStore不显示无文档链接插件
+												$column = str_replace($nameMeta,'['.$nameFile.']('.($infos['homepage'].')',$column);
 												$fixed .= ' / Table Repo Masked';
 											}
 										} elseif ($name!==$nameFile) {
