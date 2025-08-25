@@ -13,8 +13,8 @@
 	//提取最近变更信息
 	$urls = [];
 	if (str_contains($requestUrl,'.diff')) {
-		$record = @file_get_contents($requestUrl);
-		$diffs = explode(PHP_EOL,$record);
+		$record = file_get_contents($requestUrl);
+		$diffs = explode(PHP_EOL,$record);print_r($diffs);
 
 		//查找有关文档变更
 		$begin = array_search('+++ b/README_test.md',$diffs) ?? array_search('+++ b/TESTORE.md', $diffs) ?? 0;
@@ -33,7 +33,7 @@
 					break;
 				}
 			}
-		}print_r($urls);
+		}
 	//指定插件信息情况
 	} else {
 		$urls = explode(',',$requestUrl);
