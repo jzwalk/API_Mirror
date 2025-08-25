@@ -14,12 +14,11 @@
 	$urls = [];
 	if (str_contains($requestUrl,'.diff')) {
 		$record = file_get_contents($requestUrl);
-		$diffs = explode(PHP_EOL,$record);print_r($diffs);
+		$diffs = explode(PHP_EOL,$record);
 
 		//查找有关文档变更
 		$begin = array_search('+++ b/README_test.md',$diffs) ?? array_search('+++ b/TESTORE.md', $diffs) ?? 0;
 		foreach ($diffs as $line=>$diff) {
-			$begin = $line;
 			if ($line>$begin) {
 				//匹配变更行repo信息
 				if (str_starts_with($diff,'+[')) {
