@@ -28,7 +28,7 @@
 
  > 下载链接文字可用于附加图标和关键字筛选：如`下载`即非社区版，`不可用`带⛔，`特殊`带⚠️意为启用须遵照文档步骤。
 
-### 插件信息 (19)
+### 插件信息 (25)
 
 ###### TeStore会使用下表“名称”创建文件夹，“版本”数字判断升级，请尽量确保文本准确，按字母排序，简介便于关键字搜索。
 ```
@@ -38,12 +38,7 @@
 名称 | 简介 | 版本 | 作者 | zip
 ---- | ----: | :---: | ----: | :----:
 [AAThemeDemo](https://github.com/benzBrake/AAThemeDemo) | ThemeDemo2 修复版，仅支持 Typecho 1.2 | 1.0.0 | [Ryan](http://doufu.ru), [doudou](http://doufu.ru) | [最新](https://github.com/benzBrake/AAThemeDemo/archive/refs/heads/master.zip)
-[AMP](AMP) | 生成AMP/MIP移动标准页面插件 | 0.7.6.1 | [Holmesian](https://github.com/holmesian) | [Latest](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/AMP.zip)
 [AdminLogin](https://github.com/v03413/Typecho_Plugins/tree/master/AdminLogin) | 微信/QQ号后台扫码登录注册插件 | 0.1.2 | [&#95;莫名&#95;](https://github.com/v03413) | [最近](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/AdminLogin_.zip)
-[AjaxComments](AjaxComments) | 嵌套评论Ajax异步提交效果插件 | 1.2.0 | [Byends](https://github.com/visamz), Willin Kan | [Latest](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/AjaxComments.zip)
-[AnotherLike](AnotherLike)  | 基于[Like](Like)动画美化点赞按钮插件 | 1.0.0 | [idealclover](https://github.com/idealclover)  | [Download](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/AnotherLike.zip)
-[AntiSpam](AntiSpam) | 经典反垃圾评论机器人陷阱插件 | 1.0.3 | Willin Kan | [Download](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/AntiSpam.zip)
-[AutoBackup](AutoBackup) | 数据库定时备份至邮箱插件 | 1.3.2 | [泽泽社长](https://zezeshe.com/archives/autobackup-typecho-plugins.html) | [Download](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/AutoBackup.zip)
 [AutoBackup](https://xiamp.net/archives/automatic-backup-of-typecho-database-to-mailbox-plugin-autobackup.html) | 数据库备份到邮箱 | 1.3.2 | [Ryan](https://github.com/benzBrake) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/AutoBackup_Ryan.zip)
 [AutoSSL](https://github.com/Aurorum-Studio/Typecho-AutoSSL) | 在线轻松生成免费SSL证书，解决SSL证书的烦恼 | v.0.2.2 | [Aurorum-Studios](https://open.aurorum.co/t/aurorum-studio-typecho-autossl) | [最近](https://github.com/Aurorum-Studio/Typecho-AutoSSL/archive/refs/tags/v.v.0.2.2-alpha.zip)
 [BeianFooter](https://github.com/JoyNop/BeianFooter) | 自定义ICP备案和公安备案插件 | 1.0.0 | [JoyNop](https://github.com/JoyNop) | [最近](https://github.com/JoyNop/BeianFooter/archive/refs/tags/1.0.0.zip)
@@ -51,11 +46,10 @@
 [DoubanBooklist](https://github.com/FaithPatrick/DoubanBookList) | 博客展示豆瓣正在和已读书单插件 | 1.0.0 | [Patrick95](https://github.com/FaithPatrick) | [最近](https://github.com/FaithPatrick/DoubanBookList/archive/master.zip)
 [GithubWidgetPlus](https://github.com/sundaqiang/GithubWidgetPlus) | Github名片 | 0.3.0 | [sunadqiang](https://github.com/sundaqiang),[hongweipeng](https://github.com/hongweipeng) | [最近](https://github.com/typecho-fans/plugins/releases/download/plugins-D_to_G/GithubWidgetPlus.zip)
 [HuifengMembers](https://github.com/wedojava/HuifengMember) | Typecho自建会员信息数据表插件 | 0.1.1 | [回风](https://github.com/wedojava) | [最近](https://github.com/wedojava/HuifengMember/archive/master.zip)
-[JSON](JSON) | 以Json格式输出博客数据API插件 | 1.1 | [姬长信](https://github.com/insoxin),[SangSir](https://gitee.com/hkq15),[公子](https://github.com/lizheming) | [Latest](https://github.com/typecho-fans/plugins/releases/download/plugins-H_to_L/JSON.zip)
 [NotAllowIp](https://github.com/tangmaoguo/NotAllowIp-Typecho-Plugin) | Typecho设禁止访问IP黑名单插件 | 1.0.0 | [BlackStyle](https://github.com/tangmaoguo) | [最近](https://github.com/tangmaoguo/NotAllowIp-Typecho-Plugin/archive/master.zip)
 [OssImg](https://github.com/v03413/Typecho_Plugins/tree/master/OssImg) | 基于[OssForTypecho](https://github.com/typecho-fans/plugins/tree/master/OssForTypecho)图床外链插件 | 1.0.0 | [&#95;莫名&#95;](https://github.com/v03413) | [最近](https://github.com/typecho-fans/plugins/releases/download/plugins-M_to_R/OssImg.zip)
 [RobotsPlusPlus](https://xiamp.net/archives/typecho-spider-visit-record-plugin-enhanced-enhanced-version-robotsplusplus.html) | 新可定制版搜索引擎爬虫记录插件 | 2.0.7 | [Ryan](https://github.com/benzBrake), [YoviSun](http://www.yovisun.com), Shion | [最近](https://github.com/typecho-fans/plugins/releases/download/plugins-M_to_R/RobotsPlusPlus.zip)
-[ShortLinks](ShortLinks) | 基于[GoLinks](GoLinks)增强外链转换插件 | 1.2.0 | [Ryan](https://github.com/benzBrake) | [Latest](https://github.com/benzBrake/ShortLinks/archive/refs/heads/master.zip)
+[ShortLinks](https://github.com/benzBrake/ShortLinks) | 基于[GoLinks](GoLinks)增强外链转换插件 | 1.2.0 | [Ryan](https://github.com/benzBrake) | [Latest](https://github.com/benzBrake/ShortLinks/archive/refs/heads/master.zip)
 [SiteMap](http://forum.typecho.org/viewtopic.php?f=6&t=9115) | Google/百度双生版站点地图插件 | 1.0.0 | 王And木 | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-S_to_Z/SiteMap_.And.zip)
 [SiteMap](https://gitee.com/freej2015/SiteMap) | 简易版发布生成Xml站点地图插件 | 1.0.0 | [yaecho](https://gitee.com/freej2015) | [最近](https://github.com/typecho-fans/plugins/releases/download/plugins-S_to_Z/SiteMap_yaecho.zip)
 [StructureData](https://github.com/JokerQyou/StructureData) | [JSON-LD](https://en.wikipedia.org/wiki/JSON-LD)格式文章结构化数据插件 | 0.3.1 | [Joker Qyou](https://github.com/JokerQyou) | [最近](https://github.com/JokerQyou/StructureData/archive/master.zip)
