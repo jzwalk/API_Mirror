@@ -46,7 +46,10 @@
 		throw new RuntimeException('README.md is missing!');
 	}
 	if (file_exists('TESTORE.md')) {
-		updatePlugins('TESTORE.md',$urls,$authKey,$movable);
+		$movable = updatePlugins('TESTORE.md',$urls,$authKey,$movable);
+		if ($movable) {
+			updatePlugins('README_test.md',$urls,'rec'); //rec情况递归
+		}
 	} else {
 		throw new RuntimeException('TESTORE.md is missing!');
 	}
@@ -56,7 +59,7 @@
 	 *
 	 * @param string $tableFile MD文档路径
 	 * @param array $requested 需求更新repo信息
-	 * @param string $token GitHub Token
+	 * @param string $token Key或递归处理情况
 	 * @param array $added 转移条目或zip名表
 	 * @return array
 	 */
@@ -114,7 +117,7 @@
 				//表格部分匹配repo信息
 				} elseif ($column) {
 					$metas = explode(' | ',$column);
-					if (count($metas)==5) {
+					if (count($metas)==5 && $token!=='rec') {
 
 						$nameMeta = $metas[0];
 						preg_match('/(?<=\[)[^\]]*/',$nameMeta,$names);
@@ -164,8 +167,7 @@
 							$tf = $tableFile=='README_test.md';
 							$isUrl = str_starts_with($url,'http://') || str_starts_with($url,'https://');
 							$zipMeta = end($metas);
-							//zip名表分割或引入前20
-							$latest = $token ? array_slice($listNames,0,20) : $added;
+							$latest = $token ? array_slice($listNames,0,20) : $added; //zip名表分割或引入前20
 							preg_match('/(?<=\[)[^\]]*/',$zipMeta,$zipText);
 							$mark = $zipText ? trim($zipText[0]) : ($tf ? 'Download' : '下载'); //取最后一个栏位链接文本
 							if ($condition && $token) {
@@ -357,9 +359,9 @@
 										array_unshift($listNames,$zipName);
 										$outName = $latest[19] ?? '';
 										$latest = array_slice($listNames,0,20);
-										//原末位去除标记
+										//原末位移除标记
 										if ($outName && !in_array($outName,$latest) && !in_array(explode('_',$outName)[0],$requested)) {
-											updatePlugins($tableFile,[$outName],'',$latest);
+											updatePlugins($tableFile,[$outName],'',$latest); //空token情况递归
 											updatePlugins($tf ? 'TESTORE.md' : 'README_test.md',[$outName],'',$latest);
 										}
 
@@ -378,17 +380,23 @@
 							}
 
 							//筛出README.md外部信息
-							if ($tf && $isUrl) {
-								$movable[] = str_replace($zipMeta,str_replace(['Download','N/A','Special','NewVer','Latest','Newest'],['下载','不可用','特殊','新版','最近','最新'],$zipMeta),$column);
-								if (is_dir($name)) {
-									$logs .= 'Warning: "'.$name.'" is local but table info "'.$url.'" is external.'.PHP_EOL;
+							if ($token) {
+								$tfMark = ['Download','N/A','Special','NewVer','Latest','Newest'];
+								$teMark = ['下载','不可用','特殊','新版','最近','最新'];
+								if ($tf && $isUrl) {
+									$movable[] = str_replace($zipMeta,str_replace($tfMark,$teMark,$zipMeta),$column);
+									if (is_dir($name)) {
+										$logs .= 'Warning: "'.$name.'" is local but table info "'.$url.'" is external.'.PHP_EOL;
+									}
+								} elseif (is_dir($url)) {
+									$movable[] = str_replace($zipMeta,str_replace($teMark,$tfMark,$zipMeta),$column);
 								}
 							}
 						} else {
 							$logs .= 'Error: Line '.$line.' matches no plugin name!'.PHP_EOL;
 						}
 					} else {
-						$logs .= 'Error: Line '.($line+1).' matches wrong columns!'.PHP_EOL;
+						$logs .=  $token=='rec' ? '' : 'Error: Line '.($line+1).' matches wrong columns!'.PHP_EOL;
 					}
 
 					$tables[] = $column;
@@ -403,50 +411,54 @@
 			$logs .= 'Error: "'.$tableFile.'" matches no table!'.PHP_EOL;
 		}
 
-		//清空临时目录(保留updates.log)
-		exec('find "'.$tmpDir.'" -mindepth 1 ! -name "updates.log" -exec rm -rf {} +');
+		if ($token!=='rec') {
+			//清空临时目录(保留updates.log)
+			exec('find "'.$tmpDir.'" -mindepth 1 ! -name "updates.log" -exec rm -rf {} +');
 
-		if ($listNames) {
-			//检查重复项
-			$duplicates = array_keys(
-				array_filter(
-					array_count_values($listNames),
-					fn($count)=>$count>1
-				)
-			);
-			if ($duplicates) {
-				$logs .= 'Warning: Table info about "'.implode(' / ',$duplicates).'" may be added repeatedly.'.PHP_EOL;
-			}
-			//清除冗余zip
-			$listNames = array_unique($listNames);
-			if (count($listNames)>600) { //有足量记录后
-				$api = @file_get_contents('https://api.github.com/repositories/14101953/contents/ZIP_CDN',0,
-					stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP')))));
-				if ($api) {
-					$datas = json_decode($api,true);
-					$extras = array_diff(array_column($datas,'name'),$listNames);
-					if ($extras) {
-						$logs .= 'Warning: These zip files do not match the names in NAME_LIST.log and will be deleted: "'.implode(' / ',$extras).'"'.PHP_EOL;
-						foreach ($extras as $extra) {
-							if (file_exists('ZIP_CDN/'.$extra)) {
-								unlink('ZIP_CDN/'.$extra);
+			if ($listNames && $token) {
+				//检查重复项
+				$duplicates = array_keys(
+					array_filter(
+						array_count_values($listNames),
+						fn($count)=>$count>1
+					)
+				);
+				if ($duplicates) {
+					$logs .= 'Warning: Table info about "'.implode(' / ',$duplicates).'" may be added repeatedly.'.PHP_EOL;
+				}
+				//清除冗余zip
+				$listNames = array_unique($listNames);
+				if (count($listNames)>600) { //有足量记录后
+					$api = @file_get_contents('https://api.github.com/repositories/14101953/contents/ZIP_CDN',0,
+						stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP')))));
+					if ($api) {
+						$datas = json_decode($api,true);
+						$extras = array_diff(array_column($datas,'name'),$listNames);
+						if ($extras) {
+							$logs .= 'Warning: These zip files do not match the names in NAME_LIST.log and will be deleted: "'.implode(' / ',$extras).'"'.PHP_EOL;
+							foreach ($extras as $extra) {
+								if (file_exists('ZIP_CDN/'.$extra)) {
+									unlink('ZIP_CDN/'.$extra);
+								}
 							}
 						}
 					}
 				}
 			}
+			//保存zip名表记录
+			file_put_contents($nameList,implode(PHP_EOL,$listNames));
 		}
-		//保存zip名表记录
-		file_put_contents($nameList,implode(PHP_EOL,$listNames));
 
 		//生成完整的操作日志
-		$logFile = $tmpDir.'/updates.log';
-		$logs .= 'SCANED: '.$all.PHP_EOL.
-			'REVISED: '.$revise.PHP_EOL.
-			'NEED UPDATE: '.$update.PHP_EOL.
-			'DONE: '.$done.PHP_EOL.
-			'ZIPS: Created-'.$creat.', Renewed-'.$renew.', Released-'.$release.PHP_EOL;
-		file_put_contents($logFile,$logs,FILE_APPEND|LOCK_EX);
+		if ($token && $token!=='rec') {
+			$logFile = $tmpDir.'/updates.log';
+			$logs .= 'SCANED: '.$all.PHP_EOL.
+				'REVISED: '.$revise.PHP_EOL.
+				'NEED UPDATE: '.$update.PHP_EOL.
+				'DONE: '.$done.PHP_EOL.
+				'ZIPS: Created-'.$creat.', Renewed-'.$renew.', Released-'.$release.PHP_EOL;
+			file_put_contents($logFile,$logs,FILE_APPEND|LOCK_EX);
+		}
 
 		return $movable;
 	}
