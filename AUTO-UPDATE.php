@@ -48,7 +48,7 @@
 	if (file_exists('TESTORE.md')) {
 		$movable = updatePlugins('TESTORE.md',$urls,$authKey,$movable);
 		if ($movable) {
-			updatePlugins('README_test.md',$urls,'rec'); //rec情况递归
+			updatePlugins('README_test.md',$urls,'rec',$movable); //rec情况递归
 		}
 	} else {
 		throw new RuntimeException('TESTORE.md is missing!');

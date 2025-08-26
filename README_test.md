@@ -37,4 +37,5 @@
 
 名称 | 简介 | 版本 | 作者 | zip包
 ---- | ----: | :---: | ----: | :----:
-[changyandandian](changyandandian) | 搜狐畅言单点登录插件 | 1.0.0 | [泽泽社长](https://github.com/jrotty) | [Latest](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/changyandandian.zip)
+[Tbeautify](https://github.com/1997akkk/Tbeautify) | 网站特效美化插件,春节灯笼,看板娘,置灰等十特效 | 1.0.2 | [流情](https://liuqingwushui.top) | [最近](https://github.com/1997akkk/Tbeautify/archive/refs/heads/main.zip)
+[changyandandian](changyandandian) | 搜狐畅言单点登录插件 | 1.1.0 | [泽泽社长](https://github.com/jrotty) | [Latest](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/changyandandian.zip)
