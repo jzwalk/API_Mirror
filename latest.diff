@@ -1,51 +1,198 @@
 diff --git a/AUTO-UPDATE.php b/AUTO-UPDATE.php
-index 1d795b7..09dbd61 100644
+index af32eda..3db3e5c 100644
 --- a/AUTO-UPDATE.php
 +++ b/AUTO-UPDATE.php
-@@ -14,12 +14,11 @@
- 	$urls = [];
- 	if (str_contains($requestUrl,'.diff')) {
- 		$record = file_get_contents($requestUrl);
--		$diffs = explode(PHP_EOL,$record);print_r($diffs);
-+		$diffs = explode(PHP_EOL,$record);
+@@ -46,7 +46,10 @@
+ 		throw new RuntimeException('README.md is missing!');
+ 	}
+ 	if (file_exists('TESTORE.md')) {
+-		updatePlugins('TESTORE.md',$urls,$authKey,$movable);
++		$movable = updatePlugins('TESTORE.md',$urls,$authKey,$movable);
++		if ($movable) {
++			updatePlugins('README_test.md',$urls,'rec'); //rec情况递归
++		}
+ 	} else {
+ 		throw new RuntimeException('TESTORE.md is missing!');
+ 	}
+@@ -56,7 +59,7 @@
+ 	 *
+ 	 * @param string $tableFile MD文档路径
+ 	 * @param array $requested 需求更新repo信息
+-	 * @param string $token GitHub Token
++	 * @param string $token Key或递归处理情况
+ 	 * @param array $added 转移条目或zip名表
+ 	 * @return array
+ 	 */
+@@ -114,7 +117,7 @@
+ 				//表格部分匹配repo信息
+ 				} elseif ($column) {
+ 					$metas = explode(' | ',$column);
+-					if (count($metas)==5) {
++					if (count($metas)==5 && $token!=='rec') {
  
- 		//查找有关文档变更
- 		$begin = array_search('+++ b/README_test.md',$diffs) ?? array_search('+++ b/TESTORE.md', $diffs) ?? 0;
- 		foreach ($diffs as $line=>$diff) {
--			$begin = $line;
- 			if ($line>$begin) {
- 				//匹配变更行repo信息
- 				if (str_starts_with($diff,'+[')) {
+ 						$nameMeta = $metas[0];
+ 						preg_match('/(?<=\[)[^\]]*/',$nameMeta,$names);
+@@ -164,8 +167,7 @@
+ 							$tf = $tableFile=='README_test.md';
+ 							$isUrl = str_starts_with($url,'http://') || str_starts_with($url,'https://');
+ 							$zipMeta = end($metas);
+-							//zip名表分割或引入前20
+-							$latest = $token ? array_slice($listNames,0,20) : $added;
++							$latest = $token ? array_slice($listNames,0,20) : $added; //zip名表分割或引入前20
+ 							preg_match('/(?<=\[)[^\]]*/',$zipMeta,$zipText);
+ 							$mark = $zipText ? trim($zipText[0]) : ($tf ? 'Download' : '下载'); //取最后一个栏位链接文本
+ 							if ($condition && $token) {
+@@ -357,9 +359,9 @@
+ 										array_unshift($listNames,$zipName);
+ 										$outName = $latest[19] ?? '';
+ 										$latest = array_slice($listNames,0,20);
+-										//原末位去除标记
++										//原末位移除标记
+ 										if ($outName && !in_array($outName,$latest) && !in_array(explode('_',$outName)[0],$requested)) {
+-											updatePlugins($tableFile,[$outName],'',$latest);
++											updatePlugins($tableFile,[$outName],'',$latest); //空token情况递归
+ 											updatePlugins($tf ? 'TESTORE.md' : 'README_test.md',[$outName],'',$latest);
+ 										}
+ 
+@@ -378,17 +380,23 @@
+ 							}
+ 
+ 							//筛出README.md外部信息
+-							if ($tf && $isUrl) {
+-								$movable[] = str_replace($zipMeta,str_replace(['Download','N/A','Special','NewVer','Latest','Newest'],['下载','不可用','特殊','新版','最近','最新'],$zipMeta),$column);
+-								if (is_dir($name)) {
+-									$logs .= 'Warning: "'.$name.'" is local but table info "'.$url.'" is external.'.PHP_EOL;
++							if ($token) {
++								$tfMark = ['Download','N/A','Special','NewVer','Latest','Newest'];
++								$teMark = ['下载','不可用','特殊','新版','最近','最新'];
++								if ($tf && $isUrl) {
++									$movable[] = str_replace($zipMeta,str_replace($tfMark,$teMark,$zipMeta),$column);
++									if (is_dir($name)) {
++										$logs .= 'Warning: "'.$name.'" is local but table info "'.$url.'" is external.'.PHP_EOL;
++									}
++								} elseif (is_dir($url)) {
++									$movable[] = str_replace($zipMeta,str_replace($teMark,$tfMark,$zipMeta),$column);
+ 								}
+ 							}
+ 						} else {
+ 							$logs .= 'Error: Line '.$line.' matches no plugin name!'.PHP_EOL;
+ 						}
+ 					} else {
+-						$logs .= 'Error: Line '.($line+1).' matches wrong columns!'.PHP_EOL;
++						$logs .=  $token=='rec' ? '' : 'Error: Line '.($line+1).' matches wrong columns!'.PHP_EOL;
+ 					}
+ 
+ 					$tables[] = $column;
+@@ -403,50 +411,54 @@
+ 			$logs .= 'Error: "'.$tableFile.'" matches no table!'.PHP_EOL;
+ 		}
+ 
+-		//清空临时目录(保留updates.log)
+-		exec('find "'.$tmpDir.'" -mindepth 1 ! -name "updates.log" -exec rm -rf {} +');
+-
+-		if ($listNames) {
+-			//检查重复项
+-			$duplicates = array_keys(
+-				array_filter(
+-					array_count_values($listNames),
+-					fn($count)=>$count>1
+-				)
+-			);
+-			if ($duplicates) {
+-				$logs .= 'Warning: Table info about "'.implode(' / ',$duplicates).'" may be added repeatedly.'.PHP_EOL;
+-			}
+-			//清除冗余zip
+-			$listNames = array_unique($listNames);
+-			if (count($listNames)>600) { //有足量记录后
+-				$api = @file_get_contents('https://api.github.com/repositories/14101953/contents/ZIP_CDN',0,
+-					stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP')))));
+-				if ($api) {
+-					$datas = json_decode($api,true);
+-					$extras = array_diff(array_column($datas,'name'),$listNames);
+-					if ($extras) {
+-						$logs .= 'Warning: These zip files do not match the names in NAME_LIST.log and will be deleted: "'.implode(' / ',$extras).'"'.PHP_EOL;
+-						foreach ($extras as $extra) {
+-							if (file_exists('ZIP_CDN/'.$extra)) {
+-								unlink('ZIP_CDN/'.$extra);
++		if ($token!=='rec') {
++			//清空临时目录(保留updates.log)
++			exec('find "'.$tmpDir.'" -mindepth 1 ! -name "updates.log" -exec rm -rf {} +');
++
++			if ($listNames && $token) {
++				//检查重复项
++				$duplicates = array_keys(
++					array_filter(
++						array_count_values($listNames),
++						fn($count)=>$count>1
++					)
++				);
++				if ($duplicates) {
++					$logs .= 'Warning: Table info about "'.implode(' / ',$duplicates).'" may be added repeatedly.'.PHP_EOL;
++				}
++				//清除冗余zip
++				$listNames = array_unique($listNames);
++				if (count($listNames)>600) { //有足量记录后
++					$api = @file_get_contents('https://api.github.com/repositories/14101953/contents/ZIP_CDN',0,
++						stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP')))));
++					if ($api) {
++						$datas = json_decode($api,true);
++						$extras = array_diff(array_column($datas,'name'),$listNames);
++						if ($extras) {
++							$logs .= 'Warning: These zip files do not match the names in NAME_LIST.log and will be deleted: "'.implode(' / ',$extras).'"'.PHP_EOL;
++							foreach ($extras as $extra) {
++								if (file_exists('ZIP_CDN/'.$extra)) {
++									unlink('ZIP_CDN/'.$extra);
++								}
+ 							}
+ 						}
+ 					}
+ 				}
+ 			}
++			//保存zip名表记录
++			file_put_contents($nameList,implode(PHP_EOL,$listNames));
+ 		}
+-		//保存zip名表记录
+-		file_put_contents($nameList,implode(PHP_EOL,$listNames));
+ 
+ 		//生成完整的操作日志
+-		$logFile = $tmpDir.'/updates.log';
+-		$logs .= 'SCANED: '.$all.PHP_EOL.
+-			'REVISED: '.$revise.PHP_EOL.
+-			'NEED UPDATE: '.$update.PHP_EOL.
+-			'DONE: '.$done.PHP_EOL.
+-			'ZIPS: Created-'.$creat.', Renewed-'.$renew.', Released-'.$release.PHP_EOL;
+-		file_put_contents($logFile,$logs,FILE_APPEND|LOCK_EX);
++		if ($token && $token!=='rec') {
++			$logFile = $tmpDir.'/updates.log';
++			$logs .= 'SCANED: '.$all.PHP_EOL.
++				'REVISED: '.$revise.PHP_EOL.
++				'NEED UPDATE: '.$update.PHP_EOL.
++				'DONE: '.$done.PHP_EOL.
++				'ZIPS: Created-'.$creat.', Renewed-'.$renew.', Released-'.$release.PHP_EOL;
++			file_put_contents($logFile,$logs,FILE_APPEND|LOCK_EX);
++		}
+ 
+ 		return $movable;
+ 	}
 diff --git a/README_test.md b/README_test.md
-index e002ec9..b5b448a 100644
+index 3e189a9..0247ded 100644
 --- a/README_test.md
 +++ b/README_test.md
-@@ -43,5 +43,5 @@
- [AntiSpam](AntiSpam) | 经典反垃圾评论机器人陷阱插件 | 1.0.3 | Willin Kan | [Latest](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/AntiSpam.zip)
+@@ -43,5 +43,4 @@
+ [AntiSpam](AntiSpam) | 经典反垃圾评论机器人陷阱插件 | 1.0.3 | Willin Kan | [Download](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/AntiSpam.zip)
  [AutoBackup](AutoBackup) | 数据库定时备份至邮箱插件 | 1.3.2 | [泽泽社长](https://zezeshe.com/archives/autobackup-typecho-plugins.html) | [Download](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/AutoBackup.zip)
  [JSON](JSON) | 以Json格式输出博客数据API插件 | 1.1 | [姬长信](https://github.com/insoxin),[SangSir](https://gitee.com/hkq15),[公子](https://github.com/lizheming) | [Latest](https://github.com/typecho-fans/plugins/releases/download/plugins-H_to_L/JSON.zip)
--[ShortLinks](ShortLinks) | 基于[GoLinks](GoLinks)增强外链转换插件 | 1.1.0 | [Ryan](https://github.com/benzBrake) | [下载](https://github.com/benzBrake/ShortLinks/archive/refs/heads/master.zip)
-+[ShortLinks](ShortLinks) | 基于[GoLinks](GoLinks)增强外链转换插件 | 1.0.0 | [Ryan](https://github.com/benzBrake) | [下载](https://github.com/benzBrake/ShortLinks/archive/refs/heads/master.zip)
+-[ShortLinks](ShortLinks) | 基于[GoLinks](GoLinks)增强外链转换插件 | 1.2.0 | [Ryan](https://github.com/benzBrake) | [Latest](https://github.com/benzBrake/ShortLinks/archive/refs/heads/master.zip)
  [changyandandian](changyandandian) | 搜狐畅言单点登录插件 | 1.0.0 | [泽泽社长](https://github.com/jrotty) | [Latest](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/changyandandian.zip)
 diff --git a/TESTORE.md b/TESTORE.md
-index 3ea3804..ad74943 100644
+index e6924c5..249f157 100644
 --- a/TESTORE.md
 +++ b/TESTORE.md
-@@ -6,7 +6,7 @@
- [![support](https://img.shields.io/badge/TeStore-Supported-green.svg?style=for-the-badge)](TeStore)
- [![contributors](https://img.shields.io/github/contributors/typecho-fans/plugins.svg?style=for-the-badge)](https://github.com/typecho-fans/plugins/graphs/contributors)
- 
--**本文件内插件信息由成员手动添加，[Actions脚本](AUTO-UPDATE.php)辅助修正，若名称链接指向Github目录可每周自动检测更新，成员也可运行[手动工作流](../actions/workflows/test1.yml)随时更新任意指定插件。🐧交流QQ群：[**40412938**](http://shang.qq.com/wpa/qunwpa?idkey=a5a8afedf099e18ddf9b530db9217251e39001d52aace42888bf470d9b6cb86a)**</div>
-+**本文件内插件信息由成员手动添加，[Actions脚本](AUTO-UPDATE.php)辅助修正，若名称链接指向Github目录可每周自动检测更新，成员也可运行[手动工作流](../../actions/workflows/test1.yml)随时更新任意指定插件。🐧交流QQ群：[**40412938**](http://shang.qq.com/wpa/qunwpa?idkey=a5a8afedf099e18ddf9b530db9217251e39001d52aace42888bf470d9b6cb86a)**</div>
- 
- ------------------------------
- 
-@@ -47,7 +47,7 @@
- [GithubWidgetPlus](https://github.com/sundaqiang/GithubWidgetPlus) | Github名片 | 0.3.0 | [sunadqiang](https://github.com/sundaqiang),[hongweipeng](https://github.com/hongweipeng) | [最近](https://github.com/typecho-fans/plugins/releases/download/plugins-D_to_G/GithubWidgetPlus.zip)
- [HuifengMembers](https://github.com/wedojava/HuifengMember) | Typecho自建会员信息数据表插件 | 0.1.1 | [回风](https://github.com/wedojava) | [最近](https://github.com/wedojava/HuifengMember/archive/master.zip)
+@@ -49,6 +49,7 @@
  [NotAllowIp](https://github.com/tangmaoguo/NotAllowIp-Typecho-Plugin) | Typecho设禁止访问IP黑名单插件 | 1.0.0 | [BlackStyle](https://github.com/tangmaoguo) | [最近](https://github.com/tangmaoguo/NotAllowIp-Typecho-Plugin/archive/master.zip)
--[OssImg](https://github.com/v03413/Typecho_Plugins/tree/master/OssImg) | 基于[OssForTypecho](https://github.com/typecho-fans/plugins/tree/master/OssForTypecho)图床外链插件 | 1.1.0 | [&#95;莫名&#95;](https://github.com/v03413) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-M_to_R/OssImg.zip)
-+[OssImg](https://github.com/v03413/Typecho_Plugins/tree/master/OssImg) | 基于[OssForTypecho](https://github.com/typecho-fans/plugins/tree/master/OssForTypecho)图床外链插件 | 1.1.0 | [_莫名_](https://github.com/v03413) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-M_to_R/OssImg.zip)
+ [OssImg](https://github.com/v03413/Typecho_Plugins/tree/master/OssImg) | 基于[OssForTypecho](https://github.com/typecho-fans/plugins/tree/master/OssForTypecho)图床外链插件 | 1.0.0 | [&#95;莫名&#95;](https://github.com/v03413) | [最近](https://github.com/typecho-fans/plugins/releases/download/plugins-M_to_R/OssImg.zip)
  [RobotsPlusPlus](https://xiamp.net/archives/typecho-spider-visit-record-plugin-enhanced-enhanced-version-robotsplusplus.html) | 新可定制版搜索引擎爬虫记录插件 | 2.0.7 | [Ryan](https://github.com/benzBrake), [YoviSun](http://www.yovisun.com), Shion | [最近](https://github.com/typecho-fans/plugins/releases/download/plugins-M_to_R/RobotsPlusPlus.zip)
++[ShortLinks](ShortLinks) | 基于[GoLinks](GoLinks)增强外链转换插件 | 1.2.0 | [Ryan](https://github.com/benzBrake) | [Latest](https://github.com/benzBrake/ShortLinks/archive/refs/heads/master.zip)
  [SiteMap](http://forum.typecho.org/viewtopic.php?f=6&t=9115) | Google/百度双生版站点地图插件 | 1.0.0 | 王And木 | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-S_to_Z/SiteMap_.And.zip)
  [SiteMap](https://gitee.com/freej2015/SiteMap) | 简易版发布生成Xml站点地图插件 | 1.0.0 | [yaecho](https://gitee.com/freej2015) | [最近](https://github.com/typecho-fans/plugins/releases/download/plugins-S_to_Z/SiteMap_yaecho.zip)
+ [StructureData](https://github.com/JokerQyou/StructureData) | [JSON-LD](https://en.wikipedia.org/wiki/JSON-LD)格式文章结构化数据插件 | 0.3.1 | [Joker Qyou](https://github.com/JokerQyou) | [最近](https://github.com/JokerQyou/StructureData/archive/master.zip)
