@@ -28,7 +28,7 @@
 
  > 下表中下载链接文字可在TeStore附加图标：`Download`即社区版，`N/A`为不可用，`Special`是安装或用法特殊。
 
-### 作品索引 (2)
+### 作品索引 (1)
 
 ###### TeStore会使用下表“名称”创建文件夹，“版本”数字判断升级，请尽量确保文本准确，按字母排序，简介便于关键字搜索。
 ```
@@ -37,4 +37,10 @@
 
 名称 | 简介 | 版本 | 作者 | zip包
 ---- | ----: | :---: | ----: | :----:
+[AMP](AMP) | 生成AMP/MIP移动标准页面插件 | 0.7.6.1 | [Holmesian](https://github.com/holmesian) | [Latest](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/AMP.zip)
+[AjaxComments](AjaxComments) | 嵌套评论Ajax异步提交效果插件 | 1.2.0 | [Byends](https://github.com/visamz), Willin Kan | [Latest](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/AjaxComments.zip)
+[AnotherLike](AnotherLike)  | 基于[Like](Like)动画美化点赞按钮插件 | 1.0.0 | [idealclover](https://github.com/idealclover)  | [Download](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/AnotherLike.zip)
+[AntiSpam](AntiSpam) | 经典反垃圾评论机器人陷阱插件 | 1.0.3 | Willin Kan | [Download](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/AntiSpam.zip)
+[AutoBackup](AutoBackup) | 数据库定时备份至邮箱插件 | 1.3.2 | [泽泽社长](https://zezeshe.com/archives/autobackup-typecho-plugins.html) | [Download](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/AutoBackup.zip)
+[JSON](JSON) | 以Json格式输出博客数据API插件 | 1.1 | [姬长信](https://github.com/insoxin),[SangSir](https://gitee.com/hkq15),[公子](https://github.com/lizheming) | [Latest](https://github.com/typecho-fans/plugins/releases/download/plugins-H_to_L/JSON.zip)
 [changyandandian](changyandandian) | 搜狐畅言单点登录插件 | 1.0.0 | [泽泽社长](https://github.com/jrotty) | [Latest](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/changyandandian.zip)
