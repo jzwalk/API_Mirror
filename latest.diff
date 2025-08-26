@@ -1,31 +1,268 @@
+diff --git a/.github/workflows/test1.yml b/.github/workflows/test1.yml
+index 8d63f80..a092548 100644
+--- a/.github/workflows/test1.yml
++++ b/.github/workflows/test1.yml
+@@ -24,29 +24,29 @@ jobs:
+       - name: "提交更新文件"
+         uses: stefanzweifel/git-auto-commit-action@v6
+         with:
+-          commit_message: "Force update plugins in TESTORE.md & README.md"
++          commit_message: "Force update requested plugins in TESTORE.md & README.md"
+ 
+       - name: "上传操作记录"
+         uses: actions/upload-artifact@v4
+         with:
+           name: "updates-log"
+-          path: /home/runner/work/API_Mirror/TMP/updates.log
++          path: ../TMP/updates.log
+ 
+       - name: "检测压缩文件"
+         id: match-zips
+         run: |
+-          echo A2C=$(find /home/runner/work/API_Mirror/NEW -type f -name "[a-cA-C]*") >> $GITHUB_OUTPUT
+-          echo D2G=$(find /home/runner/work/API_Mirror/NEW -type f -name "[d-gD-G]*") >> $GITHUB_OUTPUT
+-          echo H2L=$(find /home/runner/work/API_Mirror/NEW -type f -name "[h-lH-L]*") >> $GITHUB_OUTPUT
+-          echo M2R=$(find /home/runner/work/API_Mirror/NEW -type f -name "[m-rM-R]*") >> $GITHUB_OUTPUT
+-          echo S2Z=$(find /home/runner/work/API_Mirror/NEW -type f -name "[s-zS-Z]*") >> $GITHUB_OUTPUT
++          echo A2C=$(find ../NEW -type f -name "[a-cA-C]*") >> $GITHUB_OUTPUT
++          echo D2G=$(find ../NEW -type f -name "[d-gD-G]*") >> $GITHUB_OUTPUT
++          echo H2L=$(find ../NEW -type f -name "[h-lH-L]*") >> $GITHUB_OUTPUT
++          echo M2R=$(find ../NEW -type f -name "[m-rM-R]*") >> $GITHUB_OUTPUT
++          echo S2Z=$(find ../NEW -type f -name "[s-zS-Z]*") >> $GITHUB_OUTPUT
+ 
+       - name: "发布压缩包A-C"
+         uses: svenstaro/upload-release-action@v2
+         if: steps.match-zips.outputs.A2C
+         with:
+           repo_token: ${{ secrets.GITHUB_TOKEN }}
+-          file: /home/runner/work/API_Mirror/NEW/[a-cA-C]*
++          file: ../NEW/[a-cA-C]*
+           tag: "plugins-A_to_C"
+           overwrite: true
+           file_glob: true
+@@ -56,7 +56,7 @@ jobs:
+         if: steps.match-zips.outputs.D2G
+         with:
+           repo_token: ${{ secrets.GITHUB_TOKEN }}
+-          file: /home/runner/work/API_Mirror/NEW/[d-gD-G]*
++          file: ../NEW/[d-gD-G]*
+           tag: "plugins-D_to_G"
+           overwrite: true
+           file_glob: true
+@@ -66,7 +66,7 @@ jobs:
+         if: steps.match-zips.outputs.H2L
+         with:
+           repo_token: ${{ secrets.GITHUB_TOKEN }}
+-          file: /home/runner/work/API_Mirror/NEW/[h-lH-L]*
++          file: ../NEW/[h-lH-L]*
+           tag: "plugins-H_to_L"
+           overwrite: true
+           file_glob: true
+@@ -76,7 +76,7 @@ jobs:
+         if: steps.match-zips.outputs.M2R
+         with:
+           repo_token: ${{ secrets.GITHUB_TOKEN }}
+-          file: /home/runner/work/API_Mirror/NEW/[m-rM-R]*
++          file: ../NEW/[m-rM-R]*
+           tag: "plugins-M_to_R"
+           overwrite: true
+           file_glob: true
+@@ -86,7 +86,7 @@ jobs:
+         if: steps.match-zips.outputs.S2Z
+         with:
+           repo_token: ${{ secrets.GITHUB_TOKEN }}
+-          file: /home/runner/work/API_Mirror/NEW/[s-zS-Z]*
++          file: ../NEW/[s-zS-Z]*
+           tag: "plugins-S_to_Z"
+           overwrite: true
+           file_glob: true
+diff --git a/.github/workflows/test2.yml b/.github/workflows/test2.yml
+index 8d61320..87c06e1 100644
+--- a/.github/workflows/test2.yml
++++ b/.github/workflows/test2.yml
+@@ -19,29 +19,29 @@ jobs:
+       - name: "提交更新文件"
+         uses: stefanzweifel/git-auto-commit-action@v6
+         with:
+-          commit_message: "Auto update plugins in TESTORE.md & README.md"
++          commit_message: "Cron update github plugins in TESTORE.md & README.md"
+ 
+       - name: "上传操作记录"
+         uses: actions/upload-artifact@v4
+         with:
+           name: "updates-log"
+-          path: /home/runner/work/API_Mirror/TMP/updates.log
++          path: ../TMP/updates.log
+ 
+       - name: "检测压缩文件"
+         id: match-zips
+         run: |
+-          echo A2C=$(find /home/runner/work/API_Mirror/NEW -type f -name "[a-cA-C]*") >> $GITHUB_OUTPUT
+-          echo D2G=$(find /home/runner/work/API_Mirror/NEW -type f -name "[d-gD-G]*") >> $GITHUB_OUTPUT
+-          echo H2L=$(find /home/runner/work/API_Mirror/NEW -type f -name "[h-lH-L]*") >> $GITHUB_OUTPUT
+-          echo M2R=$(find /home/runner/work/API_Mirror/NEW -type f -name "[m-rM-R]*") >> $GITHUB_OUTPUT
+-          echo S2Z=$(find /home/runner/work/API_Mirror/NEW -type f -name "[s-zS-Z]*") >> $GITHUB_OUTPUT
++          echo A2C=$(find ../NEW -type f -name "[a-cA-C]*") >> $GITHUB_OUTPUT
++          echo D2G=$(find ../NEW -type f -name "[d-gD-G]*") >> $GITHUB_OUTPUT
++          echo H2L=$(find ../NEW -type f -name "[h-lH-L]*") >> $GITHUB_OUTPUT
++          echo M2R=$(find ../NEW -type f -name "[m-rM-R]*") >> $GITHUB_OUTPUT
++          echo S2Z=$(find ../NEW -type f -name "[s-zS-Z]*") >> $GITHUB_OUTPUT
+ 
+       - name: "发布压缩包A-C"
+         uses: svenstaro/upload-release-action@v2
+         if: steps.match-zips.outputs.A2C
+         with:
+           repo_token: ${{ secrets.GITHUB_TOKEN }}
+-          file: /home/runner/work/API_Mirror/NEW/[a-cA-C]*
++          file: ../NEW/[a-cA-C]*
+           tag: "plugins-A_to_C"
+           overwrite: true
+           file_glob: true
+@@ -51,7 +51,7 @@ jobs:
+         if: steps.match-zips.outputs.D2G
+         with:
+           repo_token: ${{ secrets.GITHUB_TOKEN }}
+-          file: /home/runner/work/API_Mirror/NEW/[d-gD-G]*
++          file: ../NEW/[d-gD-G]*
+           tag: "plugins-D_to_G"
+           overwrite: true
+           file_glob: true
+@@ -61,7 +61,7 @@ jobs:
+         if: steps.match-zips.outputs.H2L
+         with:
+           repo_token: ${{ secrets.GITHUB_TOKEN }}
+-          file: /home/runner/work/API_Mirror/NEW/[h-lH-L]*
++          file: ../NEW/[h-lH-L]*
+           tag: "plugins-H_to_L"
+           overwrite: true
+           file_glob: true
+@@ -71,7 +71,7 @@ jobs:
+         if: steps.match-zips.outputs.M2R
+         with:
+           repo_token: ${{ secrets.GITHUB_TOKEN }}
+-          file: /home/runner/work/API_Mirror/NEW/[m-rM-R]*
++          file: ../NEW/[m-rM-R]*
+           tag: "plugins-M_to_R"
+           overwrite: true
+           file_glob: true
+@@ -81,7 +81,7 @@ jobs:
+         if: steps.match-zips.outputs.S2Z
+         with:
+           repo_token: ${{ secrets.GITHUB_TOKEN }}
+-          file: /home/runner/work/API_Mirror/NEW/[s-zS-Z]*
++          file: ../NEW/[s-zS-Z]*
+           tag: "plugins-S_to_Z"
+           overwrite: true
+           file_glob: true
+diff --git a/.github/workflows/test3.yml b/.github/workflows/test3.yml
+index 34ac450..20edec9 100644
+--- a/.github/workflows/test3.yml
++++ b/.github/workflows/test3.yml
+@@ -36,31 +36,31 @@ jobs:
+         uses: stefanzweifel/git-auto-commit-action@v6
+         if: steps.match-diff.outputs.md
+         with:
+-          commit_message: "Upload zips of altered plugins in TESTORE.md & README.md"
++          commit_message: "Auto update altered plugins in TESTORE.md & README.md"
+ 
+       - name: "上传操作记录"
+         uses: actions/upload-artifact@v4
+         if: steps.match-diff.outputs.md
+         with:
+           name: "updates-log"
+-          path: /home/runner/work/API_Mirror/TMP/updates.log
++          path: ../TMP/updates.log
+ 
+       - name: "检测压缩文件"
+         id: match-zips
+         if: steps.match-diff.outputs.md
+         run: |
+-          echo A2C=$(find /home/runner/work/API_Mirror/NEW -type f -name "[a-cA-C]*") >> $GITHUB_OUTPUT
+-          echo D2G=$(find /home/runner/work/API_Mirror/NEW -type f -name "[d-gD-G]*") >> $GITHUB_OUTPUT
+-          echo H2L=$(find /home/runner/work/API_Mirror/NEW -type f -name "[h-lH-L]*") >> $GITHUB_OUTPUT
+-          echo M2R=$(find /home/runner/work/API_Mirror/NEW -type f -name "[m-rM-R]*") >> $GITHUB_OUTPUT
+-          echo S2Z=$(find /home/runner/work/API_Mirror/NEW -type f -name "[s-zS-Z]*") >> $GITHUB_OUTPUT
++          echo A2C=$(find ../NEW -type f -name "[a-cA-C]*") >> $GITHUB_OUTPUT
++          echo D2G=$(find ../NEW -type f -name "[d-gD-G]*") >> $GITHUB_OUTPUT
++          echo H2L=$(find ../NEW -type f -name "[h-lH-L]*") >> $GITHUB_OUTPUT
++          echo M2R=$(find ../NEW -type f -name "[m-rM-R]*") >> $GITHUB_OUTPUT
++          echo S2Z=$(find ../NEW -type f -name "[s-zS-Z]*") >> $GITHUB_OUTPUT
+ 
+       - name: "发布压缩包A-C"
+         uses: svenstaro/upload-release-action@v2
+         if: steps.match-zips.outputs.A2C
+         with:
+           repo_token: ${{ secrets.GITHUB_TOKEN }}
+-          file: /home/runner/work/API_Mirror/NEW/[a-cA-C]*
++          file: ../NEW/[a-cA-C]*
+           tag: "plugins-A_to_C"
+           overwrite: true
+           file_glob: true
+@@ -70,7 +70,7 @@ jobs:
+         if: steps.match-zips.outputs.D2G
+         with:
+           repo_token: ${{ secrets.GITHUB_TOKEN }}
+-          file: /home/runner/work/API_Mirror/NEW/[d-gD-G]*
++          file: ../NEW/[d-gD-G]*
+           tag: "plugins-D_to_G"
+           overwrite: true
+           file_glob: true
+@@ -80,7 +80,7 @@ jobs:
+         if: steps.match-zips.outputs.H2L
+         with:
+           repo_token: ${{ secrets.GITHUB_TOKEN }}
+-          file: /home/runner/work/API_Mirror/NEW/[h-lH-L]*
++          file: ../NEW/[h-lH-L]*
+           tag: "plugins-H_to_L"
+           overwrite: true
+           file_glob: true
+@@ -90,7 +90,7 @@ jobs:
+         if: steps.match-zips.outputs.M2R
+         with:
+           repo_token: ${{ secrets.GITHUB_TOKEN }}
+-          file: /home/runner/work/API_Mirror/NEW/[m-rM-R]*
++          file: ../NEW/[m-rM-R]*
+           tag: "plugins-M_to_R"
+           overwrite: true
+           file_glob: true
+@@ -100,7 +100,7 @@ jobs:
+         if: steps.match-zips.outputs.S2Z
+         with:
+           repo_token: ${{ secrets.GITHUB_TOKEN }}
+-          file: /home/runner/work/API_Mirror/NEW/[s-zS-Z]*
++          file: ../NEW/[s-zS-Z]*
+           tag: "plugins-S_to_Z"
+           overwrite: true
+           file_glob: true
 diff --git a/AUTO-UPDATE.php b/AUTO-UPDATE.php
-index 3db3e5c..52d32af 100644
+index 52d32af..134a13e 100644
 --- a/AUTO-UPDATE.php
 +++ b/AUTO-UPDATE.php
-@@ -388,7 +388,7 @@
- 									if (is_dir($name)) {
- 										$logs .= 'Warning: "'.$name.'" is local but table info "'.$url.'" is external.'.PHP_EOL;
- 									}
--								} elseif (is_dir($url)) {
-+								} elseif (!$tf && is_dir($url)) {
- 									$movable[] = str_replace($zipMeta,str_replace($teMark,$tfMark,$zipMeta),$column);
- 								}
- 							}
+@@ -48,7 +48,7 @@
+ 	if (file_exists('TESTORE.md')) {
+ 		$movable = updatePlugins('TESTORE.md',$urls,$authKey,$movable);
+ 		if ($movable) {
+-			updatePlugins('README_test.md',$urls,'rec'); //rec情况递归
++			updatePlugins('README_test.md',$urls,'rec',$movable); //rec情况递归
+ 		}
+ 	} else {
+ 		throw new RuntimeException('TESTORE.md is missing!');
 diff --git a/README_test.md b/README_test.md
-index 7a71906..535e159 100644
+index 72c4cbd..8f1c2f7 100644
 --- a/README_test.md
 +++ b/README_test.md
-@@ -37,4 +37,4 @@
+@@ -37,4 +37,5 @@
  
  名称 | 简介 | 版本 | 作者 | zip包
  ---- | ----: | :---: | ----: | :----:
--
-+[changyandandian](changyandandian) | 搜狐畅言单点登录插件 | 1.0.0 | [泽泽社长](https://github.com/jrotty) | [Latest](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/changyandandian.zip)
+-[changyandandian](changyandandian) | 搜狐畅言单点登录插件 | 1.0.0 | [泽泽社长](https://github.com/jrotty) | [Latest](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/changyandandian.zip)
++[Tbeautify](https://github.com/1997akkk/Tbeautify) | 网站特效美化插件,春节灯笼,看板娘,置灰等十特效 | 1.0.2 | [流情](https://liuqingwushui.top) | [最近](https://github.com/1997akkk/Tbeautify/archive/refs/heads/main.zip)
++[changyandandian](changyandandian) | 搜狐畅言单点登录插件 | 1.1.0 | [泽泽社长](https://github.com/jrotty) | [Latest](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/changyandandian.zip)
 diff --git a/TESTORE.md b/TESTORE.md
-index 6afe955..e7a3205 100644
+index 63e1e9a..dfc288f 100644
 --- a/TESTORE.md
 +++ b/TESTORE.md
-@@ -55,11 +55,10 @@
+@@ -49,10 +49,9 @@
  [NotAllowIp](https://github.com/tangmaoguo/NotAllowIp-Typecho-Plugin) | Typecho设禁止访问IP黑名单插件 | 1.0.0 | [BlackStyle](https://github.com/tangmaoguo) | [最近](https://github.com/tangmaoguo/NotAllowIp-Typecho-Plugin/archive/master.zip)
  [OssImg](https://github.com/v03413/Typecho_Plugins/tree/master/OssImg) | 基于[OssForTypecho](https://github.com/typecho-fans/plugins/tree/master/OssForTypecho)图床外链插件 | 1.0.0 | [&#95;莫名&#95;](https://github.com/v03413) | [最近](https://github.com/typecho-fans/plugins/releases/download/plugins-M_to_R/OssImg.zip)
  [RobotsPlusPlus](https://xiamp.net/archives/typecho-spider-visit-record-plugin-enhanced-enhanced-version-robotsplusplus.html) | 新可定制版搜索引擎爬虫记录插件 | 2.0.7 | [Ryan](https://github.com/benzBrake), [YoviSun](http://www.yovisun.com), Shion | [最近](https://github.com/typecho-fans/plugins/releases/download/plugins-M_to_R/RobotsPlusPlus.zip)
@@ -36,5 +273,4 @@ index 6afe955..e7a3205 100644
  [StructureData](https://github.com/JokerQyou/StructureData) | [JSON-LD](https://en.wikipedia.org/wiki/JSON-LD)格式文章结构化数据插件 | 0.3.1 | [Joker Qyou](https://github.com/JokerQyou) | [最近](https://github.com/JokerQyou/StructureData/archive/master.zip)
  [Svg3dTagCloud](https://gitee.com/hoexhe/Svg3dTagCloud) | Typecho用动态3D标签云特效插件 | 1.0.0 | [Hoe](https://gitee.com/hoexhe) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-S_to_Z/Svg3dTagCloud.zip)
  [TEDUriReplace](https://www.typechodev.com/plugins/%E5%85%B6%E4%BB%96%E6%8F%92%E4%BB%B6/typecho-url-replace.html) | 非数据库式批量替换文章内容插件 | 1.0 | [lgl](https://www.typechodev.com) | [最近](https://github.com/typecho-fans/plugins/releases/download/plugins-S_to_Z/TEDUriReplace.zip)
- [Tbeautify](https://github.com/1997akkk/Tbeautify) | 网站特效美化插件,春节灯笼,看板娘,置灰等十特效 | 1.0.2 | [流情](https://liuqingwushui.top) | [最近](https://github.com/1997akkk/Tbeautify/archive/refs/heads/main.zip)
--[changyandandian](changyandandian) | 搜狐畅言单点登录插件 | 1.0.0 | [泽泽社长](https://github.com/jrotty) | [Latest](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/changyandandian.zip)
+-[Tbeautify](https://github.com/1997akkk/Tbeautify) | 网站特效美化插件,春节灯笼,看板娘,置灰等十特效 | 1.0.2 | [流情](https://liuqingwushui.top) | [最近](https://github.com/1997akkk/Tbeautify/archive/refs/heads/main.zip)

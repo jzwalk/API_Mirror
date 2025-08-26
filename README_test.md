@@ -28,7 +28,7 @@
 
  > 下表中下载链接文字可在TeStore附加图标：`Download`即社区版，`N/A`为不可用，`Special`是安装或用法特殊。
 
-### 作品索引 (1)
+### 作品索引 (2)
 
 ###### TeStore会使用下表“名称”创建文件夹，“版本”数字判断升级，请尽量确保文本准确，按字母排序，简介便于关键字搜索。
 ```
@@ -37,5 +37,4 @@
 
 名称 | 简介 | 版本 | 作者 | zip包
 ---- | ----: | :---: | ----: | :----:
-[Tbeautify](https://github.com/1997akkk/Tbeautify) | 网站特效美化插件,春节灯笼,看板娘,置灰等十特效 | 1.0.2 | [流情](https://liuqingwushui.top) | [最近](https://github.com/1997akkk/Tbeautify/archive/refs/heads/main.zip)
-[changyandandian](changyandandian) | 搜狐畅言单点登录插件 | 1.1.0 | [泽泽社长](https://github.com/jrotty) | [Latest](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/changyandandian.zip)
+[changyandandian](changyandandian) | 搜狐畅言单点登录插件 | 1.0.0 | [泽泽社长](https://github.com/jrotty) | [Latest](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/changyandandian.zip)
