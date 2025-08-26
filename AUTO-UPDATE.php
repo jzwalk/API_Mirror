@@ -57,7 +57,7 @@
 	 * @param string $tableFile MD文档路径
 	 * @param array $requested 需求更新repo信息
 	 * @param string $token GitHub Token
-	 * @param array $added 转移表格条目
+	 * @param array $added 转移条目或zip名表
 	 * @return array
 	 */
 	function updatePlugins(string $tableFile,array $requested,string $token='',array $added=[]): array
@@ -164,10 +164,11 @@
 							$tf = $tableFile=='README_test.md';
 							$isUrl = str_starts_with($url,'http://') || str_starts_with($url,'https://');
 							$zipMeta = end($metas);
-							$latest = array_slice($listNames,0,20); //分割前20
+							//zip名表分割或引入前20
+							$latest = $token ? array_slice($listNames,0,20) : $added;
 							preg_match('/(?<=\[)[^\]]*/',$zipMeta,$zipText);
 							$mark = $zipText ? trim($zipText[0]) : ($tf ? 'Download' : '下载'); //取最后一个栏位链接文本
-							if ($condition) {
+							if ($condition && $token) {
 								++$all; //记录检测次数
 
 								//提取子目录(分支名)
@@ -354,12 +355,19 @@
 											array_splice($listNames,array_search($zipName,$listNames),1);
 										}
 										array_unshift($listNames,$zipName);
+										$outName = $latest[19] ?? '';
 										$latest = array_slice($listNames,0,20);
+										//原末位去除标记
+										if ($outName && !in_array($outName,$latest) && !in_array(explode('_',$outName)[0],$requested)) {
+											updatePlugins($tableFile,[$outName],'',$latest);
+											updatePlugins($tf ? 'TESTORE.md' : 'README_test.md',[$outName],'',$latest);
+										}
+
 										//记录插件改动明细
 										$logs .= $name.' By '.$authorInfo.' - '.date('Y-m-d H:i',time()).' - Revised '.$updated.$fixed.PHP_EOL;
 									}
 								} else {
-									$logs .= 'Error: Table info - "'.$url.'" & "'.$zip.'" both invalid, nothing is revised!'.PHP_EOL;
+									$logs .= 'Error: Table info - "'.$url.'" & "'.$zip.'" both invalid, removal is advised!'.PHP_EOL;
 								}
 							}
 
@@ -388,11 +396,11 @@
 			}
 
 			//合并所有行排序后重建文档
-			$tables = array_unique(array_merge(array_diff($tables,$movable),$added));
+			$tables = array_unique(array_merge(array_diff($tables,$movable),$token ? $added : []));
 			sort($tables);
 			file_put_contents($tableFile,implode(PHP_EOL,$descriptions).PHP_EOL.implode(PHP_EOL,$tables).PHP_EOL);
 		} else {
-			$logs .= 'Error: "'.$tableFile.'" has no table in it!'.PHP_EOL;
+			$logs .= 'Error: "'.$tableFile.'" matches no table!'.PHP_EOL;
 		}
 
 		//清空临时目录(保留updates.log)
