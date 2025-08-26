@@ -388,7 +388,7 @@
 									if (is_dir($name)) {
 										$logs .= 'Warning: "'.$name.'" is local but table info "'.$url.'" is external.'.PHP_EOL;
 									}
-								} elseif (is_dir($url)) {
+								} elseif (!$tf && is_dir($url)) {
 									$movable[] = str_replace($zipMeta,str_replace($teMark,$tfMark,$zipMeta),$column);
 								}
 							}

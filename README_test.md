@@ -37,4 +37,4 @@
 
 名称 | 简介 | 版本 | 作者 | zip包
 ---- | ----: | :---: | ----: | :----:
-
+[changyandandian](changyandandian) | 搜狐畅言单点登录插件 | 1.0.0 | [泽泽社长](https://github.com/jrotty) | [Latest](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/changyandandian.zip)
