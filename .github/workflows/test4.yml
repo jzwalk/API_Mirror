@@ -1,24 +1,22 @@
-# 将API数据下载为文件供Gitee/jsDelivr等镜像地址加速
-
-name: "接收请求触发文件更新"
+name: "Actions执行后同步数据"
 
 on:
   workflow_dispatch
 
 jobs:
 
-  download-api:
-    name: "输出API数据至文件"
+  api-mirror:
+    name: "下载API并推送Gitee"
     runs-on: "ubuntu-latest"
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: "ZIP_CDN加速目录数据"
+      - name: "ZIP_CDN数据"
         run: |
           curl -s https://api.github.com/repos/typecho-fans/plugins/contents/ZIP_CDN > ZIP_CDN.json
 
-      - name: "文档最后更新时间字串"
+      - name: "文档变更时间"
         run: |
           date_testore=`curl -s "https://api.github.com/repos/typecho-fans/plugins/commits?path=TESTORE.md&page=1&per_page=1" | jq -r ".[0].commit.committer.date"`
           date_readme=`curl -s "https://api.github.com/repos/typecho-fans/plugins/commits?path=README.md&page=1&per_page=1" | jq -r ".[0].commit.committer.date"`
@@ -31,7 +29,7 @@ jobs:
       - name: "提交文件更新"
         uses: stefanzweifel/git-auto-commit-action@v6
         with:
-          commit_message: "Fetch API data for TeStore accelerations"
+          commit_message: "Fetch API data & sync repo to Gitee for TeStore accelerations"
 
       - name: "同步Gitee镜像"
         uses: Yikun/hub-mirror-action@master
