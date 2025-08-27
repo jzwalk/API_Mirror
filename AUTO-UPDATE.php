@@ -396,7 +396,7 @@
 							$logs .= 'Error: Line '.$line.' matches no plugin name!'.PHP_EOL;
 						}
 					} else {
-						$logs .=  $token=='rec' ? '' : 'Error: Line '.($line+1).' matches wrong columns!'.PHP_EOL;
+						$logs .= $token=='rec' ? '' : 'Error: Line '.($line+1).' matches wrong columns!'.PHP_EOL;
 					}
 
 					$tables[] = $column;
@@ -540,7 +540,7 @@
 			if (is_array($token) && T_DOC_COMMENT == $token[0]) {
 
 				/** 分行读取 */
-				$lines = preg_split("(\r|\n)",$token[1]);
+				$lines = preg_split('/(\r|\n)/',$token[1]);
 				foreach ($lines as $line) {
 					$line = trim($line);
 					if (!empty($line) && '*' == $line[0]) {
@@ -621,7 +621,7 @@
 	function dispatchZips(string $md,bool $bingo,string $url,string $name,array $datas,string $branch,string $plugin,string $pluginZip,string $cdn,string $zip,int $index,string $logs): string
 	{
 		$host = parse_url($url,PHP_URL_HOST);
-		$github  = $host=='github.com';
+		$github = $host=='github.com';
 		$folder = realpath('../').'/TMP/'.$index.'_'.$name;
 		$tfLocal = $md=='README_test.md' && is_dir($url);
 		if (!is_dir($folder) && !$tfLocal) {
@@ -665,7 +665,7 @@
 				$folder = realpath($url);
 			}
 			$phpZip = new ZipArchive();
-			if ($phpZip->open($cdn,ZipArchive::CREATE | ZipArchive::OVERWRITE)!==true) {
+			if ($phpZip->open($cdn,ZipArchive::CREATE|ZipArchive::OVERWRITE)!==true) {
 				$logs .= 'Error: Packing zip - "'.$cdn.'" failed to create files!'.PHP_EOL;
 			} else {
 				$filePaths = pluginRoute($folder,$name,true);
