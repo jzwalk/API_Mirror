@@ -226,7 +226,7 @@
 											$infos = parseInfo($plugin);
 										}
 									}
-								} else {
+								} elseif ($local = is_dir($url)) {
 									//本地读取主文件信息
 									$plugin = pluginRoute($url,$name);
 									if ($plugin) {
@@ -275,9 +275,9 @@
 									if ($nameFile) {
 										if ($noPlugin) {
 											$logs .= 'Warning: "'.($plugin ?: $url).'" is not valid, using "'.$zip.'" to read info.'.PHP_EOL;
-											if (!$isUrl && !$tf) { //TeStore不显示无文档链接插件
+											if (!$isUrl && !$tf && !$local) {
 												$column = str_replace($nameMeta,'['.$nameFile.']('.$infos['homepage'].')',$column);
-												$fixed .= ' / Table Repo Masked';
+												$fixed .= ' / Table Repo Masked'; //TeStore不显示无文档链接插件
 											}
 										} elseif ($name!==$nameFile) {
 											$logs .= 'Warning: "'.$name.'" in table does not match "'.$nameFile.'" in file.'.PHP_EOL;
@@ -384,7 +384,7 @@
 							}
 
 							if ($token) {
-								//筛出README.md外部信息
+								//筛出需跨文档转移错位条目
 								$tfMark = ['Download','N/A','Special','NewVer','Latest','Newest'];
 								$teMark = ['下载','不可用','特殊','新版','最近','最新'];
 								if ($tf && $isUrl) {
@@ -392,7 +392,7 @@
 									if (is_dir($name)) {
 										$logs .= 'Warning: "'.$name.'" is local but table info "'.$url.'" is external.'.PHP_EOL;
 									}
-								} elseif (!$tf && is_dir($url)) {
+								} elseif (!$tf && $local) {
 									$movable[] = str_replace($zipMeta,str_replace($teMark,$tfMark,$zipMeta),$column);
 								}
 								//收集全部zip名检测重复条目
