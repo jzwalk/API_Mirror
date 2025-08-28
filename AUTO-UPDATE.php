@@ -82,6 +82,7 @@
 		$movable = [];
 		$allNames = $tf ? ['README_test.md'] : (isset($listConent[1]) ? explode(PHP_EOL,$listConent[1]) : []);
 		$tables = [];
+		$normal = $token && $token!=='rec';
 
 		//创建临时文件夹
 		$tmpDir = realpath('../').'/TMP';
@@ -384,17 +385,19 @@
 								$column = str_replace($zipMeta,str_replace($latestMark,['Download','NewVer','下载','新版'],$zipMeta),$column);
 							}
 
-							if ($token) {
+							if ($normal) {
 								//筛出需跨文档转移错位条目
 								$tfMark = ['Download','N/A','Special','NewVer','Latest','Newest'];
 								$teMark = ['下载','不可用','特殊','新版','最近','最新'];
 								if ($tf && $isUrl) {
-									$movable[] = str_replace($zipMeta,str_replace($tfMark,$teMark,$zipMeta),$column);
+									$column = str_replace($zipMeta,str_replace($tfMark,$teMark,$zipMeta),$column);
+									$movable[] = $column;
 									if (is_dir($name)) {
 										$logs .= 'Warning: "'.$name.'" is local but table info "'.$url.'" is external.'.PHP_EOL;
 									}
 								} elseif (!$tf && $isLocal) {
-									$movable[] = str_replace($zipMeta,str_replace($teMark,$tfMark,$zipMeta),$column);
+									$column = str_replace($zipMeta,str_replace($teMark,$tfMark,$zipMeta),$column);
+									$movable[] = $column;
 								}
 								//收集全部zip名检测重复条目
 								$allNames[] = $zipName;
@@ -418,7 +421,7 @@
 			$logs .= 'Error: "'.$tableFile.'" matches no table!'.PHP_EOL;
 		}
 
-		if ($token!=='rec') {
+		if ($normal) {
 			//清空临时目录(保留updates.log)
 			exec('find "'.$tmpDir.'" -mindepth 1 ! -name "updates.log" -exec rm -rf {} +');
 
@@ -428,7 +431,7 @@
 			}
 			file_put_contents($nameList,implode(PHP_EOL,$listNames));
 
-			if ($allNames && $token) {
+			if ($allNames) {
 				//检查重复项
 				$duplicates = array_keys(
 					array_filter(
@@ -446,6 +449,8 @@
 				if ($api) {
 					$datas = json_decode($api,true);
 					$extras = array_diff(array_column($datas,'name'),$allNames);
+					print_r(array_slice(array_column($datas,'name'),0,50),true);
+					print_r(array_slice($allNames,0,50),true);
 					if ($extras) {
 						$logs .= 'Warning: These zip files do not match the "name_authors.zip" pattern based on table info and will be deleted: "'.implode(' / ',$extras).'"'.PHP_EOL;
 						foreach ($extras as $extra) {
@@ -456,10 +461,8 @@
 					}
 				}
 			}
-		}
 
-		//生成完整的操作日志
-		if ($token && $token!=='rec') {
+			//生成完整的操作日志
 			$logFile = $tmpDir.'/updates.log';
 			$logs .= 'SCANED: '.$all.PHP_EOL.
 				'REVISED: '.$revise.PHP_EOL.
