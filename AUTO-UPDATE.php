@@ -449,8 +449,8 @@
 				if ($api) {
 					$datas = json_decode($api,true);
 					$extras = array_diff(array_column($datas,'name'),$allNames);
-					print_r(array_slice(array_column($datas,'name'),0,50),true);
-					print_r(array_slice($allNames,0,50),true);
+					print_r(array_slice(array_column($datas,'name'),0,50));
+					print_r(array_slice($allNames,0,50));
 					if ($extras) {
 						$logs .= 'Warning: These zip files do not match the "name_authors.zip" pattern based on table info and will be deleted: "'.implode(' / ',$extras).'"'.PHP_EOL;
 						foreach ($extras as $extra) {
