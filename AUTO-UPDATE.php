@@ -168,6 +168,7 @@
 							$zipName = $name.'_'.str_replace([':','"','/','\\','|','?','*'],'',preg_replace('/[\t ]*(,|&|，)[ \t]*/','_',$authorTable)).'.zip';
 
 							$isUrl = str_starts_with($url,'http://') || str_starts_with($url,'https://');
+							$isLocal = is_dir($url);
 							$zipMeta = end($metas);
 							$latest = $token ? array_slice($listNames,0,20) : $added; //zip名表分割或引入前20
 							preg_match('/(?<=\[)[^\]]*/',$zipMeta,$zipText);
@@ -226,7 +227,7 @@
 											$infos = parseInfo($plugin);
 										}
 									}
-								} elseif ($local = is_dir($url)) {
+								} elseif ($isLocal) {
 									//本地读取主文件信息
 									$plugin = pluginRoute($url,$name);
 									if ($plugin) {
@@ -275,7 +276,7 @@
 									if ($nameFile) {
 										if ($noPlugin) {
 											$logs .= 'Warning: "'.($plugin ?: $url).'" is not valid, using "'.$zip.'" to read info.'.PHP_EOL;
-											if (!$isUrl && !$tf && !$local) {
+											if (!$isUrl && !$tf && !$isLocal) {
 												$column = str_replace($nameMeta,'['.$nameFile.']('.$infos['homepage'].')',$column);
 												$fixed .= ' / Table Repo Masked'; //TeStore不显示无文档链接插件
 											}
@@ -392,7 +393,7 @@
 									if (is_dir($name)) {
 										$logs .= 'Warning: "'.$name.'" is local but table info "'.$url.'" is external.'.PHP_EOL;
 									}
-								} elseif (!$tf && $local) {
+								} elseif (!$tf && $isLocal) {
 									$movable[] = str_replace($zipMeta,str_replace($teMark,$tfMark,$zipMeta),$column);
 								}
 								//收集全部zip名检测重复条目
@@ -423,7 +424,7 @@
 
 			//保存zip名表记录
 			if ($tf) {
-				array_merge($listNames,$allNames); //临时记录全表
+				$listNames = array_merge($listNames,$allNames); //临时记录全表
 			}
 			file_put_contents($nameList,implode(PHP_EOL,$listNames));
 
@@ -445,15 +446,13 @@
 				if ($api) {
 					$datas = json_decode($api,true);
 					$extras = array_diff(array_column($datas,'name'),$allNames);
-					print_r(array_slice(array_column($datas,'name'),0,10));
-					print_r(array_slice($allNames,0,10));
-					if ($extras && file_exists('ZIP_CDN/'.$extra)) {
+					if ($extras) {
 						$logs .= 'Warning: These zip files do not match the "name_authors.zip" pattern based on table info and will be deleted: "'.implode(' / ',$extras).'"'.PHP_EOL;
-//						foreach ($extras as $extra) {
-//							if (file_exists('ZIP_CDN/'.$extra)) {
-//								unlink('ZIP_CDN/'.$extra);
-//							}
-//						}
+						foreach ($extras as $extra) {
+							if (file_exists('ZIP_CDN/'.$extra)) {
+								unlink('ZIP_CDN/'.$extra);
+							}
+						}
 					}
 				}
 			}
