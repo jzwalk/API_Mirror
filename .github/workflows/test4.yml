@@ -5,7 +5,7 @@ on:
     workflows:
       - "手动更新任意收录插件"
       - "定时更新GitHub源插件"
-      - "推送更新变动插件zip包"
+      - "推送检测改动表格条目"
     branches:
       - "master"
     types:
