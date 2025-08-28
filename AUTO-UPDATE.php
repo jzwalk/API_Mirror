@@ -77,10 +77,10 @@
 		$release = 0;
 		$done = 0;
 		$nameList = 'ZIP_CDN/NAME_LIST.log';
-		$listConent = file_exists($nameList) ? explode('README_test.md',file_get_contents($nameList)) : [];
+		$listConent = file_exists($nameList) ? explode('README_test.md ALL'.PHP_EOL,file_get_contents($nameList)) : [];
 		$listNames = $listConent ? explode(PHP_EOL,$listConent[0]) : [];
 		$movable = [];
-		$allNames = $tf ? ['README_test.md'] : (isset($listConent[1]) ? explode(PHP_EOL,$listConent[1]) : []);
+		$allNames = $tf ? ['README_test.md ALL'] : (isset($listConent[1]) ? explode(PHP_EOL,$listConent[1]) : []);
 		$tables = [];
 		$normal = $token && $token!=='rec';
 
@@ -443,19 +443,19 @@
 					$logs .= 'Warning: Table info about "'.implode(' / ',$duplicates).'" may be added repeatedly.'.PHP_EOL;
 				}
 				//清除冗余zip
-				$allNames = array_merge(array_unique($allNames),['NAME_LIST.log','README.md']);
-				$api = @file_get_contents('https://api.github.com/repositories/14101953/contents/ZIP_CDN',0,
-					stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP','Authorization: token '.$token)))));
-				if ($api) {
-					$datas = json_decode($api,true);
-					$extras = array_diff(array_column($datas,'name'),$allNames);
-					print_r(array_slice(array_column($datas,'name'),0,50));
-					print_r(array_slice($allNames,0,50));
-					if ($extras) {
-						$logs .= 'Warning: These zip files do not match the "name_authors.zip" pattern based on table info and will be deleted: "'.implode(' / ',$extras).'"'.PHP_EOL;
-						foreach ($extras as $extra) {
-							if (file_exists('ZIP_CDN/'.$extra)) {
-								unlink('ZIP_CDN/'.$extra);
+				if (!$tf) {
+					$allNames = array_merge(array_unique($allNames),['NAME_LIST.log','README.md']);
+					$api = @file_get_contents('https://api.github.com/repositories/14101953/contents/ZIP_CDN',0,
+						stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP','Authorization: token '.$token)))));
+					if ($api) {
+						$datas = json_decode($api,true);
+						$extras = array_diff(array_column($datas,'name'),$allNames);
+						if ($extras) {
+							$logs .= 'Warning: These zip files do not match the "name_authors.zip" pattern based on table info and will be deleted: "'.implode(' / ',$extras).'"'.PHP_EOL;
+							foreach ($extras as $extra) {
+								if (file_exists('ZIP_CDN/'.$extra)) {
+									unlink('ZIP_CDN/'.$extra);
+								}
 							}
 						}
 					}
