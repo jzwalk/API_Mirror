@@ -3,16 +3,13 @@ name: "Actions执行后同步数据"
 on:
   workflow_run:
     workflows:
-      - "test1.yml"
-      - "test2.yml"
-      - "test3.yml"
+      - "手动更新任意收录插件"
+      - "定时更新GitHub源插件"
+      - "推送更新变动插件zip包"
     branches:
       - "master"
     types:
       - completed
-
-permissions:
-  actions: write
 
 jobs:
 
