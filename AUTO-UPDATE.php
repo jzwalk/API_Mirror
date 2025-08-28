@@ -68,6 +68,7 @@
 		//预设出循环变量
 		$logs = '-------'.$tableFile.'-------'.PHP_EOL.date('Y-m-d',time()).PHP_EOL;
 		$descriptions = [];
+		$tf = $tableFile=='README_test.md';
 		$all = 0;
 		$revise = 0;
 		$creat = 0;
@@ -76,8 +77,10 @@
 		$release = 0;
 		$done = 0;
 		$nameList = 'ZIP_CDN/NAME_LIST.log';
-		$listNames = file_exists($nameList) ? explode(PHP_EOL,file_get_contents($nameList)) : [];
+		$listConent = file_exists($nameList) ? explode('README_test.md',file_get_contents($nameList)) : [];
+		$listNames = $listConent ? explode(PHP_EOL,$listConent[0]) : [];
 		$movable = [];
+		$allNames = $tf ? ['README_test.md'] : (isset($listConent[1]) ? explode(PHP_EOL,$listConent[1]) : []);
 		$tables = [];
 
 		//创建临时文件夹
@@ -164,7 +167,6 @@
 							//作者名转文件名
 							$zipName = $name.'_'.str_replace([':','"','/','\\','|','?','*'],'',preg_replace('/[\t ]*(,|&|，)[ \t]*/','_',$authorTable)).'.zip';
 
-							$tf = $tableFile=='README_test.md';
 							$isUrl = str_starts_with($url,'http://') || str_starts_with($url,'https://');
 							$zipMeta = end($metas);
 							$latest = $token ? array_slice($listNames,0,20) : $added; //zip名表分割或引入前20
@@ -194,10 +196,10 @@
 									}
 								}
 
-								$tfLocal = $tf && is_dir($url); //本地社区维护版
 								$datas = [];
 								$plugin = '';
-								if (!$tfLocal) {
+								$infos = [];
+								if (!$tf) {
 									//API查询repo文件树
 									if ($github || $gitee) {
 										$api = @file_get_contents($apiUrl.'/git/trees/'.$branch.'?recursive=1',0,
@@ -227,11 +229,13 @@
 								} else {
 									//本地读取主文件信息
 									$plugin = pluginRoute($url,$name);
-									$infos = parseInfo($plugin);
+									if ($plugin) {
+										$infos = parseInfo($plugin);
+									}
 								}
 
 								$noPlugin = empty($infos['version']); //表格repo信息无效
-								$gitIsh = !$noPlugin && !$api && !$tfLocal; //有效但无API
+								$gitIsh = !$noPlugin && !$api && !$tf; //有效但无API
 								$zip = str_contains($zipMeta,'](') ? trim(end($links[0])) : ''; //取最后一个栏位链接地址
 								$tmpSub = $tmpDir.'/'.$all.'_'.$name;
 								$pluginZip = '';
@@ -379,8 +383,8 @@
 								$column = str_replace($zipMeta,str_replace($latestMark,['Download','NewVer','下载','新版'],$zipMeta),$column);
 							}
 
-							//筛出README.md外部信息
 							if ($token) {
+								//筛出README.md外部信息
 								$tfMark = ['Download','N/A','Special','NewVer','Latest','Newest'];
 								$teMark = ['下载','不可用','特殊','新版','最近','最新'];
 								if ($tf && $isUrl) {
@@ -391,6 +395,8 @@
 								} elseif (!$tf && is_dir($url)) {
 									$movable[] = str_replace($zipMeta,str_replace($teMark,$tfMark,$zipMeta),$column);
 								}
+								//收集全部zip名检测重复条目
+								$allNames[] = $zipName;
 							}
 						} else {
 							$logs .= 'Error: Line '.$line.' matches no plugin name!'.PHP_EOL;
@@ -415,11 +421,17 @@
 			//清空临时目录(保留updates.log)
 			exec('find "'.$tmpDir.'" -mindepth 1 ! -name "updates.log" -exec rm -rf {} +');
 
-			if ($listNames && $token) {
+			//保存zip名表记录
+			if ($tf) {
+				array_merge($listNames,$allNames); //临时记录全表
+			}
+			file_put_contents($nameList,implode(PHP_EOL,$listNames));
+
+			if ($allNames && $token) {
 				//检查重复项
 				$duplicates = array_keys(
 					array_filter(
-						array_count_values($listNames),
+						array_count_values($allNames),
 						fn($count)=>$count>1
 					)
 				);
@@ -427,26 +439,22 @@
 					$logs .= 'Warning: Table info about "'.implode(' / ',$duplicates).'" may be added repeatedly.'.PHP_EOL;
 				}
 				//清除冗余zip
-				$listNames = array_unique($listNames);
-				if (count($listNames)>600) { //有足量记录后
-					$api = @file_get_contents('https://api.github.com/repositories/14101953/contents/ZIP_CDN',0,
-						stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP')))));
-					if ($api) {
-						$datas = json_decode($api,true);
-						$extras = array_diff(array_column($datas,'name'),$listNames);
-						if ($extras) {
-							$logs .= 'Warning: These zip files do not match the names in NAME_LIST.log and will be deleted: "'.implode(' / ',$extras).'"'.PHP_EOL;
-							foreach ($extras as $extra) {
-								if (file_exists('ZIP_CDN/'.$extra)) {
-									unlink('ZIP_CDN/'.$extra);
-								}
+				$allNames = array_unique($allNames);
+				$api = @file_get_contents('https://api.github.com/repositories/14101953/contents/ZIP_CDN',0,
+					stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP','Authorization: token '.$token)))));
+				if ($api) {
+					$datas = json_decode($api,true);
+					$extras = array_diff(array_column($datas,'name'),$allNames);
+					if ($extras) {
+						$logs .= 'Warning: These zip files do not match the names in NAME_LIST.log and will be deleted: "'.implode(' / ',$extras).'"'.PHP_EOL;
+						foreach ($extras as $extra) {
+							if (file_exists('ZIP_CDN/'.$extra)) {
+								unlink('ZIP_CDN/'.$extra);
 							}
 						}
 					}
 				}
 			}
-			//保存zip名表记录
-			file_put_contents($nameList,implode(PHP_EOL,$listNames));
 		}
 
 		//生成完整的操作日志
@@ -623,7 +631,8 @@
 		$host = parse_url($url,PHP_URL_HOST);
 		$github = $host=='github.com';
 		$folder = realpath('../').'/TMP/'.$index.'_'.$name;
-		$tfLocal = $md=='README_test.md' && is_dir($url);
+		$tf = $md == 'README_test.md';
+		$tfLocal = $tf && is_dir($url);
 		if (!is_dir($folder) && !$tfLocal) {
 			mkdir($folder,0777,true);
 		}
@@ -651,7 +660,7 @@
 					$logs .= 'Error: Gitee API - Too many files, please upload the zip manually!'.PHP_EOL;
 				}
 			//即$gitIsh已解包
-			} elseif (!$datas && !$tfLocal) {
+			} elseif (!$datas && !$tf) {
 				$download = @file_get_contents($plugin); //只能取主文件
 				$path = $pluginZip ?: $folder.'/'.basename($plugin);
 				if (!is_dir(dirname($path))) {
@@ -683,7 +692,7 @@
 			} else {
 				$logs .= 'Error: Source zip - "'.$zip.'" cannot be downloaded!'.PHP_EOL;
 			}
-			if ($tfLocal) {
+			if ($tf) {
 				$logs .= 'Warning: Local "'.$url.'" is not valid, using "'.$zip.'" for download.'.PHP_EOL;
 			}
 		}
