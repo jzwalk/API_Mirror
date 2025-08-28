@@ -43,6 +43,6 @@
 [AntiSpam](AntiSpam) | 经典反垃圾评论机器人陷阱插件 | 1.0.3 | Willin Kan | [Download](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/AntiSpam.zip)
 [AutoBackup](AutoBackup) | 数据库定时备份至邮箱插件 | 1.3.2 | [泽泽社长](https://zezeshe.com/archives/autobackup-typecho-plugins.html) | [Latest](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/AutoBackup.zip)
 [JSON](JSON) | 以Json格式输出博客数据API插件 | 1.1 | [姬长信](https://github.com/insoxin),[SangSir](https://gitee.com/hkq15),[公子](https://github.com/lizheming) | [Download](https://github.com/typecho-fans/plugins/releases/download/plugins-H_to_L/JSON.zip)
-[MarkdownParse](https://github.com/mrgeneralgoo/typecho-markdown) | CommonMark+GFM全能Markdown解析 | 2.6.1 | [mrgeneral](https://github.com/mrgeneralgoo) | [Newest](https://github.com/typecho-fans/plugins/releases/download/plugins-M_to_R/MarkdownParse.zip)
-[NavMenu](NavMenu) | Typecho自定义导航菜单 | 1.2.1 | [Ryan](https://doufu.ru), [merdan](https://doufu.ru) | [Latest](https://github.com/typecho-fans/plugins/releases/download/plugins-M_to_R/NavMenu.zip)
+[MarkdownParse](https://github.com/mrgeneralgoo/typecho-markdown) | CommonMark+GFM全能Markdown解析 | 2.2.1 | [mrgeneral](https://github.com/mrgeneralgoo) | [Newest](https://github.com/typecho-fans/plugins/releases/download/plugins-M_to_R/MarkdownParse.zip)
+[NavMenu](NavMenu) | Typecho自定义导航菜单 | 1.2.2 | [Ryan](https://doufu.ru), [merdan](https://doufu.ru) | [Latest](https://github.com/typecho-fans/plugins/releases/download/plugins-M_to_R/NavMenu.zip)
 [changyandandian](changyandandian) | 搜狐畅言单点登录插件 | 1.0.0 | [泽泽社长](https://github.com/jrotty) | [Latest](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/changyandandian.zip)
