@@ -1,41 +1,100 @@
 diff --git a/AUTO-UPDATE.php b/AUTO-UPDATE.php
-index 05faae0..4c652ea 100644
+index 4c652ea..d143bd7 100644
 --- a/AUTO-UPDATE.php
 +++ b/AUTO-UPDATE.php
-@@ -453,7 +453,7 @@
- //							if (file_exists('ZIP_CDN/'.$extra)) {
- //								unlink('ZIP_CDN/'.$extra);
- //							}
--						}
-+//						}
+@@ -168,6 +168,7 @@
+ 							$zipName = $name.'_'.str_replace([':','"','/','\\','|','?','*'],'',preg_replace('/[\t ]*(,|&|，)[ \t]*/','_',$authorTable)).'.zip';
+ 
+ 							$isUrl = str_starts_with($url,'http://') || str_starts_with($url,'https://');
++							$isLocal = is_dir($url);
+ 							$zipMeta = end($metas);
+ 							$latest = $token ? array_slice($listNames,0,20) : $added; //zip名表分割或引入前20
+ 							preg_match('/(?<=\[)[^\]]*/',$zipMeta,$zipText);
+@@ -226,7 +227,7 @@
+ 											$infos = parseInfo($plugin);
+ 										}
+ 									}
+-								} elseif ($local = is_dir($url)) {
++								} elseif ($isLocal) {
+ 									//本地读取主文件信息
+ 									$plugin = pluginRoute($url,$name);
+ 									if ($plugin) {
+@@ -275,7 +276,7 @@
+ 									if ($nameFile) {
+ 										if ($noPlugin) {
+ 											$logs .= 'Warning: "'.($plugin ?: $url).'" is not valid, using "'.$zip.'" to read info.'.PHP_EOL;
+-											if (!$isUrl && !$tf && !$local) {
++											if (!$isUrl && !$tf && !$isLocal) {
+ 												$column = str_replace($nameMeta,'['.$nameFile.']('.$infos['homepage'].')',$column);
+ 												$fixed .= ' / Table Repo Masked'; //TeStore不显示无文档链接插件
+ 											}
+@@ -392,7 +393,7 @@
+ 									if (is_dir($name)) {
+ 										$logs .= 'Warning: "'.$name.'" is local but table info "'.$url.'" is external.'.PHP_EOL;
+ 									}
+-								} elseif (!$tf && $local) {
++								} elseif (!$tf && $isLocal) {
+ 									$movable[] = str_replace($zipMeta,str_replace($teMark,$tfMark,$zipMeta),$column);
+ 								}
+ 								//收集全部zip名检测重复条目
+@@ -423,7 +424,7 @@
+ 
+ 			//保存zip名表记录
+ 			if ($tf) {
+-				array_merge($listNames,$allNames); //临时记录全表
++				$listNames = array_merge($listNames,$allNames); //临时记录全表
+ 			}
+ 			file_put_contents($nameList,implode(PHP_EOL,$listNames));
+ 
+@@ -445,15 +446,13 @@
+ 				if ($api) {
+ 					$datas = json_decode($api,true);
+ 					$extras = array_diff(array_column($datas,'name'),$allNames);
+-					print_r(array_slice(array_column($datas,'name'),0,10));
+-					print_r(array_slice($allNames,0,10));
+-					if ($extras && file_exists('ZIP_CDN/'.$extra)) {
++					if ($extras) {
+ 						$logs .= 'Warning: These zip files do not match the "name_authors.zip" pattern based on table info and will be deleted: "'.implode(' / ',$extras).'"'.PHP_EOL;
+-//						foreach ($extras as $extra) {
+-//							if (file_exists('ZIP_CDN/'.$extra)) {
+-//								unlink('ZIP_CDN/'.$extra);
+-//							}
+-//						}
++						foreach ($extras as $extra) {
++							if (file_exists('ZIP_CDN/'.$extra)) {
++								unlink('ZIP_CDN/'.$extra);
++							}
++						}
  					}
  				}
  			}
 diff --git a/README_test.md b/README_test.md
-index 18cfffc..0c690d7 100644
+index d086961..5ca2020 100644
 --- a/README_test.md
 +++ b/README_test.md
 @@ -43,6 +43,6 @@
  [AntiSpam](AntiSpam) | 经典反垃圾评论机器人陷阱插件 | 1.0.3 | Willin Kan | [Download](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/AntiSpam.zip)
  [AutoBackup](AutoBackup) | 数据库定时备份至邮箱插件 | 1.3.2 | [泽泽社长](https://zezeshe.com/archives/autobackup-typecho-plugins.html) | [Latest](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/AutoBackup.zip)
  [JSON](JSON) | 以Json格式输出博客数据API插件 | 1.1 | [姬长信](https://github.com/insoxin),[SangSir](https://gitee.com/hkq15),[公子](https://github.com/lizheming) | [Download](https://github.com/typecho-fans/plugins/releases/download/plugins-H_to_L/JSON.zip)
--[MarkdownParse](https://github.com/mrgeneralgoo/typecho-markdown) | CommonMark+GFM全能Markdown解析 | 2.6.1 | [mrgeneral](https://github.com/mrgeneralgoo) | [Newest](https://github.com/typecho-fans/plugins/releases/download/plugins-M_to_R/MarkdownParse.zip)
--[NavMenu](NavMenu) | Typecho自定义导航菜单 | 1.2.1 | [Ryan](https://doufu.ru), [merdan](https://doufu.ru) | [Latest](https://github.com/typecho-fans/plugins/releases/download/plugins-M_to_R/NavMenu.zip)
+-[MarkdownParse](https://github.com/mrgeneralgoo/typecho-markdown) | CommonMark+GFM全能Markdown解析 | 2.5.1 | [mrgeneral](https://github.com/mrgeneralgoo) | [Newest](https://github.com/typecho-fans/plugins/releases/download/plugins-M_to_R/MarkdownParse.zip)
+-[NavMenu](NavMenu) | Typecho自定义导航菜单 | 1.1.1 | [Ryan](https://doufu.ru), [merdan](https://doufu.ru) | [Latest](https://github.com/typecho-fans/plugins/releases/download/plugins-M_to_R/NavMenu.zip)
 +[MarkdownParse](https://github.com/mrgeneralgoo/typecho-markdown) | CommonMark+GFM全能Markdown解析 | 2.2.1 | [mrgeneral](https://github.com/mrgeneralgoo) | [Newest](https://github.com/typecho-fans/plugins/releases/download/plugins-M_to_R/MarkdownParse.zip)
-+[NavMenu](NavMenu) | Typecho自定义导航菜单 | 1.2.2 | [Ryan](https://doufu.ru), [merdan](https://doufu.ru) | [Latest](https://github.com/typecho-fans/plugins/releases/download/plugins-M_to_R/NavMenu.zip)
++[NavMenu](NavMenu) | Typecho自定义导航菜单 | 1.0.1 | [Ryan](https://doufu.ru), [merdan](https://doufu.ru) | [Latest](https://github.com/typecho-fans/plugins/releases/download/plugins-M_to_R/NavMenu.zip)
  [changyandandian](changyandandian) | 搜狐畅言单点登录插件 | 1.0.0 | [泽泽社长](https://github.com/jrotty) | [Latest](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/changyandandian.zip)
 diff --git a/TESTORE.md b/TESTORE.md
-index e3ff3b3..db2eb07 100644
+index b01772b..9378d18 100644
 --- a/TESTORE.md
 +++ b/TESTORE.md
-@@ -46,8 +46,8 @@
+@@ -46,9 +46,9 @@
  [DoubanBooklist](https://github.com/FaithPatrick/DoubanBookList) | 博客展示豆瓣正在和已读书单插件 | 1.0.0 | [Patrick95](https://github.com/FaithPatrick) | [最近](https://github.com/FaithPatrick/DoubanBookList/archive/master.zip)
  [GithubWidgetPlus](https://github.com/sundaqiang/GithubWidgetPlus) | Github名片 | 0.3.0 | [sunadqiang](https://github.com/sundaqiang),[hongweipeng](https://github.com/hongweipeng) | [最近](https://github.com/typecho-fans/plugins/releases/download/plugins-D_to_G/GithubWidgetPlus.zip)
  [HuifengMembers](https://github.com/wedojava/HuifengMember) | Typecho自建会员信息数据表插件 | 0.1.1 | [回风](https://github.com/wedojava) | [最近](https://github.com/wedojava/HuifengMember/archive/master.zip)
--[MarkdownParse](https://github.com/mrgeneralgoo/typecho-markdown) | CommonMark+GFM全能Markdown解析插件 | 2.3.1 | [mrgeneral](https://github.com/mrgeneralgoo) | [最新](https://github.com/typecho-fans/plugins/releases/download/plugins-M_to_R/MarkdownParse.zip)
--[NavMenu](https://github.com/doghap/NavMenu) | Typecho自定义菜单管理配置插件 | 1.0.1 | [merdan](https://github.com/doghap) | [最近](https://github.com/doghap/NavMenu/archive/NavMenu.zip)
-+[MarkdownParse](https://github.com/mrgeneralgoo/typecho-markdown) | CommonMark+GFM全能Markdown解析插件 | 2.2.1 | [mrgeneral](https://github.com/mrgeneralgoo) | [最新](https://github.com/typecho-fans/plugins/releases/download/plugins-M_to_R/MarkdownParse.zip)
-+[NavMenu](https://github.com/doghap/NavMenu) | Typecho自定义菜单管理配置插件 | 1.1.1 | [merdan](https://github.com/doghap) | [最近](https://github.com/doghap/NavMenu/archive/NavMenu.zip)
+-[MarkdownParse](https://github.com/mrgeneralgoo/typecho-markdown) | CommonMark+GFM全能Markdown解析 | 2.5.1 | [mrgeneral](https://github.com/mrgeneralgoo) | [最新](https://github.com/typecho-fans/plugins/releases/download/plugins-M_to_R/MarkdownParse.zip)
+-[MarkdownParse](https://github.com/mrgeneralgoo/typecho-markdown) | CommonMark+GFM全能Markdown解析插件 | 2.5.1 | [mrgeneral](https://github.com/mrgeneralgoo) | [最新](https://github.com/typecho-fans/plugins/releases/download/plugins-M_to_R/MarkdownParse.zip)
+-[NavMenu](https://github.com/doghap/NavMenu) | Typecho自定义菜单管理配置插件 | 1.0.0 | [merdan](https://github.com/doghap) | [最近](https://github.com/doghap/NavMenu/archive/NavMenu.zip)
++[MarkdownParse](https://github.com/mrgeneralgoo/typecho-markdown) | CommonMark+GFM全能Markdown解析 | 2.1.1 | [mrgeneral](https://github.com/mrgeneralgoo) | [最新](https://github.com/typecho-fans/plugins/releases/download/plugins-M_to_R/MarkdownParse.zip)
++[MarkdownParse](https://github.com/mrgeneralgoo/typecho-markdown) | CommonMark+GFM全能Markdown解析插件 | 2.3.1 | [mrgeneral](https://github.com/mrgeneralgoo) | [最新](https://github.com/typecho-fans/plugins/releases/download/plugins-M_to_R/MarkdownParse.zip)
++[NavMenu](https://github.com/doghap/NavMenu) | Typecho自定义菜单管理配置插件 | 1.1.0 | [merdan](https://github.com/doghap) | [最近](https://github.com/doghap/NavMenu/archive/NavMenu.zip)
  [NotAllowIp](https://github.com/tangmaoguo/NotAllowIp-Typecho-Plugin) | Typecho设禁止访问IP黑名单插件 | 1.0.0 | [BlackStyle](https://github.com/tangmaoguo) | [最近](https://github.com/tangmaoguo/NotAllowIp-Typecho-Plugin/archive/master.zip)
  [OssImg](https://github.com/v03413/Typecho_Plugins/tree/master/OssImg) | 基于[OssForTypecho](https://github.com/typecho-fans/plugins/tree/master/OssForTypecho)图床外链插件 | 1.0.0 | [&#95;莫名&#95;](https://github.com/v03413) | [最近](https://github.com/typecho-fans/plugins/releases/download/plugins-M_to_R/OssImg.zip)
  [RobotsPlusPlus](https://xiamp.net/archives/typecho-spider-visit-record-plugin-enhanced-enhanced-version-robotsplusplus.html) | 新可定制版搜索引擎爬虫记录插件 | 2.0.7 | [Ryan](https://github.com/benzBrake), [YoviSun](http://www.yovisun.com), Shion | [最近](https://github.com/typecho-fans/plugins/releases/download/plugins-M_to_R/RobotsPlusPlus.zip)
