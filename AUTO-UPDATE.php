@@ -582,7 +582,7 @@
 			}
 		}
 
-		print_r($info)return $info;
+		print_r($info);return $info;
 	}
 
 	/**
