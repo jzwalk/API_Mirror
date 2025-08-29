@@ -17,7 +17,7 @@
 		$diffs = explode(PHP_EOL,$record);
 
 		//查找有关文档变更
-		$begin = array_search('+++ b/README_test.md',$diffs) ?: array_search('+++ b/TESTORE.md',$diffs) ?: 0;print_r($begin);
+		$begin = array_search('+++ b/README_test.md',$diffs) ?: array_search('+++ b/TESTORE.md',$diffs) ?: 0;
 		foreach ($diffs as $line=>$diff) {
 			if ($line>$begin) {
 				//匹配变更行repo信息
@@ -36,7 +36,7 @@
 	//指定插件信息情况
 	} else {
 		$urls = explode(',',$requestUrl);
-	}print_r($urls);
+	}
 
 	//检测文档执行更新
 	$movable = [];
@@ -535,7 +535,7 @@
 	function parseInfo(string $pluginFile): array
 	{
 		$codes = @file_get_contents($pluginFile);
-		$tokens = $codes ? token_get_all($codes) : [];print_r($tokens);
+		$tokens = $codes ? token_get_all($codes) : [];
 
 		/** 初始信息 */
 		$info = [
@@ -559,7 +559,7 @@
 			if (is_array($token) && T_DOC_COMMENT == $token[0]) {
 
 				/** 分行读取 */
-				$lines = preg_split('/(\r|\n)/',$token[1]);print_r($lines);
+				$lines = preg_split('/(\r|\n)/',$token[1]);
 				foreach ($lines as $line) {
 					$line = trim($line);
 					if (!empty($line) && '*'==$line[0]) {
