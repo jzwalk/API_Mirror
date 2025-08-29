@@ -28,7 +28,7 @@
 
  > 下载链接文字可用于附加图标和关键字筛选：如`下载`即非社区版，`不可用`带⛔，`特殊`带⚠️意为启用须遵照文档步骤。
 
-### 插件信息 (20)
+### 插件信息 (21)
 
 ###### TeStore会使用下表“名称”创建文件夹，“版本”数字判断升级，请尽量确保文本准确，按字母排序，简介便于关键字搜索。
 ```
@@ -41,7 +41,7 @@
 [AdminLogin](https://github.com/v03413/Typecho_Plugins/tree/master/AdminLogin) | 微信/QQ号后台扫码登录注册插件 | 0.1.2 | [&#95;莫名&#95;](https://github.com/v03413) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/AdminLogin_.zip)
 [AutoBackup](https://xiamp.net/archives/automatic-backup-of-typecho-database-to-mailbox-plugin-autobackup.html) | 数据库备份到邮箱 | 1.3.2 | [Ryan](https://github.com/benzBrake) | [最近](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/AutoBackup_Ryan.zip)
 [AutoSSL](https://github.com/Aurorum-Studio/Typecho-AutoSSL) | 在线轻松生成免费SSL证书，解决SSL证书的烦恼 | v.0.2.2 | [Aurorum-Studios](https://open.aurorum.co/t/aurorum-studio-typecho-autossl) | [最近](https://github.com/Aurorum-Studio/Typecho-AutoSSL/archive/refs/tags/v.v.0.2.2-alpha.zip)
-[Avartar](https://github.com/typecho/plugins/blob/master/Avartar.php) | 自定义替换Gravatar头像代理插件 | 1.0.0 Beta | [loftor](https://github.com/loftor-git) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/Avartar.zip)
+[Avartar](https://github.com/typecho/plugins/blob/master/Avartar.php) | 自定义替换Gravatar头像代理插件 | 1.0.0 Beta | [loftor](https://github.com/loftor-git) | [最近](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/Avartar.zip)
 [BeianFooter](https://github.com/JoyNop/BeianFooter) | 自定义ICP备案和公安备案插件 | 1.0.0 | [JoyNop](https://github.com/JoyNop) | [下载](https://github.com/JoyNop/BeianFooter/archive/refs/tags/1.0.0.zip)
 [CommentToMail](https://github.com/uniartisan/CommentToMail) | 网址监控触发版评论邮件提醒插件 | 4.3.0 | [Uniartisan](https://github.com/uniartisan) | [最近](https://github.com/uniartisan/CommentToMail/archive/refs/tags/v4.3.0.zip)
 [DoubanBooklist](https://github.com/FaithPatrick/DoubanBookList) | 博客展示豆瓣正在和已读书单插件 | 1.0.0 | [Patrick95](https://github.com/FaithPatrick) | [最近](https://github.com/FaithPatrick/DoubanBookList/archive/master.zip)
