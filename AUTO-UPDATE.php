@@ -178,10 +178,20 @@
 								++$all; //记录检测次数
 
 								//提取子目录(分支名)
-								$paths = preg_split('/\/tree\/([^\/]+)\//',$url,2,PREG_SPLIT_DELIM_CAPTURE);
+								$isPlugin = false;
+								$folder = '';
+								if (preg_match('/\/blob\/([^\/]+)\//',$url,$matches)) {
+									$branch = $matches[1];
+									$paths = explode('/blob/'.$branch.'/',$url);
+									$isPlugin = str_ends_with($url,'Plugin.php') || str_ends_with($url,$name.'.php'); //直链文件情况
+								} else {
+									$paths = preg_split('/\/tree\/([^\/]+)\//',$url,2,PREG_SPLIT_DELIM_CAPTURE);
+									$branch = $paths[1] ?? '';
+									if (!empty($paths[2])) {
+										$folder = rtrim($paths[2],'/').'/';
+									}
+								}
 								$url = $paths[0];
-								$branch = $paths[1] ?? '';
-								$folder = !empty($paths[2]) ? rtrim($paths[2],'/').'/' : '';
 
 								$gitee = parse_url($url,PHP_URL_HOST)=='gitee.com';
 								$apiUrl = str_replace(['/github.com/','/gitee.com/'],['/api.github.com/repos/','/api.gitee.com/api/v5/repos/'],$url);
@@ -201,24 +211,32 @@
 								$datas = [];
 								$plugin = '';
 								$infos = [];
-								if (!$tf) {
-									//API查询repo文件树
-									if ($github || $gitee) {
-										$api = @file_get_contents($apiUrl.'/git/trees/'.$branch.'?recursive=1',0,
-											stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP','Authorization: token '.$token)))));
+								if ($tf && $isLocal) {
+									//本地读取主文件信息
+									$plugin = pluginRoute($url,$name);
+									if ($plugin) {
+										$infos = parseInfo($plugin);
 									}
-									$path = '';
-									if ($api) {
-										$datas = array_column(array_filter(
-											json_decode($api,true)['tree'],
-											fn($item)=>$item['type']==='blob' //排除目录
-										),'path');
-										//定位主文件路径
-										$path = pluginRoute($datas,$name);
-									}
+								} elseif ($isUrl) {
+									if ($isPlugin) {
+										//远程读取主文件信息
+										$infos = parseInfo($url);
+									} else {
+										//API查询repo文件树
+										if ($github || $gitee) {
+											$api = @file_get_contents($apiUrl.'/git/trees/'.$branch.'?recursive=1',0,
+												stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP','Authorization: token '.$token)))));
+										}
+										$path = '';
+										if ($api) {
+											$datas = array_column(array_filter(
+												json_decode($api,true)['tree'],
+												fn($item)=>$item['type']==='blob' //排除目录
+											),'path');
+											//定位主文件路径
+											$path = pluginRoute($datas,$name);
+										}
 
-									//下载主文件获取信息
-									if ($isUrl) {
 										$pluginUri = $url.'/raw/'.$branch.'/'.$folder;
 										$plugin = $path ? $url.'/raw/'.$branch.'/'.$path : $pluginUri.'Plugin.php';
 										$infos = parseInfo($plugin);
@@ -227,12 +245,6 @@
 											$plugin = $pluginUri.$name.'.php';
 											$infos = parseInfo($plugin);
 										}
-									}
-								} elseif ($isLocal) {
-									//本地读取主文件信息
-									$plugin = pluginRoute($url,$name);
-									if ($plugin) {
-										$infos = parseInfo($plugin);
 									}
 								}
 
