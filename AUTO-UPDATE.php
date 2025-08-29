@@ -428,6 +428,9 @@
 			//保存zip名表记录
 			if ($tf) {
 				$listNames = array_merge($listNames,$allNames); //临时记录全表
+			} else {
+				$logs .= 'Warning: Table info about "'.implode(' / ',array_diff($listNames,$allNames)).'" will be removed from NAME_LIST.log.'.PHP_EOL;
+				$listNames = array_intersect($listNames,$allNames); //清理移除条目
 			}
 			file_put_contents($nameList,implode(PHP_EOL,array_filter($listNames)));
 
