@@ -36,7 +36,7 @@
 	//指定插件信息情况
 	} else {
 		$urls = explode(',',$requestUrl);
-	}
+	}print_r($urls);
 
 	//检测文档执行更新
 	$movable = [];
@@ -224,9 +224,8 @@
 											//定位主文件路径
 											$path = pluginRoute($datas,$name);
 										}
-
 										$plugin = $path ? $url.'/raw/'.$branch.'/'.$path : $pluginUri.'Plugin.php';
-									}
+									}print_r($plugin);
 									if ($plugin) {
 										$infos = parseInfo($plugin);
 										//无API重试单文件
@@ -235,7 +234,7 @@
 											$infos = parseInfo($plugin);
 										}
 									}
-								}
+								}print_r($infos);
 
 								$noPlugin = empty($infos['version']); //表格repo信息无效
 								$gitIsh = !$noPlugin && !$api && !$tf; //有效但无API
