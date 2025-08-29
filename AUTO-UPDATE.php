@@ -11,7 +11,7 @@
 	$requestUrl = $argv[2] ?? '';
 
 	//提取最近变更信息
-	$urls = [];
+	$urls = $requestUrl ? [] : ['cron'];
 	if (str_contains($requestUrl,'.diff')) {
 		$record = file_get_contents($requestUrl);
 		$diffs = explode(PHP_EOL,$record);
@@ -131,12 +131,13 @@
 							preg_match_all('/(?<=\()[^)]*/',$column,$links);
 							$url = $links && str_contains($nameMeta,'](') ? trim($links[0][0]) : ''; //取第一个栏位链接内容
 							$github = parse_url($url,PHP_URL_HOST)=='github.com';
-							//处理文档变更或指定插件
-							if ($requested = array_filter($requested)) {
-								$condition = in_array($url,$requested) || in_array($name,$requested);
+							$condition = false;
 							//定期处理全GitHub源插件
-							} else {
+							if ($requested = ['cron']) {
 								$condition = $github;
+							//处理文档变更或指定插件
+							} elseif ($requested = array_filter($requested)) {
+								$condition = in_array($url,$requested) || in_array($name,$requested);
 							}
 
 							//处理表格作者名
@@ -510,9 +511,9 @@
 		foreach ($routes as $route) {
 			//带路径目录型优先
 			$priority = match (true) {
-				str_contains($route,$name.'/Plugin.php')=>4,
+				stripos($route,$name.'/Plugin.php')!==false=>4, //兼容下小写
 				str_contains($route,$name.'/'.$name.'.php')=>3,
-				str_contains($route,'Plugin.php')=>2,
+				stripos($route,'Plugin.php')!==false=>2,
 				str_contains($route,$name.'.php')=>1,
 				default=>0,
 			};
