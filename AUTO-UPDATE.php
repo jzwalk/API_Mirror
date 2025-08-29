@@ -179,6 +179,7 @@
 
 								//提取子目录(分支名)
 								$isPlugin = str_ends_with($url,'Plugin.php') || str_ends_with($url,$name.'.php'); //直链文件情况
+								$plugin = $isPlugin ? str_replace('/blob/','/raw/',$url) : '';
 								$paths = $isPlugin ? preg_split('/\/(?:blob|raw)\/([^\/]+)\//',$url,2,PREG_SPLIT_DELIM_CAPTURE) : preg_split('/\/tree\/([^\/]+)\//',$url,2,PREG_SPLIT_DELIM_CAPTURE);
 								$url = $paths[0];
 								$branch = $paths[1] ?? '';
@@ -200,7 +201,6 @@
 								}
 
 								$datas = [];
-								$plugin = '';
 								$infos = [];
 								if ($tf && $isLocal) {
 									//本地读取主文件信息
@@ -209,10 +209,9 @@
 										$infos = parseInfo($plugin);
 									}
 								} elseif ($isUrl) {
-									if ($isPlugin) {
-										//远程读取主文件信息
-										$infos = parseInfo(str_replace('/blob/','/raw/',$url));
-									} else {
+									//远程读取主文件信息
+									$infos = parseInfo($plugin);
+									if (!$isPlugin) {
 										//API查询repo文件树
 										if ($github || $gitee) {
 											$api = @file_get_contents($apiUrl.'/git/trees/'.$branch.'?recursive=1',0,
@@ -537,7 +536,7 @@
 	 */
 	function parseInfo(string $pluginFile): array
 	{
-		print_r($pluginFile);$codes = @file_get_contents($pluginFile);
+		$codes = @file_get_contents($pluginFile);
 		$tokens = $codes ? token_get_all($codes) : [];
 
 		/** 初始信息 */
@@ -582,7 +581,7 @@
 			}
 		}
 
-		print_r($info);return $info;
+		return $info;
 	}
 
 	/**
