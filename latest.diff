@@ -1,35 +1,102 @@
 diff --git a/AUTO-UPDATE.php b/AUTO-UPDATE.php
-index df68308..fe3ace3 100644
+index c909227..4cf6cc1 100644
 --- a/AUTO-UPDATE.php
 +++ b/AUTO-UPDATE.php
-@@ -428,6 +428,9 @@
- 			//保存zip名表记录
- 			if ($tf) {
- 				$listNames = array_merge($listNames,$allNames); //临时记录全表
-+			} else {
-+				$logs .= 'Warning: Table info about "'.implode(' / ',array_diff($listNames,$allNames)).'" will be removed from NAME_LIST.log.'.PHP_EOL;
-+				$listNames = array_intersect($listNames,$allNames); //清理移除条目
- 			}
- 			file_put_contents($nameList,implode(PHP_EOL,array_filter($listNames)));
+@@ -178,10 +178,20 @@
+ 								++$all; //记录检测次数
  
+ 								//提取子目录(分支名)
+-								$paths = preg_split('/\/tree\/([^\/]+)\//',$url,2,PREG_SPLIT_DELIM_CAPTURE);
++								$isPlugin = false;
++								$folder = '';
++								if (preg_match('/\/blob\/([^\/]+)\//',$url,$matches)) {
++									$branch = $matches[1];
++									$paths = explode('/blob/'.$branch.'/',$url);
++									$isPlugin = str_ends_with($url,'Plugin.php') || str_ends_with($url,$name.'.php'); //直链文件情况
++								} else {
++									$paths = preg_split('/\/tree\/([^\/]+)\//',$url,2,PREG_SPLIT_DELIM_CAPTURE);
++									$branch = $paths[1] ?? '';
++									if (!empty($paths[2])) {
++										$folder = rtrim($paths[2],'/').'/';
++									}
++								}
+ 								$url = $paths[0];
+-								$branch = $paths[1] ?? '';
+-								$folder = !empty($paths[2]) ? rtrim($paths[2],'/').'/' : '';
+ 
+ 								$gitee = parse_url($url,PHP_URL_HOST)=='gitee.com';
+ 								$apiUrl = str_replace(['/github.com/','/gitee.com/'],['/api.github.com/repos/','/api.gitee.com/api/v5/repos/'],$url);
+@@ -201,24 +211,32 @@
+ 								$datas = [];
+ 								$plugin = '';
+ 								$infos = [];
+-								if (!$tf) {
+-									//API查询repo文件树
+-									if ($github || $gitee) {
+-										$api = @file_get_contents($apiUrl.'/git/trees/'.$branch.'?recursive=1',0,
+-											stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP','Authorization: token '.$token)))));
+-									}
+-									$path = '';
+-									if ($api) {
+-										$datas = array_column(array_filter(
+-											json_decode($api,true)['tree'],
+-											fn($item)=>$item['type']==='blob' //排除目录
+-										),'path');
+-										//定位主文件路径
+-										$path = pluginRoute($datas,$name);
++								if ($tf && $isLocal) {
++									//本地读取主文件信息
++									$plugin = pluginRoute($url,$name);
++									if ($plugin) {
++										$infos = parseInfo($plugin);
+ 									}
++								} elseif ($isUrl) {
++									if ($isPlugin) {
++										//远程读取主文件信息
++										$infos = parseInfo($url);
++									} else {
++										//API查询repo文件树
++										if ($github || $gitee) {
++											$api = @file_get_contents($apiUrl.'/git/trees/'.$branch.'?recursive=1',0,
++												stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP','Authorization: token '.$token)))));
++										}
++										$path = '';
++										if ($api) {
++											$datas = array_column(array_filter(
++												json_decode($api,true)['tree'],
++												fn($item)=>$item['type']==='blob' //排除目录
++											),'path');
++											//定位主文件路径
++											$path = pluginRoute($datas,$name);
++										}
+ 
+-									//下载主文件获取信息
+-									if ($isUrl) {
+ 										$pluginUri = $url.'/raw/'.$branch.'/'.$folder;
+ 										$plugin = $path ? $url.'/raw/'.$branch.'/'.$path : $pluginUri.'Plugin.php';
+ 										$infos = parseInfo($plugin);
+@@ -228,12 +246,6 @@
+ 											$infos = parseInfo($plugin);
+ 										}
+ 									}
+-								} elseif ($isLocal) {
+-									//本地读取主文件信息
+-									$plugin = pluginRoute($url,$name);
+-									if ($plugin) {
+-										$infos = parseInfo($plugin);
+-									}
+ 								}
+ 
+ 								$noPlugin = empty($infos['version']); //表格repo信息无效
 diff --git a/TESTORE.md b/TESTORE.md
-index eb8820e..fce65d4 100644
+index 48f79e5..262de62 100644
 --- a/TESTORE.md
 +++ b/TESTORE.md
-@@ -47,12 +47,10 @@
- [GithubWidgetPlus](https://github.com/sundaqiang/GithubWidgetPlus) | Github名片 | 0.3.0 | [sunadqiang](https://github.com/sundaqiang),[hongweipeng](https://github.com/hongweipeng) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-D_to_G/GithubWidgetPlus.zip)
- [HuifengMembers](https://github.com/wedojava/HuifengMember) | Typecho自建会员信息数据表插件 | 0.1.1 | [回风](https://github.com/wedojava) | [最近](https://github.com/wedojava/HuifengMember/archive/master.zip)
- [MarkdownParse](https://github.com/mrgeneralgoo/typecho-markdown) | CommonMark+GFM全能Markdown解析 | 2.5.1 | [mrgeneral](https://github.com/mrgeneralgoo) | [最新](https://github.com/typecho-fans/plugins/releases/download/plugins-M_to_R/MarkdownParse.zip)
--[MarkdownParse](https://github.com/mrgeneralgoo/typecho-markdown) | CommonMark+GFM全能Markdown解析插件 | 2.5.1 | [mrgeneral](https://github.com/mrgeneralgoo) | [最新](https://github.com/typecho-fans/plugins/releases/download/plugins-M_to_R/MarkdownParse.zip)
- [NavMenu](https://github.com/doghap/NavMenu) | Typecho自定义菜单管理配置插件 | 1.0.0 | [merdan](https://github.com/doghap) | [最近](https://github.com/doghap/NavMenu/archive/NavMenu.zip)
- [NotAllowIp](https://github.com/tangmaoguo/NotAllowIp-Typecho-Plugin) | Typecho设禁止访问IP黑名单插件 | 1.0.0 | [BlackStyle](https://github.com/tangmaoguo) | [最近](https://github.com/tangmaoguo/NotAllowIp-Typecho-Plugin/archive/master.zip)
- [OssImg](https://github.com/v03413/Typecho_Plugins/tree/master/OssImg) | 基于[OssForTypecho](https://github.com/typecho-fans/plugins/tree/master/OssForTypecho)图床外链插件 | 1.0.0 | [&#95;莫名&#95;](https://github.com/v03413) | [最近](https://github.com/typecho-fans/plugins/releases/download/plugins-M_to_R/OssImg.zip)
- [RobotsPlusPlus](https://xiamp.net/archives/typecho-spider-visit-record-plugin-enhanced-enhanced-version-robotsplusplus.html) | 新可定制版搜索引擎爬虫记录插件 | 2.0.7 | [Ryan](https://github.com/benzBrake), [YoviSun](http://www.yovisun.com), Shion | [最近](https://github.com/typecho-fans/plugins/releases/download/plugins-M_to_R/RobotsPlusPlus.zip)
--[ShortLinks](https://github.com/benzBrake/ShortLinks) | 基于[GoLinks](GoLinks)增强外链转换插件 | 1.2.0 | [Ryan](https://github.com/benzBrake) | [Latest](https://github.com/benzBrake/ShortLinks/archive/refs/heads/master.zip)
- [SiteMap](http://forum.typecho.org/viewtopic.php?f=6&t=9115) | Google/百度双生版站点地图插件 | 1.0.0 | 王And木 | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-S_to_Z/SiteMap_.And.zip)
- [SiteMap](https://gitee.com/freej2015/SiteMap) | 简易版发布生成Xml站点地图插件 | 1.0.0 | [yaecho](https://gitee.com/freej2015) | [最近](https://github.com/typecho-fans/plugins/releases/download/plugins-S_to_Z/SiteMap_yaecho.zip)
- [StructureData](https://github.com/JokerQyou/StructureData) | [JSON-LD](https://en.wikipedia.org/wiki/JSON-LD)格式文章结构化数据插件 | 0.3.1 | [Joker Qyou](https://github.com/JokerQyou) | [最近](https://github.com/JokerQyou/StructureData/archive/master.zip)
-diff --git a/ZIP_CDN/ShortLinks_Ryan.zip b/ZIP_CDN/ShortLinks_Ryan.zip
-deleted file mode 100644
-index 3edc719..0000000
-Binary files a/ZIP_CDN/ShortLinks_Ryan.zip and /dev/null differ
+@@ -41,6 +41,7 @@
+ [AdminLogin](https://github.com/v03413/Typecho_Plugins/tree/master/AdminLogin) | 微信/QQ号后台扫码登录注册插件 | 0.1.2 | [&#95;莫名&#95;](https://github.com/v03413) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/AdminLogin_.zip)
+ [AutoBackup](https://xiamp.net/archives/automatic-backup-of-typecho-database-to-mailbox-plugin-autobackup.html) | 数据库备份到邮箱 | 1.3.2 | [Ryan](https://github.com/benzBrake) | [最近](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/AutoBackup_Ryan.zip)
+ [AutoSSL](https://github.com/Aurorum-Studio/Typecho-AutoSSL) | 在线轻松生成免费SSL证书，解决SSL证书的烦恼 | v.0.2.2 | [Aurorum-Studios](https://open.aurorum.co/t/aurorum-studio-typecho-autossl) | [最近](https://github.com/Aurorum-Studio/Typecho-AutoSSL/archive/refs/tags/v.v.0.2.2-alpha.zip)
++[Avartar](https://github.com/typecho/plugins/blob/master/Avartar.php) | 自定义替换Gravatar头像代理插件 | 1.0.0 Beta | [loftor](https://github.com/loftor-git) | [下载](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/Avartar.zip)
+ [BeianFooter](https://github.com/JoyNop/BeianFooter) | 自定义ICP备案和公安备案插件 | 1.0.0 | [JoyNop](https://github.com/JoyNop) | [下载](https://github.com/JoyNop/BeianFooter/archive/refs/tags/1.0.0.zip)
+ [CommentToMail](https://github.com/uniartisan/CommentToMail) | 网址监控触发版评论邮件提醒插件 | 4.3.0 | [Uniartisan](https://github.com/uniartisan) | [最近](https://github.com/uniartisan/CommentToMail/archive/refs/tags/v4.3.0.zip)
+ [DoubanBooklist](https://github.com/FaithPatrick/DoubanBookList) | 博客展示豆瓣正在和已读书单插件 | 1.0.0 | [Patrick95](https://github.com/FaithPatrick) | [最近](https://github.com/FaithPatrick/DoubanBookList/archive/master.zip)
