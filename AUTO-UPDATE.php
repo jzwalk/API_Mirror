@@ -204,21 +204,18 @@
 								$datas = [];
 								$infos = [];
 								if ($tf && $isLocal) {
-									//本地读取主文件信息
+									//本地定位主文件路径
 									$plugin = pluginRoute($url,$name);
-									if ($plugin) {
-										$infos = parseInfo($plugin);
-									}
 								} elseif ($isUrl) {
-									//远程读取主文件信息
-									$infos = parseInfo($plugin);
+									$path = '';
+									$pluginUri = $url.'/raw/'.$branch.'/'.$folder;
+									//远程定位主文件地址
 									if (!$isPlugin) {
 										//API查询repo文件树
 										if ($github || $gitee) {
 											$api = @file_get_contents($apiUrl.'/git/trees/'.$branch.'?recursive=1',0,
 												stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP','Authorization: token '.$token)))));
 										}
-										$path = '';
 										if ($api) {
 											$datas = array_column(array_filter(
 												json_decode($api,true)['tree'],
@@ -228,8 +225,9 @@
 											$path = pluginRoute($datas,$name);
 										}
 
-										$pluginUri = $url.'/raw/'.$branch.'/'.$folder;
 										$plugin = $path ? $url.'/raw/'.$branch.'/'.$path : $pluginUri.'Plugin.php';
+									}
+									if ($plugin) {
 										$infos = parseInfo($plugin);
 										//无API重试单文件
 										if (!$infos['version'] && !$path) {
