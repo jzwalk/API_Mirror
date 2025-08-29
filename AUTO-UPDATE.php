@@ -14,10 +14,10 @@
 	$urls = $requestUrl ? [] : ['cron'];
 	if (str_contains($requestUrl,'.diff')) {
 		$record = file_get_contents($requestUrl);
-		$diffs = explode(PHP_EOL,$record);print_r($diffs);
+		$diffs = explode(PHP_EOL,$record);
 
 		//查找有关文档变更
-		$begin = array_search('+++ b/README_test.md',$diffs) ?? array_search('+++ b/TESTORE.md',$diffs) ?? 0;print_r($begin);
+		$begin = array_search('+++ b/README_test.md',$diffs) ?: array_search('+++ b/TESTORE.md',$diffs) ?: 0;print_r($begin);
 		foreach ($diffs as $line=>$diff) {
 			if ($line>$begin) {
 				//匹配变更行repo信息
@@ -36,7 +36,7 @@
 	//指定插件信息情况
 	} else {
 		$urls = explode(',',$requestUrl);
-	}
+	}print_r($urls);
 
 	//检测文档执行更新
 	$movable = [];
