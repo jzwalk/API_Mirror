@@ -426,13 +426,15 @@
 			exec('find "'.$tmpDir.'" -mindepth 1 ! -name "updates.log" -exec rm -rf {} +');
 
 			//保存zip名表记录
+			$listNames = array_filter(array_unique($listNames));
+			$allNames = array_filter($allNames);
 			if ($tf) {
 				$listNames = array_merge($listNames,$allNames); //临时记录全表
 			} else {
 				$logs .= 'Warning: Table info about "'.implode(' / ',array_diff($listNames,$allNames)).'" will be removed from NAME_LIST.log.'.PHP_EOL;
 				$listNames = array_intersect($listNames,$allNames); //清理移除条目
 			}
-			file_put_contents($nameList,implode(PHP_EOL,array_filter($listNames)));
+			file_put_contents($nameList,implode(PHP_EOL,$listNames));
 
 			if ($allNames) {
 				//检查重复项
@@ -447,7 +449,7 @@
 				}
 				//清除冗余zip
 				if (!$tf) {
-					$allNames = array_merge(array_unique($allNames),['NAME_LIST.log','README.md']);
+					$allNames = array_merge($allNames,['NAME_LIST.log','README.md']);
 					$api = @file_get_contents('https://api.github.com/repositories/14101953/contents/ZIP_CDN',0,
 						stream_context_create(array('http'=>array('header'=>array('User-Agent: PHP','Authorization: token '.$token)))));
 					if ($api) {
