@@ -178,20 +178,11 @@
 								++$all; //记录检测次数
 
 								//提取子目录(分支名)
-								$isPlugin = false;
-								$folder = '';
-								if (preg_match('/\/blob\/([^\/]+)\//',$url,$matches)) {
-									$branch = $matches[1];
-									$paths = explode('/blob/'.$branch.'/',$url);
-									$isPlugin = str_ends_with($url,'Plugin.php') || str_ends_with($url,$name.'.php'); //直链文件情况
-								} else {
-									$paths = preg_split('/\/tree\/([^\/]+)\//',$url,2,PREG_SPLIT_DELIM_CAPTURE);
-									$branch = $paths[1] ?? '';
-									if (!empty($paths[2])) {
-										$folder = rtrim($paths[2],'/').'/';
-									}
-								}
+								$isPlugin = str_ends_with($url,'Plugin.php') || str_ends_with($url,$name.'.php'); //直链文件情况
+								$paths = $isPlugin ? preg_split('/\/(?:blob|raw)\/([^\/]+)\//',$url,2,PREG_SPLIT_DELIM_CAPTURE) : preg_split('/\/tree\/([^\/]+)\//',$url,2,PREG_SPLIT_DELIM_CAPTURE);
 								$url = $paths[0];
+								$branch = $paths[1] ?? '';
+								$folder = !empty($paths[2]) ? ($isPlugin ? str_replace(basename($paths[2]),'',$paths[2]) : rtrim($paths[2],'/').'/') :'';
 
 								$gitee = parse_url($url,PHP_URL_HOST)=='gitee.com';
 								$apiUrl = str_replace(['/github.com/','/gitee.com/'],['/api.github.com/repos/','/api.gitee.com/api/v5/repos/'],$url);
@@ -220,7 +211,7 @@
 								} elseif ($isUrl) {
 									if ($isPlugin) {
 										//远程读取主文件信息
-										$infos = parseInfo($url);
+										$infos = parseInfo(str_replace('blob','raw',$url));
 									} else {
 										//API查询repo文件树
 										if ($github || $gitee) {
@@ -443,8 +434,10 @@
 			if ($tf) {
 				$listNames = array_merge($listNames,$allNames); //临时记录全表
 			} else {
-				$logs .= 'Warning: Table info about "'.implode(' / ',array_diff($listNames,$allNames)).'" will be removed from NAME_LIST.log.'.PHP_EOL;
-				$listNames = array_intersect($listNames,$allNames); //清理移除条目
+				if ($outNames = array_diff($listNames,$allNames)) {
+					$logs .= 'Warning: Table info about "'.implode(' / ',$outNames).'" will be removed from NAME_LIST.log.'.PHP_EOL;
+					$listNames = array_intersect($listNames,$allNames); //清理移除条目
+				}
 			}
 			file_put_contents($nameList,implode(PHP_EOL,$listNames));
 
