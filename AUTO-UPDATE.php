@@ -211,7 +211,7 @@
 								} elseif ($isUrl) {
 									if ($isPlugin) {
 										//远程读取主文件信息
-										$infos = parseInfo(str_replace('/blob/','/raw/',$url));print_r($isPlugin);
+										$infos = parseInfo(str_replace('/blob/','/raw/',$url));
 									} else {
 										//API查询repo文件树
 										if ($github || $gitee) {
@@ -537,7 +537,7 @@
 	 */
 	function parseInfo(string $pluginFile): array
 	{
-		$codes = @file_get_contents($pluginFile);
+		print_r($pluginFile);$codes = @file_get_contents($pluginFile);
 		$tokens = $codes ? token_get_all($codes) : [];
 
 		/** 初始信息 */
@@ -582,7 +582,7 @@
 			}
 		}
 
-		return $info;
+		print_r($info)return $info;
 	}
 
 	/**
