@@ -14,10 +14,10 @@
 	$urls = $requestUrl ? [] : ['cron'];
 	if (str_contains($requestUrl,'.diff')) {
 		$record = file_get_contents($requestUrl);
-		$diffs = explode(PHP_EOL,$record);
+		$diffs = explode(PHP_EOL,$record);print_r($diffs);
 
 		//查找有关文档变更
-		$begin = array_search('+++ b/README_test.md',$diffs) ?? array_search('+++ b/TESTORE.md',$diffs) ?? 0;
+		$begin = array_search('+++ b/README_test.md',$diffs) ?? array_search('+++ b/TESTORE.md',$diffs) ?? 0;print_r($begin);
 		foreach ($diffs as $line=>$diff) {
 			if ($line>$begin) {
 				//匹配变更行repo信息
@@ -36,7 +36,7 @@
 	//指定插件信息情况
 	} else {
 		$urls = explode(',',$requestUrl);
-	}print_r($urls);
+	}
 
 	//检测文档执行更新
 	$movable = [];
@@ -133,7 +133,7 @@
 							$github = parse_url($url,PHP_URL_HOST)=='github.com';
 							$condition = false;
 							//定期处理全GitHub源插件
-							if ($requested = ['cron']) {
+							if ($requested==['cron']) {
 								$condition = $github;
 							//处理文档变更或指定插件
 							} elseif ($requested = array_filter($requested)) {
@@ -225,7 +225,7 @@
 											$path = pluginRoute($datas,$name);
 										}
 										$plugin = $path ? $url.'/raw/'.$branch.'/'.$path : $pluginUri.'Plugin.php';
-									}print_r($plugin);
+									}
 									if ($plugin) {
 										$infos = parseInfo($plugin);
 										//无API重试单文件
@@ -234,7 +234,7 @@
 											$infos = parseInfo($plugin);
 										}
 									}
-								}print_r($infos);
+								}
 
 								$noPlugin = empty($infos['version']); //表格repo信息无效
 								$gitIsh = !$noPlugin && !$api && !$tf; //有效但无API
@@ -535,7 +535,7 @@
 	function parseInfo(string $pluginFile): array
 	{
 		$codes = @file_get_contents($pluginFile);
-		$tokens = $codes ? token_get_all($codes) : [];
+		$tokens = $codes ? token_get_all($codes) : [];print_r($tokens);
 
 		/** 初始信息 */
 		$info = [
@@ -559,13 +559,13 @@
 			if (is_array($token) && T_DOC_COMMENT == $token[0]) {
 
 				/** 分行读取 */
-				$lines = preg_split('/(\r|\n)/',$token[1]);
+				$lines = preg_split('/(\r|\n)/',$token[1]);print_r($lines);
 				foreach ($lines as $line) {
 					$line = trim($line);
-					if (!empty($line) && '*' == $line[0]) {
+					if (!empty($line) && '*'==$line[0]) {
 						$line = trim(substr($line,1));
 
-						if (!empty($line) && '@' == $line[0]) {
+						if (!empty($line) && '@'==$line[0]) {
 							$line = trim(substr($line,1));
 							$args = explode(' ',$line);
 							$key = array_shift($args);
