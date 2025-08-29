@@ -211,7 +211,7 @@
 								} elseif ($isUrl) {
 									if ($isPlugin) {
 										//远程读取主文件信息
-										$infos = parseInfo(str_replace('blob','raw',$url));
+										$infos = parseInfo(str_replace('/blob/','/raw/',$url));print_r($isPlugin);
 									} else {
 										//API查询repo文件树
 										if ($github || $gitee) {
