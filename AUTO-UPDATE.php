@@ -181,6 +181,7 @@
 
 								$isPlugin = str_ends_with($url,'Plugin.php') || str_ends_with($url,$name.'.php'); //直链文件情况
 								$plugin = $isPlugin ? str_replace('/blob/','/raw/',$url) : '';
+								$branch = '';
 								$api = '';
 								$datas = [];
 								$infos = [];
@@ -192,7 +193,7 @@
 									//提取子目录(分支名)
 									$paths = $isPlugin ? preg_split('/\/(?:blob|raw)\/([^\/]+)\//',$url,2,PREG_SPLIT_DELIM_CAPTURE) : preg_split('/\/tree\/([^\/]+)\//',$url,2,PREG_SPLIT_DELIM_CAPTURE);
 									$url = $paths[0];
-									$branch = $paths[1] ?? '';
+									$branch = $paths[1] ?? $branch;
 									$folder = !empty($paths[2]) ? ($isPlugin ? str_replace(basename($paths[2]),'',$paths[2]) : rtrim($paths[2],'/').'/') :'';
 
 									$gitHosts = $github || $host=='gitee.com';
