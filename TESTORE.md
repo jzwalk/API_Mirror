@@ -28,7 +28,7 @@
 
  > 下载链接文字可用于附加图标和关键字筛选：如`下载`即非社区版，`不可用`带⛔，`特殊`带⚠️意为启用须遵照文档步骤。
 
-### 插件信息 (23)
+### 插件信息 (24)
 
 ###### TeStore会使用下表“名称”创建文件夹，“版本”数字判断升级，请尽量确保文本准确，按字母排序，简介便于关键字搜索。
 ```
@@ -44,7 +44,7 @@
 [Avartar](https://github.com/typecho/plugins/blob/master/Avartar.php) | 自定义替换Gravatar头像代理插件 | 1.0.0 Beta | [loftor](https://github.com/loftor-git) | [最近](https://github.com/typecho-fans/plugins/releases/download/plugins-A_to_C/Avartar.zip)
 [BeianFooter](https://github.com/JoyNop/BeianFooter) | 自定义ICP备案和公安备案插件 | 1.0.0 | [JoyNop](https://github.com/JoyNop) | [最近](https://github.com/JoyNop/BeianFooter/archive/refs/tags/1.0.0.zip)
 [CommentToMail](https://github.com/uniartisan/CommentToMail) | 网址监控触发版评论邮件提醒插件 | 4.3.0 | [Uniartisan](https://github.com/uniartisan) | [最近](https://github.com/uniartisan/CommentToMail/archive/refs/tags/v4.3.0.zip)
-[CompressHTML](https://github.com/qlwz/CompressHTML-For-Typecho) | 开启Gzip压缩Html替换关键词插件 | 1.0.0.0 By 2016-11-23 | [情留メ蚊子 ](http://www.94qing.com/) | [下载](https://github.com/qlwz/CompressHTML-For-Typecho/archive/master.zip)
+[CompressHTML](https://github.com/qlwz/CompressHTML-For-Typecho) | 开启Gzip压缩Html替换关键词插件 | 1.0.0.0 By 2016-11-23 | [情留メ蚊子 ](http://www.94qing.com/) | [最近](https://github.com/qlwz/CompressHTML-For-Typecho/archive/master.zip)
 [DoubanBooklist](https://github.com/FaithPatrick/DoubanBookList) | 博客展示豆瓣正在和已读书单插件 | 1.0.0 | [Patrick95](https://github.com/FaithPatrick) | [最近](https://github.com/FaithPatrick/DoubanBookList/archive/master.zip)
 [GithubWidgetPlus](https://github.com/sundaqiang/GithubWidgetPlus) | Github名片 | 0.3.0 | [sunadqiang](https://github.com/sundaqiang),[hongweipeng](https://github.com/hongweipeng) | [最近](https://github.com/typecho-fans/plugins/releases/download/plugins-D_to_G/GithubWidgetPlus.zip)
 [HuifengMembers](https://github.com/wedojava/HuifengMember) | Typecho自建会员信息数据表插件 | 0.1.1 | [回风](https://github.com/wedojava) | [最近](https://github.com/wedojava/HuifengMember/archive/master.zip)
