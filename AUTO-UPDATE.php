@@ -211,7 +211,7 @@
 									}
 
 									$path = '';
-									$pluginUri = $url.'/raw/'.$branch.'/'.$folder;
+									$pluginUri = $url.'/raw/'.$branch.'/';
 									//API查询repo文件树
 									if (!$isPlugin) {
 										if ($gitHosts) {
@@ -226,36 +226,38 @@
 											//定位主文件路径
 											$path = pluginRoute($datas,$name);
 										}
-										$plugin = $path ? $url.'/raw/'.$branch.'/'.$path : $pluginUri.'Plugin.php';
+										$plugin = $path ? $pluginUri.$path : $pluginUri.$folder.'Plugin.php'; //盲试目录型
 									}
+								}
 
-									if ($plugin) {
+								//通过表格repo信息读取主文件
+								if ($plugin) {
+									$infos = parseInfo($plugin);
+									//无API盲试单文件
+									if (!$infos['version'] && $isUrl && !$path) {
+										$plugin = $pluginUri.$folder.$name.'.php';
 										$infos = parseInfo($plugin);
-										//无API重试单文件
-										if (!$infos['version'] && !$path) {
-											$plugin = $pluginUri.$name.'.php';
-											$infos = parseInfo($plugin);
-										}
 									}
 								}
 
 								$noPlugin = empty($infos['version']); //表格repo信息无效
-								$gitIsh = !$noPlugin && !$api && !$tf; //有效但无API
+								$gitIsh = !$noPlugin && !$api && !$tf; //有效但无API(盲试)
 								$zip = str_contains($zipMeta,'](') ? trim(end($links[0])) : ''; //取最后一个栏位链接地址
 								$tmpSub = $tmpDir.'/'.$all.'_'.$name;
 								$pluginZip = '';
-								//解压zip包获取信息
+								//通过解压缩zip包读取主文件
 								if ($noPlugin || $gitIsh) {
 									$download = @file_get_contents($zip);
 									if ($download) {
 										$tmpZip = $tmpSub.'_origin.zip';
 										file_put_contents($tmpZip,$download);
 										$phpZip = new ZipArchive();
-										if ($phpZip->open($tmpZip)!==true) {
+										if ($phpZip->open($tmpZip)!==true) { //宽松校验
 											$logs .= 'Error: Table zip - "'.$zip.'" is not valid!'.PHP_EOL;
 										} else {
 											mkdir($tmpSub,0777,true);
 											$phpZip->extractTo($tmpSub);
+											//定位主文件路径
 											$pluginZip = pluginRoute($tmpSub,$name);
 											if ($pluginZip && !$gitIsh) {
 												$infos = parseInfo($pluginZip);
@@ -266,7 +268,7 @@
 									}
 								}
 
-								//有主文件信息即修正
+								//有主文件头信息即修正
 								if (!empty($infos['version'])) {
 									++$revise; //记录修正次数
 									$fixed = '';
